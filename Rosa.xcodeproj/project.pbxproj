@@ -10,21 +10,49 @@
 		59C400ECA95DA5BE0939EA53 /* Pods_Rosa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C374A870328953E5950C01F1 /* Pods_Rosa.framework */; };
 		7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB509264BB62100EE6D9D /* AppDelegate.swift */; };
 		7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */; };
-		7A8DB50E264BB62100EE6D9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* ViewController.swift */; };
+		7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* MainViewController.swift */; };
 		7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB50F264BB62100EE6D9D /* Main.storyboard */; };
 		7A8DB513264BB62100EE6D9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB512264BB62100EE6D9D /* Assets.xcassets */; };
 		7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */; };
+		7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE48A264BE24B00A20324 /* Challenge.storyboard */; };
+		7AAFE48D264BE25E00A20324 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE48C264BE25E00A20324 /* Record.storyboard */; };
+		7AAFE491264BE27A00A20324 /* Calender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE490264BE27A00A20324 /* Calender.storyboard */; };
+		7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE492264BE29100A20324 /* Articles.storyboard */; };
+		7AAFE499264BE3E800A20324 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE498264BE3E800A20324 /* Profile.storyboard */; };
+		7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE49F264BE64600A20324 /* UIView+Extension.swift */; };
+		7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */; };
+		7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */; };
+		7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A8264C02D400A20324 /* RecordViewController.swift */; };
+		7AAFE4AC264C031A00A20324 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */; };
+		7AAFE4AF264C035E00A20324 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */; };
+		7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */; };
+		7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */; };
+		7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B6264C125300A20324 /* CalenderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7A8DB506264BB62100EE6D9D /* Rosa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rosa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8DB509264BB62100EE6D9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7A8DB50D264BB62100EE6D9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A8DB50D264BB62100EE6D9D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A8DB510264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A8DB512264BB62100EE6D9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A8DB515264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A8DB517264BB62100EE6D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AAFE48A264BE24B00A20324 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
+		7AAFE48C264BE25E00A20324 /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
+		7AAFE490264BE27A00A20324 /* Calender.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calender.storyboard; sourceTree = "<group>"; };
+		7AAFE492264BE29100A20324 /* Articles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Articles.storyboard; sourceTree = "<group>"; };
+		7AAFE498264BE3E800A20324 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		7AAFE49F264BE64600A20324 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		7AAFE4A8264C02D400A20324 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		7AAFE4B6264C125300A20324 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		C374A870328953E5950C01F1 /* Pods_Rosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA81D98234E9CED393A9B2 /* Pods-Rosa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.debug.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DF160F36CA96BCB712C384 /* Pods-Rosa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.release.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,15 +91,117 @@
 		7A8DB508264BB62100EE6D9D /* Rosa */ = {
 			isa = PBXGroup;
 			children = (
+				7AAFE489264BCCFF00A20324 /* Extension */,
+				7AAFE488264BCCF000A20324 /* Resource */,
+				7AAFE485264BCC7100A20324 /* Model */,
+				7AAFE487264BCC7E00A20324 /* Controller */,
+				7AAFE486264BCC7800A20324 /* View */,
 				7A8DB509264BB62100EE6D9D /* AppDelegate.swift */,
 				7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */,
-				7A8DB50D264BB62100EE6D9D /* ViewController.swift */,
-				7A8DB50F264BB62100EE6D9D /* Main.storyboard */,
-				7A8DB512264BB62100EE6D9D /* Assets.xcassets */,
 				7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */,
 				7A8DB517264BB62100EE6D9D /* Info.plist */,
 			);
 			path = Rosa;
+			sourceTree = "<group>";
+		};
+		7AAFE485264BCC7100A20324 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7AAFE486264BCC7800A20324 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7A8DB50F264BB62100EE6D9D /* Main.storyboard */,
+				7AAFE490264BE27A00A20324 /* Calender.storyboard */,
+				7AAFE48C264BE25E00A20324 /* Record.storyboard */,
+				7AAFE492264BE29100A20324 /* Articles.storyboard */,
+				7AAFE498264BE3E800A20324 /* Profile.storyboard */,
+				7AAFE48A264BE24B00A20324 /* Challenge.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7AAFE487264BCC7E00A20324 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7AAFE4B5264C121500A20324 /* Calender */,
+				7AAFE4B0264C05EE00A20324 /* Challenge */,
+				7AAFE4AD264C034000A20324 /* Profile */,
+				7AAFE4AA264C02FD00A20324 /* Platform */,
+				7AAFE49E264BE45D00A20324 /* Home */,
+				7AAFE4A7264C00F200A20324 /* Record */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7AAFE488264BCCF000A20324 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				7A8DB512264BB62100EE6D9D /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		7AAFE489264BCCFF00A20324 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7AAFE49F264BE64600A20324 /* UIView+Extension.swift */,
+				7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */,
+				7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		7AAFE49E264BE45D00A20324 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7A8DB50D264BB62100EE6D9D /* MainViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7AAFE4A7264C00F200A20324 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				7AAFE4A8264C02D400A20324 /* RecordViewController.swift */,
+				7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		7AAFE4AA264C02FD00A20324 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		7AAFE4AD264C034000A20324 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7AAFE4B0264C05EE00A20324 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
+		7AAFE4B5264C121500A20324 /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				7AAFE4B6264C125300A20324 /* CalenderViewController.swift */,
+			);
+			path = Calender;
 			sourceTree = "<group>";
 		};
 		C09C60E96DB46533420E5524 /* Frameworks */ = {
@@ -103,6 +233,7 @@
 				7A8DB503264BB62100EE6D9D /* Frameworks */,
 				7A8DB504264BB62100EE6D9D /* Resources */,
 				7A24297A264BBB4F0069CB73 /* SwiftLint */,
+				CD2DA1BCE170D80E0490BAA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,8 +282,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
+				7AAFE499264BE3E800A20324 /* Profile.storyboard in Resources */,
 				7A8DB513264BB62100EE6D9D /* Assets.xcassets in Resources */,
+				7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */,
 				7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */,
+				7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */,
+				7AAFE48D264BE25E00A20324 /* Record.storyboard in Resources */,
+				7AAFE491264BE27A00A20324 /* Calender.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +335,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CD2DA1BCE170D80E0490BAA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rosa/Pods-Rosa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rosa/Pods-Rosa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rosa/Pods-Rosa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -206,8 +359,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A8DB50E264BB62100EE6D9D /* ViewController.swift in Sources */,
+				7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */,
+				7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */,
+				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
+				7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */,
+				7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */,
+				7AAFE4AC264C031A00A20324 /* ArticlesViewController.swift in Sources */,
+				7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */,
+				7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */,
+				7AAFE4AF264C035E00A20324 /* ProfileViewController.swift in Sources */,
+				7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */,
 				7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
