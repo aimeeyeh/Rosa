@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("1111111111111111111")
+        self.navigationController?.isNavigationBarHidden = true
     }
 
 }

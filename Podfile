@@ -8,5 +8,6 @@ target 'Rosa' do
   # Pods for Rosa
 
 pod 'SwiftLint'
+pod 'KDCalendar', '~> 1.8.9'
 
 end
