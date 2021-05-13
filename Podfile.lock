@@ -1,22 +1,26 @@
 PODS:
+  - CollectionViewWaterfallLayout (0.5.0)
   - KDCalendar (1.8.9):
     - KDCalendar/EventManager (= 1.8.9)
   - KDCalendar/EventManager (1.8.9)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
+  - CollectionViewWaterfallLayout
   - KDCalendar (~> 1.8.9)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - CollectionViewWaterfallLayout
     - KDCalendar
     - SwiftLint
 
 SPEC CHECKSUMS:
+  CollectionViewWaterfallLayout: 4399ba01be265fff4da1ed1d607130fe009780e4
   KDCalendar: a587bc486b992d82ef94bd04001fce9baf45e518
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: bb73eb3dde321d34b60ae9e00ab2cb56f8106a38
+PODFILE CHECKSUM: ebb55e3f6ba1e1d32ce29fe0fd7da66ecde2f2b4
 
 COCOAPODS: 1.10.1

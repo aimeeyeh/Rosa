@@ -12,7 +12,7 @@ class CalenderViewController: UIViewController {
 
     @IBOutlet weak var calendarView: CalendarView!
     @IBOutlet weak var noRecordLabel: UILabel!
-    
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -21,6 +21,7 @@ class CalenderViewController: UIViewController {
         calendarView.delegate = self
 
         setUpCalender()
+        self.navigationController?.isNavigationBarHidden = true
 
     }
 
@@ -41,9 +42,11 @@ class CalenderViewController: UIViewController {
         style.cellColorDefault = UIColor.clear
         style.cellColorToday = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
         style.cellSelectedBorderColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
-        style.cellTextColorToday = UIColor.orange
+        style.cellTextColorToday = UIColor.white
         style.cellSelectedTextColor = .darkGray
         style.cellShape = CalendarView.Style.CellShapeOptions.round
+        style.headerTextColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
+        style.weekdaysTextColor = UIColor.orange
         calendarView.marksWeekends = false
 
         calendarView.style = style

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1t-fs-0ux" customClass="CalendarView" customModule="KDCalendar">
-                                <rect key="frame" x="16" y="104" width="382" height="409"/>
+                                <rect key="frame" x="16" y="60" width="382" height="453"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前無任何紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAa-9I-p2z">
@@ -40,6 +40,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="IUO-dL-FZ4"/>
                     <navigationItem key="navigationItem" title="個人計畫" id="rSg-S3-OaP"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendarView" destination="c1t-fs-0ux" id="A9W-2A-9t2"/>
