@@ -9,10 +9,22 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var cardView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        cardView.backgroundColor = .white
+
+        cardView.layer.cornerRadius = 10.0
+
+        cardView.layer.shadowColor = UIColor.gray.cgColor
+
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+
+        cardView.layer.shadowRadius = 6.0
+
+        cardView.layer.shadowOpacity = 0.7
     }
     /*
     // MARK: - Navigation
