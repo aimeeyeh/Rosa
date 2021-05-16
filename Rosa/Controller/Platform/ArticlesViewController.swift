@@ -38,10 +38,10 @@ class ArticlesViewController: UIViewController {
 
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        underlineView.backgroundColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
+        underlineView.backgroundColor = UIColor.lightGray
         setUpWaterfall()
         followButton.isSelected = true
-        followButton.setTitleColor(UIColor.orange, for: .selected)
+        followButton.setTitleColor(UIColor.lightGray, for: .selected)
 
     }
 
@@ -64,9 +64,9 @@ class ArticlesViewController: UIViewController {
         recommendButton.isSelected = false
         sender.isSelected = !sender.isSelected
 
-        followButton.setTitleColor(UIColor.orange, for: .selected)
-        trendingButton.setTitleColor(UIColor.orange, for: .selected)
-        recommendButton.setTitleColor(UIColor.orange, for: .selected)
+        followButton.setTitleColor(UIColor.lightGray, for: .selected)
+        trendingButton.setTitleColor(UIColor.lightGray, for: .selected)
+        recommendButton.setTitleColor(UIColor.lightGray, for: .selected)
 
         UIView.animate(withDuration: 0.3) {
 //            print("self.underlineView.center.x: \(self.underlineView.center.x)")

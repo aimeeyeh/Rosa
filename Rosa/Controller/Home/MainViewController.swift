@@ -7,6 +7,7 @@
 
 import UIKit
 import CollectionViewWaterfallLayout
+import MKRingProgressView
 
 class MainViewController: UIViewController {
 
@@ -17,6 +18,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         setUpWaterfall()
+        homeCollectionView.register(HeaderCollectionReusableView.self,
+                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                    withReuseIdentifier: HeaderCollectionReusableView.identifer)
 
     }
 
@@ -60,12 +64,25 @@ extension MainViewController: UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell",
                                                         for: indexPath) as? HomeCollectionViewCell {
             cell.shadowDecorate()
+            cell.addRingProgressView()
+            cell.addLabel()
             return cell
 
         }
         return UICollectionViewCell()
     }
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
 
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: HeaderCollectionReusableView.identifer,
+            for: indexPath)
+        guard let collectionHeader = header as? HeaderCollectionReusableView else { return header }
+        collectionHeader.configureLabels()
+        return collectionHeader
+    }
 }
 
 // MARK: - CollectionViewWaterfallLayoutDelegate

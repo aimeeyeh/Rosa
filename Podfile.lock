@@ -3,24 +3,28 @@ PODS:
   - KDCalendar (1.8.9):
     - KDCalendar/EventManager (= 1.8.9)
   - KDCalendar/EventManager (1.8.9)
+  - MKRingProgressView (2.2.3)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
   - CollectionViewWaterfallLayout
   - KDCalendar (~> 1.8.9)
+  - MKRingProgressView
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CollectionViewWaterfallLayout
     - KDCalendar
+    - MKRingProgressView
     - SwiftLint
 
 SPEC CHECKSUMS:
   CollectionViewWaterfallLayout: 4399ba01be265fff4da1ed1d607130fe009780e4
   KDCalendar: a587bc486b992d82ef94bd04001fce9baf45e518
+  MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: ebb55e3f6ba1e1d32ce29fe0fd7da66ecde2f2b4
+PODFILE CHECKSUM: 3ebec69f615f5b8c8104f32bc3f28852460dad46
 
 COCOAPODS: 1.10.1

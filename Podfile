@@ -10,5 +10,7 @@ target 'Rosa' do
 pod 'SwiftLint'
 pod 'KDCalendar', '~> 1.8.9'
 pod "CollectionViewWaterfallLayout"
+pod 'MKRingProgressView'
+
 
 end
