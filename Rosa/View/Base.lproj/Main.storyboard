@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mKg-vV-LMe">
-                                <rect key="frame" x="10" y="60" width="394" height="753"/>
+                                <rect key="frame" x="10" y="15" width="394" height="798"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oQ6-vp-PVQ">
                                     <size key="itemSize" width="180" height="200"/>
@@ -52,7 +52,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="ndT-VC-bu1">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="ndT-VC-bu1" customClass="HeaderCollectionReusableView" customModule="Rosa" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="394" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -79,14 +79,10 @@
                                         <constraint firstItem="yKK-ts-b49" firstAttribute="top" secondItem="qSG-RC-Fjs" secondAttribute="bottom" constant="8" symbolic="YES" id="ouu-t0-9hg"/>
                                         <constraint firstItem="qSG-RC-Fjs" firstAttribute="leading" secondItem="ndT-VC-bu1" secondAttribute="leadingMargin" id="xMQ-yJ-qWc"/>
                                     </constraints>
-                                    <connections>
-                                        <outlet property="greetingLabel" destination="qSG-RC-Fjs" id="mYR-tY-huG"/>
-                                        <outlet property="pastSevenDays" destination="yKK-ts-b49" id="WAN-FR-7sd"/>
-                                    </connections>
                                 </collectionReusableView>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="u5N-nM-h1U"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8np-tO-2ND"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="tbH-2U-Uqp"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Ney-xx-vNf"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -94,7 +90,7 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="mKg-vV-LMe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="JWn-D9-Lkt"/>
-                            <constraint firstItem="mKg-vV-LMe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Jkb-TZ-vRl"/>
+                            <constraint firstItem="mKg-vV-LMe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="15" id="Jkb-TZ-vRl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mKg-vV-LMe" secondAttribute="trailing" constant="10" id="nxw-NY-Ji1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mKg-vV-LMe" secondAttribute="bottom" id="zH0-Jp-ASZ"/>
                         </constraints>
