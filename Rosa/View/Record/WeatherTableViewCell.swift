@@ -16,13 +16,32 @@ class WeatherTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        sunnyButton.checkButtonState()
+        mostlyClearButton.checkButtonState()
+        cloudyButton.checkButtonState()
+        rainyButton.checkButtonState()
+
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func selectedSunny(_ sender: Any) {
+        sunnyButton.isSelected = !sunnyButton.isSelected
+        sunnyButton.checkButtonState()
+    }
+    
+    @IBAction func selctedMostlyClear(_ sender: Any) {
+        mostlyClearButton.isSelected = !mostlyClearButton.isSelected
+        mostlyClearButton.checkButtonState()
+    }
+    
+    @IBAction func slectedCloudy(_ sender: Any) {
+        cloudyButton.isSelected = !cloudyButton.isSelected
+        cloudyButton.checkButtonState()
+    }
+    
+    @IBAction func selectedRainy(_ sender: Any) {
+        rainyButton.isSelected = !rainyButton.isSelected
+        rainyButton.checkButtonState()
     }
 
 }

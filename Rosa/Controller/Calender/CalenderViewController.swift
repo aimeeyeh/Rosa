@@ -6,105 +6,95 @@
 //
 
 import UIKit
-import KDCalendar
+import FSCalendar
 
-class CalenderViewController: UIViewController {
+class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDataSource,
+                              UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate {
+    
+    @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var calnderView: FSCalendar!
+    @IBOutlet weak var tableView: UITableView!
+    
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
 
-    @IBOutlet weak var calendarView: CalendarView!
-    @IBOutlet weak var noRecordLabel: UILabel!
+    fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
+        [unowned self] in
+        let panGesture = UIPanGestureRecognizer(target: calnderView,
+                                                action: #selector(calnderView.handleScopeGesture(_:)))
+        panGesture.delegate = self
+        panGesture.minimumNumberOfTouches = 1
+        panGesture.maximumNumberOfTouches = 2
+        return panGesture
+    }()
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
-        calendarView.dataSource = self
-        calendarView.delegate = self
-
-        setUpCalender()
         self.navigationController?.isNavigationBarHidden = true
-
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let today = Date()
-        self.calendarView.setDisplayDate(today, animated: false)
-    }
-
-    func setUpCalender() {
-
-        calendarView.direction = .horizontal
-        calendarView.multipleSelectionEnable = false
-
-        let style = CalendarView.Style()
-
-        style.cellShape = .bevel(8.0)
-        style.cellColorDefault = UIColor.clear
-        style.cellColorToday = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
-        style.cellSelectedBorderColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
-        style.cellTextColorToday = UIColor.white
-        style.cellSelectedTextColor = .darkGray
-        style.cellShape = CalendarView.Style.CellShapeOptions.round
-        style.headerTextColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
-        style.weekdaysTextColor = UIColor.orange
-        calendarView.marksWeekends = false
-
-        calendarView.style = style
-    }
-
-}
-
-extension CalenderViewController: CalendarViewDataSource, CalendarViewDelegate {
-
-    func startDate() -> Date {
-
-        var dateComponents = DateComponents()
-        dateComponents.month = -3
-        let today = Date()
-        guard let threeMonthsAgo = self.calendarView.calendar.date(byAdding: dateComponents, to: today) else {
-            return today
+        
+        if UIDevice.current.model.hasPrefix("iPad") {
+            calenderHeightConstraint.constant = 400
         }
-        return threeMonthsAgo
-
+        
+        calnderView.select(Date())
+        
+        self.view.addGestureRecognizer(self.scopeGesture)
+        self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
+        
+        // For UITest
+        calnderView.accessibilityIdentifier = "calendar"
     }
-
-    func endDate() -> Date {
-
-        var dateComponents = DateComponents()
-        dateComponents.month = 3
-        let today = Date()
-        guard let threeMonthsAfter = self.calendarView.calendar.date(byAdding: dateComponents, to: today) else {
-            return today
+    
+    deinit {
+        print("\(#function)")
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
+        if shouldBegin {
+            let velocity = self.scopeGesture.velocity(in: self.view)
+            switch calnderView.scope {
+            case .month:
+                return velocity.y < 0
+            case .week:
+                return velocity.y > 0
+            }
         }
-        return threeMonthsAfter
-
+        return shouldBegin
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calenderHeightConstraint.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("did select date \(self.dateFormatter.string(from: date))")
+        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        print("selected dates is \(selectedDates)")
+        if monthPosition == .next || monthPosition == .previous {
+            calendar.setCurrentPage(date, animated: true)
+        }
     }
 
-    func headerString(_ date: Date) -> String? {
-        return nil
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 
-    func calendar(_ calendar: CalendarView, didScrollToMonth date: Date) {
-        return
-    }
-
-    func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
-
-        noRecordLabel.isHidden = false
-
-    }
-
-    func calendar(_ calendar: CalendarView, canSelectDate date: Date) -> Bool {
-        return true
-    }
-
-    func calendar(_ calendar: CalendarView, didDeselectDate date: Date) {
-
-        noRecordLabel.isHidden = true
-
-    }
-
-    func calendar(_ calendar: CalendarView, didLongPressDate date: Date, withEvents events: [CalendarEvent]?) {
-        return
-    }
 }

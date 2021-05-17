@@ -16,13 +16,30 @@ class MealTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        checkAllButtonStatus()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func selectedDairy(_ sender: Any) {
+        dairyFreeButton.isSelected = !dairyFreeButton.isSelected
+        dairyFreeButton.checkButtonState()
     }
-
+    @IBAction func selectedGluten(_ sender: Any) {
+        glutenFreeButton.isSelected = !glutenFreeButton.isSelected
+        glutenFreeButton.checkButtonState()
+    }
+    @IBAction func selectedJunk(_ sender: Any) {
+        junkFreeButton.isSelected = !junkFreeButton.isSelected
+        junkFreeButton.checkButtonState()
+    }
+    @IBAction func selectedSugar(_ sender: Any) {
+        sugarFreeButton.isSelected = !sugarFreeButton.isSelected
+        sugarFreeButton.checkButtonState()
+    }
+    
+    func checkAllButtonStatus() {
+        dairyFreeButton.checkButtonState()
+        glutenFreeButton.checkButtonState()
+        junkFreeButton.checkButtonState()
+        sugarFreeButton.checkButtonState()
+    }
+    
 }

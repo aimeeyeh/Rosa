@@ -15,13 +15,28 @@ class ActivityTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        checkAllButtonStatus() 
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func selectedOutdoor(_ sender: Any) {
+        outdoorButton.isSelected = !outdoorButton.isSelected
+        outdoorButton.checkButtonState()
     }
 
+    @IBAction func selectedMakeup(_ sender: Any) {
+        makeupButton.isSelected = !makeupButton.isSelected
+        makeupButton.checkButtonState()
+    }
+
+    @IBAction func selectedMenstrual(_ sender: Any) {
+        menstrualButton.isSelected = !menstrualButton.isSelected
+        menstrualButton.checkButtonState()
+    }
+    
+    func checkAllButtonStatus() {
+        outdoorButton.checkButtonState()
+        makeupButton.checkButtonState()
+        menstrualButton.checkButtonState()
+    }
+    
 }

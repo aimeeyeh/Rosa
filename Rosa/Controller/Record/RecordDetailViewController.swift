@@ -6,17 +6,92 @@
 //
 
 import UIKit
+import FSCalendar
 
-class RecordDetailViewController: UIViewController {
+class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var calenderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+    
+    fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
+        [unowned self] in
+        let panGesture = UIPanGestureRecognizer(target: calenderView,
+                                                action: #selector(calenderView.handleScopeGesture(_:)))
+        panGesture.delegate = self
+        panGesture.minimumNumberOfTouches = 1
+        panGesture.maximumNumberOfTouches = 2
+        return panGesture
+    }()
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-
+        
+        if UIDevice.current.model.hasPrefix("iPad") {
+            self.calenderHeightConstraint.constant = 400
+        }
+        
+        calenderView.select(Date())
+        self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
+        self.view.layoutIfNeeded()
+        self.calenderView.scope = .week
+        
+        // For UITest
+        calenderView.accessibilityIdentifier = "calendar"
+    }
+    
+    deinit {
+        print("\(#function)")
     }
 
+    @IBAction func closeDetailPagr(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
+        if shouldBegin {
+            let velocity = self.scopeGesture.velocity(in: self.view)
+            switch self.calenderView.scope {
+            case .month:
+                return velocity.y < 0
+            case .week:
+                return velocity.y > 0
+            }
+        }
+        return shouldBegin
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calenderHeightConstraint.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("did select date \(self.dateFormatter.string(from: date))")
+        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        print("selected dates is \(selectedDates)")
+        if monthPosition == .next || monthPosition == .previous {
+            calendar.setCurrentPage(date, animated: true)
+        }
+    }
+
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    }
+    
 }
 
 extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate {
@@ -69,4 +144,8 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
         return UITableViewCell()
     }
 
+}
+
+extension RecordDetailViewController: FSCalendarDataSource, FSCalendarDelegate {
+    
 }
