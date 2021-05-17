@@ -17,13 +17,40 @@ class StatusTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        checkAllButtonStatus()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func selectedHappy(_ sender: Any) {
+        happyButton.isSelected = !happyButton.isSelected
+        happyButton.checkButtonState()
     }
 
+    @IBAction func selectedOk(_ sender: Any) {
+        okButton.isSelected = !okButton.isSelected
+        okButton.checkButtonState()
+    }
+
+    @IBAction func selectedMeh(_ sender: Any) {
+        mehButton.isSelected = !mehButton.isSelected
+        mehButton.checkButtonState()
+    }
+
+    @IBAction func selectedSad(_ sender: Any) {
+        sadButton.isSelected = !sadButton.isSelected
+        sadButton.checkButtonState()
+    }
+
+    @IBAction func selectedAngry(_ sender: Any) {
+        angryButton.isSelected = !angryButton.isSelected
+        angryButton.checkButtonState()
+    }
+    
+    func checkAllButtonStatus() {
+        happyButton.checkButtonState()
+        okButton.checkButtonState()
+        mehButton.checkButtonState()
+        sadButton.checkButtonState()
+        angryButton.checkButtonState()
+    }
+    
 }

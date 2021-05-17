@@ -5,20 +5,187 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--個人計畫-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="ChallengeViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="ChallengeViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6r-Wk-t6y">
+                                <rect key="frame" x="20" y="174" width="374" height="508"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbo-OI-38S">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9w-pH-TqW">
+                                                <rect key="frame" x="147" y="8" width="80" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just pick a challenge." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPU-Oj-P7E">
+                                                <rect key="frame" x="130" y="34" width="114" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" cyan="0.0" magenta="0.1753458796" yellow="0.38353303220000001" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="XPU-Oj-P7E" firstAttribute="centerX" secondItem="Rbo-OI-38S" secondAttribute="centerX" id="Eio-Su-Ede"/>
+                                            <constraint firstAttribute="height" constant="60" id="SFq-4g-7sZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="XPU-Oj-P7E" secondAttribute="bottom" constant="12" id="Yxa-ae-LnZ"/>
+                                            <constraint firstItem="B9w-pH-TqW" firstAttribute="top" secondItem="Rbo-OI-38S" secondAttribute="top" constant="8" id="o32-C8-nHQ"/>
+                                            <constraint firstItem="B9w-pH-TqW" firstAttribute="centerX" secondItem="Rbo-OI-38S" secondAttribute="centerX" id="xhx-hb-Ax1"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mVR-PD-cUg">
+                                        <rect key="frame" x="8" y="60" width="358" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YOF-Bp-xKw">
+                                            <size key="itemSize" width="70" height="85"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChallengeCollectionViewCell" id="1o3-sR-MrS" customClass="ChallengeCollectionViewCell" customModule="Rosa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="85"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VeO-KU-eue">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="85"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpE-AL-nZS">
+                                                            <rect key="frame" x="12.5" y="15" width="45" height="45"/>
+                                                            <color key="backgroundColor" cyan="0.0" magenta="0.14008333710000001" yellow="0.6214422584" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="45" id="UrM-ig-YBr"/>
+                                                                <constraint firstAttribute="height" constant="45" id="kpd-i8-j4L"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
+                                                                    <real key="value" value="22.5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="lkBorderColor">
+                                                                    <color key="value" systemColor="labelColor"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gluten" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4d-06-nPA">
+                                                            <rect key="frame" x="18" y="68" width="34.5" height="13.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meal_glutenFree" translatesAutoresizingMaskIntoConstraints="NO" id="Acw-xI-b8k">
+                                                            <rect key="frame" x="20" y="22.5" width="30" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="19d-Cf-NLb"/>
+                                                                <constraint firstAttribute="width" constant="30" id="JZC-rm-d5Z"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="M4d-06-nPA" firstAttribute="top" secondItem="PpE-AL-nZS" secondAttribute="bottom" constant="8" symbolic="YES" id="EbY-pL-sZx"/>
+                                                        <constraint firstItem="Acw-xI-b8k" firstAttribute="centerY" secondItem="PpE-AL-nZS" secondAttribute="centerY" id="dFf-7q-lbv"/>
+                                                        <constraint firstItem="Acw-xI-b8k" firstAttribute="centerX" secondItem="PpE-AL-nZS" secondAttribute="centerX" id="i82-sR-ANM"/>
+                                                        <constraint firstItem="PpE-AL-nZS" firstAttribute="top" secondItem="VeO-KU-eue" secondAttribute="top" constant="15" id="k7o-UT-zB4"/>
+                                                        <constraint firstItem="PpE-AL-nZS" firstAttribute="centerX" secondItem="VeO-KU-eue" secondAttribute="centerX" id="kfi-FQ-PW8"/>
+                                                        <constraint firstItem="M4d-06-nPA" firstAttribute="centerX" secondItem="VeO-KU-eue" secondAttribute="centerX" id="yFF-Bu-mlG"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="backgroundCircle" destination="PpE-AL-nZS" id="104-2p-STM"/>
+                                                    <outlet property="challengeImage" destination="Acw-xI-b8k" id="oQb-MJ-aqu"/>
+                                                    <outlet property="challengeLabel" destination="M4d-06-nPA" id="ALw-dN-f7A"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="bZX-g6-mdA"/>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="bc8-CT-a6d"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Rbo-OI-38S" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" id="5bU-8S-uKZ"/>
+                                    <constraint firstItem="mVR-PD-cUg" firstAttribute="top" secondItem="Rbo-OI-38S" secondAttribute="bottom" id="LJ4-Kh-szU"/>
+                                    <constraint firstItem="mVR-PD-cUg" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" constant="8" id="eFu-tU-u51"/>
+                                    <constraint firstAttribute="bottom" secondItem="mVR-PD-cUg" secondAttribute="bottom" id="eys-Xd-eiz"/>
+                                    <constraint firstItem="Rbo-OI-38S" firstAttribute="top" secondItem="x6r-Wk-t6y" secondAttribute="top" id="sru-48-Mar"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rbo-OI-38S" secondAttribute="trailing" id="vUV-NE-6r6"/>
+                                    <constraint firstAttribute="trailing" secondItem="mVR-PD-cUg" secondAttribute="trailing" constant="8" id="zPk-6g-Men"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-Lq-N5K">
+                                <rect key="frame" x="50" y="697" width="130" height="38"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="8zS-gg-C7G"/>
+                                    <constraint firstAttribute="height" constant="38" id="Xhg-mL-F4p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelChallenge:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Aai-ow-kHS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-uL-laq">
+                                <rect key="frame" x="234" y="697" width="130" height="38"/>
+                                <color key="backgroundColor" cyan="0.0" magenta="0.1753458796" yellow="0.38353303220000001" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="tRM-c6-KdO"/>
+                                    <constraint firstAttribute="width" constant="130" id="z2V-iz-Lym"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmChallenge:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GRE-YV-cff"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nWg-uL-laq" secondAttribute="trailing" constant="50" id="78F-02-AGx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="x6r-Wk-t6y" secondAttribute="bottom" constant="180" id="EHE-Ss-8Ab"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="x6r-Wk-t6y" secondAttribute="trailing" constant="20" id="Ees-x2-Gh4"/>
+                            <constraint firstItem="Hvc-Lq-N5K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="Esb-3l-oB6"/>
+                            <constraint firstItem="x6r-Wk-t6y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="130" id="Qks-iS-FL9"/>
+                            <constraint firstItem="nWg-uL-laq" firstAttribute="top" secondItem="x6r-Wk-t6y" secondAttribute="bottom" constant="15" id="c5T-7c-XnL"/>
+                            <constraint firstItem="Hvc-Lq-N5K" firstAttribute="top" secondItem="x6r-Wk-t6y" secondAttribute="bottom" constant="15" id="iwM-Qo-QaO"/>
+                            <constraint firstItem="x6r-Wk-t6y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="wrf-gd-nU7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="個人計畫" id="Eh5-yw-y59"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="Hvc-Lq-N5K" id="hvw-lF-i5V"/>
+                        <outlet property="collectionView" destination="mVR-PD-cUg" id="upx-dj-u7j"/>
+                        <outlet property="confirmButton" destination="nWg-uL-laq" id="lPc-gy-i70"/>
+                        <outlet property="popUpView" destination="x6r-Wk-t6y" id="311-eT-ABo"/>
+                        <outlet property="titleView" destination="Rbo-OI-38S" id="lzV-eL-UdT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -26,8 +193,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="meal_glutenFree" width="48" height="48"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

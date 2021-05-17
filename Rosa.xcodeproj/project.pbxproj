@@ -18,6 +18,8 @@
 		7A247B122651219C00E436D6 /* RemarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */; };
 		7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */; };
 		7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */; };
+		7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */; };
+		7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B01CC265168DD0018547E /* UIButton+Extension.swift */; };
 		7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB509264BB62100EE6D9D /* AppDelegate.swift */; };
 		7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */; };
 		7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* MainViewController.swift */; };
@@ -52,6 +54,8 @@
 		7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkTableViewCell.swift; sourceTree = "<group>"; };
 		7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A6B01CC265168DD0018547E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		7A8DB506264BB62100EE6D9D /* Rosa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rosa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8DB509264BB62100EE6D9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		7A475C742652BA1E00A26CF8 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
 		7A8DB4FD264BB62100EE6D9D = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +179,7 @@
 		7AAFE486264BCC7800A20324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A475C742652BA1E00A26CF8 /* Challenge */,
 				7A2C2E77264D59D90078EBA2 /* Home */,
 				7A247B02264EB54F00E436D6 /* Record */,
 				7A20F639264CFD2C00019D3D /* Platform */,
@@ -205,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				7AAFE49F264BE64600A20324 /* UIView+Extension.swift */,
+				7A6B01CC265168DD0018547E /* UIButton+Extension.swift */,
 				7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */,
 				7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */,
 				7A20F635264CF4DA00019D3D /* UIColor+Extension.swift */,
@@ -421,6 +435,7 @@
 				7A247B0E2651216500E436D6 /* MealTableViewCell.swift in Sources */,
 				7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */,
 				7A247B102651218D00E436D6 /* ActivityTableViewCell.swift in Sources */,
+				7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */,
 				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */,
@@ -436,6 +451,7 @@
 				7A247B062651206C00E436D6 /* WeatherTableViewCell.swift in Sources */,
 				7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */,
 				7A20F636264CF4DA00019D3D /* UIColor+Extension.swift in Sources */,
+				7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */,
 				7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */,
 				7A247B08265120F200E436D6 /* RoutineTableViewCell.swift in Sources */,
 				7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */,
