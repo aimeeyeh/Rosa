@@ -94,6 +94,16 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                        for: indexPath) as? CalendarChallengeTableViewCell {
+                cell.addShadow()
+                return cell
+            }
+        default:
+            return UITableViewCell()
+        }
         return UITableViewCell()
     }
 
