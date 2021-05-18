@@ -6,91 +6,91 @@
 //
 
 import UIKit
-import CollectionViewWaterfallLayout
 import MKRingProgressView
+import Charts
 
-class MainViewController: UIViewController {
+// class MyXAxisFormatter: IAxisValueFormatter {
+//    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+//        <#code#>
+//    }
+// }
 
-    @IBOutlet weak var homeCollectionView: UICollectionView!
+class MainViewController: UIViewController, ChartViewDelegate {
 
+    @IBOutlet weak var challengeProgressView: UIView!
+    @IBOutlet weak var waterProgressView: UIView!
+    @IBOutlet weak var sleepProgressView: UIView!
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var photoComparisonView: UIView!
+    @IBOutlet weak var ringProgressView: RingProgressView!
+    @IBOutlet weak var waterChartView: HorizontalBarChartView!
+    @IBOutlet weak var sleepLineChartView: LineChartView!
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        setUpWaterfall()
-        homeCollectionView.register(HeaderCollectionReusableView.self,
-                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                    withReuseIdentifier: HeaderCollectionReusableView.identifer)
+        configureViews()
+        configureProgressView()
+        configureWaterBarChart()
+        
+    }
+    
+    func configureViews() {
+
+        challengeProgressView.shadowDecorate()
+        waterProgressView.shadowDecorate()
+        sleepProgressView.shadowDecorate()
+        priceView.shadowDecorate()
+        photoComparisonView.shadowDecorate()
 
     }
+    
+    func configureProgressView() {
 
-    lazy var cellSizes: [CGSize] = {
-        var cellSizes = [CGSize]()
-        for _ in 0...5 {
-            let random = Int(arc4random_uniform((UInt32(100))))
-            cellSizes.append(CGSize(width: 200, height: 200 + random))
-        }
-        return cellSizes
-    }()
-
-    func setUpWaterfall() {
-
-        let layout = CollectionViewWaterfallLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.headerInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        layout.headerHeight = 80
-        layout.minimumColumnSpacing = 10
-        layout.minimumInteritemSpacing = 10
-
-        homeCollectionView.collectionViewLayout = layout
+        ringProgressView.startColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
+        ringProgressView.endColor = .orange
+        ringProgressView.backgroundRingColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 0.5)
+        ringProgressView.ringWidth = 14
+        ringProgressView.hidesRingForZeroProgress = true
+        ringProgressView.progress = 0.7
+        ringProgressView.gradientImageScale = 0.5
+        ringProgressView.shadowOpacity = 0.0
+        ringProgressView.allowsAntialiasing = false
+        ringProgressView.style = .square
+        //RingProgressView.animate(withDuration: 0.5) {
+        //    self.ringProgressView.progress = 1.0
+        //}
 
     }
-
-}
-
-extension MainViewController: UICollectionViewDataSource {
-
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    
+    func configureWaterBarChart() {
+        
+        let entry1 = BarChartDataEntry(x: 1.0, y: 2200)
+        let entry2 = BarChartDataEntry(x: 2.0, y: 2500)
+        let entry3 = BarChartDataEntry(x: 3.0, y: 1800)
+        let entry4 = BarChartDataEntry(x: 4.0, y: 1600)
+        let entry5 = BarChartDataEntry(x: 5.0, y: 1900)
+        let entry6 = BarChartDataEntry(x: 6.0, y: 1500)
+        let entry7 = BarChartDataEntry(x: 7.0, y: 2200)
+        let entries = [entry1, entry2, entry3, entry4, entry5, entry6, entry7]
+        let dataSet = BarChartDataSet(entries: entries, label: "Water (ml)")
+        let data = BarChartData(dataSets: [dataSet])
+        waterChartView.data = data
+        
+        waterChartView.xAxis.drawGridLinesEnabled = false
+        waterChartView.xAxis.labelPosition = .bottom
+        waterChartView.xAxis.drawAxisLineEnabled = false
+        waterChartView.leftAxis.drawGridLinesEnabled = false
+        waterChartView.leftAxis.drawLabelsEnabled = false
+        waterChartView.leftAxis.drawAxisLineEnabled = false
+//        waterChartView.rightAxis.drawGridLinesEnabled = false
+//        waterChartView.rightAxis.drawAxisLineEnabled = false
+        waterChartView.rightAxis.granularityEnabled = true
+        waterChartView.rightAxis.granularity = 500
+        waterChartView.maxVisibleCount = 60
+        waterChartView.notifyDataSetChanged()
+        waterChartView.animate(yAxisDuration: 2.5)
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell",
-                                                        for: indexPath) as? HomeCollectionViewCell {
-            cell.shadowDecorate()
-            cell.addRingProgressView()
-            cell.addLabel()
-            return cell
-
-        }
-        return UICollectionViewCell()
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-
-        let header = collectionView.dequeueReusableSupplementaryView(
-            ofKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: HeaderCollectionReusableView.identifer,
-            for: indexPath)
-        guard let collectionHeader = header as? HeaderCollectionReusableView else { return header }
-        collectionHeader.configureLabels()
-        return collectionHeader
-    }
-}
-
-// MARK: - CollectionViewWaterfallLayoutDelegate
-
-extension MainViewController: CollectionViewWaterfallLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout: UICollectionViewLayout,
-                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return cellSizes[indexPath.item]
-    }
 }

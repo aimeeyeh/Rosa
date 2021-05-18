@@ -12,17 +12,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var cardView: UIView!
 
-    func shadowDecorate() {
-
-        cardView.backgroundColor = .white
-        cardView.layer.cornerRadius = 20.0
-        cardView.layer.shadowColor = UIColor.gray.cgColor
-        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        cardView.layer.shadowRadius = 6.0
-        cardView.layer.shadowOpacity = 0.7
-
-    }
-
     let ringProgressView = RingProgressView()
     
     func addRingProgressView() {
