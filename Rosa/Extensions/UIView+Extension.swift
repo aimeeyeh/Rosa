@@ -79,4 +79,15 @@ extension UIView {
 
         objectView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset.bottom).isActive = true
     }
+    
+    func shadowDecorate() {
+
+        self.backgroundColor = .white
+        self.layer.cornerRadius = 25.0
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.layer.shadowRadius = 6.0
+        self.layer.shadowOpacity = 0.7
+
+    }
 }

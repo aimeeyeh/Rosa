@@ -1,10 +1,14 @@
 PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - CollectionViewWaterfallLayout (0.5.0)
   - FSCalendar (2.8.2)
   - MKRingProgressView (2.2.3)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
+  - Charts
   - CollectionViewWaterfallLayout
   - FSCalendar
   - MKRingProgressView
@@ -12,17 +16,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Charts
     - CollectionViewWaterfallLayout
     - FSCalendar
     - MKRingProgressView
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   CollectionViewWaterfallLayout: 4399ba01be265fff4da1ed1d607130fe009780e4
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: d71865125f541e56af643ca2c2a9c6174b9fc227
+PODFILE CHECKSUM: 09f55a2dd398e278405571dfe8a47df24c97cdb5
 
 COCOAPODS: 1.10.1

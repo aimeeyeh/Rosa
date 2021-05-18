@@ -11,5 +11,6 @@ pod 'SwiftLint'
 pod "CollectionViewWaterfallLayout"
 pod 'MKRingProgressView'
 pod 'FSCalendar'
+pod 'Charts'
 
 end
