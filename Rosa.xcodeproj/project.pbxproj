@@ -18,6 +18,7 @@
 		7A247B122651219C00E436D6 /* RemarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */; };
 		7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */; };
 		7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */; };
+		7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */; };
 		7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */; };
 		7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B01CC265168DD0018547E /* UIButton+Extension.swift */; };
 		7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB509264BB62100EE6D9D /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */; };
 		7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */; };
 		7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B6264C125300A20324 /* CalenderViewController.swift */; };
+		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,7 @@
 		7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkTableViewCell.swift; sourceTree = "<group>"; };
 		7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A6B01CC265168DD0018547E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		7A8DB506264BB62100EE6D9D /* Rosa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rosa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +82,7 @@
 		7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B6264C125300A20324 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		C374A870328953E5950C01F1 /* Pods_Rosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA81D98234E9CED393A9B2 /* Pods-Rosa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.debug.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DF160F36CA96BCB712C384 /* Pods-Rosa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.release.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				7A247B0D2651216500E436D6 /* MealTableViewCell.swift */,
 				7A247B0F2651218D00E436D6 /* ActivityTableViewCell.swift */,
 				7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */,
+				7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 		7AAFE486264BCC7800A20324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7ACFDF7C2652E14F007B6B62 /* Calendar */,
 				7A475C742652BA1E00A26CF8 /* Challenge */,
 				7A2C2E77264D59D90078EBA2 /* Home */,
 				7A247B02264EB54F00E436D6 /* Record */,
@@ -273,6 +279,14 @@
 				7AAFE4B6264C125300A20324 /* CalenderViewController.swift */,
 			);
 			path = Calender;
+			sourceTree = "<group>";
+		};
+		7ACFDF7C2652E14F007B6B62 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		C09C60E96DB46533420E5524 /* Frameworks */ = {
@@ -433,6 +447,7 @@
 				7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */,
 				7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */,
 				7A247B0E2651216500E436D6 /* MealTableViewCell.swift in Sources */,
+				7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */,
 				7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */,
 				7A247B102651218D00E436D6 /* ActivityTableViewCell.swift in Sources */,
 				7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */,
@@ -450,6 +465,7 @@
 				7A247B122651219C00E436D6 /* RemarkTableViewCell.swift in Sources */,
 				7A247B062651206C00E436D6 /* WeatherTableViewCell.swift in Sources */,
 				7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */,
+				7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */,
 				7A20F636264CF4DA00019D3D /* UIColor+Extension.swift in Sources */,
 				7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */,
 				7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */,

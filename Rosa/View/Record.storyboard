@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -106,11 +105,11 @@
             <objects>
                 <viewController id="yzZ-Gh-HtQ" customClass="RecordDetailViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="28J-3r-RLr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1020"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="110" estimatedRowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xXs-8D-igj">
-                                <rect key="frame" x="8" y="344" width="398" height="676"/>
+                                <rect key="frame" x="8" y="344" width="398" height="956"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherTableViewCell" rowHeight="110" id="PAX-6U-XtK" customClass="WeatherTableViewCell" customModule="Rosa" customModuleProvider="target">
@@ -653,6 +652,42 @@
                                             <outlet property="remarkTextField" destination="yPr-kw-ptt" id="pfg-Tb-J42"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonsTableViewCell" rowHeight="110" id="lWw-vs-m9S" customClass="ButtonsTableViewCell" customModule="Rosa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="794.5" width="398" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lWw-vs-m9S" id="sN8-V1-F33">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etf-rY-xVh">
+                                                    <rect key="frame" x="253" y="16" width="55" height="30"/>
+                                                    <state key="normal" title="Confirm"/>
+                                                    <connections>
+                                                        <action selector="confirmRecord:" destination="lWw-vs-m9S" eventType="touchUpInside" id="oaF-pB-SBY"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRA-kD-Naw">
+                                                    <rect key="frame" x="90" y="16" width="48" height="30"/>
+                                                    <state key="normal" title="Cancel"/>
+                                                    <connections>
+                                                        <action selector="cancelRecord:" destination="lWw-vs-m9S" eventType="touchUpInside" id="yQ7-Qa-pEp"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WRA-kD-Naw" secondAttribute="bottom" constant="53" id="Awp-9C-0SS"/>
+                                                <constraint firstItem="Etf-rY-xVh" firstAttribute="top" secondItem="sN8-V1-F33" secondAttribute="topMargin" constant="5" id="T5c-2W-Uqe"/>
+                                                <constraint firstItem="WRA-kD-Naw" firstAttribute="leading" secondItem="sN8-V1-F33" secondAttribute="leadingMargin" constant="70" id="hTc-2q-RTw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Etf-rY-xVh" secondAttribute="bottom" constant="53" id="hnr-ZH-Rwy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Etf-rY-xVh" secondAttribute="trailing" constant="70" id="i69-85-1VU"/>
+                                                <constraint firstItem="WRA-kD-Naw" firstAttribute="top" secondItem="sN8-V1-F33" secondAttribute="topMargin" constant="5" id="mUx-OH-ZOu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cancelButton" destination="WRA-kD-Naw" id="9iz-pJ-wzu"/>
+                                            <outlet property="confirmButton" destination="Etf-rY-xVh" id="r90-aZ-ELG"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="yzZ-Gh-HtQ" id="bQo-vX-0Gb"/>
@@ -684,15 +719,6 @@
                                     <outlet property="delegate" destination="yzZ-Gh-HtQ" id="Q9V-Xu-8Qe"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70S-Bj-xfb">
-                                <rect key="frame" x="20" y="54" width="17.5" height="22"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="xmark" catalog="system" symbolScale="medium"/>
-                                </state>
-                                <connections>
-                                    <action selector="closeDetailPagr:" destination="yzZ-Gh-HtQ" eventType="touchUpInside" id="cSk-Oi-Y1y"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xaD-66-7Ed"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -702,20 +728,17 @@
                             <constraint firstItem="1JF-yC-sBp" firstAttribute="leading" secondItem="xaD-66-7Ed" secondAttribute="leading" constant="8" id="E8i-5v-Gz3"/>
                             <constraint firstItem="1JF-yC-sBp" firstAttribute="top" secondItem="xaD-66-7Ed" secondAttribute="top" id="Gif-4U-x46"/>
                             <constraint firstItem="xXs-8D-igj" firstAttribute="top" secondItem="1JF-yC-sBp" secondAttribute="bottom" id="N3Q-Jo-RFX"/>
-                            <constraint firstItem="70S-Bj-xfb" firstAttribute="top" secondItem="xaD-66-7Ed" secondAttribute="top" constant="10" id="OeR-CQ-QO6"/>
                             <constraint firstAttribute="bottom" secondItem="xXs-8D-igj" secondAttribute="bottom" id="b0h-SV-qRv"/>
                             <constraint firstItem="xXs-8D-igj" firstAttribute="leading" secondItem="xaD-66-7Ed" secondAttribute="leading" constant="8" id="bEd-ly-eVn"/>
-                            <constraint firstItem="70S-Bj-xfb" firstAttribute="leading" secondItem="28J-3r-RLr" secondAttribute="leading" constant="20" id="cqZ-94-ukt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="膚況紀錄" id="Fd7-yu-2ub"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <size key="freeformSize" width="414" height="1020"/>
+                    <size key="freeformSize" width="414" height="1300"/>
                     <connections>
                         <outlet property="calenderHeightConstraint" destination="cSk-Ra-Dch" id="ARp-5q-bCe"/>
                         <outlet property="calenderView" destination="1JF-yC-sBp" id="43S-j6-Lby"/>
-                        <outlet property="closeButton" destination="70S-Bj-xfb" id="BKZ-ay-sva"/>
                         <outlet property="tableView" destination="xXs-8D-igj" id="OE2-ct-5sD"/>
                     </connections>
                 </viewController>
@@ -778,7 +801,6 @@
         <image name="weather_cloudy" width="512" height="512"/>
         <image name="weather_mostlyClear" width="512" height="512"/>
         <image name="weather_rainy" width="512" height="512"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

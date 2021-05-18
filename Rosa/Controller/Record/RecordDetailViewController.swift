@@ -53,11 +53,6 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
         print("\(#function)")
     }
 
-    @IBAction func closeDetailPagr(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     // MARK: - UIGestureRecognizerDelegate
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -97,7 +92,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
 extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,10 +128,20 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                                                             for: indexPath) as? ActivityTableViewCell {
                 return cell
             }
-            
-        default:
+        case 6:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "RemarkTableViewCell",
                                                             for: indexPath) as? RemarkTableViewCell {
+                return cell
+            }
+            
+        default:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonsTableViewCell",
+                                                            for: indexPath) as? ButtonsTableViewCell {
+                cell.onButtonPressed = { [unowned self] in
+                    // Do what you need to, no need to capture self however, if you won't access it.
+                    self.navigationController?.popViewController(animated: true)
+                    self.tabBarController?.tabBar.isHidden = false
+                }
                 return cell
             }
            
