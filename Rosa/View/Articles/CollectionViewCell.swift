@@ -21,4 +21,10 @@ class CollectionViewCell: UICollectionViewCell {
         arthorPhoto.layer.cornerRadius = arthorPhoto.frame.height / 2
         articlePhoto.layer.cornerRadius = articlePhoto.frame.height / 20
      }
+    
+    @IBAction func likedArticle(_ sender: Any) {
+
+        likeButton.isSelected = !likeButton.isSelected
+
+    }
 }
