@@ -24,7 +24,9 @@ class ArticlesViewController: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var trendingButton: UIButton!
     @IBOutlet weak var recommendButton: UIButton!
-
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    
     lazy var cellSizes: [CGSize] = {
         var cellSizes = [CGSize]()
         for _ in 0...100 {
@@ -43,6 +45,10 @@ class ArticlesViewController: UIViewController {
         followButton.isSelected = true
         followButton.setTitleColor(UIColor.lightGray, for: .selected)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableViewHeight.constant = 0
     }
 
     func setUpWaterfall() {
@@ -86,6 +92,13 @@ class ArticlesViewController: UIViewController {
         }
 //        reloadData()
     }
+    @IBAction func showCategory(_ sender: Any) {
+        tableViewHeight.constant = tableViewHeight.constant == 0 ? 174 : 0
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
+          self.tableView.alpha = 1
+          self.view.layoutIfNeeded()
+        }
+    }
 }
 
 extension ArticlesViewController: UICollectionViewDataSource {
@@ -111,5 +124,25 @@ extension ArticlesViewController: CollectionViewWaterfallLayoutDelegate {
                         layout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return cellSizes[indexPath.item]
+    }
+}
+
+extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      return 43.5
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      if let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell {
+        cell.setTitle(index: indexPath.row)
+        cell.selectionStyle = .none
+        return cell
+      }
+      return UITableViewCell()
     }
 }

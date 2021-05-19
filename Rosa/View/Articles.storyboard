@@ -32,6 +32,9 @@
                                 <state key="normal">
                                     <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="showCategory:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="W2v-dF-nLv"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iKS-3L-D5F">
                                 <rect key="frame" x="16" y="103" width="382" height="30"/>
@@ -198,12 +201,51 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="4wN-Yp-XUW"/>
                                 </connections>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Qp-uK-oLx">
+                                <rect key="frame" x="0.0" y="93" width="414" height="174"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="174" id="y4p-IE-b6Y"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterTableViewCell" rowHeight="43.5" id="MbY-O2-b3n" customClass="FilterTableViewCell" customModule="Rosa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MbY-O2-b3n" id="5Up-aS-bfz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hb-7W-zRf">
+                                                    <rect key="frame" x="189.5" y="13.5" width="35.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8hb-7W-zRf" firstAttribute="centerY" secondItem="5Up-aS-bfz" secondAttribute="centerY" id="cI4-SC-o5v"/>
+                                                <constraint firstItem="8hb-7W-zRf" firstAttribute="centerX" secondItem="5Up-aS-bfz" secondAttribute="centerX" id="pUy-pT-5Ef"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="filterLabel" destination="8hb-7W-zRf" id="uwg-a6-Dx2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="dhR-dy-T5S"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Vu5-jo-tjO"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8Qp-uK-oLx" firstAttribute="top" secondItem="bAl-6N-aTx" secondAttribute="bottom" id="80n-ts-cgS"/>
                             <constraint firstItem="iKS-3L-D5F" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="9WE-I5-B57"/>
                             <constraint firstItem="RrA-sp-6U2" firstAttribute="width" secondItem="xrh-2l-Mi6" secondAttribute="width" multiplier="0.5" id="CWQ-iK-CcX"/>
+                            <constraint firstItem="8Qp-uK-oLx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="EMR-Ud-ErF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Qp-uK-oLx" secondAttribute="trailing" id="GCo-Nl-Uhy"/>
                             <constraint firstItem="01a-Q0-kuY" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="Lqg-HR-L7n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dkm-Bt-j0i" secondAttribute="bottom" id="WWz-fQ-aR2"/>
                             <constraint firstItem="RrA-sp-6U2" firstAttribute="centerX" secondItem="xrh-2l-Mi6" secondAttribute="centerX" id="Wus-g0-XQh"/>
@@ -228,6 +270,8 @@
                         <outlet property="collectionView" destination="dkm-Bt-j0i" id="8sR-S6-siM"/>
                         <outlet property="followButton" destination="xrh-2l-Mi6" id="T20-ND-VYu"/>
                         <outlet property="recommendButton" destination="cYG-9G-Eez" id="2q3-BR-SES"/>
+                        <outlet property="tableView" destination="8Qp-uK-oLx" id="bhi-5X-9DM"/>
+                        <outlet property="tableViewHeight" destination="y4p-IE-b6Y" id="lzS-xV-XpK"/>
                         <outlet property="trendingButton" destination="TY9-hU-yae" id="Xie-ip-A2F"/>
                         <outlet property="underlineView" destination="RrA-sp-6U2" id="gng-9F-Y56"/>
                     </connections>

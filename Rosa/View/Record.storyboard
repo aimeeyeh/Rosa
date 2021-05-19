@@ -766,10 +766,10 @@
                                 <rect key="frame" x="26" y="204" width="362" height="458"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Llv-QP-BKw">
-                                        <rect key="frame" x="0.0" y="418" width="362" height="40"/>
+                                        <rect key="frame" x="0.0" y="413" width="362" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scj-2r-Q0P">
-                                                <rect key="frame" x="0.0" y="0.0" width="181" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="181" height="45"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <state key="normal" title="Cancel"/>
@@ -778,7 +778,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4B-mX-zGS">
-                                                <rect key="frame" x="181" y="0.0" width="181" height="40"/>
+                                                <rect key="frame" x="181" y="0.0" width="181" height="45"/>
                                                 <color key="backgroundColor" cyan="0.0" magenta="0.45797768239999997" yellow="0.6214422584" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -793,7 +793,7 @@
                                             <constraint firstItem="scj-2r-Q0P" firstAttribute="width" secondItem="Llv-QP-BKw" secondAttribute="width" multiplier="0.5" id="fGG-DA-7F7"/>
                                             <constraint firstItem="v4B-mX-zGS" firstAttribute="width" secondItem="Llv-QP-BKw" secondAttribute="width" multiplier="0.5" id="gOv-WM-A5f"/>
                                             <constraint firstItem="scj-2r-Q0P" firstAttribute="height" secondItem="Llv-QP-BKw" secondAttribute="height" id="rPx-S7-NKg"/>
-                                            <constraint firstAttribute="height" constant="40" id="rd5-mr-7Xs"/>
+                                            <constraint firstAttribute="height" constant="45" id="rd5-mr-7Xs"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="喝水" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og9-cj-bh6">
