@@ -14,13 +14,18 @@ class RoutineTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        waterButton.checkButtonState()
+        sleepButton.checkButtonState()
+
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func selectedWater(_ sender: Any) {
+        waterButton.isSelected = !waterButton.isSelected
+        waterButton.checkButtonState()
     }
-
+    @IBAction func selectedSleep(_ sender: Any) {
+        sleepButton.isSelected = !sleepButton.isSelected
+        sleepButton.checkButtonState()
+    }
+    
 }

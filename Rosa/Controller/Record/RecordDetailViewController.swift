@@ -13,7 +13,6 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     @IBOutlet weak var calenderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var closeButton: UIButton!
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()

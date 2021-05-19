@@ -4,6 +4,7 @@ PODS:
   - Charts/Core (3.6.0)
   - CollectionViewWaterfallLayout (0.5.0)
   - FSCalendar (2.8.2)
+  - HGCircularSlider (2.2.0)
   - MKRingProgressView (2.2.3)
   - SwiftLint (0.43.1)
 
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - Charts
   - CollectionViewWaterfallLayout
   - FSCalendar
+  - HGCircularSlider (~> 2.2.0)
   - MKRingProgressView
   - SwiftLint
 
@@ -19,6 +21,7 @@ SPEC REPOS:
     - Charts
     - CollectionViewWaterfallLayout
     - FSCalendar
+    - HGCircularSlider
     - MKRingProgressView
     - SwiftLint
 
@@ -26,9 +29,10 @@ SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   CollectionViewWaterfallLayout: 4399ba01be265fff4da1ed1d607130fe009780e4
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
+  HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
   MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 09f55a2dd398e278405571dfe8a47df24c97cdb5
+PODFILE CHECKSUM: 75f9612d677ab7e7491c9e83e9ab3d1827954b57
 
 COCOAPODS: 1.10.1
