@@ -48,6 +48,14 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
         calenderView.accessibilityIdentifier = "calendar"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     deinit {
         print("\(#function)")
     }

@@ -49,6 +49,7 @@ class ArticlesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableViewHeight.constant = 0
+
     }
 
     func setUpWaterfall() {
@@ -101,7 +102,7 @@ class ArticlesViewController: UIViewController {
     }
 }
 
-extension ArticlesViewController: UICollectionViewDataSource {
+extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         50
@@ -113,6 +114,10 @@ extension ArticlesViewController: UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
                                                          for: indexPath) as? CollectionViewCell { return cell }
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showArticleDetails", sender: self)
     }
 
 }
@@ -138,7 +143,8 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      if let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell {
+      if let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell",
+                                                  for: indexPath) as? FilterTableViewCell {
         cell.setTitle(index: indexPath.row)
         cell.selectionStyle = .none
         return cell
