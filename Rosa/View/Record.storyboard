@@ -746,10 +746,10 @@
             </objects>
             <point key="canvasLocation" x="2111.594202898551" y="284.59821428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Water View Controller-->
         <scene sceneID="gKd-jl-hdy">
             <objects>
-                <viewController id="Srv-2J-myN" sceneMemberID="viewController">
+                <viewController id="Srv-2J-myN" customClass="WaterViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7iC-lo-iny">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -759,7 +759,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgh-VT-uih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3259" y="242"/>
+            <point key="canvasLocation" x="3029" y="140"/>
+        </scene>
+        <!--Sleep View Controller-->
+        <scene sceneID="3b9-RD-S9m">
+            <objects>
+                <viewController id="luZ-dV-SD9" customClass="SleepViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pnj-p7-9iM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aAw-Db-QCB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bpz-21-xaJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3029" y="800"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D97-GH-VKI">
