@@ -139,7 +139,8 @@
                                                         <constraint firstAttribute="width" constant="21" id="d8A-kk-l2K"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="heart ">
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="heart " symbolScale="large"/>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                                     </state>
                                                     <state key="selected" image="selectedHeart"/>
