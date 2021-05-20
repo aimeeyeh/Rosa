@@ -512,7 +512,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umQ-cO-4ME">
                                                     <rect key="frame" x="20" y="47.5" width="374" height="790"/>
-                                                    <mutableString key="text">關於標題我想了很久，覺得稱之自己水煮蛋肌還是有許多不足，只是對於這一年多來的努力有了一點小成果，想跟大家分享，也對和我一樣肌膚問題的人，能有些幫助，一起擁有好皮膚
+                                                    <string key="text">關於標題我想了很久，覺得稱之自己水煮蛋肌還是有許多不足，只是對於這一年多來的努力有了一點小成果，想跟大家分享，也對和我一樣肌膚問題的人，能有些幫助，一起擁有好皮膚
 那就看下去吧～～🙂
 
 先上成果圖，我不想大家還沒點進來，就看到噁心的圖哈哈 本身油性肌膚、尤其是T字部位根本中東油田
@@ -537,7 +537,7 @@
 我知道稱之水煮蛋肌現在還誇大其實，這是我的目標，而停藥後三個月終於能開始醫美之路，畢竟毛孔的問題只能透過醫美(´๑•_•๑)
 這條路上我相信有很多人與我同行，有些人仍不得其法、有些人仍走冤枉路，我想說的是，只要努力相信大家都能找到適合自己的方法、擁有好皮膚♡
 
-最後～～謝謝大家看完🙏🏻</mutableString>
+最後～～謝謝大家看完🙏🏻</string>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

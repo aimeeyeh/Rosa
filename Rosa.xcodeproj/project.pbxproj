@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		59C400ECA95DA5BE0939EA53 /* Pods_Rosa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C374A870328953E5950C01F1 /* Pods_Rosa.framework */; };
 		7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C472B26557C0C00057CB4 /* PostViewController.swift */; };
+		7A1C472F26561F5500057CB4 /* ArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C472E26561F5500057CB4 /* ArticleCollectionViewCell.swift */; };
 		7A20F636264CF4DA00019D3D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20F635264CF4DA00019D3D /* UIColor+Extension.swift */; };
 		7A247B062651206C00E436D6 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B052651206C00E436D6 /* WeatherTableViewCell.swift */; };
 		7A247B08265120F200E436D6 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B07265120F200E436D6 /* RoutineTableViewCell.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		7A1C472B26557C0C00057CB4 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		7A1C472E26561F5500057CB4 /* ArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A20F635264CF4DA00019D3D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		7A247B052651206C00E436D6 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		7A247B07265120F200E436D6 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1C472D26561F3200057CB4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7A1C472E26561F5500057CB4 /* ArticleCollectionViewCell.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		7A20F639264CFD2C00019D3D /* Articles */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +214,7 @@
 		7AAFE486264BCC7800A20324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A1C472D26561F3200057CB4 /* Profile */,
 				7ACFDF7C2652E14F007B6B62 /* Calendar */,
 				7A475C742652BA1E00A26CF8 /* Challenge */,
 				7A2C2E77264D59D90078EBA2 /* Home */,
@@ -489,6 +500,7 @@
 				7AAFE4AC264C031A00A20324 /* ArticlesViewController.swift in Sources */,
 				7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */,
 				7A247B0C2651215800E436D6 /* StatusTableViewCell.swift in Sources */,
+				7A1C472F26561F5500057CB4 /* ArticleCollectionViewCell.swift in Sources */,
 				7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */,
 				7AAFE4AF264C035E00A20324 /* ProfileViewController.swift in Sources */,
 				7A247B122651219C00E436D6 /* RemarkTableViewCell.swift in Sources */,
