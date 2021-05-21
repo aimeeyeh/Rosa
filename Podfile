@@ -13,5 +13,6 @@ pod 'MKRingProgressView'
 pod 'FSCalendar'
 pod 'Charts'
 pod 'HGCircularSlider', '~> 2.2.0'
+pod 'Firebase/Firestore'
 
 end
