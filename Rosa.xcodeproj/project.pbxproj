@@ -21,6 +21,7 @@
 		7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */; };
 		7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */; };
 		7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */; };
+		7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */; };
 		7A44AE06265434830051781C /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44AE05265434830051781C /* WaterViewController.swift */; };
 		7A44AE08265434900051781C /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44AE07265434900051781C /* SleepViewController.swift */; };
 		7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */; };
@@ -68,6 +69,7 @@
 		7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
+		7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A44AE05265434830051781C /* WaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		7A44AE07265434900051781C /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */,
 				7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */,
 				7A8DB517264BB62100EE6D9D /* Info.plist */,
+				7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */,
 			);
 			path = Rosa;
 			sourceTree = "<group>";
@@ -278,7 +281,6 @@
 				7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */,
 				7A44AE05265434830051781C /* WaterViewController.swift */,
 				7A44AE07265434900051781C /* SleepViewController.swift */,
-				7A1C472B26557C0C00057CB4 /* PostViewController.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -288,6 +290,7 @@
 			children = (
 				7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */,
 				7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */,
+				7A1C472B26557C0C00057CB4 /* PostViewController.swift */,
 			);
 			path = Articles;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			files = (
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
 				7AAFE499264BE3E800A20324 /* Profile.storyboard in Resources */,
+				7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */,
 				7A8DB513264BB62100EE6D9D /* Assets.xcassets in Resources */,
 				7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */,
 				7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */,
