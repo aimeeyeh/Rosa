@@ -22,6 +22,13 @@
 		7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */; };
 		7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */; };
 		7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */; };
+		7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7F992657A1F5005F8768 /* RecordManager.swift */; };
+		7A3E7F9C2657A279005F8768 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9B2657A279005F8768 /* Record.swift */; };
+		7A3E7F9E2657A4AF005F8768 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9D2657A4AF005F8768 /* Challenge.swift */; };
+		7A3E7FA02657A4B9005F8768 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9F2657A4B9005F8768 /* User.swift */; };
+		7A3E7FA22657A4CD005F8768 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7FA12657A4CD005F8768 /* ChallengeManager.swift */; };
+		7A3E7FA42657A4D8005F8768 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7FA32657A4D8005F8768 /* UserManager.swift */; };
+		7A3E7FA62657A5F2005F8768 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7FA52657A5F2005F8768 /* Article.swift */; };
 		7A44AE06265434830051781C /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44AE05265434830051781C /* WaterViewController.swift */; };
 		7A44AE08265434900051781C /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44AE07265434900051781C /* SleepViewController.swift */; };
 		7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */; };
@@ -70,6 +77,13 @@
 		7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7A3E7F992657A1F5005F8768 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
+		7A3E7F9B2657A279005F8768 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		7A3E7F9D2657A4AF005F8768 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		7A3E7F9F2657A4B9005F8768 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7A3E7FA12657A4CD005F8768 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
+		7A3E7FA32657A4D8005F8768 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		7A3E7FA52657A5F2005F8768 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		7A44AE05265434830051781C /* WaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		7A44AE07265434900051781C /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +224,13 @@
 		7AAFE485264BCC7100A20324 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A3E7F992657A1F5005F8768 /* RecordManager.swift */,
+				7A3E7FA12657A4CD005F8768 /* ChallengeManager.swift */,
+				7A3E7FA32657A4D8005F8768 /* UserManager.swift */,
+				7A3E7F9B2657A279005F8768 /* Record.swift */,
+				7A3E7F9D2657A4AF005F8768 /* Challenge.swift */,
+				7A3E7F9F2657A4B9005F8768 /* User.swift */,
+				7A3E7FA52657A5F2005F8768 /* Article.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */,
+				7A3E7F9E2657A4AF005F8768 /* Challenge.swift in Sources */,
 				7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */,
 				7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */,
 				7A247B0E2651216500E436D6 /* MealTableViewCell.swift in Sources */,
@@ -495,6 +517,7 @@
 				7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
+				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
 				7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */,
 				7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */,
@@ -508,10 +531,15 @@
 				7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */,
 				7AAFE4AF264C035E00A20324 /* ProfileViewController.swift in Sources */,
 				7A247B122651219C00E436D6 /* RemarkTableViewCell.swift in Sources */,
+				7A3E7FA22657A4CD005F8768 /* ChallengeManager.swift in Sources */,
 				7A5D9F8826555739007597A1 /* CommentCell.swift in Sources */,
+				7A3E7FA02657A4B9005F8768 /* User.swift in Sources */,
+				7A3E7FA42657A4D8005F8768 /* UserManager.swift in Sources */,
 				7A247B062651206C00E436D6 /* WeatherTableViewCell.swift in Sources */,
 				7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */,
 				7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */,
+				7A3E7F9C2657A279005F8768 /* Record.swift in Sources */,
+				7A3E7FA62657A5F2005F8768 /* Article.swift in Sources */,
 				7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */,
 				7A20F636264CF4DA00019D3D /* UIColor+Extension.swift in Sources */,
 				7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */,

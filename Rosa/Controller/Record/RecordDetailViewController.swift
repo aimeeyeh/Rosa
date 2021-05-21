@@ -7,6 +7,11 @@
 
 import UIKit
 import FSCalendar
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+// swiftlint:disable all
 
 class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate {
 
@@ -14,6 +19,21 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
     
+    var weather: String = ""
+    var feeling: String = ""
+    var glassAmount: Int = 0
+    var sleepAmount: Double = 0
+    var remark: String = ""
+    var mealDairyFree: Bool = false
+    var mealGlutenFree: Bool = false
+    var mealJunkFree: Bool = false
+    var mealSugarFree: Bool = false
+    var outdoor: Bool = false
+    var makeup: Bool = false
+    var menstrual: Bool = false
+    
+    
+
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -71,6 +91,8 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
                 return velocity.y < 0
             case .week:
                 return velocity.y > 0
+            @unknown default:
+                fatalError()
             }
         }
         return shouldBegin
@@ -102,17 +124,46 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
         return 8
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showWaterPage" {
+
+            if let waterVC = segue.destination as? WaterViewController {
+                
+                waterVC.touchHandler = { [weak self] glassAmount in
+                    
+                    self?.glassAmount = glassAmount
+                }
+            }
+        } else if segue.identifier == "showSleepPage" {
+            if let sleepVC = segue.destination as? SleepViewController {
+                
+                sleepVC.touchHandler = { [weak self] sleepAmount in
+    
+                    self?.sleepAmount = sleepAmount
+                }
+            }
+            
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
         case 0:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell",
-                                                            for: indexPath) as? WeatherTableViewCell {
-                return cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell",
+                                                           for: indexPath) as? WeatherTableViewCell else { return UITableViewCell()}
+            
+            cell.touchHandler = { [weak self] selectedWeather in
+                
+                self?.weather = selectedWeather
             }
+            
+            return cell
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "RoutineTableViewCell",
-                                                            for: indexPath) as? RoutineTableViewCell {
+                                                        for: indexPath) as? RoutineTableViewCell {
+                
                 return cell
             }
         case 2:
@@ -123,31 +174,73 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
         case 3:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "StatusTableViewCell",
                                                             for: indexPath) as? StatusTableViewCell {
+                cell.touchHandler = { [weak self] selectedFeeling in
+                    
+                    self?.feeling = selectedFeeling
+                }
                 return cell
             }
         case 4:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "MealTableViewCell",
                                                             for: indexPath) as? MealTableViewCell {
+                cell.touchHandler = { [weak self] mealStatus in
+                    
+                    self?.mealDairyFree = mealStatus[0]
+                    self?.mealGlutenFree = mealStatus[1]
+                    self?.mealJunkFree = mealStatus[2]
+                    self?.mealSugarFree = mealStatus[3]
+                }
                 return cell
             }
         case 5:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell",
                                                             for: indexPath) as? ActivityTableViewCell {
+                cell.touchHandler = { [weak self] activityStatus in
+                    
+                    self?.outdoor = activityStatus[0]
+                    self?.makeup = activityStatus[1]
+                    self?.menstrual = activityStatus[2]
+                }
+                
                 return cell
             }
         case 6:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "RemarkTableViewCell",
                                                             for: indexPath) as? RemarkTableViewCell {
+                cell.touchHandler = { [weak self] remark in
+                    
+                    self?.remark = remark
+                }
                 return cell
             }
             
         default:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonsTableViewCell",
                                                             for: indexPath) as? ButtonsTableViewCell {
+                
                 cell.onButtonPressed = { [unowned self] in
                     // Do what you need to, no need to capture self however, if you won't access it.
                     self.navigationController?.popViewController(animated: true)
                     self.tabBarController?.tabBar.isHidden = false
+                    var record = Record(id: "default", date: Timestamp(), weather: weather,
+                                        photos: ["photo1", "photo2", "photo3"], feeling: feeling, water: glassAmount,
+                                                sleep: sleepAmount, mealDairyFree: mealDairyFree, mealGlutenFree: mealGlutenFree,
+                                                mealJunkFree: mealJunkFree, mealSugarFree: mealSugarFree, outdoor: outdoor,
+                                                makeup: makeup, menstrual: menstrual, remark: remark)
+                    
+                    RecordManager.shared.postDailyRecord(record: &record) { result in
+                        
+                        switch result {
+                        
+                        case .success:
+                            
+                            print("onTapPublish, success")
+                            
+                        case .failure(let error):
+                            
+                            print("publishArticle.failure: \(error)")
+                        }
+                    }
                 }
                 return cell
             }
@@ -161,3 +254,5 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
 extension RecordDetailViewController: FSCalendarDataSource, FSCalendarDelegate {
     
 }
+
+// swiftlint:enable all

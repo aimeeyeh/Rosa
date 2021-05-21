@@ -20,29 +20,41 @@ class StatusTableViewCell: UITableViewCell {
         checkAllButtonStatus()
     }
 
+    var touchHandler: ((String) -> Void)?
+    var selectedFeeling: String = "" {
+        didSet {
+            touchHandler?(selectedFeeling)
+        }
+    }
+
     @IBAction func selectedHappy(_ sender: Any) {
         happyButton.isSelected = !happyButton.isSelected
         happyButton.checkButtonState()
+        selectedFeeling = "happy"
     }
 
     @IBAction func selectedOk(_ sender: Any) {
         okButton.isSelected = !okButton.isSelected
         okButton.checkButtonState()
+        selectedFeeling = "ok"
     }
 
     @IBAction func selectedMeh(_ sender: Any) {
         mehButton.isSelected = !mehButton.isSelected
         mehButton.checkButtonState()
+        selectedFeeling = "meh"
     }
 
     @IBAction func selectedSad(_ sender: Any) {
         sadButton.isSelected = !sadButton.isSelected
         sadButton.checkButtonState()
+        selectedFeeling = "sad"
     }
 
     @IBAction func selectedAngry(_ sender: Any) {
         angryButton.isSelected = !angryButton.isSelected
         angryButton.checkButtonState()
+        selectedFeeling = "angry"
     }
     
     func checkAllButtonStatus() {

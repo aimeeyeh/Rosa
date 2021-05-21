@@ -17,20 +17,43 @@ class ActivityTableViewCell: UITableViewCell {
         super.awakeFromNib()
         checkAllButtonStatus() 
     }
+    
+    var touchHandler: (([Bool]) -> Void)?
+    
+    var activityStatus: [Bool] = [false, false, false] {
+        didSet {
+            touchHandler?(activityStatus)
+        }
+    }
 
     @IBAction func selectedOutdoor(_ sender: Any) {
         outdoorButton.isSelected = !outdoorButton.isSelected
         outdoorButton.checkButtonState()
+        if outdoorButton.isSelected {
+            activityStatus[0] = true
+        } else {
+            activityStatus[0] = false
+        }
     }
 
     @IBAction func selectedMakeup(_ sender: Any) {
         makeupButton.isSelected = !makeupButton.isSelected
         makeupButton.checkButtonState()
+        if makeupButton.isSelected {
+            activityStatus[1] = true
+        } else {
+            activityStatus[1] = false
+        }
     }
 
     @IBAction func selectedMenstrual(_ sender: Any) {
         menstrualButton.isSelected = !menstrualButton.isSelected
         menstrualButton.checkButtonState()
+        if menstrualButton.isSelected {
+            activityStatus[2] = true
+        } else {
+            activityStatus[2] = false
+        }
     }
     
     func checkAllButtonStatus() {

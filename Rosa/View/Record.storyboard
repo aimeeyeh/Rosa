@@ -386,7 +386,7 @@
                                                     <state key="normal" image="water"/>
                                                     <connections>
                                                         <action selector="selectedWater:" destination="9xg-lt-Y7c" eventType="touchUpInside" id="V39-YA-dfE"/>
-                                                        <segue destination="Srv-2J-myN" kind="presentation" id="JEx-bM-1aB"/>
+                                                        <segue destination="Srv-2J-myN" kind="presentation" identifier="showWaterPage" id="JEx-bM-1aB"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqS-Av-Sr2">
@@ -398,7 +398,7 @@
                                                     <state key="normal" image="sleep2"/>
                                                     <connections>
                                                         <action selector="selectedSleep:" destination="9xg-lt-Y7c" eventType="touchUpInside" id="tW4-68-uIz"/>
-                                                        <segue destination="luZ-dV-SD9" kind="show" id="O2k-Vg-gFM"/>
+                                                        <segue destination="luZ-dV-SD9" kind="show" identifier="showSleepPage" id="O2k-Vg-gFM"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -800,6 +800,9 @@
                                                     <rect key="frame" x="60" y="41" width="288" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="editingChanged:" destination="cfY-tN-xuC" eventType="editingChanged" id="G3W-VE-gNC"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -912,7 +915,7 @@
         <!--Water View Controller-->
         <scene sceneID="gKd-jl-hdy">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="Srv-2J-myN" customClass="WaterViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaterViewController" modalPresentationStyle="overCurrentContext" id="Srv-2J-myN" customClass="WaterViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7iC-lo-iny">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

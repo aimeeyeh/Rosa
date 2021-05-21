@@ -13,7 +13,7 @@ class WaterViewController: UIViewController {
     var glassAmount = 0 {
         didSet {
             let waterAmount = glassAmount * 250
-            waterLabel.text = "\(waterAmount) ml / 2500 ml"
+            waterLabel.text = "\(waterAmount) ml / 2000 ml"
         }
     }
     
@@ -70,7 +70,11 @@ class WaterViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         blackView.removeFromSuperview()
     }
+    
+    var touchHandler: ((Int) -> Void)?
+
     @IBAction func confirmWater(_ sender: Any) {
+        touchHandler?(glassAmount)
         dismiss(animated: true, completion: nil)
         blackView.removeFromSuperview()
     }
