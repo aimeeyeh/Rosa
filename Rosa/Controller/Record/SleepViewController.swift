@@ -15,6 +15,8 @@ class SleepViewController: UIViewController {
     @IBOutlet weak var wakeLabel: UILabel!
     @IBOutlet weak var rangeCircularSlider: RangeCircularSlider!
     
+    var sleepAmount = 0.0
+    
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -35,7 +37,7 @@ class SleepViewController: UIViewController {
         rangeCircularSlider.startPointValue = 1 * 60 * 60
         rangeCircularSlider.endPointValue = 8 * 60 * 60
 
-        updateTexts(rangeCircularSlider)
+        updateTexts(rangeCircularSlider!)
 
     }
     override func didReceiveMemoryWarning() {
@@ -55,12 +57,17 @@ class SleepViewController: UIViewController {
         wakeLabel.text = dateFormatter.string(from: wakeDate)
         
         let duration = wake - bedtime
+        sleepAmount = duration / 3600
         let durationDate = Date(timeIntervalSinceReferenceDate: duration)
         dateFormatter.dateFormat = "HH:mm"
         durationLabel.text = dateFormatter.string(from: durationDate)
         dateFormatter.dateFormat = "hh:mm a"
     }
+    
+    var touchHandler: ((Double) -> Void)?
+    
     @IBAction func confirmSleep(_ sender: Any) {
+        touchHandler?(sleepAmount)
         self.navigationController?.popViewController(animated: true)
     }
     

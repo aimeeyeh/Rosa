@@ -7,19 +7,48 @@
 
 import UIKit
 
-class RemarkTableViewCell: UITableViewCell {
+class RemarkTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var remarkTextField: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        remarkTextField.delegate = self
+    }
+    
+    var touchHandler: ((String) -> Void)?
+    
+    var remark: String = "" {
+        didSet {
+            touchHandler?(remark)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == remarkTextField {
+            if let text = remarkTextField.text {
+                self.remark = text
+                remarkTextField.resignFirstResponder()
+            }
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+//    @IBAction func editingDidEnd(_ sender: Any) {
+//        if let text = remarkTextField.text {
+//            self.remark = text
+//            remarkTextField.resignFirstResponder()
+//        }
+//    }
+    
+//    @IBAction func valueChanged(_ sender: UITextField) {
+//        if let text = sender.text {
+//            self.remark = text
+//        }
+//    }
+    @IBAction func editingChanged(_ sender: UITextField) {
+        if let text = sender.text {
+            self.remark = text
+        }
     }
-
+    
 }

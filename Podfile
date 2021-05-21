@@ -14,5 +14,6 @@ pod 'FSCalendar'
 pod 'Charts'
 pod 'HGCircularSlider', '~> 2.2.0'
 pod 'Firebase/Firestore'
+pod 'FirebaseFirestoreSwift'
 
 end
