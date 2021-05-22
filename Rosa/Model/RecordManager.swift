@@ -22,14 +22,12 @@ class RecordManager {
         // 需要先有Aimee這個user
         
         record.id = document.documentID
-//        record.date = NSDate().timeIntervalSince1970
-        record.date = Timestamp(date: Date())
 
         do {
             try document.setData(from: record)
-            print("Success")
+            print("Record Update Success")
         } catch let error {
-            print("Error writing city to Firestore: \(error)")
+            print("Error writing record to Firestore: \(error)")
         }
         
     }

@@ -13,7 +13,6 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
  
-    
     override func viewDidLoad() {
 
         super.viewDidLoad()

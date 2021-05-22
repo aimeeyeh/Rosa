@@ -13,6 +13,19 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.tabBarController?.tabBar.isHidden = true
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+
+        self.tabBarController?.tabBar.isHidden = false
+
+    }
+    
     @IBAction func backToPreviousPage(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

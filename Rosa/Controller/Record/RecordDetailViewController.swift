@@ -19,7 +19,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
     
-    var weather: String = ""
+    var weather: String = "" 
     var feeling: String = ""
     var glassAmount: Int = 0
     var sleepAmount: Double = 0
@@ -31,6 +31,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     var outdoor: Bool = false
     var makeup: Bool = false
     var menstrual: Bool = false
+    var selectedDate: Double = Date().timeIntervalSince1970
     
     
 
@@ -69,11 +70,15 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
         self.tabBarController?.tabBar.isHidden = true
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+
         self.tabBarController?.tabBar.isHidden = false
+
     }
     
     deinit {
@@ -105,6 +110,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did select date \(self.dateFormatter.string(from: date))")
+        selectedDate = date.timeIntervalSince1970
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
@@ -222,7 +228,7 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                     // Do what you need to, no need to capture self however, if you won't access it.
                     self.navigationController?.popViewController(animated: true)
                     self.tabBarController?.tabBar.isHidden = false
-                    var record = Record(id: "default", date: Timestamp(), weather: weather,
+                    var record = Record(id: "default", date: selectedDate, weather: weather,
                                         photos: ["photo1", "photo2", "photo3"], feeling: feeling, water: glassAmount,
                                                 sleep: sleepAmount, mealDairyFree: mealDairyFree, mealGlutenFree: mealGlutenFree,
                                                 mealJunkFree: mealJunkFree, mealSugarFree: mealSugarFree, outdoor: outdoor,
@@ -234,14 +240,20 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                         
                         case .success:
                             
-                            print("onTapPublish, success")
+                            print("onTapUploadRecord, success")
                             
                         case .failure(let error):
                             
-                            print("publishArticle.failure: \(error)")
+                            print("onTapUploadRecord, failure: \(error)")
                         }
                     }
                 }
+                
+                cell.cancelButtonPressed = { [unowned self] in
+                    self.navigationController?.popViewController(animated: true)
+                    self.tabBarController?.tabBar.isHidden = false
+                }
+                
                 return cell
             }
            

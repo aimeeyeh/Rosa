@@ -6,23 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 struct Challenge: Codable {
     var category: String
-    var icon: String
+    var challengeImage: String
     var id: String
     var progress: Int
     var setUpDate: Double
-    var title: String
+    var challengeTitle: String
     
-    var toDict: [String: Any] {
-        return [
-            "category": category as Any,
-            "icon": icon as Any,
-            "id": id as Any,
-            "progress": progress as Any,
-            "setUpDate": setUpDate as Any,
-            "title": title as Any
-        ]
-    }
+//    var toDict: [String: Any] {
+//        return [
+//            "category": category as Any,
+//            "icon": icon as Any,
+//            "id": id as Any,
+//            "progress": progress as Any,
+//            "setUpDate": setUpDate as Any,
+//            "title": title as Any
+//        ]
+//    }
 }

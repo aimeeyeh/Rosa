@@ -68,18 +68,18 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpE-AL-nZS">
-                                                            <rect key="frame" x="12.5" y="15" width="45" height="45"/>
+                                                            <rect key="frame" x="10" y="10" width="50" height="50"/>
                                                             <color key="backgroundColor" cyan="0.0" magenta="0.14008333710000001" yellow="0.6214422584" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="45" id="UrM-ig-YBr"/>
-                                                                <constraint firstAttribute="height" constant="45" id="kpd-i8-j4L"/>
+                                                                <constraint firstAttribute="width" constant="50" id="UrM-ig-YBr"/>
+                                                                <constraint firstAttribute="height" constant="50" id="kpd-i8-j4L"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
-                                                                    <real key="value" value="22.5"/>
+                                                                    <real key="value" value="25"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
-                                                                    <real key="value" value="1"/>
+                                                                    <real key="value" value="0.0"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="lkBorderColor">
                                                                     <color key="value" systemColor="labelColor"/>
@@ -93,7 +93,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meal_glutenFree" translatesAutoresizingMaskIntoConstraints="NO" id="Acw-xI-b8k">
-                                                            <rect key="frame" x="20" y="22.5" width="30" height="30"/>
+                                                            <rect key="frame" x="20" y="20" width="30" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="19d-Cf-NLb"/>
                                                                 <constraint firstAttribute="width" constant="30" id="JZC-rm-d5Z"/>
@@ -104,7 +104,7 @@
                                                         <constraint firstItem="M4d-06-nPA" firstAttribute="top" secondItem="PpE-AL-nZS" secondAttribute="bottom" constant="8" symbolic="YES" id="EbY-pL-sZx"/>
                                                         <constraint firstItem="Acw-xI-b8k" firstAttribute="centerY" secondItem="PpE-AL-nZS" secondAttribute="centerY" id="dFf-7q-lbv"/>
                                                         <constraint firstItem="Acw-xI-b8k" firstAttribute="centerX" secondItem="PpE-AL-nZS" secondAttribute="centerX" id="i82-sR-ANM"/>
-                                                        <constraint firstItem="PpE-AL-nZS" firstAttribute="top" secondItem="VeO-KU-eue" secondAttribute="top" constant="15" id="k7o-UT-zB4"/>
+                                                        <constraint firstItem="PpE-AL-nZS" firstAttribute="top" secondItem="VeO-KU-eue" secondAttribute="top" constant="10" id="k7o-UT-zB4"/>
                                                         <constraint firstItem="PpE-AL-nZS" firstAttribute="centerX" secondItem="VeO-KU-eue" secondAttribute="centerX" id="kfi-FQ-PW8"/>
                                                         <constraint firstItem="M4d-06-nPA" firstAttribute="centerX" secondItem="VeO-KU-eue" secondAttribute="centerX" id="yFF-Bu-mlG"/>
                                                     </constraints>
