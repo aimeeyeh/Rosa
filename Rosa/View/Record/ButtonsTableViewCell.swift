@@ -17,10 +17,11 @@ class ButtonsTableViewCell: UITableViewCell {
     
     }
     
-    var onButtonPressed: (() -> ())?
+    var onButtonPressed: (() -> Void)?
+    var cancelButtonPressed:  (() -> Void)?
 
     @IBAction func cancelRecord(_ sender: Any) {
-        onButtonPressed?()
+        cancelButtonPressed?()
     }
     @IBAction func confirmRecord(_ sender: Any) {
         onButtonPressed?()
