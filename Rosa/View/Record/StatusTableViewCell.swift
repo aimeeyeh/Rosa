@@ -43,7 +43,7 @@ class StatusTableViewCell: UITableViewCell {
     @IBAction func selectedOk(_ sender: Any) {
         okButton.isSelected = !okButton.isSelected
         okButton.checkButtonState()
-        selectedFeeling = "ok"
+        selectedFeeling = "nice"
         if okButton.isSelected {
             happyButton.isSelected = false
             mehButton.isSelected = false

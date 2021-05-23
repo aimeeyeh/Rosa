@@ -286,7 +286,7 @@
                                                         <constraint firstAttribute="width" constant="44" id="5fT-Tk-EVx"/>
                                                         <constraint firstAttribute="height" constant="44" id="9pK-cu-19q"/>
                                                     </constraints>
-                                                    <state key="normal" title="Sunny" image="selectedSunny">
+                                                    <state key="normal" title="Sunny" image="Sunny">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                     </state>
                                                     <state key="selected" image="selectedSunny"/>
@@ -308,7 +308,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="F7M-Ef-RNE"/>
                                                         <constraint firstAttribute="width" constant="50" id="hVl-P2-ry0"/>
                                                     </constraints>
-                                                    <state key="normal" image="weather_mostlyClear">
+                                                    <state key="normal" image="mostlyClear">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                     </state>
                                                     <connections>
@@ -321,7 +321,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="6aP-bQ-C1r"/>
                                                         <constraint firstAttribute="width" constant="50" id="zjN-Jc-LUS"/>
                                                     </constraints>
-                                                    <state key="normal" title="Sunny" image="weather_cloudy">
+                                                    <state key="normal" title="Sunny" image="cloudy">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                     </state>
                                                     <connections>
@@ -334,7 +334,7 @@
                                                         <constraint firstAttribute="width" constant="50" id="VyG-vM-kYM"/>
                                                         <constraint firstAttribute="height" constant="50" id="xmW-NU-BBH"/>
                                                     </constraints>
-                                                    <state key="normal" title="Sunny" image="weather_rainy">
+                                                    <state key="normal" title="Sunny" image="rainy">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                     </state>
                                                     <state key="selected" image="weather_rainy"/>
@@ -553,7 +553,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="BAu-xn-RuX"/>
                                                                 <constraint firstAttribute="width" constant="44" id="jnt-Ve-wVS"/>
                                                             </constraints>
-                                                            <state key="normal" image="mood_happy">
+                                                            <state key="normal" image="happy">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -566,7 +566,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="IlK-Cq-vXY"/>
                                                                 <constraint firstAttribute="width" constant="44" id="jer-Cq-x29"/>
                                                             </constraints>
-                                                            <state key="normal" image="mood_nice">
+                                                            <state key="normal" image="nice">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -579,7 +579,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="3uD-lJ-0x2"/>
                                                                 <constraint firstAttribute="width" constant="44" id="B38-fC-1Sb"/>
                                                             </constraints>
-                                                            <state key="normal" image="mood_meh">
+                                                            <state key="normal" image="meh">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -592,7 +592,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="Mk4-uV-kvb"/>
                                                                 <constraint firstAttribute="width" constant="44" id="PI4-y7-REI"/>
                                                             </constraints>
-                                                            <state key="normal" image="mood_sad">
+                                                            <state key="normal" image="sad">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -605,7 +605,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="UE9-Oc-GpW"/>
                                                                 <constraint firstAttribute="width" constant="44" id="wGA-Kh-aJU"/>
                                                             </constraints>
-                                                            <state key="normal" image="mood_angry">
+                                                            <state key="normal" image="angry">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -1377,29 +1377,31 @@
     <color key="tintColor" red="0.31372550129999999" green="0.2941176593" blue="0.2941176593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="Hours" width="219" height="219"/>
+        <image name="Sunny" width="512" height="512"/>
+        <image name="angry" width="512" height="512"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="cloudy" width="512" height="512"/>
         <image name="dairyFree" width="48" height="48"/>
         <image name="emptyGlass" width="512" height="512"/>
         <image name="glutenFree" width="48" height="48"/>
+        <image name="happy" width="512" height="512"/>
         <image name="ic_bedtime" width="17" height="19"/>
         <image name="ic_wake" width="13" height="16"/>
         <image name="junkFoodFree" width="48" height="48"/>
         <image name="makeup" width="512" height="512"/>
+        <image name="meh" width="512" height="512"/>
         <image name="menstrualcycle" width="512" height="512"/>
-        <image name="mood_angry" width="512" height="512"/>
-        <image name="mood_happy" width="512" height="512"/>
-        <image name="mood_meh" width="512" height="512"/>
-        <image name="mood_nice" width="512" height="512"/>
-        <image name="mood_sad" width="512" height="512"/>
+        <image name="mostlyClear" width="512" height="512"/>
+        <image name="nice" width="512" height="512"/>
         <image name="outdoor" width="512" height="512"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="rainy" width="512" height="512"/>
+        <image name="sad" width="512" height="512"/>
         <image name="selectedSunny" width="512" height="512"/>
         <image name="skin1" width="1125" height="1366"/>
         <image name="sleep" width="512" height="512"/>
         <image name="sugarFree" width="48" height="48"/>
         <image name="water" width="512" height="512"/>
-        <image name="weather_cloudy" width="512" height="512"/>
-        <image name="weather_mostlyClear" width="512" height="512"/>
         <image name="weather_rainy" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
