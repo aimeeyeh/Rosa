@@ -21,17 +21,16 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     }
 
     @IBAction func checkChallenge(_ sender: Any) {
+        checkboxButton.isSelected = !checkboxButton.isSelected
     }
     
     func addShadow() {
-
         challengeBackground.layer.cornerRadius = 20.0
         challengeBackground.layer.shadowColor = UIColor.darkGray.cgColor
         challengeBackground.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
         challengeBackground.layer.shadowRadius = 1.0
         challengeBackground.layer.shadowOpacity = 0.7
         challengeBackground.layer.masksToBounds = false
-
     }
 
 }

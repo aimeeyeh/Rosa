@@ -31,7 +31,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     var outdoor: Bool = false
     var makeup: Bool = false
     var menstrual: Bool = false
-    var selectedDate: Double = Date().timeIntervalSince1970
+    var selectedDate: Date = Date()
     
     
 
@@ -110,7 +110,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did select date \(self.dateFormatter.string(from: date))")
-        selectedDate = date.timeIntervalSince1970
+        self.selectedDate = date
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {

@@ -15,6 +15,12 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     @IBOutlet weak var calnderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     
+    var challenges: [Challenge] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -47,6 +53,28 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
         // For UITest
         calnderView.accessibilityIdentifier = "calendar"
+        
+        fetchChallenge(date: Date())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchChallenge(date: Date())
+    }
+    
+    func fetchChallenge(date: Date) {
+        ChallengeManager.shared.fetchChallenge(date: date) { [weak self] result in
+            
+            switch result {
+            
+            case .success(let challenges):
+                
+                self?.challenges = challenges
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
     }
     
     deinit {
@@ -64,6 +92,8 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                 return velocity.y < 0
             case .week:
                 return velocity.y > 0
+            @unknown default:
+                fatalError()
             }
         }
         return shouldBegin
@@ -76,8 +106,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did select date \(self.dateFormatter.string(from: date))")
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
+        fetchChallenge(date: date)
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -90,21 +119,19 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return challenges.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
-                                                        for: indexPath) as? CalendarChallengeTableViewCell {
-                cell.addShadow()
-                return cell
-            }
-        default:
-            return UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                    for: indexPath) as? CalendarChallengeTableViewCell {
+            cell.challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
+            cell.challengeTitle.text = challenges[indexPath.row].challengeTitle
+            cell.challengeTitle.textColor = .white
+            cell.challengeBackground.backgroundColor = UIColor.challengeColor(challenge: challenges[indexPath.row].challengeTitle)
+            cell.addShadow()
+            return cell
         }
         return UITableViewCell()
     }
-
 }

@@ -13,7 +13,7 @@ struct Challenge: Codable {
     var challengeImage: String
     var id: String
     var progress: Int
-    var setUpDate: Double
+    var setUpDate: Date
     var challengeTitle: String
     
 //    var toDict: [String: Any] {
