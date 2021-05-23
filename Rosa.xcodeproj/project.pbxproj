@@ -60,7 +60,7 @@
 		7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13352655129300B177F2 /* FilterTableViewCell.swift */; };
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
-		7AFA8E52265952D600EFAE15 /* CalenderRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalenderRecordTableViewCell.swift */; };
+		7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,7 +118,7 @@
 		7ACD13352655129300B177F2 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
-		7AFA8E51265952D600EFAE15 /* CalenderRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderRecordTableViewCell.swift; sourceTree = "<group>"; };
+		7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRecordTableViewCell.swift; sourceTree = "<group>"; };
 		C374A870328953E5950C01F1 /* Pods_Rosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA81D98234E9CED393A9B2 /* Pods-Rosa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.debug.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DF160F36CA96BCB712C384 /* Pods-Rosa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.release.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,8 +247,8 @@
 				7A247B02264EB54F00E436D6 /* Record */,
 				7A20F639264CFD2C00019D3D /* Articles */,
 				7A8DB50F264BB62100EE6D9D /* Main.storyboard */,
-				7AAFE490264BE27A00A20324 /* Calender.storyboard */,
 				7AAFE48C264BE25E00A20324 /* Record.storyboard */,
+				7AAFE490264BE27A00A20324 /* Calender.storyboard */,
 				7AAFE492264BE29100A20324 /* Articles.storyboard */,
 				7AAFE498264BE3E800A20324 /* Profile.storyboard */,
 				7AAFE48A264BE24B00A20324 /* Challenge.storyboard */,
@@ -346,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */,
-				7AFA8E51265952D600EFAE15 /* CalenderRecordTableViewCell.swift */,
+				7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -507,7 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AFA8E52265952D600EFAE15 /* CalenderRecordTableViewCell.swift in Sources */,
+				7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */,
 				7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */,
 				7A3E7F9E2657A4AF005F8768 /* Challenge.swift in Sources */,
 				7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */,
