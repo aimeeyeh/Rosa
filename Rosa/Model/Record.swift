@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 
 struct Record: Codable {
     var id: String
-    var date: Double
+    var date: Date
     var weather: String
     var photos: [String]
     var feeling: String

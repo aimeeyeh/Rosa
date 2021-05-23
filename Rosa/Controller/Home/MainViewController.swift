@@ -33,7 +33,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         configureViews()
         configureProgressView()
         configureWaterBarChart()
-        
+
     }
     
     func configureViews() {

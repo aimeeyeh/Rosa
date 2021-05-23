@@ -106,7 +106,7 @@ extension ChallengeViewController: UICollectionViewDelegate, UICollectionViewDat
                                             challengeImage: challengeImage,
                                             id: "didselect",
                                             progress: 0,
-                                            setUpDate: 0.0,
+                                            setUpDate: Date(),
                                             challengeTitle: challengeTitle))
     }
     

@@ -653,7 +653,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="uJC-DC-zbA"/>
                                                                 <constraint firstAttribute="width" constant="44" id="x2p-DW-9KQ"/>
                                                             </constraints>
-                                                            <state key="normal" image="meal_dairyFree">
+                                                            <state key="normal" image="dairyFree">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -666,7 +666,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="3zT-Ew-2mN"/>
                                                                 <constraint firstAttribute="width" constant="44" id="AfA-O3-8sk"/>
                                                             </constraints>
-                                                            <state key="normal" image="meal_glutenFree">
+                                                            <state key="normal" image="glutenFree">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -679,7 +679,7 @@
                                                                 <constraint firstAttribute="height" constant="44" id="CSM-Cm-saK"/>
                                                                 <constraint firstAttribute="width" constant="44" id="l2r-yp-IJE"/>
                                                             </constraints>
-                                                            <state key="normal" image="meal_junkFoodFree">
+                                                            <state key="normal" image="junkFoodFree">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -692,7 +692,7 @@
                                                                 <constraint firstAttribute="width" constant="44" id="crp-Qz-7x8"/>
                                                                 <constraint firstAttribute="height" constant="44" id="t4U-0Y-WLS"/>
                                                             </constraints>
-                                                            <state key="normal" image="meal_sugarFree">
+                                                            <state key="normal" image="sugarFree">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                             </state>
                                                             <connections>
@@ -1378,14 +1378,13 @@
     <resources>
         <image name="Hours" width="219" height="219"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="dairyFree" width="48" height="48"/>
         <image name="emptyGlass" width="512" height="512"/>
+        <image name="glutenFree" width="48" height="48"/>
         <image name="ic_bedtime" width="17" height="19"/>
         <image name="ic_wake" width="13" height="16"/>
+        <image name="junkFoodFree" width="48" height="48"/>
         <image name="makeup" width="512" height="512"/>
-        <image name="meal_dairyFree" width="48" height="48"/>
-        <image name="meal_glutenFree" width="48" height="48"/>
-        <image name="meal_junkFoodFree" width="48" height="48"/>
-        <image name="meal_sugarFree" width="48" height="48"/>
         <image name="menstrualcycle" width="512" height="512"/>
         <image name="mood_angry" width="512" height="512"/>
         <image name="mood_happy" width="512" height="512"/>
@@ -1397,6 +1396,7 @@
         <image name="selectedSunny" width="512" height="512"/>
         <image name="skin1" width="1125" height="1366"/>
         <image name="sleep" width="512" height="512"/>
+        <image name="sugarFree" width="48" height="48"/>
         <image name="water" width="512" height="512"/>
         <image name="weather_cloudy" width="512" height="512"/>
         <image name="weather_mostlyClear" width="512" height="512"/>

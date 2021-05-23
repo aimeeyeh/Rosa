@@ -14,15 +14,51 @@ import FirebaseFirestoreSwift
 class ChallengeManager {
     
     static let shared = ChallengeManager()
+    
     lazy var database = Firestore.firestore()
+    
     var defaultChallenges = DefaultChallenge.challenges
+    
+    func fetchChallenge(date: Date, completion: @escaping (Result<[Challenge], Error>) -> Void) {
+        
+        let calendar = Calendar.current
+        let start = calendar.startOfDay(for: date)
+        let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: date)
+        
+        let queryCollection = database.collection("user").document("Aimee").collection("challenge")
+        
+        queryCollection
+            .whereField("setUpDate", isGreaterThan: start )
+            .whereField("setUpDate", isLessThan: end!)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    var challenges = [Challenge]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let challenge = try document.data(as: Challenge.self, decoder: Firestore.Decoder()) {
+                                challenges.append(challenge)
+                            }
+                            
+                        } catch {
+                            
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                    completion(.success(challenges))
+                }
+            }
+    }
     
     func postChallenge(challenge: inout Challenge, completion: @escaping (Result<String, Error>) -> Void) {
         
         let document = database.collection("user").document("Aimee").collection("challenge").document()
         challenge.id = document.documentID
-        challenge.setUpDate = NSDate().timeIntervalSince1970
-        challenge.progress = 0
 
         do {
             try document.setData(from: challenge)
