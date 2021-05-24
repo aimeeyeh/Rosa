@@ -41,46 +41,44 @@ class CalendarRecordTableViewCell: UITableViewCell {
         if record.mealGlutenFree {
             glutenFreeLabel.textColor = .white
         } else {
-            glutenFreeLabel.textColor = .black
+            glutenFreeLabel.textColor = UIColor.rgb(red: 120, green: 120, blue: 120, alpha: 1)
         }
         
         if record.mealDairyFree {
             dairyFreeLabel.textColor = .white
         } else {
-            dairyFreeLabel.textColor = .black
+            dairyFreeLabel.textColor = UIColor.rgb(red: 120, green: 120, blue: 120, alpha: 1)
         }
         
         if record.mealJunkFree {
             junkFreeLabel.textColor = .white
         } else {
-            junkFreeLabel.textColor = .black
+            junkFreeLabel.textColor = UIColor.rgb(red: 120, green: 120, blue: 120, alpha: 1)
         }
         
         if record.mealSugarFree {
             sugarFreeLabel.textColor = .white
         } else {
-            sugarFreeLabel.textColor = .black
+            sugarFreeLabel.textColor = UIColor.rgb(red: 120, green: 120, blue: 120, alpha: 1)
         }
         
         if record.outdoor {
             outdoorLabel.textColor = .white
         } else {
-            outdoorLabel.textColor = .black
+            outdoorLabel.textColor = UIColor.rgb(red: 120, green: 120, blue: 120, alpha: 1)
         }
         
         if record.makeup {
             makeupLabel.textColor = .white
         } else {
-            makeupLabel.textColor = .black
+            makeupLabel.textColor = UIColor.rgb(red: 120, green: 120, blue: 120, alpha: 1)
         }
         
         if record.menstrual {
             menstrualLabel.textColor = .white
         } else {
-            menstrualLabel.textColor = .black
-        }
+            menstrualLabel.textColor = UIColor.rgb(red: 120, green: 120, blue: 120, alpha: 1)        }
         
     }
-    
     
 }

@@ -16,29 +16,44 @@ class RecordManager {
     
     lazy var database = Firestore.firestore()
     
-    func fetchRecord(date: Date, completion: @escaping (Result<Record, Error>) -> Void) {
+    func fetchRecord(date: Date, completion: @escaping (Result<Record?, Error>) -> Void) {
         
-        let calendar = Calendar.current
-        let start = calendar.startOfDay(for: date)
-        let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: date)
+        var calendar = Calendar.current
+        if let timeZone = TimeZone(identifier: "Asia/Taipei") {
+            calendar.timeZone = timeZone
+        }
+
+        let startDateComponents: DateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        
+        var endDateComponents = DateComponents()
+        endDateComponents.day = 1
+        endDateComponents.second = -1
+        
+        guard let startDate = calendar.date(from: startDateComponents),
+              let endDate = calendar.date(byAdding: endDateComponents, to: startDate) else { return }
+
+        print(startDate)
+        print(endDate)
         
         let queryCollection = database.collection("user").document("Aimee").collection("record")
         
         queryCollection
-            .whereField("date", isGreaterThan: start )
-            .whereField("date", isLessThan: end!)
+            .whereField("date", isGreaterThanOrEqualTo: startDate)
+            .whereField("date", isLessThan: endDate)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     
-                    var fetchedRecord: Record?
-                    
-                    for document in querySnapshot!.documents {
+                    guard let documents = querySnapshot?.documents else { return }
+                    if documents.count == 0 {
+                        completion(.success(nil))
+                    }
+                    for document in documents {
                         
                         do {
                             if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
-                                fetchedRecord = record
+                                completion(.success(record))
                             }
                             
                         } catch {
@@ -46,8 +61,6 @@ class RecordManager {
                             completion(.failure(error))
                         }
                     }
-                    
-                    completion(.success(fetchedRecord!))
                 }
             }
     }

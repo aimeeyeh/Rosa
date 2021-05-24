@@ -17,11 +17,34 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     @IBAction func checkChallenge(_ sender: Any) {
         checkboxButton.isSelected = !checkboxButton.isSelected
+    }
+    
+    func noRecordConfigure() {
+        checkboxButton.setImage(nil, for: .normal)
+        checkboxButton.setImage(nil, for: .selected)
+        challengeImage.image = UIImage(named: "information")
+        challengeTitle.text = "No Record..."
+        challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)
+        challengeTitle.textColor = .white
+        challengeDesciption.text = "Let's go add some records!"
+        challengeDesciption.textColor = .white
+        challengeBackground.backgroundColor = .systemGray2
+    }
+
+    func noChallengeConfigure() {
+        checkboxButton.setImage(nil, for: .normal)
+        checkboxButton.setImage(nil, for: .selected)
+        challengeImage.image = UIImage(named: "information")
+        challengeTitle.text = "No Challenges..."
+        challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)
+        challengeTitle.textColor = .label
+        challengeDesciption.text = "Let's go add some challenges!"
+        challengeDesciption.textColor = .label
+        challengeBackground.backgroundColor = .systemGray6
     }
     
     func addShadow() {
