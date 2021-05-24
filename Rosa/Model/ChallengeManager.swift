@@ -19,6 +19,8 @@ class ChallengeManager {
     
     var defaultChallenges = DefaultChallenge.challenges
     
+    var currentProgress: Int = 0
+    
     func fetchChallenge(date: Date, completion: @escaping (Result<[Challenge], Error>) -> Void) {
         
         let calendar = Calendar.current
@@ -56,17 +58,96 @@ class ChallengeManager {
     }
     
     func postChallenge(challenge: inout Challenge, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        let document = database.collection("user").document("Aimee").collection("challenge").document()
-        challenge.id = document.documentID
 
-        do {
-            try document.setData(from: challenge)
-            print("Challenge Updated Success")
-        } catch let error {
-            print("Error writing challenge to Firestore: \(error)")
+        let today = Date()
+        var thirtyDays = [today]
+        
+        func setUp30Days(date: Date) {
+            var dayComponent = DateComponents()
+            dayComponent.day = 1
+            let theCalendar = Calendar.current
+            let nextDate = theCalendar.date(byAdding: dayComponent, to: date)
+            thirtyDays.append(nextDate!)
+        }
+        
+        for _ in 0...29 {
+            let endIndex = thirtyDays.count - 1
+            setUp30Days(date: thirtyDays[endIndex])
+        }
+        
+        print(thirtyDays)
+        
+        let collection = database.collection("user").document("Aimee").collection("challenge")
+        
+        for day in thirtyDays {
+            
+            let document = collection.document()
+            challenge.id = document.documentID
+            challenge.setUpDate = day
+            
+            do {
+                try document.setData(from: challenge)
+                print("Challenge Updated Success")
+            } catch let error {
+                print("Error writing challenge to Firestore: \(error)")
+            }
         }
 
+    }
+    
+    func updateChallengeProgress(challenge: inout Challenge,
+                                 currentProgress: Int,
+                                 currentChallengeTitle: String,
+                                 completion: @escaping (Result<String, Error>) -> Void) {
+        func updateProgressOfTheDay(date: Date) {
+            let calendar = Calendar.current
+            let start = calendar.startOfDay(for: date)
+            let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: start)
+            
+            let challengeRef = database.collection("user").document("Aimee").collection("challenge")
+            
+            challengeRef
+                .whereField("challengeTitle", isEqualTo: currentChallengeTitle)
+                .whereField("setUpDate", isGreaterThan: start )
+                .whereField("setUpDate", isLessThan: end!)
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            self.updateDocumentProgress(documentID: document.documentID)
+                        }
+                    }
+            }
+        }
+        self.currentProgress = currentProgress
+        
+        let today = Date() // today
+        updateProgressOfTheDay(date: today)
+        
+        var dayComponent = DateComponents()
+        dayComponent.day = 1
+        let theCalendar = Calendar.current
+        let tomorrow = theCalendar.date(byAdding: dayComponent, to: today) // tomorrow
+        
+        updateProgressOfTheDay(date: tomorrow!)
+        
+
+    }
+    
+    func updateDocumentProgress(documentID: String) {
+
+        let challengeRef = database.collection("user").document("Aimee").collection("challenge").document("\(documentID)")
+        let numberAfterAdding = self.currentProgress + (100/30)
+        challengeRef.updateData([
+            "progress": numberAfterAdding
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
     
 }

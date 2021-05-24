@@ -15,7 +15,7 @@ extension UIColor {
     static func challengeColor(challenge: String) -> UIColor {
         switch challenge {
         case "Gluten Free":
-            return UIColor.rgb(red: 246, green: 200, blue: 141, alpha: 1)
+            return UIColor.rgb(red: 255, green: 204, blue: 102, alpha: 1)
         case "Dairy Free":
             return UIColor.rgb(red: 226, green: 158, blue: 74, alpha: 1)
         case "Junk Free":

@@ -53,7 +53,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         }
         
         calnderView.select(Date())
-        
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         
@@ -66,8 +65,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         fetchChallenge(date: Date())
         fetchRecord(date: Date())
+        
     }
     
     func fetchRecord(date: Date) {
@@ -131,19 +132,13 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did select date \(self.dateFormatter.string(from: date))")
-//        var comp: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
-//        comp.timeZone = TimeZone(abbreviation: "UTC")!
-//        let adjustedDate = Calendar.current.date(from: comp)!
         fetchChallenge(date: date)
         fetchRecord(date: date)
         tableView.reloadData()
+        
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
-    }
-
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
     
     // MARK: - UITableViewDataSource
@@ -187,33 +182,34 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         } else {
             switch indexPath.row {
             case 0..<challenges.count: // 前面幾個cell
-                
-//                if challenges.count != 0 {
                     if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
                                                                 for: indexPath) as? CalendarChallengeTableViewCell {
-                        cell.challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
-                        cell.challengeTitle.text = challenges[indexPath.row].challengeTitle
-                        cell.challengeTitle.textColor = .white
-                        cell.challengeDesciption.text = "Skincare is Healthcare"
-                        cell.challengeDesciption.textColor = .systemGray6
-                        cell.challengeBackground.backgroundColor = UIColor.challengeColor(challenge: challenges[indexPath.row].challengeTitle)
-                        cell.checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
-                        cell.checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
+                        cell.challengeConfigure(challenges: challenges, indexPath: indexPath)
                         cell.addShadow()
+                        var challenge = challenges[indexPath.row]
+                        let progress = challenge.progress
+                        let title = challenge.challengeTitle
+                        
+                        cell.onButtonPressed = { 
+                            
+                            ChallengeManager.shared.updateChallengeProgress(challenge: &challenge, currentProgress: progress, currentChallengeTitle: title) { result in
+                                
+                                switch result {
+                                
+                                case .success:
+                                    
+                                    print("onTapUpdateChallengeProgress, success")
+                                    
+                                case .failure(let error):
+                                    
+                                    print("onTapUploadRecord, failure: \(error)")
+                                }
+                            }
+                        }
                         return cell
                     }
-//                } else { //有record
-//                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
-//                                                                for: indexPath) as? CalendarRecordTableViewCell {
-//                        if let record = record {
-//                            cell.configure(record: record)
-//                        }
-//                        return cell
-//                    }
-//                }
                 
             default: // 最後一個cell
-                
                 if record == nil { // 沒record
                     if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
                                                                 for: indexPath) as? CalendarChallengeTableViewCell {
@@ -229,10 +225,8 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                         return cell
                     }
                 }
-                
             }
         }
-        
         return UITableViewCell()
     }
     

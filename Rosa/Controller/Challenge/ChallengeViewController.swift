@@ -16,6 +16,7 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     let blackView = UIView(frame: UIScreen.main.bounds)
+    
     var selectedChallenges: [Challenge] = []
 
     override func viewDidLoad() {
@@ -25,8 +26,8 @@ class ChallengeViewController: UIViewController {
         collectionView.allowsMultipleSelection = true
         configureView()
     }
-
-    func addBlackView() {
+    
+    func configureView() {
         blackView.backgroundColor = .black
         blackView.alpha = 0
         blackView.tag = 100
@@ -34,10 +35,6 @@ class ChallengeViewController: UIViewController {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
             self.blackView.alpha = 0.5
         }
-    }
-    
-    func configureView() {
-        addBlackView()
         popUpView.layer.cornerRadius = 15
         cancelButton.buttonCornerRadius = 18
         confirmButton.buttonCornerRadius = 18
@@ -86,12 +83,8 @@ extension ChallengeViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChallengeCollectionViewCell",
-                                                        for: indexPath) as? ChallengeCollectionViewCell {
-            let challenges = ChallengeManager.shared.defaultChallenges
-            cell.backgroundCircle.backgroundColor = challenges[indexPath.row].backgroundColor
-            cell.challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
-            cell.challengeImage.alpha = 0.3
-            cell.challengeLabel.text = challenges[indexPath.row].challengeTitle
+                                                         for: indexPath) as? ChallengeCollectionViewCell {
+            cell.configureChallenge(indexPath: indexPath)
             return cell
         }
         return UICollectionViewCell()
