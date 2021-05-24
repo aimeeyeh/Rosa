@@ -13,6 +13,15 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var challengeLabel: UILabel!
     @IBOutlet weak var challengeImage: UIImageView!
     
+    func configureChallenge(indexPath: IndexPath) {
+        let challenges = ChallengeManager.shared.defaultChallenges
+        backgroundCircle.backgroundColor = challenges[indexPath.row].backgroundColor
+        challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
+        challengeImage.alpha = 0.3
+        challengeLabel.text = challenges[indexPath.row].challengeTitle
+
+    }
+    
     override var isSelected: Bool {
         didSet {
             if self.isSelected {

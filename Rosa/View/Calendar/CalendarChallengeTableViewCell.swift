@@ -18,9 +18,26 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    var onButtonPressed: (() -> Void)?
 
     @IBAction func checkChallenge(_ sender: Any) {
-        checkboxButton.isSelected = !checkboxButton.isSelected
+        checkboxButton.isEnabled = false
+        checkboxButton.setImage(UIImage(named: "checked"), for: .disabled)
+        onButtonPressed?()
+        
+    }
+    
+    func challengeConfigure(challenges: [Challenge], indexPath: IndexPath) {
+        challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
+        let title = challenges[indexPath.row].challengeTitle
+        challengeTitle.text = title
+        challengeTitle.textColor = .white
+        challengeDesciption.text = "Skincare is Healthcare"
+        challengeDesciption.textColor = .systemGray6
+        challengeBackground.backgroundColor = UIColor.challengeColor(challenge: title)
+        checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
+        checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
     }
     
     func noRecordConfigure() {
