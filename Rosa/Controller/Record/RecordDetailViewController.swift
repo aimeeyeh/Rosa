@@ -38,6 +38,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.timeZone = TimeZone.current
         return formatter
     }()
     

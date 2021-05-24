@@ -21,21 +21,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         }
     }
     
-    var record: Record = Record(id: "",
-                                date: Date(),
-                                weather: "",
-                                photos: [""],
-                                feeling: "",
-                                water: 0,
-                                sleep: 0.0,
-                                mealDairyFree: false,
-                                mealGlutenFree: false,
-                                mealJunkFree: false,
-                                mealSugarFree: false,
-                                outdoor: false,
-                                makeup: false,
-                                menstrual: false,
-                                remark: "") {
+    var record: Record? {
         didSet {
             tableView.reloadData()
         }
@@ -145,8 +131,12 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did select date \(self.dateFormatter.string(from: date))")
+//        var comp: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+//        comp.timeZone = TimeZone(abbreviation: "UTC")!
+//        let adjustedDate = Calendar.current.date(from: comp)!
         fetchChallenge(date: date)
         fetchRecord(date: date)
+        tableView.reloadData()
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -159,38 +149,116 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenges.count + 1
+        if challenges.count != 0 {
+            return challenges.count + 1
+        } else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case challenges.count:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
-                                                        for: indexPath) as? CalendarRecordTableViewCell {
-                cell.configure(record: record)
-                return cell
+        // MARK: - 沒有challenge
+        if challenges.count == 0 {
+            switch indexPath.row {
+            case 0:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                            for: indexPath) as? CalendarChallengeTableViewCell {
+                    cell.noChallengeConfigure()
+                    return cell
+                }
+            default:
+                if record == nil { // 沒有record
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                                for: indexPath) as? CalendarChallengeTableViewCell {
+                        cell.noRecordConfigure()
+                        return cell
+                    }
+                } else { // 有record
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
+                                                                for: indexPath) as? CalendarRecordTableViewCell {
+                        if let record = record {
+                            cell.configure(record: record)
+                        }
+                        return cell
+                    }
+                }
             }
-        default:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
-                                                        for: indexPath) as? CalendarChallengeTableViewCell {
-                cell.challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
-                cell.challengeTitle.text = challenges[indexPath.row].challengeTitle
-                cell.challengeTitle.textColor = .white
-                cell.challengeBackground.backgroundColor = UIColor.challengeColor(challenge: challenges[indexPath.row].challengeTitle)
-                cell.addShadow()
-                return cell
+            // MARK: - 有challenge
+        } else {
+            switch indexPath.row {
+            case 0..<challenges.count: // 前面幾個cell
+                
+//                if challenges.count != 0 {
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                                for: indexPath) as? CalendarChallengeTableViewCell {
+                        cell.challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
+                        cell.challengeTitle.text = challenges[indexPath.row].challengeTitle
+                        cell.challengeTitle.textColor = .white
+                        cell.challengeDesciption.text = "Skincare is Healthcare"
+                        cell.challengeDesciption.textColor = .systemGray6
+                        cell.challengeBackground.backgroundColor = UIColor.challengeColor(challenge: challenges[indexPath.row].challengeTitle)
+                        cell.checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
+                        cell.checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
+                        cell.addShadow()
+                        return cell
+                    }
+//                } else { //有record
+//                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
+//                                                                for: indexPath) as? CalendarRecordTableViewCell {
+//                        if let record = record {
+//                            cell.configure(record: record)
+//                        }
+//                        return cell
+//                    }
+//                }
+                
+            default: // 最後一個cell
+                
+                if record == nil { // 沒record
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                                for: indexPath) as? CalendarChallengeTableViewCell {
+                        cell.noRecordConfigure()
+                        return cell
+                    }
+                } else { // 有record
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
+                                                                for: indexPath) as? CalendarRecordTableViewCell {
+                        if let record = record {
+                            cell.configure(record: record)
+                        }
+                        return cell
+                    }
+                }
+                
             }
-            
         }
+        
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case challenges.count:
-            return 900
-        default:
-            return 90
+        if challenges.count != 0 {
+            if record != nil {
+                switch indexPath.row {
+                case challenges.count:
+                    return 900
+                default:
+                    return 90
+                }
+            } else {
+                return 90
+            }
+        } else {
+            if record != nil {
+                switch indexPath.row {
+                case 0:
+                    return 90
+                default:
+                    return 900
+                }
+            } else {
+                return 90
+            }
         }
     }
 }
