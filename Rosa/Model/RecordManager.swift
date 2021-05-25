@@ -16,6 +16,35 @@ class RecordManager {
     
     lazy var database = Firestore.firestore()
     
+    func fetchAllRecords(completion: @escaping (Result<[Record], Error>) -> Void)  {
+        
+        let queryCollection = database.collection("user").document("Aimee").collection("record")
+        queryCollection.addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                var records = [Record]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+                            records.append(record)
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                }
+                
+                completion(.success(records))
+            }
+        }
+
+    }
+    
     func fetchRecord(date: Date, completion: @escaping (Result<Record?, Error>) -> Void) {
         
         var calendar = Calendar.current

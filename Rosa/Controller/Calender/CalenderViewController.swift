@@ -17,10 +17,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     
     var dateArray = [Date]()
     
-    var allChallenges: [Challenge] = [] {
+    var allRecords: [Record] = [] {
         didSet {
-            for challenge in allChallenges {
-                dateArray.append(challenge.setUpDate)
+            for record in allRecords {
+                dateArray.append(record.date)
             }
             calnderView.reloadData()
         }
@@ -75,7 +75,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         fetchChallenge(date: Date())
         fetchRecord(date: Date())
         
-        fetchAllChallenges()
+        fetchAllRecords()
         
     }
     
@@ -86,14 +86,14 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
     }
     
-    func fetchAllChallenges() {
-        ChallengeManager.shared.fetchAllChallenges() { [weak self] result in
+    func fetchAllRecords() {
+        RecordManager.shared.fetchAllRecords() { [weak self] result in
             
             switch result {
             
-            case .success(let challenges):
+            case .success(let records):
                 
-                self?.allChallenges = challenges
+                self?.allRecords = records
                 
             case .failure(let error):
                 
