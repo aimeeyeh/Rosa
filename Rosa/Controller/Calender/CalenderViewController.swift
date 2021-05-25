@@ -15,12 +15,23 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     @IBOutlet weak var calnderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     
+    var dateArray = [Date]()
+    
+    var allChallenges: [Challenge] = [] {
+        didSet {
+            for challenge in allChallenges {
+                dateArray.append(challenge.setUpDate)
+            }
+            calnderView.reloadData()
+        }
+    }
+    
     var challenges: [Challenge] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-    
+
     var record: Record? {
         didSet {
             tableView.reloadData()
@@ -32,6 +43,8 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    
+    fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
 
     fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
         [unowned self] in
@@ -61,7 +74,9 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
         fetchChallenge(date: Date())
         fetchRecord(date: Date())
-
+        
+        fetchAllChallenges()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +84,22 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         fetchChallenge(date: Date())
         fetchRecord(date: Date())
         
+    }
+    
+    func fetchAllChallenges() {
+        ChallengeManager.shared.fetchAllChallenges() { [weak self] result in
+            
+            switch result {
+            
+            case .success(let challenges):
+                
+                self?.allChallenges = challenges
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
     }
     
     func fetchRecord(date: Date) {
@@ -112,7 +143,9 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
         if shouldBegin {
+            
             let velocity = self.scopeGesture.velocity(in: self.view)
+            
             switch calnderView.scope {
             case .month:
                 return velocity.y < 0
@@ -121,6 +154,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             @unknown default:
                 fatalError()
             }
+            
         }
         return shouldBegin
     }
@@ -138,6 +172,19 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
+        }
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateString = self.dateFormatter.string(from: date)
+        var dateStringArray: [String] = []
+        for date in dateArray {
+            dateStringArray.append(self.dateFormatter.string(from: date))
+        }
+        if dateStringArray.contains(dateString) {
+            return 1
+        } else {
+            return 0
         }
     }
     
