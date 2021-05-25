@@ -21,36 +21,6 @@ class ChallengeManager {
     
     var currentProgress: Int = 0
     
-    func fetchAllChallenges(completion: @escaping (Result<[Challenge], Error>) -> Void)  {
-        
-        let queryCollection = database.collection("user").document("Aimee").collection("challenge")
-        queryCollection.addSnapshotListener { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                
-                var challenges = [Challenge]()
-                
-                for document in querySnapshot!.documents {
-                    
-                    do {
-                        if let challenge = try document.data(as: Challenge.self, decoder: Firestore.Decoder()) {
-                            challenges.append(challenge)
-                        }
-                        
-                    } catch {
-                        
-                        completion(.failure(error))
-                    }
-                }
-                
-                completion(.success(challenges))
-            }
-        }
-
-        
-    }
-    
     func fetchChallenge(date: Date, completion: @escaping (Result<[Challenge], Error>) -> Void) {
         
         let calendar = Calendar.current
