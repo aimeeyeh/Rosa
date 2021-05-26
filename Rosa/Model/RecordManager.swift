@@ -61,8 +61,8 @@ class RecordManager {
         guard let startDate = calendar.date(from: startDateComponents),
               let endDate = calendar.date(byAdding: endDateComponents, to: startDate) else { return }
 
-        print(startDate)
-        print(endDate)
+//        print(startDate)
+//        print(endDate)
         
         let queryCollection = database.collection("user").document("Aimee").collection("record")
         

@@ -290,6 +290,9 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
+  - QuickLayout (3.0.0)
+  - SwiftEntryKit (1.2.7):
+    - QuickLayout (= 3.0.0)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
@@ -300,6 +303,7 @@ DEPENDENCIES:
   - FSCalendar
   - HGCircularSlider (~> 2.2.0)
   - MKRingProgressView
+  - SwiftEntryKit (= 1.2.7)
   - SwiftLint
 
 SPEC REPOS:
@@ -323,6 +327,8 @@ SPEC REPOS:
     - MKRingProgressView
     - nanopb
     - PromisesObjC
+    - QuickLayout
+    - SwiftEntryKit
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -345,8 +351,10 @@ SPEC CHECKSUMS:
   MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 8d51d1e4ef77215844a958a862f58a263c3c3540
+PODFILE CHECKSUM: 15684675815a9b681f373a789878c391b4ab1f1a
 
 COCOAPODS: 1.10.1

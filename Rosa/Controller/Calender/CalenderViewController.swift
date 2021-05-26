@@ -29,6 +29,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     var challenges: [Challenge] = [] {
         didSet {
             tableView.reloadData()
+            checkYesterdayProgress()
         }
     }
 
@@ -72,9 +73,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         // For UITest
         calnderView.accessibilityIdentifier = "calendar"
         
-        fetchChallenge(date: Date())
-        fetchRecord(date: Date())
-        
         fetchAllRecords()
         
     }
@@ -84,6 +82,16 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         fetchChallenge(date: Date())
         fetchRecord(date: Date())
         
+    }
+    
+    func checkYesterdayProgress() {
+        for challenge in challenges {
+            if challenge.progress == 0 {
+                print("\(challenge.challengeTitle) has failed")
+            } else {
+                return
+            }
+        }
     }
     
     func fetchAllRecords() {
@@ -165,7 +173,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("did select date \(self.dateFormatter.string(from: date))")
+//        print("did select date \(self.dateFormatter.string(from: date))")
         fetchChallenge(date: date)
         fetchRecord(date: date)
         tableView.reloadData()
@@ -233,11 +241,13 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                                                                 for: indexPath) as? CalendarChallengeTableViewCell {
                         cell.challengeConfigure(challenges: challenges, indexPath: indexPath)
                         cell.addShadow()
+//                        checkYesterdayProgress()
+                        
                         var challenge = challenges[indexPath.row]
                         let progress = challenge.progress
                         let title = challenge.challengeTitle
                         
-                        cell.onButtonPressed = { 
+                        cell.onButtonPressed = {
                             
                             ChallengeManager.shared.updateChallengeProgress(challenge: &challenge, currentProgress: progress, currentChallengeTitle: title) { result in
                                 
@@ -252,6 +262,22 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                                     print("onTapUploadRecord, failure: \(error)")
                                 }
                             }
+                            
+//                            let currentProgress = ChallengeManager.shared.updateChallengeProgress(challenge: &challenge, currentProgress: progress, currentChallengeTitle: title) { result in
+//
+//                                switch result {
+//
+//                                case .success:
+//
+//                                    print("onTapUpdateChallengeProgress, success")
+//
+//                                case .failure(let error):
+//
+//                                    print("onTapUploadRecord, failure: \(error)")
+//                                }
+//                            }
+                            
+//                            print(currentProgress)
                         }
                         return cell
                     }

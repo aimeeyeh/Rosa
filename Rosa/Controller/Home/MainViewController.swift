@@ -18,6 +18,7 @@ import Charts
 class MainViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var challengeProgressView: UIView!
+    @IBOutlet weak var challengeProgressLabel: UILabel!
     @IBOutlet weak var waterProgressView: UIView!
     @IBOutlet weak var sleepProgressView: UIView!
     @IBOutlet weak var priceView: UIView!
@@ -26,6 +27,24 @@ class MainViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var waterChartView: HorizontalBarChartView!
     @IBOutlet weak var sleepLineChartView: LineChartView!
     
+    var challenges: [Challenge] = [] {
+        didSet {
+            ringProgressView.reloadInputViews()
+            waterChartView.reloadInputViews()
+            self.overallProgress = Double(challenges[0].progress)/30 * 100
+        }
+    }
+    
+    var overallProgress: Double = 0.0 {
+        didSet {
+            challengeProgressLabel.text = "\(lround(overallProgress))%"
+            UIView.animate(withDuration: 1.0) {
+                let progress = Double(self.overallProgress) / 100.0
+                self.ringProgressView.progress = progress
+            }
+        }
+    }
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -33,6 +52,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         configureViews()
         configureProgressView()
         configureWaterBarChart()
+        fetchChallenge(date: Date())
 
     }
     
@@ -53,14 +73,10 @@ class MainViewController: UIViewController, ChartViewDelegate {
         ringProgressView.backgroundRingColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 0.5)
         ringProgressView.ringWidth = 14
         ringProgressView.hidesRingForZeroProgress = true
-        ringProgressView.progress = 0.7
         ringProgressView.gradientImageScale = 0.5
         ringProgressView.shadowOpacity = 0.0
         ringProgressView.allowsAntialiasing = false
-        ringProgressView.style = .square
-        //RingProgressView.animate(withDuration: 0.5) {
-        //    self.ringProgressView.progress = 1.0
-        //}
+        ringProgressView.style = .round
 
     }
     
@@ -90,7 +106,23 @@ class MainViewController: UIViewController, ChartViewDelegate {
         waterChartView.rightAxis.granularity = 500
         waterChartView.maxVisibleCount = 60
         waterChartView.notifyDataSetChanged()
-        waterChartView.animate(yAxisDuration: 2.5)
+        waterChartView.animate(yAxisDuration: 2.0)
+    }
+    
+    func fetchChallenge(date: Date) {
+        ChallengeManager.shared.fetchChallenge(date: date) { [weak self] result in
+
+            switch result {
+
+            case .success(let challenges):
+
+                self?.challenges = challenges
+
+            case .failure(let error):
+
+                print("fetchData.failure: \(error)")
+            }
+        }
     }
 
 }

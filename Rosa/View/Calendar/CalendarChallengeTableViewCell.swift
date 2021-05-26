@@ -38,6 +38,10 @@ class CalendarChallengeTableViewCell: UITableViewCell {
         challengeBackground.backgroundColor = UIColor.challengeColor(challenge: title)
         checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
         checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
+        
+        checkboxButton.isEnabled = true
+        checkboxButton.isSelected = false
+       
     }
     
     func noRecordConfigure() {
