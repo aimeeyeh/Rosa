@@ -21,6 +21,8 @@ class ChallengeManager {
     
     var currentProgress: Int = 0
     
+    // MARK: - 讀取各日期的挑戰
+    
     func fetchChallenge(date: Date, completion: @escaping (Result<[Challenge], Error>) -> Void) {
         
         let calendar = Calendar.current
@@ -57,6 +59,8 @@ class ChallengeManager {
             }
     }
     
+    // MARK: - 加入連續30天的挑戰
+    
     func postChallenge(challenge: inout Challenge, completion: @escaping (Result<String, Error>) -> Void) {
 
         let today = Date()
@@ -74,8 +78,6 @@ class ChallengeManager {
             let endIndex = thirtyDays.count - 1
             setUp30Days(date: thirtyDays[endIndex])
         }
-        
-        print(thirtyDays)
         
         let collection = database.collection("user").document("Aimee").collection("challenge")
         
@@ -95,10 +97,13 @@ class ChallengeManager {
 
     }
     
+    // MARK: - 更新今天跟明天的challenge progress
+    
     func updateChallengeProgress(challenge: inout Challenge,
                                  currentProgress: Int,
                                  currentChallengeTitle: String,
                                  completion: @escaping (Result<String, Error>) -> Void) {
+        // 更新24小時內特定challenge的document
         func updateProgressOfTheDay(date: Date) {
             let calendar = Calendar.current
             let start = calendar.startOfDay(for: date)
@@ -115,14 +120,20 @@ class ChallengeManager {
                         print("Error getting documents: \(err)")
                     } else {
                         for document in querySnapshot!.documents {
+                            
+                            //  用query條件得到的documentID 來呼叫下方的更新進度+3.33的function
                             self.updateDocumentProgress(documentID: document.documentID)
+
                         }
                     }
             }
         }
         self.currentProgress = currentProgress
         
+        
         let today = Date() // today
+        
+        // 用今天代入上方function
         updateProgressOfTheDay(date: today)
         
         var dayComponent = DateComponents()
@@ -130,15 +141,18 @@ class ChallengeManager {
         let theCalendar = Calendar.current
         let tomorrow = theCalendar.date(byAdding: dayComponent, to: today) // tomorrow
         
+        // 用明天代入上方function
         updateProgressOfTheDay(date: tomorrow!)
-        
 
     }
     
     func updateDocumentProgress(documentID: String) {
 
         let challengeRef = database.collection("user").document("Aimee").collection("challenge").document("\(documentID)")
-        let numberAfterAdding = self.currentProgress + (100/30)
+        let numberAfterAdding = self.currentProgress + 1
+        
+        checkChallengeHasCompleted(progress: numberAfterAdding)
+        
         challengeRef.updateData([
             "progress": numberAfterAdding
         ]) { err in
@@ -148,9 +162,18 @@ class ChallengeManager {
                 print("Document successfully updated")
             }
         }
+
+    }
+    
+    func checkChallengeHasCompleted(progress: Int) {
+        if progress == 30 {
+            print("Challenge Completed!")
+        }
     }
     
 }
+
+// MARK: - 預設挑戰
 
 struct DefaultChallenge {
 

@@ -15,5 +15,6 @@ pod 'Charts'
 pod 'HGCircularSlider', '~> 2.2.0'
 pod 'Firebase/Firestore'
 pod 'FirebaseFirestoreSwift'
+pod 'SwiftEntryKit', '1.2.7'
 
 end

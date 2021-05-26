@@ -397,6 +397,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
+                        <outlet property="challengeProgressLabel" destination="C62-lo-M8j" id="NRR-bT-0Y5"/>
                         <outlet property="challengeProgressView" destination="3QN-gB-hdO" id="fXt-lm-BXe"/>
                         <outlet property="photoComparisonView" destination="C8M-1o-gbI" id="ncm-2g-x91"/>
                         <outlet property="priceView" destination="PiM-rY-3dY" id="7Wo-bQ-ihL"/>
