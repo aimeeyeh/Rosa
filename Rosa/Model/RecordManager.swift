@@ -16,7 +16,7 @@ class RecordManager {
     
     lazy var database = Firestore.firestore()
     
-    func fetchAllRecords(completion: @escaping (Result<[Record], Error>) -> Void)  {
+    func fetchAllRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
         
         let queryCollection = database.collection("user").document("Aimee").collection("record")
         queryCollection.addSnapshotListener { (querySnapshot, err) in
@@ -60,9 +60,6 @@ class RecordManager {
         
         guard let startDate = calendar.date(from: startDateComponents),
               let endDate = calendar.date(byAdding: endDateComponents, to: startDate) else { return }
-
-//        print(startDate)
-//        print(endDate)
         
         let queryCollection = database.collection("user").document("Aimee").collection("record")
         
@@ -98,8 +95,12 @@ class RecordManager {
         
         let document = database.collection("user").document("Aimee").collection("record").document()
         // 需要先有Aimee這個user
+        let today = Date()
+        let calendar = Calendar.current
+        let todayStartTime = calendar.startOfDay(for: today)
         
         record.id = document.documentID
+        record.date = todayStartTime
 
         do {
             try document.setData(from: record)
@@ -108,6 +109,49 @@ class RecordManager {
             print("Error writing record to Firestore: \(error)")
         }
         
+    }
+    
+    func fetchPast7daysRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
+        let today = Date()
+        let calendar = Calendar.current
+        let todayStartTime = calendar.startOfDay(for: today)
+        
+        var endDateComponents = DateComponents()
+        endDateComponents.day = -6
+        guard let sevenDaysAgo = calendar.date(byAdding: endDateComponents, to: todayStartTime) else { return }
+        
+        let recordRef = database.collection("user").document("Aimee").collection("record")
+        
+        recordRef
+            .whereField("date", isGreaterThanOrEqualTo: sevenDaysAgo )
+            .whereField("date", isLessThanOrEqualTo: todayStartTime)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    var records = [Record]()
+                    
+                    guard let documents = querySnapshot?.documents else { return }
+                    if documents.count == 0 {
+                        completion(.success([])) 
+                    }
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+                                records.append(record)
+                            }
+                            
+                        } catch {
+                            
+                            completion(.failure(error))
+                        }
+                    }
+                    completion(.success(records))
+                }
+            }
     }
     
 }
