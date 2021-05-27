@@ -31,7 +31,11 @@ class MainViewController: UIViewController, ChartViewDelegate {
         didSet {
             ringProgressView.reloadInputViews()
             waterChartView.reloadInputViews()
-            self.overallProgress = Double(challenges[0].progress)/30 * 100
+            if challenges.count == 0 {
+                return
+            } else {
+                self.overallProgress = Double(challenges[0].progress)/30 * 100
+            }
         }
     }
     
@@ -52,6 +56,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         configureViews()
         configureProgressView()
         configureWaterBarChart()
+        configureSleepLineChart()
         fetchChallenge(date: Date())
 
     }
@@ -93,14 +98,14 @@ class MainViewController: UIViewController, ChartViewDelegate {
         let dataSet = BarChartDataSet(entries: entries, label: "Water (ml)")
         let data = BarChartData(dataSets: [dataSet])
         waterChartView.data = data
-        
+    
         waterChartView.xAxis.drawGridLinesEnabled = false
         waterChartView.xAxis.labelPosition = .bottom
-        waterChartView.xAxis.drawAxisLineEnabled = false
-        waterChartView.leftAxis.drawGridLinesEnabled = false
-        waterChartView.leftAxis.drawLabelsEnabled = false
-        waterChartView.leftAxis.drawAxisLineEnabled = false
-//        waterChartView.rightAxis.drawGridLinesEnabled = false
+        let topAxis = waterChartView.leftAxis
+        topAxis.drawGridLinesEnabled = false
+        topAxis.drawLabelsEnabled = false
+        topAxis.drawAxisLineEnabled = false
+        waterChartView.rightAxis.drawGridLinesEnabled = false
 //        waterChartView.rightAxis.drawAxisLineEnabled = false
         waterChartView.rightAxis.granularityEnabled = true
         waterChartView.rightAxis.granularity = 500
@@ -108,6 +113,37 @@ class MainViewController: UIViewController, ChartViewDelegate {
         waterChartView.notifyDataSetChanged()
         waterChartView.animate(yAxisDuration: 2.0)
     }
+    
+    let sleepColor = UIColor.rgb(red: 178, green: 228, blue: 157, alpha: 1.0)
+    func configureSleepLineChart() {
+       let set = LineChartDataSet(entries: sleepLineChartYValues, label: "Sleeping Hours")
+        let data = LineChartData(dataSet: set)
+        set.drawCirclesEnabled = false
+        set.mode = .cubicBezier
+        set.setColor(sleepColor)
+        set.lineWidth = 3
+        set.fill = Fill(color: sleepColor)
+        set.fillAlpha = 0.8
+        set.drawFilledEnabled = true
+        data.setDrawValues(false)
+        sleepLineChartView.data = data
+        sleepLineChartView.rightAxis.enabled = false
+        sleepLineChartView.xAxis.labelPosition = .bottom
+        let yAxis = sleepLineChartView.leftAxis
+        yAxis.drawGridLinesEnabled = false
+        sleepLineChartView.xAxis.drawGridLinesEnabled = false
+        sleepLineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+    }
+    
+    let sleepLineChartYValues: [ChartDataEntry] = [
+        ChartDataEntry(x: 1.0, y: 8.0),
+        ChartDataEntry(x: 2.0, y: 6.5),
+        ChartDataEntry(x: 3.0, y: 7.0),
+        ChartDataEntry(x: 4.0, y: 6.5),
+        ChartDataEntry(x: 5.0, y: 6.0),
+        ChartDataEntry(x: 6.0, y: 8.5),
+        ChartDataEntry(x: 7.0, y: 7.5)
+    ]
     
     func fetchChallenge(date: Date) {
         ChallengeManager.shared.fetchChallenge(date: date) { [weak self] result in
