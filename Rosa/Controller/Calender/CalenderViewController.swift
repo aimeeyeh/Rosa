@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import SwiftEntryKit
 
 class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDataSource,
                               UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate {
@@ -39,6 +40,8 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         }
     }
     
+    // MARK: - Calendar Setup
+    
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -56,6 +59,8 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         panGesture.maximumNumberOfTouches = 2
         return panGesture
     }()
+    
+    // MARK: - viewDidLoad
 
     override func viewDidLoad() {
 
@@ -74,8 +79,9 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         calnderView.accessibilityIdentifier = "calendar"
         
         fetchAllRecords()
-        
     }
+    
+    // MARK: - viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -84,15 +90,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
     }
     
-    func checkYesterdayProgress() {
-        for challenge in challenges {
-            if challenge.progress == 0 {
-                print("\(challenge.challengeTitle) has failed")
-            } else {
-                return
-            }
-        }
-    }
+    // MARK: - Firebase Related Functions
     
     func fetchAllRecords() {
         RecordManager.shared.fetchAllRecords() { [weak self] result in
@@ -173,7 +171,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        print("did select date \(self.dateFormatter.string(from: date))")
         fetchChallenge(date: date)
         fetchRecord(date: date)
         tableView.reloadData()
@@ -196,6 +193,150 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         }
     }
     
+    // MARK: - PopUp Message Setup
+    
+    func displaySuccessMessage() {
+        let image = "success"
+        let title = "Awesome!"
+        let description =
+        """
+        You've completed the challenge.      \
+        Keep on your good work, \
+        and let your Skin be the first priority.
+        
+        """
+        let button = "Got it!"
+        SwiftEntryKit.display(entry: MyPopUpView(with: setupMessage(image: image,
+                                                                    title: title,
+                                                                    description: description,
+                                                                    button: button)),
+                              using: setupAttributes())
+    }
+    
+    func displayFailureMessage() {
+        let image = "fail"
+        let title = "Oh No!"
+        let description =
+        """
+        You've missed yesterday's challenge. \
+        Add the challenge again \
+        and Restart your 30 day challenge!
+        
+        """
+        let button = "Try again"
+        SwiftEntryKit.display(entry: MyPopUpView(with: setupMessage(image: image,
+                                                                    title: title,
+                                                                    description: description, button: button)),
+                              using: setupAttributes())
+    }
+    
+    func checkYesterdayProgress() {
+        for challenge in challenges {
+            if challenge.progress == 0 {
+                print("\(challenge.challengeTitle) has failed")
+                displayFailureMessage()
+                ChallengeManager.shared.delete30dayChallenges(challengeTitle: challenge.challengeTitle)
+            } else {
+                return
+            }
+        }
+    }
+    
+    func setupAttributes() -> EKAttributes {
+        var attributes = EKAttributes.centerFloat
+        attributes.displayDuration = .infinity
+        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0/255.0, alpha: 0.3),
+                                                          dark: UIColor(white: 50.0/255.0, alpha: 0.3)))
+        attributes.shadow = .active(
+            with: .init(
+                color: .black,
+                opacity: 0.3,
+                radius: 8
+            )
+        )
+        
+        attributes.entryBackground = .color(color: .standardBackground)
+        attributes.roundCorners = .all(radius: 25)
+        attributes.screenInteraction = .dismiss
+        attributes.entryInteraction = .absorbTouches
+        attributes.scroll = .enabled(
+            swipeable: true,
+            pullbackAnimation: .jolt
+        )
+        
+        attributes.entranceAnimation = .init(
+            translate: .init(
+                duration: 0.7,
+                spring: .init(damping: 1, initialVelocity: 0)
+            ),
+            scale: .init(
+                from: 1.05,
+                to: 1,
+                duration: 0.4,
+                spring: .init(damping: 1, initialVelocity: 0)
+            )
+        )
+        
+        attributes.exitAnimation = .init(
+            translate: .init(duration: 0.2)
+        )
+        attributes.popBehavior = .animated(
+            animation: .init(
+                translate: .init(duration: 0.2)
+            )
+        )
+        
+        attributes.positionConstraints.verticalOffset = 10
+        attributes.statusBar = .dark
+        return attributes
+    }
+    
+    func setupMessage(image: String, title: String, description: String, button: String) -> EKPopUpMessage {
+        
+        let image = UIImage(named: image)!.withRenderingMode(.alwaysTemplate)
+        let title = title
+        let description = description
+        
+        let themeImage = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: image,
+                                                                                  size: CGSize(width: 60, height: 60),
+                                                                                  tint: .black,
+                                                                                  contentMode: .scaleAspectFit))
+        
+        let titleLabel = EKProperty.LabelContent(text: title, style: .init(font: UIFont.systemFont(ofSize: 24),
+                                                                      color: .black,
+                                                                      alignment: .center))
+        
+        let descriptionLabel = EKProperty.LabelContent(
+            text: description,
+            style: .init(
+                font: UIFont.systemFont(ofSize: 16),
+                color: .black,
+                alignment: .center
+            )
+        )
+        
+        let button = EKProperty.ButtonContent(
+            label: .init(
+                text: button,
+                style: .init(
+                    font: UIFont.systemFont(ofSize: 16),
+                    color: .black
+                )
+            ),
+            backgroundColor: .init(UIColor.systemOrange),
+            highlightedBackgroundColor: .clear
+        )
+        
+        let message = EKPopUpMessage(themeImage: themeImage,
+                                     title: titleLabel,
+                                     description: descriptionLabel,
+                                     button: button) {
+            SwiftEntryKit.dismiss()
+            self.fetchChallenge(date: Date())
+        }
+        return message
+    }
+    
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -207,7 +348,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // MARK: - 沒有challenge
+        // 沒有challenge
         if challenges.count == 0 {
             switch indexPath.row {
             case 0:
@@ -233,7 +374,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                     }
                 }
             }
-            // MARK: - 有challenge
+        // 有challenge
         } else {
             switch indexPath.row {
             case 0..<challenges.count: // 前面幾個cell
@@ -241,7 +382,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                                                                 for: indexPath) as? CalendarChallengeTableViewCell {
                         cell.challengeConfigure(challenges: challenges, indexPath: indexPath)
                         cell.addShadow()
-//                        checkYesterdayProgress()
                         
                         var challenge = challenges[indexPath.row]
                         let progress = challenge.progress
@@ -249,35 +389,12 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                         
                         cell.onButtonPressed = {
                             
-                            ChallengeManager.shared.updateChallengeProgress(challenge: &challenge, currentProgress: progress, currentChallengeTitle: title) { result in
-                                
-                                switch result {
-                                
-                                case .success:
-                                    
-                                    print("onTapUpdateChallengeProgress, success")
-                                    
-                                case .failure(let error):
-                                    
-                                    print("onTapUploadRecord, failure: \(error)")
-                                }
+                            ChallengeManager.shared.updateChallengeProgress(challenge: &challenge,
+                                                                            currentProgress: progress,
+                                                                            currentChallengeTitle: title) {
+                                [weak self] in self?.displaySuccessMessage()
                             }
-                            
-//                            let currentProgress = ChallengeManager.shared.updateChallengeProgress(challenge: &challenge, currentProgress: progress, currentChallengeTitle: title) { result in
-//
-//                                switch result {
-//
-//                                case .success:
-//
-//                                    print("onTapUpdateChallengeProgress, success")
-//
-//                                case .failure(let error):
-//
-//                                    print("onTapUploadRecord, failure: \(error)")
-//                                }
-//                            }
-                            
-//                            print(currentProgress)
+                        
                         }
                         return cell
                     }
@@ -328,4 +445,5 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             }
         }
     }
+    
 }

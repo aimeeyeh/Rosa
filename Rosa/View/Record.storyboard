@@ -289,7 +289,6 @@
                                                     <state key="normal" title="Sunny" image="sunny">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                     </state>
-                                                    <state key="selected" image="selectedSunny"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="buttonBorderWidth">
                                                             <real key="value" value="0.0"/>
@@ -1396,7 +1395,6 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rainy" width="512" height="512"/>
         <image name="sad" width="512" height="512"/>
-        <image name="selectedSunny" width="512" height="512"/>
         <image name="skin1" width="1125" height="1366"/>
         <image name="sleep" width="512" height="512"/>
         <image name="sugarFree" width="48" height="48"/>
