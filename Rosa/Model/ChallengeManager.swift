@@ -122,7 +122,8 @@ class ChallengeManager {
                         for document in querySnapshot!.documents {
                             
                             //  用query條件得到的documentID 來呼叫下方的更新進度+3.33的function
-                            self.updateDocumentProgress(documentID: document.documentID, onProgressCompleted: onProgressCompleted)
+                            self.updateDocumentProgress(documentID: document.documentID,
+                                                        onProgressCompleted: onProgressCompleted)
                             
                         }
                     }
@@ -196,6 +197,7 @@ class ChallengeManager {
                     }
                 }
         }
+        
         getDocumentIDs()
     }
     

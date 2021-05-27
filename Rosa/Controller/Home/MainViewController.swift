@@ -27,6 +27,68 @@ class MainViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var waterChartView: HorizontalBarChartView!
     @IBOutlet weak var sleepLineChartView: LineChartView!
     
+    func createPastSevenDays() -> [Date] {
+        var past7Days = [Date]()
+        
+        let today = Date()
+        let calendar = Calendar.current
+        let todayStartTime = calendar.startOfDay(for: today)
+        
+        for index in -6 ... 0 {
+            var endDateComponents = DateComponents()
+            endDateComponents.day = index
+            if let day = calendar.date(byAdding: endDateComponents, to: todayStartTime) {
+                past7Days.append(day)
+            }
+        }
+        return past7Days
+    }
+    
+    var sleepLineChartYValues: [ChartDataEntry] = []
+    var waterBarChartYValues: [ChartDataEntry] = []
+    
+    func setUpSleepChartData() {
+        for (index, sleep) in sleepArray.enumerated() {
+            sleepLineChartYValues.append(ChartDataEntry(x: Double(index+1), y: sleep))
+//            print("x: \(Double(index+1)), y: \(sleep)")
+        }
+        configureSleepLineChart()
+        
+    }
+    
+    func setUpWaterChartData() {
+        for (index, water) in waterArray.enumerated() {
+            waterBarChartYValues.append(BarChartDataEntry(x: Double(index+1), y: Double(water*250)))
+//            print("x: \(Double(index+1)), y: \(water)")
+        }
+        configureWaterBarChart()
+        
+    }
+    
+    var sleepArray: [Double] = []
+
+    var waterArray: [Int] = []
+    
+    var last7DayRecords: [Record] = [] {
+        didSet {
+            let past7Days = createPastSevenDays()
+            for day in past7Days {
+                let filteredRecords = last7DayRecords.filter { $0.date == day }
+                if filteredRecords.count > 0 {
+                    sleepArray.append(filteredRecords[0].sleep)
+                    waterArray.append(filteredRecords[0].water)
+                } else {
+                    sleepArray.append(0.0)
+                    waterArray.append(0)
+
+                }
+            }
+            setUpSleepChartData()
+            setUpWaterChartData()
+            
+        }
+    }
+    
     var challenges: [Challenge] = [] {
         didSet {
             ringProgressView.reloadInputViews()
@@ -55,10 +117,9 @@ class MainViewController: UIViewController, ChartViewDelegate {
         self.navigationController?.isNavigationBarHidden = true
         configureViews()
         configureProgressView()
-        configureWaterBarChart()
-        configureSleepLineChart()
         fetchChallenge(date: Date())
-
+        fetchPreviousRecords()
+        
     }
     
     func configureViews() {
@@ -86,16 +147,8 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     func configureWaterBarChart() {
-        
-        let entry1 = BarChartDataEntry(x: 1.0, y: 2200)
-        let entry2 = BarChartDataEntry(x: 2.0, y: 2500)
-        let entry3 = BarChartDataEntry(x: 3.0, y: 1800)
-        let entry4 = BarChartDataEntry(x: 4.0, y: 1600)
-        let entry5 = BarChartDataEntry(x: 5.0, y: 1900)
-        let entry6 = BarChartDataEntry(x: 6.0, y: 1500)
-        let entry7 = BarChartDataEntry(x: 7.0, y: 2200)
-        let entries = [entry1, entry2, entry3, entry4, entry5, entry6, entry7]
-        let dataSet = BarChartDataSet(entries: entries, label: "Water (ml)")
+
+        let dataSet = BarChartDataSet(entries: waterBarChartYValues, label: "Water (ml)")
         let data = BarChartData(dataSets: [dataSet])
         waterChartView.data = data
     
@@ -106,7 +159,6 @@ class MainViewController: UIViewController, ChartViewDelegate {
         topAxis.drawLabelsEnabled = false
         topAxis.drawAxisLineEnabled = false
         waterChartView.rightAxis.drawGridLinesEnabled = false
-//        waterChartView.rightAxis.drawAxisLineEnabled = false
         waterChartView.rightAxis.granularityEnabled = true
         waterChartView.rightAxis.granularity = 500
         waterChartView.maxVisibleCount = 60
@@ -114,9 +166,10 @@ class MainViewController: UIViewController, ChartViewDelegate {
         waterChartView.animate(yAxisDuration: 2.0)
     }
     
-    let sleepColor = UIColor.rgb(red: 178, green: 228, blue: 157, alpha: 1.0)
     func configureSleepLineChart() {
-       let set = LineChartDataSet(entries: sleepLineChartYValues, label: "Sleeping Hours")
+        
+        let sleepColor = UIColor.rgb(red: 178, green: 228, blue: 157, alpha: 1.0)
+        let set = LineChartDataSet(entries: sleepLineChartYValues, label: "Sleeping Hours")
         let data = LineChartData(dataSet: set)
         set.drawCirclesEnabled = false
         set.mode = .cubicBezier
@@ -135,16 +188,6 @@ class MainViewController: UIViewController, ChartViewDelegate {
         sleepLineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
     }
     
-    let sleepLineChartYValues: [ChartDataEntry] = [
-        ChartDataEntry(x: 1.0, y: 8.0),
-        ChartDataEntry(x: 2.0, y: 6.5),
-        ChartDataEntry(x: 3.0, y: 7.0),
-        ChartDataEntry(x: 4.0, y: 6.5),
-        ChartDataEntry(x: 5.0, y: 6.0),
-        ChartDataEntry(x: 6.0, y: 8.5),
-        ChartDataEntry(x: 7.0, y: 7.5)
-    ]
-    
     func fetchChallenge(date: Date) {
         ChallengeManager.shared.fetchChallenge(date: date) { [weak self] result in
 
@@ -156,6 +199,22 @@ class MainViewController: UIViewController, ChartViewDelegate {
 
             case .failure(let error):
 
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchPreviousRecords() {
+        RecordManager.shared.fetchPast7daysRecords() { [weak self] result in
+            
+            switch result {
+            
+            case .success(let records):
+                
+                self?.last7DayRecords = records
+                
+            case .failure(let error):
+                
                 print("fetchData.failure: \(error)")
             }
         }
