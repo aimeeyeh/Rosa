@@ -121,7 +121,7 @@ class ChallengeManager {
             
             challengeRef
                 .whereField("challengeTitle", isEqualTo: currentChallengeTitle)
-                .whereField("setUpDate", isGreaterThan: start )
+                .whereField("setUpDate", isGreaterThanOrEqualTo: start )
                 .whereField("setUpDate", isLessThan: end!)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {

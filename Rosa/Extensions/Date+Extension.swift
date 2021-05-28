@@ -19,4 +19,14 @@ extension Date {
         return date
     }
     
+    func formatToDateWithoutYearOnly() -> String? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd"
+
+        let date = dateFormatter.string(from: self)
+        
+        return date
+    }
+    
 }

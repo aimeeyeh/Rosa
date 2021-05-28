@@ -64,6 +64,9 @@
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
 		7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */; };
 		7AFE438B2660E86800F94330 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE438A2660E86800F94330 /* Date+Extension.swift */; };
+		7AFE438E26613B8200F94330 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AFE438D26613B8200F94330 /* SignIn.storyboard */; };
+		7AFE439126613BA700F94330 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE439026613BA700F94330 /* SignInViewController.swift */; };
+		7AFE439326613C1A00F94330 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE439226613C1A00F94330 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +128,10 @@
 		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRecordTableViewCell.swift; sourceTree = "<group>"; };
 		7AFE438A2660E86800F94330 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		7AFE438C26613A1D00F94330 /* Rosa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rosa.entitlements; sourceTree = "<group>"; };
+		7AFE438D26613B8200F94330 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		7AFE439026613BA700F94330 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		7AFE439226613C1A00F94330 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		C374A870328953E5950C01F1 /* Pods_Rosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA81D98234E9CED393A9B2 /* Pods-Rosa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.debug.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DF160F36CA96BCB712C384 /* Pods-Rosa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.release.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +223,7 @@
 		7A8DB508264BB62100EE6D9D /* Rosa */ = {
 			isa = PBXGroup;
 			children = (
+				7AFE438C26613A1D00F94330 /* Rosa.entitlements */,
 				7AAFE489264BCCFF00A20324 /* Extensions */,
 				7AAFE488264BCCF000A20324 /* Resource */,
 				7AAFE485264BCC7100A20324 /* Model */,
@@ -254,6 +262,7 @@
 				7A247B02264EB54F00E436D6 /* Record */,
 				7A20F639264CFD2C00019D3D /* Articles */,
 				7A8DB50F264BB62100EE6D9D /* Main.storyboard */,
+				7AFE438D26613B8200F94330 /* SignIn.storyboard */,
 				7AAFE48C264BE25E00A20324 /* Record.storyboard */,
 				7AAFE490264BE27A00A20324 /* Calender.storyboard */,
 				7AAFE492264BE29100A20324 /* Articles.storyboard */,
@@ -266,6 +275,7 @@
 		7AAFE487264BCC7E00A20324 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7AFE438F26613B8C00F94330 /* SignIn */,
 				7AAFE4B5264C121500A20324 /* Calender */,
 				7AAFE4B0264C05EE00A20324 /* Challenge */,
 				7AAFE4AD264C034000A20324 /* Profile */,
@@ -360,6 +370,15 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		7AFE438F26613B8C00F94330 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				7AFE439026613BA700F94330 /* SignInViewController.swift */,
+				7AFE439226613C1A00F94330 /* TestViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		C09C60E96DB46533420E5524 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +462,7 @@
 				7A8DB513264BB62100EE6D9D /* Assets.xcassets in Resources */,
 				7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */,
 				7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */,
+				7AFE438E26613B8200F94330 /* SignIn.storyboard in Resources */,
 				7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */,
 				7AAFE48D264BE25E00A20324 /* Record.storyboard in Resources */,
 				7AAFE491264BE27A00A20324 /* Calender.storyboard in Resources */,
@@ -530,6 +550,7 @@
 				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
 				7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
+				7AFE439326613C1A00F94330 /* TestViewController.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
 				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
@@ -560,6 +581,7 @@
 				7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */,
 				7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */,
 				7A247B08265120F200E436D6 /* RoutineTableViewCell.swift in Sources */,
+				7AFE439126613BA700F94330 /* SignInViewController.swift in Sources */,
 				7A44AE06265434830051781C /* WaterViewController.swift in Sources */,
 				7AFE438B2660E86800F94330 /* Date+Extension.swift in Sources */,
 				7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */,
@@ -639,7 +661,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -694,7 +716,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -710,6 +732,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Rosa/Rosa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD95UZDB52;
 				INFOPLIST_FILE = Rosa/Info.plist;
@@ -730,6 +753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Rosa/Rosa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD95UZDB52;
 				INFOPLIST_FILE = Rosa/Info.plist;

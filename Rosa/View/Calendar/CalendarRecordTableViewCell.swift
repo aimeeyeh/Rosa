@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CalendarRecordTableViewCell: UITableViewCell {
 
@@ -24,6 +25,9 @@ class CalendarRecordTableViewCell: UITableViewCell {
     @IBOutlet weak var makeupLabel: UILabel!
     @IBOutlet weak var menstrualLabel: UILabel!
     @IBOutlet weak var remarkLabel: UILabel!
+    @IBOutlet weak var fullPhoto: UIImageView!
+    @IBOutlet weak var leftPhoto: UIImageView!
+    @IBOutlet weak var rightPhoto: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +41,9 @@ class CalendarRecordTableViewCell: UITableViewCell {
         self.sleepLabel.text = "\(record.sleep.rounded()) hours"
         self.feelingImage.image = UIImage(named: record.feeling)
         self.feelingLabel.text = record.feeling
+        self.fullPhoto.kf.setImage(with: URL(string: record.fullPhoto))
+        self.leftPhoto.kf.setImage(with: URL(string: record.leftPhoto))
+        self.rightPhoto.kf.setImage(with: URL(string: record.rightPhoto))
         
         if record.mealGlutenFree {
             glutenFreeLabel.textColor = .white

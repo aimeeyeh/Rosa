@@ -25,7 +25,6 @@ class CalendarChallengeTableViewCell: UITableViewCell {
         checkboxButton.isEnabled = false
         checkboxButton.setImage(UIImage(named: "checked"), for: .disabled)
         onButtonPressed?()
-        
     }
     
     func challengeConfigure(challenges: [Challenge], indexPath: IndexPath) {

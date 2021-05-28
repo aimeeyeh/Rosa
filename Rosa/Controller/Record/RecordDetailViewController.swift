@@ -22,11 +22,6 @@ enum PhotoType {
 }
 
 class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate {
-    
-    var currentPhotoType: PhotoType?
-    var fullPhotoUrl: String?
-    var leftPhotoUrl: String?
-    var rightPhotoUrl: String?
 
     @IBOutlet weak var calenderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
@@ -47,6 +42,11 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     var makeup: Bool = false
     var menstrual: Bool = false
     var selectedDate: Date = Date()
+    
+    var currentPhotoType: PhotoType?
+    var fullPhotoUrl: String = ""
+    var leftPhotoUrl: String = ""
+    var rightPhotoUrl: String = ""
     
     
 
@@ -163,14 +163,17 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
             return
         }
         
-        let ref = storage.child("images/file.png")
+        let userID = "kimaiku"
+        let imageName = "images/\(userID)/\(Date()).png"
+        
+        let ref = storage.child(imageName)
         
         ref.putData(imageData, metadata: nil) { [weak self] _ , error in
             guard error == nil else {
                 print("Failed to upload")
                 return
             }
-            self?.storage.child("images/file.png").downloadURL { [weak self] url, error in
+            self?.storage.child(imageName).downloadURL { [weak self] url, error in
                 guard let url = url, error == nil else {
                     return
                 }
@@ -262,18 +265,10 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                     showPicker(PhotoType.rightPhoto)
                 }
                 
-                if let fullPhotoUrl = fullPhotoUrl {
-                    cell.fullImage.kf.setImage(with: URL(string: fullPhotoUrl))
-                }
+                cell.fullImage.kf.setImage(with: URL(string: fullPhotoUrl))
+                cell.leftImage.kf.setImage(with: URL(string: leftPhotoUrl))
+                cell.rightImage.kf.setImage(with: URL(string: rightPhotoUrl))
                 
-                if let leftPhotoUrl = leftPhotoUrl {
-                    cell.leftImage.kf.setImage(with: URL(string: leftPhotoUrl))
-                }
-                
-                if let rightPhotoUrl = rightPhotoUrl {
-                    cell.rightImage.kf.setImage(with: URL(string: rightPhotoUrl))
-                }
-                                
                 return cell
             }
         case 3:
@@ -328,9 +323,7 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                     self.navigationController?.popViewController(animated: true)
                     self.tabBarController?.tabBar.isHidden = false
                     var record = Record(id: "default", date: selectedDate, weather: weather,
-                                        fullPhoto: "", leftPhoto: "", rightPhoto: "", feeling: feeling, water: glassAmount,
-                                                sleep: sleepAmount, mealDairyFree: mealDairyFree, mealGlutenFree: mealGlutenFree,
-                                                mealJunkFree: mealJunkFree, mealSugarFree: mealSugarFree, outdoor: outdoor,
+                                        fullPhoto: fullPhotoUrl, leftPhoto: leftPhotoUrl, rightPhoto: rightPhotoUrl, feeling: feeling, water: glassAmount, sleep: sleepAmount, mealDairyFree: mealDairyFree, mealGlutenFree: mealGlutenFree, mealJunkFree: mealJunkFree, mealSugarFree: mealSugarFree, outdoor: outdoor,
                                                 makeup: makeup, menstrual: menstrual, remark: remark)
                     
                     RecordManager.shared.postDailyRecord(record: &record) { result in
