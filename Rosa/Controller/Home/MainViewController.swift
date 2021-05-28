@@ -53,7 +53,6 @@ class MainViewController: UIViewController, ChartViewDelegate {
 //            print("x: \(Double(index+1)), y: \(sleep)")
         }
         configureSleepLineChart()
-        
     }
     
     func setUpWaterChartData() {
@@ -62,7 +61,6 @@ class MainViewController: UIViewController, ChartViewDelegate {
 //            print("x: \(Double(index+1)), y: \(water)")
         }
         configureWaterBarChart()
-        
     }
     
     var sleepArray: [Double] = []
@@ -85,7 +83,6 @@ class MainViewController: UIViewController, ChartViewDelegate {
             }
             setUpSleepChartData()
             setUpWaterChartData()
-            
         }
     }
     
@@ -112,28 +109,28 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     override func viewDidLoad() {
-
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         configureViews()
         configureProgressView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        sleepArray = []
+        waterArray = []
         fetchChallenge(date: Date())
         fetchPreviousRecords()
-        
     }
     
     func configureViews() {
-
         challengeProgressView.shadowDecorate()
         waterProgressView.shadowDecorate()
         sleepProgressView.shadowDecorate()
         priceView.shadowDecorate()
         photoComparisonView.shadowDecorate()
-
     }
     
     func configureProgressView() {
-
         ringProgressView.startColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 1.00)
         ringProgressView.endColor = .orange
         ringProgressView.backgroundRingColor = UIColor(red: 1.00, green: 0.84, blue: 0.64, alpha: 0.5)
@@ -143,15 +140,12 @@ class MainViewController: UIViewController, ChartViewDelegate {
         ringProgressView.shadowOpacity = 0.0
         ringProgressView.allowsAntialiasing = false
         ringProgressView.style = .round
-
     }
     
     func configureWaterBarChart() {
-
         let dataSet = BarChartDataSet(entries: waterBarChartYValues, label: "Water (ml)")
         let data = BarChartData(dataSets: [dataSet])
         waterChartView.data = data
-    
         waterChartView.xAxis.drawGridLinesEnabled = false
         waterChartView.xAxis.labelPosition = .bottom
         let topAxis = waterChartView.leftAxis
@@ -167,7 +161,6 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     func configureSleepLineChart() {
-        
         let sleepColor = UIColor.rgb(red: 178, green: 228, blue: 157, alpha: 1.0)
         let set = LineChartDataSet(entries: sleepLineChartYValues, label: "Sleeping Hours")
         let data = LineChartData(dataSet: set)
