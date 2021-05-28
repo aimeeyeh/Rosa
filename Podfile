@@ -16,5 +16,7 @@ pod 'HGCircularSlider', '~> 2.2.0'
 pod 'Firebase/Firestore'
 pod 'FirebaseFirestoreSwift'
 pod 'SwiftEntryKit', '1.2.7'
+pod 'Firebase/Storage'
+pod 'Kingfisher', '~> 6.0'
 
 end

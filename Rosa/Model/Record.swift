@@ -14,7 +14,9 @@ struct Record: Codable {
     var id: String
     var date: Date
     var weather: String
-    var photos: [String]
+    var fullPhoto: String
+    var leftPhoto: String
+    var rightPhoto: String
     var feeling: String
     var water: Int
     var sleep: Double
@@ -31,7 +33,9 @@ struct Record: Codable {
         case id
         case date
         case weather
-        case photos
+        case fullPhoto
+        case leftPhoto
+        case rightPhoto
         case feeling
         case water
         case sleep
