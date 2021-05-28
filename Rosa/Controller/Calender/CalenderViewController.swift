@@ -31,7 +31,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     var challenges: [Challenge] = [] {
         didSet {
             tableView.reloadData()
-            checkYesterdayProgress()
         }
     }
 
@@ -78,7 +77,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
         // For UITest
         calnderView.accessibilityIdentifier = "calendar"
-        
+//        checkYesterdayProgress()
         fetchAllRecords()
     }
     
@@ -133,6 +132,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             case .success(let challenges):
                 
                 self?.challenges = challenges
+                
+                if date.formatToDateOnly() == Date().formatToDateOnly() {
+                    self?.checkYesterdayProgress()
+                }
                 
             case .failure(let error):
                 
@@ -233,7 +236,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     
     func checkYesterdayProgress() {
         for challenge in challenges {
-            if challenge.progress == 0 {
+            if challenge.progress == 0 && challenge.isFirstDay == false {
                 print("\(challenge.challengeTitle) has failed")
                 displayFailureMessage()
                 ChallengeManager.shared.delete30dayChallenges(challengeTitle: challenge.challengeTitle)

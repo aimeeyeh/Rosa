@@ -100,7 +100,7 @@ extension ChallengeViewController: UICollectionViewDelegate, UICollectionViewDat
                                             id: "didselect",
                                             progress: 0,
                                             setUpDate: Date(),
-                                            challengeTitle: challengeTitle))
+                                            challengeTitle: challengeTitle, isFirstDay: false))
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

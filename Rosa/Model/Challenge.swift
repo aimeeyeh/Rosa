@@ -15,6 +15,7 @@ struct Challenge: Codable {
     var progress: Int
     var setUpDate: Date
     var challengeTitle: String
+    var isFirstDay: Bool
     
 //    var toDict: [String: Any] {
 //        return [

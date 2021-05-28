@@ -63,6 +63,7 @@
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
 		7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */; };
+		7AFE438B2660E86800F94330 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE438A2660E86800F94330 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,7 @@
 		7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRecordTableViewCell.swift; sourceTree = "<group>"; };
+		7AFE438A2660E86800F94330 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		C374A870328953E5950C01F1 /* Pods_Rosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA81D98234E9CED393A9B2 /* Pods-Rosa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.debug.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DF160F36CA96BCB712C384 /* Pods-Rosa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.release.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.release.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				7AAFE49F264BE64600A20324 /* UIView+Extension.swift */,
+				7AFE438A2660E86800F94330 /* Date+Extension.swift */,
 				7A14BDFE265EA8CB00ED17E2 /* UIView+Message.swift */,
 				7A6B01CC265168DD0018547E /* UIButton+Extension.swift */,
 				7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */,
@@ -558,6 +561,7 @@
 				7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */,
 				7A247B08265120F200E436D6 /* RoutineTableViewCell.swift in Sources */,
 				7A44AE06265434830051781C /* WaterViewController.swift in Sources */,
+				7AFE438B2660E86800F94330 /* Date+Extension.swift in Sources */,
 				7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

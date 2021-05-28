@@ -32,7 +32,7 @@ class ChallengeManager {
         let queryCollection = database.collection("user").document("Aimee").collection("challenge")
         
         queryCollection
-            .whereField("setUpDate", isGreaterThan: start )
+            .whereField("setUpDate", isGreaterThanOrEqualTo: start )
             .whereField("setUpDate", isLessThan: end!)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -64,7 +64,10 @@ class ChallengeManager {
     func postChallenge(challenge: inout Challenge, completion: @escaping (Result<String, Error>) -> Void) {
         
         let today = Date()
-        var thirtyDays = [today]
+        let calendar = Calendar.current
+        let todayStartTime = calendar.startOfDay(for: today)
+        
+        var thirtyDays = [todayStartTime]
         
         func setUp30Days(date: Date) {
             var dayComponent = DateComponents()
@@ -86,6 +89,11 @@ class ChallengeManager {
             let document = collection.document()
             challenge.id = document.documentID
             challenge.setUpDate = day
+            if day == todayStartTime {
+                challenge.isFirstDay = true
+            } else {
+                challenge.isFirstDay = false
+            }
             
             do {
                 try document.setData(from: challenge)
