@@ -184,6 +184,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         sleepLineChartView.xAxis.labelPosition = .bottom
         let yAxis = sleepLineChartView.leftAxis
         yAxis.drawGridLinesEnabled = false
+//        yAxis.granularity = 0.25
         sleepLineChartView.xAxis.drawGridLinesEnabled = false
         sleepLineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
     }

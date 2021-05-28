@@ -10,18 +10,28 @@ import UIKit
 class PhotoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var uploadFull: UIButton!
-    @IBOutlet weak var uploadLeft: NSLayoutConstraint!
+    @IBOutlet weak var uploadLeft: UIButton!
     @IBOutlet weak var uploadRight: UIButton!
+    
+    @IBOutlet weak var fullImage: UIImageView!
+    @IBOutlet weak var leftImage: UIImageView!
+    @IBOutlet weak var rightImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    
+    var onFullButtonPressed: (() -> Void)?
+    var onLeftButtonPressed: (() -> Void)?
+    var onRightButtonPressed: (() -> Void)?
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func uploadFullPhoto(_ sender: UIButton) {
+        onFullButtonPressed?()
     }
-
+    @IBAction func uploadLeftPhoto(_ sender: UIButton) {
+        onLeftButtonPressed?()
+    }
+    @IBAction func uploadRightPhoto(_ sender: UIButton) {
+        onRightButtonPressed?()
+    }
 }

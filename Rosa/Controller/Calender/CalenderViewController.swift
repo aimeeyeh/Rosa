@@ -8,6 +8,7 @@
 import UIKit
 import FSCalendar
 import SwiftEntryKit
+import Kingfisher
 
 class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDataSource,
                               UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate {

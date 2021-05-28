@@ -10,14 +10,29 @@ import FSCalendar
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseStorage
+import Kingfisher
 
 // swiftlint:disable all
 
+enum PhotoType {
+    case fullPhoto
+    case leftPhoto
+    case rightPhoto
+}
+
 class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate {
+    
+    var currentPhotoType: PhotoType?
+    var fullPhotoUrl: String?
+    var leftPhotoUrl: String?
+    var rightPhotoUrl: String?
 
     @IBOutlet weak var calenderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
+    
+    private let storage = Storage.storage().reference()
     
     var weather: String = "" 
     var feeling: String = ""
@@ -123,9 +138,57 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
     
+    func setPhotoUrl(url: String) {
+        switch currentPhotoType {
+        case .fullPhoto:
+            fullPhotoUrl = url
+        case .leftPhoto:
+            leftPhotoUrl = url
+        default:
+            rightPhotoUrl = url
+        }
+        tableView.reloadData()
+    }
+    
 }
 
-extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate {
+extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: - here
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        guard let imageData = image.pngData() else {
+            return
+        }
+        
+        let ref = storage.child("images/file.png")
+        
+        ref.putData(imageData, metadata: nil) { [weak self] _ , error in
+            guard error == nil else {
+                print("Failed to upload")
+                return
+            }
+            self?.storage.child("images/file.png").downloadURL { [weak self] url, error in
+                guard let url = url, error == nil else {
+                    return
+                }
+                let urlString = url.absoluteString
+                
+                print("Download URL: \(urlString)")
+                
+                self?.setPhotoUrl(url: urlString)
+
+            }
+            
+        }
+        
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
@@ -173,9 +236,44 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                 
                 return cell
             }
+    // MARK: - Photo Cell
         case 2:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoTableViewCell",
                                                             for: indexPath) as? PhotoTableViewCell {
+                func showPicker(_ photoType: PhotoType) {
+                    self.currentPhotoType = photoType
+                    let picker = UIImagePickerController()
+                    picker.sourceType = .photoLibrary
+                    picker.delegate = self
+                    picker.allowsEditing = true
+                    self.present(picker, animated: true)
+                    
+                }
+                
+                cell.onFullButtonPressed = {
+                    showPicker(PhotoType.fullPhoto)
+                }
+                
+                cell.onLeftButtonPressed = {
+                    showPicker(PhotoType.leftPhoto)
+                }
+                
+                cell.onRightButtonPressed = {
+                    showPicker(PhotoType.rightPhoto)
+                }
+                
+                if let fullPhotoUrl = fullPhotoUrl {
+                    cell.fullImage.kf.setImage(with: URL(string: fullPhotoUrl))
+                }
+                
+                if let leftPhotoUrl = leftPhotoUrl {
+                    cell.leftImage.kf.setImage(with: URL(string: leftPhotoUrl))
+                }
+                
+                if let rightPhotoUrl = rightPhotoUrl {
+                    cell.rightImage.kf.setImage(with: URL(string: rightPhotoUrl))
+                }
+                                
                 return cell
             }
         case 3:
@@ -230,7 +328,7 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                     self.navigationController?.popViewController(animated: true)
                     self.tabBarController?.tabBar.isHidden = false
                     var record = Record(id: "default", date: selectedDate, weather: weather,
-                                        photos: ["photo1", "photo2", "photo3"], feeling: feeling, water: glassAmount,
+                                        fullPhoto: "", leftPhoto: "", rightPhoto: "", feeling: feeling, water: glassAmount,
                                                 sleep: sleepAmount, mealDairyFree: mealDairyFree, mealGlutenFree: mealGlutenFree,
                                                 mealJunkFree: mealJunkFree, mealSugarFree: mealSugarFree, outdoor: outdoor,
                                                 makeup: makeup, menstrual: menstrual, remark: remark)
