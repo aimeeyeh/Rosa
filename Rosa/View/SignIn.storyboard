@@ -15,59 +15,29 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oN-es-TuI">
+                                <rect key="frame" x="166.5" y="691" width="81" height="30"/>
+                                <state key="normal" title="Skip Sign In"/>
+                                <connections>
+                                    <action selector="skipSignIn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TzQ-GL-0zB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3oN-es-TuI" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="DMo-vD-JPU"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="3oN-es-TuI" secondAttribute="bottom" constant="141" id="IdQ-Jp-aqc"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <segue destination="PxO-Vt-VH4" kind="show" identifier="showTestViewController" id="yJN-iA-0Cm"/>
+                        <segue destination="nY8-8y-Y3l" kind="show" identifier="showHomePage" id="2MK-ZV-v0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="74"/>
-        </scene>
-        <!--Test View Controller-->
-        <scene sceneID="AhL-4h-01n">
-            <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="PxO-Vt-VH4" customClass="TestViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ATo-TV-2AW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xla-ze-kza">
-                                <rect key="frame" x="10" y="438" width="394" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-nj-DKW">
-                                <rect key="frame" x="171" y="732" width="72" height="30"/>
-                                <state key="normal" title="I'm Ready!"/>
-                                <connections>
-                                    <segue destination="nY8-8y-Y3l" kind="show" id="Ub9-E8-4TE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="aFp-me-mot"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="xla-ze-kza" firstAttribute="centerY" secondItem="ATo-TV-2AW" secondAttribute="centerY" id="0p6-ve-Nji"/>
-                            <constraint firstItem="xla-ze-kza" firstAttribute="centerX" secondItem="ATo-TV-2AW" secondAttribute="centerX" id="Cv4-cL-Bfk"/>
-                            <constraint firstItem="aFp-me-mot" firstAttribute="bottom" secondItem="X4h-nj-DKW" secondAttribute="bottom" constant="100" id="aSP-1v-535"/>
-                            <constraint firstItem="aFp-me-mot" firstAttribute="trailing" secondItem="xla-ze-kza" secondAttribute="trailing" constant="10" id="fU9-fz-yie"/>
-                            <constraint firstItem="xla-ze-kza" firstAttribute="leading" secondItem="aFp-me-mot" secondAttribute="leading" constant="10" id="k0P-Wm-0zn"/>
-                            <constraint firstItem="xla-ze-kza" firstAttribute="centerY" secondItem="ATo-TV-2AW" secondAttribute="centerY" id="w3Y-IR-86E"/>
-                            <constraint firstItem="X4h-nj-DKW" firstAttribute="centerX" secondItem="ATo-TV-2AW" secondAttribute="centerX" id="ypM-b0-RB5"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Jrt-9k-Z5E"/>
-                    <connections>
-                        <outlet property="detailsLabel" destination="xla-ze-kza" id="XfA-Wv-yyG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="atK-Ek-jul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="928" y="74"/>
         </scene>
         <!--Main-->
         <scene sceneID="2MS-Uj-YsQ">
@@ -77,7 +47,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUG-23-vXF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1601" y="74"/>
+            <point key="canvasLocation" x="740" y="74"/>
         </scene>
     </scenes>
     <resources>

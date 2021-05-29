@@ -42,10 +42,15 @@ class SignInViewController: UIViewController {
         controller.presentationContextProvider = self
         controller.performRequests()
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let testVC = segue.destination as? TestViewController, let user = sender as? User {
-            testVC.user = user
-        }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let testVC = segue.destination as? MainViewController, let user = sender as? User {
+//            testVC.user = user
+//        }
+//    }
+    
+    @IBAction func skipSignIn(_ sender: Any) {
+        performSegue(withIdentifier: "showHomePage", sender: nil)
     }
 }
 
@@ -58,7 +63,14 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
         
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = User(credentials: credentials)
-            performSegue(withIdentifier: "showTestViewController", sender: user)
+            
+            print("""
+            ID: \(user.id),
+            Name: \(user.name),
+            Email: \(user.email)
+            """)
+            
+            performSegue(withIdentifier: "showHomePage", sender: user)
             
         default: break
         }
