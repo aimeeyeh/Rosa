@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3QN-gB-hdO">
-                                <rect key="frame" x="25" y="69" width="164" height="279"/>
+                                <rect key="frame" x="25" y="69" width="164" height="239"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Io-f5-HBI" customClass="MKRingProgressView">
-                                        <rect key="frame" x="22" y="139" width="120" height="120"/>
+                                        <rect key="frame" x="22" y="99" width="120" height="120"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何挑戰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C62-lo-M8j">
                                                 <rect key="frame" x="20" y="52" width="80" height="16"/>
@@ -59,7 +59,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlW-ft-ql1">
-                                <rect key="frame" x="25" y="373" width="164" height="200"/>
+                                <rect key="frame" x="25" y="333" width="164" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="睡眠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btp-31-Ap5">
                                         <rect key="frame" x="15" y="15" width="25" height="14.5"/>
@@ -67,21 +67,29 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AP6-it-qrG">
+                                        <rect key="frame" x="48.5" y="128" width="67.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu2-s6-T8t" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="5" y="34.5" width="154" height="160.5"/>
+                                        <rect key="frame" x="5" y="34.5" width="154" height="200.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="hu2-s6-T8t" secondAttribute="bottom" constant="5" id="1TP-Xo-fnn"/>
+                                    <constraint firstItem="AP6-it-qrG" firstAttribute="centerX" secondItem="hu2-s6-T8t" secondAttribute="centerX" id="5Na-Bp-Ksh"/>
                                     <constraint firstItem="hu2-s6-T8t" firstAttribute="top" secondItem="Btp-31-Ap5" secondAttribute="bottom" constant="5" id="NkT-SC-czh"/>
                                     <constraint firstItem="Btp-31-Ap5" firstAttribute="leading" secondItem="dlW-ft-ql1" secondAttribute="leading" constant="15" id="a8k-oE-blB"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Btp-31-Ap5" secondAttribute="trailing" constant="20" symbolic="YES" id="a9P-Fr-y38"/>
-                                    <constraint firstAttribute="height" constant="200" id="gEf-GH-M2l"/>
+                                    <constraint firstAttribute="height" constant="240" id="gEf-GH-M2l"/>
                                     <constraint firstAttribute="trailing" secondItem="hu2-s6-T8t" secondAttribute="trailing" constant="5" id="gYs-Pn-E4Y"/>
                                     <constraint firstItem="Btp-31-Ap5" firstAttribute="top" secondItem="dlW-ft-ql1" secondAttribute="top" constant="15" id="tcy-My-1Bj"/>
                                     <constraint firstItem="hu2-s6-T8t" firstAttribute="leading" secondItem="dlW-ft-ql1" secondAttribute="leading" constant="5" id="ukh-bx-qDS"/>
+                                    <constraint firstItem="AP6-it-qrG" firstAttribute="centerY" secondItem="hu2-s6-T8t" secondAttribute="centerY" id="zYw-O2-RTO"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
@@ -98,6 +106,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyX-qx-pgH">
+                                        <rect key="frame" x="54" y="172.5" width="67.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7W-qo-bxv" customClass="HorizontalBarChartView" customModule="Charts">
                                         <rect key="frame" x="5" y="34.5" width="165" height="289.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -108,9 +122,11 @@
                                     <constraint firstItem="e7W-qo-bxv" firstAttribute="leading" secondItem="Mmc-Fi-LGp" secondAttribute="leading" constant="5" id="EOB-gp-HO9"/>
                                     <constraint firstItem="gKY-96-tsP" firstAttribute="top" secondItem="Mmc-Fi-LGp" secondAttribute="top" constant="15" id="F7p-4j-gI7"/>
                                     <constraint firstItem="e7W-qo-bxv" firstAttribute="top" secondItem="gKY-96-tsP" secondAttribute="bottom" constant="5" id="HbM-dT-CIE"/>
+                                    <constraint firstItem="gyX-qx-pgH" firstAttribute="centerX" secondItem="e7W-qo-bxv" secondAttribute="centerX" id="Hlc-gX-B3h"/>
                                     <constraint firstItem="gKY-96-tsP" firstAttribute="leading" secondItem="Mmc-Fi-LGp" secondAttribute="leading" constant="15" id="Tve-me-GvS"/>
                                     <constraint firstAttribute="bottom" secondItem="e7W-qo-bxv" secondAttribute="bottom" constant="5" id="fbQ-EY-bPV"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gKY-96-tsP" secondAttribute="trailing" constant="20" symbolic="YES" id="nxb-O8-qad"/>
+                                    <constraint firstItem="gyX-qx-pgH" firstAttribute="centerY" secondItem="e7W-qo-bxv" secondAttribute="centerY" id="tbD-64-Jti"/>
                                     <constraint firstAttribute="trailing" secondItem="e7W-qo-bxv" secondAttribute="trailing" constant="5" id="ydf-KI-sUO"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -399,6 +415,8 @@
                     <connections>
                         <outlet property="challengeProgressLabel" destination="C62-lo-M8j" id="NRR-bT-0Y5"/>
                         <outlet property="challengeProgressView" destination="3QN-gB-hdO" id="fXt-lm-BXe"/>
+                        <outlet property="noSleepRecord" destination="AP6-it-qrG" id="BSM-fa-Nfv"/>
+                        <outlet property="noWaterRecord" destination="gyX-qx-pgH" id="Dal-n3-IEh"/>
                         <outlet property="photoComparisonView" destination="C8M-1o-gbI" id="ncm-2g-x91"/>
                         <outlet property="priceView" destination="PiM-rY-3dY" id="7Wo-bQ-ihL"/>
                         <outlet property="ringProgressView" destination="8Io-f5-HBI" id="6CU-Rh-Bws"/>
@@ -455,7 +473,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Gbb-2U-3F1">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="SaP-cl-Q0t" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overCurrentContext" id="SaP-cl-Q0t" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RkD-Nf-gxZ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -477,7 +495,7 @@
         <!--Navigation Controller-->
         <scene sceneID="moj-YY-XNO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1ou-Xg-4o8" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overCurrentContext" id="1ou-Xg-4o8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" id="KYW-v9-Wqc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FV1-Fl-3Xw">

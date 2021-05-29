@@ -9,12 +9,6 @@ import UIKit
 import MKRingProgressView
 import Charts
 
-// class MyXAxisFormatter: IAxisValueFormatter {
-//    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-//        <#code#>
-//    }
-// }
-
 class MainViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var challengeProgressView: UIView!
@@ -26,6 +20,8 @@ class MainViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var ringProgressView: RingProgressView!
     @IBOutlet weak var waterChartView: HorizontalBarChartView!
     @IBOutlet weak var sleepLineChartView: LineChartView!
+    @IBOutlet weak var noSleepRecord: UILabel!
+    @IBOutlet weak var noWaterRecord: UILabel!
     
     func createPastSevenDays() -> [Date] {
         var past7Days = [Date]()
@@ -69,20 +65,31 @@ class MainViewController: UIViewController, ChartViewDelegate {
     
     var last7DayRecords: [Record] = [] {
         didSet {
-            let past7Days = createPastSevenDays()
-            for day in past7Days {
-                let filteredRecords = last7DayRecords.filter { $0.date == day }
-                if filteredRecords.count > 0 {
-                    sleepArray.append(filteredRecords[0].sleep)
-                    waterArray.append(filteredRecords[0].water)
-                } else {
-                    sleepArray.append(0.0)
-                    waterArray.append(0)
-
+            if last7DayRecords.count == 0 {
+                waterChartView.isHidden = true
+                sleepLineChartView.isHidden = true
+                noWaterRecord.isHidden = false
+                noSleepRecord.isHidden = false
+            } else {
+                waterChartView.isHidden = false
+                sleepLineChartView.isHidden = false
+                noWaterRecord.isHidden = true
+                noSleepRecord.isHidden = true
+                let past7Days = createPastSevenDays()
+                for day in past7Days {
+                    let filteredRecords = last7DayRecords.filter { $0.date == day }
+                    if filteredRecords.count > 0 {
+                        sleepArray.append(filteredRecords[0].sleep)
+                        waterArray.append(filteredRecords[0].water)
+                    } else {
+                        sleepArray.append(0.0)
+                        waterArray.append(0)
+                        
+                    }
                 }
+                setUpSleepChartData()
+                setUpWaterChartData()
             }
-            setUpSleepChartData()
-            setUpWaterChartData()
         }
     }
     
@@ -113,6 +120,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         self.navigationController?.isNavigationBarHidden = true
         configureViews()
         configureProgressView()
+//        self.sleepLineChartView.ishidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,6 +156,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         waterChartView.data = data
         waterChartView.xAxis.drawGridLinesEnabled = false
         waterChartView.xAxis.labelPosition = .bottom
+        dataSet.drawValuesEnabled = false
         let topAxis = waterChartView.leftAxis
         topAxis.drawGridLinesEnabled = false
         topAxis.drawLabelsEnabled = false
@@ -158,6 +167,8 @@ class MainViewController: UIViewController, ChartViewDelegate {
         waterChartView.maxVisibleCount = 60
         waterChartView.notifyDataSetChanged()
         waterChartView.animate(yAxisDuration: 2.0)
+        waterChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 9)
+        waterChartView.xAxis.valueFormatter = MyXAxisFormatter()
     }
     
     func configureSleepLineChart() {
@@ -180,6 +191,8 @@ class MainViewController: UIViewController, ChartViewDelegate {
 //        yAxis.granularity = 0.25
         sleepLineChartView.xAxis.drawGridLinesEnabled = false
         sleepLineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        sleepLineChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 8)
+        sleepLineChartView.xAxis.valueFormatter = MyXAxisFormatter()
     }
     
     func fetchChallenge(date: Date) {
