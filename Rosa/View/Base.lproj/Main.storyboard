@@ -20,7 +20,7 @@
                                 <rect key="frame" x="25" y="69" width="164" height="239"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Io-f5-HBI" customClass="MKRingProgressView">
-                                        <rect key="frame" x="22" y="99" width="120" height="120"/>
+                                        <rect key="frame" x="22" y="109" width="120" height="120"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何挑戰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C62-lo-M8j">
                                                 <rect key="frame" x="20" y="52" width="80" height="16"/>
@@ -38,7 +38,11 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="挑戰進度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-FI-ShG">
-                                        <rect key="frame" x="15" y="15" width="49.5" height="14.5"/>
+                                        <rect key="frame" x="15" y="15" width="129" height="14.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="129" id="LJS-sb-ksv"/>
+                                            <constraint firstAttribute="height" constant="14.5" id="tP8-Wi-F7d"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -49,8 +53,8 @@
                                     <constraint firstItem="SRb-FI-ShG" firstAttribute="leading" secondItem="3QN-gB-hdO" secondAttribute="leading" constant="15" id="5gr-x0-huS"/>
                                     <constraint firstItem="SRb-FI-ShG" firstAttribute="top" secondItem="3QN-gB-hdO" secondAttribute="top" constant="15" id="9yF-fe-gRf"/>
                                     <constraint firstItem="8Io-f5-HBI" firstAttribute="centerX" secondItem="3QN-gB-hdO" secondAttribute="centerX" id="IiO-uW-3aU"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SRb-FI-ShG" secondAttribute="trailing" constant="20" symbolic="YES" id="JaX-n0-MAi"/>
-                                    <constraint firstAttribute="bottom" secondItem="8Io-f5-HBI" secondAttribute="bottom" constant="20" id="cfr-4P-Uth"/>
+                                    <constraint firstAttribute="trailing" secondItem="SRb-FI-ShG" secondAttribute="trailing" constant="20" symbolic="YES" id="JaX-n0-MAi"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Io-f5-HBI" secondAttribute="bottom" constant="10" id="cfr-4P-Uth"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">

@@ -13,6 +13,7 @@ class MyXAxisFormatter: IAxisValueFormatter {
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "M/dd"
+//        formatter.dateFormat = "EEE"
         return formatter
     }()
     

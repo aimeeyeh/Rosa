@@ -21,6 +21,9 @@ class ChallengeManager {
     
     var currentProgress: Int = 0
     
+    let userID = UserDefaults.standard.string(forKey: "userID")
+    let defaultID = "Aimee"
+    
     // MARK: - 讀取各日期的挑戰
     
     func fetchChallenge(date: Date, completion: @escaping (Result<[Challenge], Error>) -> Void) {
@@ -29,7 +32,7 @@ class ChallengeManager {
         let start = calendar.startOfDay(for: date)
         let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: date)
         
-        let queryCollection = database.collection("user").document("Aimee").collection("challenge")
+        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
         
         queryCollection
             .whereField("setUpDate", isGreaterThanOrEqualTo: start )
@@ -82,7 +85,7 @@ class ChallengeManager {
             setUp30Days(date: thirtyDays[endIndex])
         }
         
-        let collection = database.collection("user").document("Aimee").collection("challenge")
+        let collection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
         
         for day in thirtyDays {
             
@@ -117,7 +120,7 @@ class ChallengeManager {
             let start = calendar.startOfDay(for: date)
             let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: start)
             
-            let challengeRef = database.collection("user").document("Aimee").collection("challenge")
+            let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
             
             challengeRef
                 .whereField("challengeTitle", isEqualTo: currentChallengeTitle)
@@ -156,7 +159,7 @@ class ChallengeManager {
     
     func updateDocumentProgress(documentID: String, onProgressCompleted: () -> Void) {
         
-        let challengeRef = database.collection("user").document("Aimee").collection("challenge").document("\(documentID)")
+        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge").document("\(documentID)")
         let numberAfterAdding = self.currentProgress + 1
         
         if checkChallengeHasCompleted(progress: numberAfterAdding) {
@@ -188,7 +191,7 @@ class ChallengeManager {
     // MARK: - 刪除連續30天的挑戰
     
     func delete30dayChallenges(challengeTitle: String) {
-        let challengeRef = database.collection("user").document("Aimee").collection("challenge")
+        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
         
         // 先拿到需刪除的challenge title來得到他們的document ID
         func getDocumentIDs() {
@@ -210,7 +213,7 @@ class ChallengeManager {
     }
     
     func executeDeleteDocuments(documentID: String) {
-        let challengeRef = database.collection("user").document("Aimee").collection("challenge")
+        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
         challengeRef.document(documentID).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")

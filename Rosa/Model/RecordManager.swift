@@ -16,9 +16,14 @@ class RecordManager {
     
     lazy var database = Firestore.firestore()
     
+    let userID = UserDefaults.standard.string(forKey: "userID")
+    let defaultID = "Aimee"
+    
+//    let queryCollection = .database.collection("user").document("Aimee").collection("record")
+    
     func fetchAllRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
         
-        let queryCollection = database.collection("user").document("Aimee").collection("record")
+        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
         queryCollection.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -61,7 +66,7 @@ class RecordManager {
         guard let startDate = calendar.date(from: startDateComponents),
               let endDate = calendar.date(byAdding: endDateComponents, to: startDate) else { return }
         
-        let queryCollection = database.collection("user").document("Aimee").collection("record")
+        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
         
         queryCollection
             .whereField("date", isGreaterThanOrEqualTo: startDate)
@@ -93,7 +98,8 @@ class RecordManager {
 
     func postDailyRecord(record: inout Record, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = database.collection("user").document("Aimee").collection("record").document()
+        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
+        let document = queryCollection.document()
         // 需要先有Aimee這個user
         let today = Date()
         let calendar = Calendar.current
@@ -120,9 +126,9 @@ class RecordManager {
         endDateComponents.day = -6
         guard let sevenDaysAgo = calendar.date(byAdding: endDateComponents, to: todayStartTime) else { return }
         
-        let recordRef = database.collection("user").document("Aimee").collection("record")
+        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
         
-        recordRef
+        queryCollection
             .whereField("date", isGreaterThanOrEqualTo: sevenDaysAgo )
             .whereField("date", isLessThanOrEqualTo: todayStartTime)
             .getDocuments() { (querySnapshot, err) in
