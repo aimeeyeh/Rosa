@@ -9,6 +9,21 @@ import UIKit
 import MKRingProgressView
 import Charts
 
+//class MyXAxisFormatter: IAxisValueFormatter {
+//    var days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+//
+//    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+//
+//        let val = Int(value - 1)
+//
+//        if val >= 0 && val < days.count {
+//            return days[Int(val)]
+//        }
+//        return ""
+//
+//    }
+//}
+
 class MainViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var challengeProgressView: UIView!
@@ -167,7 +182,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         waterChartView.maxVisibleCount = 60
         waterChartView.notifyDataSetChanged()
         waterChartView.animate(yAxisDuration: 2.0)
-        waterChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 9)
+        waterChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 7)
         waterChartView.xAxis.valueFormatter = MyXAxisFormatter()
     }
     
@@ -191,7 +206,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
 //        yAxis.granularity = 0.25
         sleepLineChartView.xAxis.drawGridLinesEnabled = false
         sleepLineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        sleepLineChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 8)
+        sleepLineChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 7)
         sleepLineChartView.xAxis.valueFormatter = MyXAxisFormatter()
     }
     
