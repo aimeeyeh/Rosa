@@ -9,21 +9,6 @@ import UIKit
 import MKRingProgressView
 import Charts
 
-//class MyXAxisFormatter: IAxisValueFormatter {
-//    var days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
-//
-//    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-//
-//        let val = Int(value - 1)
-//
-//        if val >= 0 && val < days.count {
-//            return days[Int(val)]
-//        }
-//        return ""
-//
-//    }
-//}
-
 class MainViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var challengeProgressView: UIView!

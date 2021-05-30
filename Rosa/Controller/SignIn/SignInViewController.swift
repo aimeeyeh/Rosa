@@ -31,23 +31,19 @@ class SignInViewController: UIViewController {
     
     @objc
     func didTapAppleButton() {
-        let provider = ASAuthorizationAppleIDProvider()
-        let request = provider.createRequest()
-        
-        // add in things depend on what the app needs
-        request.requestedScopes = [.fullName, .email]
-        
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self
-        controller.performRequests()
+        if #available(iOS 13.0, *) {
+            let provider = ASAuthorizationAppleIDProvider()
+            let request = provider.createRequest()
+            
+            // add in things depend on what the app needs
+            request.requestedScopes = [.fullName, .email]
+            
+            let controller = ASAuthorizationController(authorizationRequests: [request])
+            controller.delegate = self
+            controller.presentationContextProvider = self
+            controller.performRequests()
+        }
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let testVC = segue.destination as? MainViewController, let user = sender as? User {
-//            testVC.user = user
-//        }
-//    }
     
     @IBAction func skipSignIn(_ sender: Any) {
         performSegue(withIdentifier: "showHomePage", sender: nil)
@@ -63,6 +59,12 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
         
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = User(credentials: credentials)
+            
+            let defaults = UserDefaults.standard
+            defaults.set(user.name, forKey: "userName")
+            defaults.set(user.id, forKey: "userID")
+            
+            UserManager.shared.addNewUser()
             
             print("""
             ID: \(user.id),
