@@ -8,17 +8,8 @@
 import UIKit
 import CollectionViewWaterfallLayout
 
-// struct MockData {
-//
-//    let title: String
-//    let photo: String
-//    let arthor: String
-//    let likes: Int
-// }
-
 class ArticlesViewController: UIViewController {
 
-//    var mockData: [MockData] = []
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var followButton: UIButton!
@@ -27,6 +18,14 @@ class ArticlesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
+    var allArticles: [Article] = [] {
+        didSet {
+            collectionView.reloadData()
+            print(" 目前有這些： \(allArticles.count)")
+        }
+    }
+    
+    // waterfall cell size
     lazy var cellSizes: [CGSize] = {
         var cellSizes = [CGSize]()
         for _ in 0...100 {
@@ -44,6 +43,7 @@ class ArticlesViewController: UIViewController {
         setUpWaterfall()
         followButton.isSelected = true
         followButton.setTitleColor(UIColor.darkGray, for: .selected)
+        fetchAllArticles()
 
     }
     
@@ -53,15 +53,30 @@ class ArticlesViewController: UIViewController {
     }
 
     func setUpWaterfall() {
-
         let layout = CollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 10
         layout.minimumInteritemSpacing = 10
-
         collectionView.collectionViewLayout = layout
-
     }
-
+    
+    func fetchAllArticles() {
+        ArticleManager.shared.fetchAllArticles() { [weak self] result in
+            
+            switch result {
+            
+            case .success(let articles):
+                
+                self?.allArticles = articles
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+    
+    // MARK: - 熱門/追蹤/推薦
+    
     var currentType = "follow"
 
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -93,42 +108,15 @@ class ArticlesViewController: UIViewController {
         }
 //        reloadData()
     }
+    
+    // MARK: - 文章分類
+    
     @IBAction func showCategory(_ sender: Any) {
         tableViewHeight.constant = tableViewHeight.constant == 0 ? 261 : 0
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
           self.tableView.alpha = 1
           self.view.layoutIfNeeded()
         }
-    }
-}
-
-extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        50
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
-                                                         for: indexPath) as? CollectionViewCell { return cell }
-        return UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showArticleDetails", sender: self)
-    }
-
-}
-
-// MARK: - CollectionViewWaterfallLayoutDelegate
-
-extension ArticlesViewController: CollectionViewWaterfallLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout: UICollectionViewLayout,
-                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return cellSizes[indexPath.item]
     }
 }
 
@@ -151,4 +139,79 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
       }
       return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let queryArray = [
+            "熱門",
+            "酒糟",
+            "保養",
+            "戒斷",
+            "防曬",
+            "醫美"
+        ]
+        
+        if indexPath.row == 0 {
+    
+            self.tableViewHeight.constant = 0
+            fetchAllArticles()
+            tableView.reloadData()
+            
+        } else {
+            
+            ArticleManager.shared.queryCategory(category: queryArray[indexPath.row]) { [weak self] result in
+                
+                switch result {
+                
+                case .success(let articles):
+                    
+                    self?.allArticles = articles
+                    
+                    self?.tableViewHeight.constant = 0
+                    
+                    tableView.reloadData()
+                    
+                case .failure(let error):
+                    
+                    print("fetchData.failure: \(error)")
+                }
+            }
+        }
+    }
+    
 }
+
+// MARK: - 基本文章陳列
+
+extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        allArticles.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
+                                                         for: indexPath) as? CollectionViewCell {
+            cell.configureArticleCell(article: allArticles[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showArticleDetails", sender: self)
+    }
+
+}
+
+// MARK: - CollectionViewWaterfallLayoutDelegate (文章陳列 - waterfall layout 設定）
+
+extension ArticlesViewController: CollectionViewWaterfallLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout: UICollectionViewLayout,
+                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return cellSizes[indexPath.item]
+    }
+}
+

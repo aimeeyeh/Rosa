@@ -436,7 +436,7 @@
                                                     <state key="normal" title="Sunny" image="rainy">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                     </state>
-                                                    <state key="selected" image="weather_rainy"/>
+                                                    <state key="selected" image="rainy"/>
                                                     <connections>
                                                         <action selector="selectedRainy:" destination="PAX-6U-XtK" eventType="touchUpInside" id="QW7-mc-qpC"/>
                                                     </connections>
@@ -1512,7 +1512,6 @@
         <image name="sugarFree" width="48" height="48"/>
         <image name="sunny" width="512" height="512"/>
         <image name="water" width="512" height="512"/>
-        <image name="weather_rainy" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

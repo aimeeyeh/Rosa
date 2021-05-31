@@ -19,5 +19,6 @@ target 'Rosa' do
   pod 'Firebase/Storage'
   pod 'Kingfisher', '~> 6.0'
   pod 'lottie-ios'
+  pod 'IQKeyboardManagerSwift'
   
 end
