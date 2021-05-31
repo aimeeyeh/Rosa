@@ -20,9 +20,7 @@ class UserManager {
     let defaultID = "Aimee"
     
     func addNewUser() {
-        
-//        database.collection("user").document(userID).set(new HashMap<String, Object>())
-        database.collection("user").document(userID ?? defaultID).setData(["userName": userName ?? defaultID]) { err in
+        database.collection("user").document(userID ?? defaultID).setData(["name": userName ?? defaultID]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {

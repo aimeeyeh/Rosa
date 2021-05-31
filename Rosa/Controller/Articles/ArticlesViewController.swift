@@ -94,7 +94,7 @@ class ArticlesViewController: UIViewController {
 //        reloadData()
     }
     @IBAction func showCategory(_ sender: Any) {
-        tableViewHeight.constant = tableViewHeight.constant == 0 ? 174 : 0
+        tableViewHeight.constant = tableViewHeight.constant == 0 ? 261 : 0
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
           self.tableView.alpha = 1
           self.view.layoutIfNeeded()
@@ -139,7 +139,7 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 4
+      return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

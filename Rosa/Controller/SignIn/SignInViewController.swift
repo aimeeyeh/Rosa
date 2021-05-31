@@ -7,26 +7,38 @@
 
 import UIKit
 import AuthenticationServices
+import Lottie
 
 class SignInViewController: UIViewController {
     
+    @IBOutlet weak var lottieView: AnimationView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-
+        setupAppleButton()
+        setupLottie()
     }
     
-    func setupView() {
+    func setupAppleButton() {
         let appleButton = ASAuthorizationAppleIDButton()
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
         view.addSubview(appleButton)
         NSLayoutConstraint.activate([
-            appleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            appleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 180),
             appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             appleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    func setupLottie() {
+//        let animationView = Animation.named("Lottie_Female")
+        let animationView = Animation.named("Lottie_girlWithFlowers")
+        lottieView.animation = animationView
+        lottieView.animationSpeed = 0.8
+        lottieView.play()
+        lottieView.loopMode = .loop
     }
     
     @objc
