@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CollectionViewCell: UICollectionViewCell {
 
@@ -22,9 +23,14 @@ class CollectionViewCell: UICollectionViewCell {
         articlePhoto.layer.cornerRadius = articlePhoto.frame.height / 20
      }
     
+    func configureArticleCell(article: Article) {
+        arthorName.text = article.author
+        likedAmount.text = "\(article.likes)"
+        articleTitle.text = article.title
+        articlePhoto.kf.setImage(with: URL(string: article.photos[0]))
+    }
+    
     @IBAction func likedArticle(_ sender: Any) {
-
         likeButton.isSelected = !likeButton.isSelected
-
     }
 }

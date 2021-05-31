@@ -34,4 +34,58 @@ class ArticleManager {
         }
     }
     
+    func fetchAllArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
+        
+        let queryCollection = database.collection("articles")
+        queryCollection.addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                var articles = [Article]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                            articles.append(article)
+                        }
+                        
+                    } catch {
+                        print(error)
+                    }
+                }
+                completion(.success(articles))
+            }
+            
+        }
+    }
+    
+    func queryCategory(category: String, completion: @escaping (Result<[Article], Error>) -> Void) {
+        let queryCollection = database.collection("articles")
+        queryCollection.whereField("category", isEqualTo: category)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    var articles = [Article]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                                articles.append(article)
+                            }
+                            
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    }
+                    completion(.success(articles))
+                    
+                }
+            }
+    }
+    
 }

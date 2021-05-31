@@ -289,6 +289,7 @@ PODS:
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
   - HGCircularSlider (2.2.0)
+  - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (6.3.0)
   - leveldb-library (1.22.1)
   - lottie-ios (3.2.3)
@@ -312,6 +313,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FSCalendar
   - HGCircularSlider (~> 2.2.0)
+  - IQKeyboardManagerSwift
   - Kingfisher (~> 6.0)
   - lottie-ios
   - MKRingProgressView
@@ -337,6 +339,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - HGCircularSlider
+    - IQKeyboardManagerSwift
     - Kingfisher
     - leveldb-library
     - lottie-ios
@@ -365,6 +368,7 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
@@ -375,6 +379,6 @@ SPEC CHECKSUMS:
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 00c724ee971b4b085d65cd602757bcfdf8311463
+PODFILE CHECKSUM: 94cd7da70ec6bb287f9d63515a813a8f8796ea62
 
 COCOAPODS: 1.10.1
