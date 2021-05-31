@@ -69,7 +69,7 @@
                                                             </constraints>
                                                             <state key="normal" image="unchecked"/>
                                                             <state key="disabled" image="checked"/>
-                                                            <state key="selected" image="Checkmark"/>
+                                                            <state key="selected" image="unchecked"/>
                                                             <connections>
                                                                 <action selector="checkChallenge:" destination="beb-bh-3Dk" eventType="touchUpInside" id="pjq-xA-6be"/>
                                                             </connections>
@@ -593,7 +593,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Checkmark" width="512" height="512"/>
         <image name="activities" width="512" height="512"/>
         <image name="after" width="962" height="1103"/>
         <image name="calendar" catalog="system" width="128" height="106"/>

@@ -115,7 +115,7 @@ class ChallengeManager {
                                  currentChallengeTitle: String,
                                  onProgressCompleted: @escaping () -> Void) {
         // 更新24小時內特定challenge的document
-        func updateProgressOfTheDay(date: Date) {
+        func updateProgressOfTheDay(date: Date, isToday: Bool = false) {
             let calendar = Calendar.current
             let start = calendar.startOfDay(for: date)
             let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: start)
@@ -124,6 +124,7 @@ class ChallengeManager {
             
             challengeRef
                 .whereField("challengeTitle", isEqualTo: currentChallengeTitle)
+                .whereField("setUpDate", isEqualTo: start )
                 .whereField("setUpDate", isGreaterThanOrEqualTo: start )
                 .whereField("setUpDate", isLessThan: end!)
                 .getDocuments() { (querySnapshot, err) in
@@ -135,6 +136,9 @@ class ChallengeManager {
                             //  用query條件得到的documentID 來呼叫下方的更新進度+3.33的function
                             self.updateDocumentProgress(documentID: document.documentID,
                                                         onProgressCompleted: onProgressCompleted)
+                            if isToday {
+                                self.updateIsChecked(documentID: document.documentID)
+                            }
                             
                         }
                     }
@@ -145,7 +149,7 @@ class ChallengeManager {
         let today = Date() // today
         
         // 用今天代入上方function
-        updateProgressOfTheDay(date: today)
+        updateProgressOfTheDay(date: today, isToday: true)
         
         var dayComponent = DateComponents()
         dayComponent.day = 1
@@ -172,7 +176,7 @@ class ChallengeManager {
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
-                print("Document successfully updated")
+                print("Document progress has successfully updated")
                 
             }
             
@@ -186,6 +190,21 @@ class ChallengeManager {
             return false
         }
         
+    }
+    
+    func updateIsChecked(documentID: String) {
+        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge").document("\(documentID)")
+
+        challengeRef.updateData([
+            "isChecked": true
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document property isChecked has successfully updated")
+
+            }
+        }
     }
     
     // MARK: - 刪除連續30天的挑戰

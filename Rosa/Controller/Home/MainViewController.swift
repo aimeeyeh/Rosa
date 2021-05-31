@@ -163,7 +163,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         topAxis.drawAxisLineEnabled = false
         waterChartView.rightAxis.drawGridLinesEnabled = false
         waterChartView.rightAxis.granularityEnabled = true
-        waterChartView.rightAxis.granularity = 500
+        waterChartView.rightAxis.granularity = 750
         waterChartView.maxVisibleCount = 60
         waterChartView.notifyDataSetChanged()
         waterChartView.animate(yAxisDuration: 2.0)
