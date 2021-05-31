@@ -291,6 +291,7 @@ PODS:
   - HGCircularSlider (2.2.0)
   - Kingfisher (6.3.0)
   - leveldb-library (1.22.1)
+  - lottie-ios (3.2.3)
   - MKRingProgressView (2.2.3)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -312,6 +313,7 @@ DEPENDENCIES:
   - FSCalendar
   - HGCircularSlider (~> 2.2.0)
   - Kingfisher (~> 6.0)
+  - lottie-ios
   - MKRingProgressView
   - SwiftEntryKit (= 1.2.7)
   - SwiftLint
@@ -337,6 +339,7 @@ SPEC REPOS:
     - HGCircularSlider
     - Kingfisher
     - leveldb-library
+    - lottie-ios
     - MKRingProgressView
     - nanopb
     - PromisesObjC
@@ -364,6 +367,7 @@ SPEC CHECKSUMS:
   HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
@@ -371,6 +375,6 @@ SPEC CHECKSUMS:
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 7ea62ff5dabfdefacd846bd0822f2aea3144458d
+PODFILE CHECKSUM: 00c724ee971b4b085d65cd602757bcfdf8311463
 
 COCOAPODS: 1.10.1

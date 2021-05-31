@@ -207,10 +207,10 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Qp-uK-oLx">
-                                <rect key="frame" x="0.0" y="93" width="414" height="174"/>
+                                <rect key="frame" x="0.0" y="93" width="414" height="261"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="174" id="y4p-IE-b6Y"/>
+                                    <constraint firstAttribute="height" constant="261" id="y4p-IE-b6Y"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterTableViewCell" rowHeight="43.5" id="MbY-O2-b3n" customClass="FilterTableViewCell" customModule="Rosa" customModuleProvider="target">
