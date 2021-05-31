@@ -37,9 +37,8 @@ class CalendarChallengeTableViewCell: UITableViewCell {
         challengeBackground.backgroundColor = UIColor.challengeColor(challenge: title)
         checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
         checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
-        
-        checkboxButton.isEnabled = true
-        checkboxButton.isSelected = false
+        checkboxButton.isUserInteractionEnabled = !challenges[indexPath.row].isChecked
+        checkboxButton.isSelected = challenges[indexPath.row].isChecked
        
     }
     

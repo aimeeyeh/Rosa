@@ -16,6 +16,7 @@ struct Challenge: Codable {
     var setUpDate: Date
     var challengeTitle: String
     var isFirstDay: Bool
+    var isChecked: Bool
     
 //    var toDict: [String: Any] {
 //        return [

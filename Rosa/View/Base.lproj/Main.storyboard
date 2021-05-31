@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3QN-gB-hdO">
-                                <rect key="frame" x="25" y="69" width="164" height="239"/>
+                                <rect key="frame" x="25" y="69" width="164" height="249"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Io-f5-HBI" customClass="MKRingProgressView">
-                                        <rect key="frame" x="22" y="109" width="120" height="120"/>
+                                        <rect key="frame" x="22" y="114" width="120" height="120"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何挑戰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C62-lo-M8j">
                                                 <rect key="frame" x="20" y="52" width="80" height="16"/>
@@ -40,7 +40,6 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="挑戰進度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-FI-ShG">
                                         <rect key="frame" x="15" y="15" width="129" height="14.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="129" id="LJS-sb-ksv"/>
                                             <constraint firstAttribute="height" constant="14.5" id="tP8-Wi-F7d"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
@@ -54,7 +53,8 @@
                                     <constraint firstItem="SRb-FI-ShG" firstAttribute="top" secondItem="3QN-gB-hdO" secondAttribute="top" constant="15" id="9yF-fe-gRf"/>
                                     <constraint firstItem="8Io-f5-HBI" firstAttribute="centerX" secondItem="3QN-gB-hdO" secondAttribute="centerX" id="IiO-uW-3aU"/>
                                     <constraint firstAttribute="trailing" secondItem="SRb-FI-ShG" secondAttribute="trailing" constant="20" symbolic="YES" id="JaX-n0-MAi"/>
-                                    <constraint firstAttribute="bottom" secondItem="8Io-f5-HBI" secondAttribute="bottom" constant="10" id="cfr-4P-Uth"/>
+                                    <constraint firstItem="8Io-f5-HBI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SRb-FI-ShG" secondAttribute="bottom" constant="15" id="YBf-d5-rpI"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Io-f5-HBI" secondAttribute="bottom" constant="15" id="cfr-4P-Uth"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
@@ -63,7 +63,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlW-ft-ql1">
-                                <rect key="frame" x="25" y="333" width="164" height="240"/>
+                                <rect key="frame" x="25" y="343" width="164" height="230"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="睡眠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btp-31-Ap5">
                                         <rect key="frame" x="15" y="15" width="25" height="14.5"/>
@@ -72,13 +72,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AP6-it-qrG">
-                                        <rect key="frame" x="48.5" y="128" width="67.5" height="13.5"/>
+                                        <rect key="frame" x="48.5" y="123" width="67.5" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu2-s6-T8t" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="5" y="34.5" width="154" height="200.5"/>
+                                        <rect key="frame" x="5" y="34.5" width="154" height="190.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -89,7 +89,7 @@
                                     <constraint firstItem="hu2-s6-T8t" firstAttribute="top" secondItem="Btp-31-Ap5" secondAttribute="bottom" constant="5" id="NkT-SC-czh"/>
                                     <constraint firstItem="Btp-31-Ap5" firstAttribute="leading" secondItem="dlW-ft-ql1" secondAttribute="leading" constant="15" id="a8k-oE-blB"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Btp-31-Ap5" secondAttribute="trailing" constant="20" symbolic="YES" id="a9P-Fr-y38"/>
-                                    <constraint firstAttribute="height" constant="240" id="gEf-GH-M2l"/>
+                                    <constraint firstAttribute="height" constant="230" id="gEf-GH-M2l"/>
                                     <constraint firstAttribute="trailing" secondItem="hu2-s6-T8t" secondAttribute="trailing" constant="5" id="gYs-Pn-E4Y"/>
                                     <constraint firstItem="Btp-31-Ap5" firstAttribute="top" secondItem="dlW-ft-ql1" secondAttribute="top" constant="15" id="tcy-My-1Bj"/>
                                     <constraint firstItem="hu2-s6-T8t" firstAttribute="leading" secondItem="dlW-ft-ql1" secondAttribute="leading" constant="5" id="ukh-bx-qDS"/>

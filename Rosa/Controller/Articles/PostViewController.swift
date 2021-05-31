@@ -127,20 +127,22 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     @IBAction func uploadFirstImage(_ sender: Any) {
         showPicker(ArticlePhotoType.firstImage)
-        
+        firstButton.tintColor = .clear
     }
     
     @IBAction func uploadSecondImage(_ sender: Any) {
         showPicker(ArticlePhotoType.secondImage)
-
+        secondButton.tintColor = .clear
     }
     
     @IBAction func uploadThirdImage(_ sender: Any) {
         showPicker(ArticlePhotoType.thirdImage)
+        thirdButton.tintColor = .clear
     }
     
     @IBAction func uploadForthImage(_ sender: Any) {
         showPicker(ArticlePhotoType.forthImage)
+        forthButton.tintColor = .clear
     }
     
     @IBAction func onTapSegementedControl(_ sender: UISegmentedControl) {

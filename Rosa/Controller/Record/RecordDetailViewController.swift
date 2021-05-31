@@ -255,14 +255,17 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                 
                 cell.onFullButtonPressed = {
                     showPicker(PhotoType.fullPhoto)
+                    cell.uploadFull.tintColor = .clear
                 }
                 
                 cell.onLeftButtonPressed = {
                     showPicker(PhotoType.leftPhoto)
+                    cell.uploadLeft.tintColor = .clear
                 }
                 
                 cell.onRightButtonPressed = {
                     showPicker(PhotoType.rightPhoto)
+                    cell.uploadRight.tintColor = .clear
                 }
                 
                 cell.fullImage.kf.setImage(with: URL(string: fullPhotoUrl))
