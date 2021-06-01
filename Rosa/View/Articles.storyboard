@@ -289,7 +289,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="0ol-YQ-Yo2">
             <objects>
-                <viewController id="FfD-tU-Pow" customClass="ArticleDetailViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleDetailViewController" id="FfD-tU-Pow" customClass="ArticleDetailViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nO6-gi-aZH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -495,6 +495,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="pageControl" destination="yrD-iK-Jdc" id="lXX-C8-Q6X"/>
+                                            <outlet property="photoStackView" destination="xlM-Kh-POp" id="Mus-lL-Cah"/>
                                             <outlet property="scrollView" destination="ULM-hi-C8i" id="hM7-JE-h7W"/>
                                         </connections>
                                     </tableViewCell>
@@ -561,6 +562,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="IE9-h5-AzC" secondAttribute="trailing" constant="100" id="vFD-57-53F"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="umQ-cO-4ME" id="deS-sj-Vnc"/>
+                                            <outlet property="createdTimeLabel" destination="IE9-h5-AzC" id="mft-nK-nxA"/>
+                                            <outlet property="titleLabel" destination="zKH-Je-p1N" id="c6Z-GW-1ah"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="120" id="c6P-E3-Gck" customClass="CommentCell" customModule="Rosa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1424.5" width="414" height="120"/>
@@ -646,6 +652,8 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="2000"/>
                     <connections>
+                        <outlet property="authorName" destination="P1V-f0-KfU" id="58P-lq-OIU"/>
+                        <outlet property="authorPhoto" destination="5NN-x4-dEe" id="NT1-lm-VLn"/>
                         <outlet property="commentTextfield" destination="K6R-ny-CsZ" id="S2O-nJ-Uqb"/>
                         <outlet property="likeButton" destination="qRY-y8-zyv" id="x1a-iE-K3q"/>
                         <outlet property="tableView" destination="81S-IA-JcX" id="wzB-nh-vmD"/>

@@ -44,6 +44,7 @@ class CalendarRecordTableViewCell: UITableViewCell {
         self.fullPhoto.kf.setImage(with: URL(string: record.fullPhoto))
         self.leftPhoto.kf.setImage(with: URL(string: record.leftPhoto))
         self.rightPhoto.kf.setImage(with: URL(string: record.rightPhoto))
+        self.remarkLabel.text = record.remark
         
         if record.mealGlutenFree {
             glutenFreeLabel.textColor = .white
