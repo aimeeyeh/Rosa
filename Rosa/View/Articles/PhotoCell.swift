@@ -11,6 +11,7 @@ class PhotoCell: UITableViewCell {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var photoStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

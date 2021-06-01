@@ -12,10 +12,22 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTextfield: UITextField!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var authorName: UILabel!
+    @IBOutlet weak var authorPhoto: UIImageView!
+    
+    var article: Article = Article(id: "fail",
+                                   author: "fail",
+                                   category: "fail",
+                                   content: "fail",
+                                   createdTime: Date(),
+                                   likes: 0,
+                                   photos: ["fail"],
+                                   title: "fail")
  
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        authorName.text = article.author
         configureTextfield()
 
     }
@@ -70,6 +82,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ContentCell",
                                                         for: indexPath) as? ContentCell {
+                
+                cell.configureContent(article: article)
                 return cell
             }
             

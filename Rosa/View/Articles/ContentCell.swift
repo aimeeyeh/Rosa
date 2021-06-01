@@ -8,16 +8,22 @@
 import UIKit
 
 class ContentCell: UITableViewCell {
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var createdTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configureContent(article: Article) {
+        
+        titleLabel.text = article.title
+        contentLabel.text = article.content
+        if let formattedDate = article.createdTime.formatToDateOnly() {
+            createdTimeLabel.text = "編輯於\(formattedDate)"
+        }
     }
-
 }

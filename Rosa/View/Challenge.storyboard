@@ -26,12 +26,12 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9w-pH-TqW">
                                                 <rect key="frame" x="147" y="8" width="80" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just pick a challenge." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPU-Oj-P7E">
-                                                <rect key="frame" x="130" y="34" width="114" height="14"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue for 30 days to experience the difference!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPU-Oj-P7E">
+                                                <rect key="frame" x="54.5" y="34" width="265" height="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -51,7 +51,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mVR-PD-cUg">
-                                        <rect key="frame" x="8" y="60" width="358" height="448"/>
+                                        <rect key="frame" x="8" y="60" width="358" height="446.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YOF-Bp-xKw">
                                             <size key="itemSize" width="70" height="85"/>
@@ -92,7 +92,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meal_glutenFree" translatesAutoresizingMaskIntoConstraints="NO" id="Acw-xI-b8k">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glutenFree" translatesAutoresizingMaskIntoConstraints="NO" id="Acw-xI-b8k">
                                                             <rect key="frame" x="20" y="20" width="30" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="19d-Cf-NLb"/>
@@ -127,7 +127,7 @@
                                     <constraint firstItem="Rbo-OI-38S" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" id="5bU-8S-uKZ"/>
                                     <constraint firstItem="mVR-PD-cUg" firstAttribute="top" secondItem="Rbo-OI-38S" secondAttribute="bottom" id="LJ4-Kh-szU"/>
                                     <constraint firstItem="mVR-PD-cUg" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" constant="8" id="eFu-tU-u51"/>
-                                    <constraint firstAttribute="bottom" secondItem="mVR-PD-cUg" secondAttribute="bottom" id="eys-Xd-eiz"/>
+                                    <constraint firstAttribute="bottom" secondItem="mVR-PD-cUg" secondAttribute="bottom" constant="1.5" id="eys-Xd-eiz"/>
                                     <constraint firstItem="Rbo-OI-38S" firstAttribute="top" secondItem="x6r-Wk-t6y" secondAttribute="top" id="sru-48-Mar"/>
                                     <constraint firstAttribute="trailing" secondItem="Rbo-OI-38S" secondAttribute="trailing" id="vUV-NE-6r6"/>
                                     <constraint firstAttribute="trailing" secondItem="mVR-PD-cUg" secondAttribute="trailing" constant="8" id="zPk-6g-Men"/>
@@ -193,7 +193,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="meal_glutenFree" width="48" height="48"/>
+        <image name="glutenFree" width="48" height="48"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

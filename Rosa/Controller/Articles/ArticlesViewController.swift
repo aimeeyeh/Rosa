@@ -25,6 +25,8 @@ class ArticlesViewController: UIViewController {
         }
     }
     
+    var selectedIndexPath: IndexPath?
+    
     // waterfall cell size
     lazy var cellSizes: [CGSize] = {
         var cellSizes = [CGSize]()
@@ -200,9 +202,22 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
         performSegue(withIdentifier: "showArticleDetails", sender: self)
-    }
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let controller = segue.destination as? ArticleDetailViewController {
+            if let indexPath = selectedIndexPath {
+                if segue.identifier == "showArticleDetails" {
+                    controller.article = self.allArticles[indexPath.row]
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - CollectionViewWaterfallLayoutDelegate (文章陳列 - waterfall layout 設定）
