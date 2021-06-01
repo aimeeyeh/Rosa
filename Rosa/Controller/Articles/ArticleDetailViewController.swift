@@ -23,12 +23,19 @@ class ArticleDetailViewController: UIViewController {
                                    likes: 0,
                                    photos: ["fail"],
                                    title: "fail")
+    
+    var comments: [Comment] = [Comment(id: "fail", author: "fail", content: "fail", date: Date())] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
  
     override func viewDidLoad() {
 
         super.viewDidLoad()
         authorName.text = article.author
         configureTextfield()
+        fetchComments(articleID: article.id)
 
     }
     
@@ -63,12 +70,32 @@ class ArticleDetailViewController: UIViewController {
 
     }
     
+    func fetchComments(articleID: String) {
+        ArticleManager.shared.fetchComments(articleID: articleID) { [weak self] result in
+            
+            switch result {
+            
+            case .success(let comments):
+                
+                self?.comments = comments
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+    
 }
 
 extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if comments.count == 1 {
+            return 3
+        } else {
+            return comments.count+1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,10 +117,21 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             }
             
         default:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell",
-                                                        for: indexPath) as? CommentCell {
-                return cell
+            if comments.count == 1 {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "NoCommentCell",
+                                                            for: indexPath) as? NoCommentCell {
+                    
+                    return cell
+                }
+            } else {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell",
+                                                            for: indexPath) as? CommentCell {
+                    cell.configureCommentCell(comment: comments[indexPath.row-2])
+                    
+                    return cell
+                }
             }
+
         }
         return UITableViewCell()
     }

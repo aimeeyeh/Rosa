@@ -35,6 +35,7 @@
 		7A44AE06265434830051781C /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44AE05265434830051781C /* WaterViewController.swift */; };
 		7A44AE08265434900051781C /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44AE07265434900051781C /* SleepViewController.swift */; };
 		7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */; };
+		7A489FC92666865300B692A9 /* NoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A489FC82666865300B692A9 /* NoCommentCell.swift */; };
 		7A559D7E2663E71900F73F06 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A559D7D2663E71900F73F06 /* ArticleManager.swift */; };
 		7A559D802664A7BD00F73F06 /* Lottie_Female.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A559D7F2664A7BC00F73F06 /* Lottie_Female.json */; };
 		7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */; };
@@ -100,6 +101,7 @@
 		7A44AE05265434830051781C /* WaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		7A44AE07265434900051781C /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A489FC82666865300B692A9 /* NoCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCommentCell.swift; sourceTree = "<group>"; };
 		7A559D7D2663E71900F73F06 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		7A559D7F2664A7BC00F73F06 /* Lottie_Female.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Lottie_Female.json; path = Rosa/Lottie_Female.json; sourceTree = SOURCE_ROOT; };
 		7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Lottie_girlWithFlowers.json; path = Animations/Lottie_girlWithFlowers.json; sourceTree = SOURCE_ROOT; };
@@ -171,6 +173,7 @@
 				7A5D9F852655572D007597A1 /* ContentCell.swift */,
 				7A5D9F8726555739007597A1 /* CommentCell.swift */,
 				7ACD13352655129300B177F2 /* FilterTableViewCell.swift */,
+				7A489FC82666865300B692A9 /* NoCommentCell.swift */,
 			);
 			path = Articles;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */,
 				7A329BCD2662B1A800DE4630 /* ChartXAxisFormatter.swift in Sources */,
 				7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */,
+				7A489FC92666865300B692A9 /* NoCommentCell.swift in Sources */,
 				7A247B08265120F200E436D6 /* RoutineTableViewCell.swift in Sources */,
 				7AFE439126613BA700F94330 /* SignInViewController.swift in Sources */,
 				7A44AE06265434830051781C /* WaterViewController.swift in Sources */,

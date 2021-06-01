@@ -20,24 +20,24 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
-            postedButton.isSelected = false
-            likedButton.isSelected = false
-            sender.isSelected = !sender.isSelected
-
-            UIView.animate(withDuration: 0.3) {
-                self.underlineView.center.x = sender.center.x + 16
-            }
-
-            if sender.isSelected {
-                switch sender {
-                case postedButton:
-                    currentType = "postedArticles"
-                default:
-                    currentType = "likedArticles"
-                }
-            }
-
+        postedButton.isSelected = false
+        likedButton.isSelected = false
+        sender.isSelected = !sender.isSelected
+        
+        UIView.animate(withDuration: 0.3) {
+            self.underlineView.center.x = sender.center.x + 16
         }
+        
+        if sender.isSelected {
+            switch sender {
+            case postedButton:
+                currentType = "postedArticles"
+            default:
+                currentType = "likedArticles"
+            }
+        }
+        
+    }
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {

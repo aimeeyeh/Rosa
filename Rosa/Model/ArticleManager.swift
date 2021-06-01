@@ -28,6 +28,7 @@ class ArticleManager {
         
         do {
             try  document.setData(from: article)
+            document.collection("comments").document("default").setData(["id": "default"])
             print("Article Posted Success")
         } catch let error {
             print("Error posting article to Firestore: \(error)")
@@ -59,6 +60,34 @@ class ArticleManager {
             }
             
         }
+    }
+    
+    func fetchComments(articleID: String, completion: @escaping (Result<[Comment], Error>) -> Void) {
+        
+        let queryCollection = database.collection("articles").document(articleID).collection("comments")
+        queryCollection.addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                var comments = [Comment]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        if let comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
+                            comments.append(comment)
+                        }
+                        
+                    } catch {
+                        print(error)
+                    }
+                }
+                completion(.success(comments))
+            }
+            
+        }
+        
     }
     
     func queryCategory(category: String, completion: @escaping (Result<[Article], Error>) -> Void) {
