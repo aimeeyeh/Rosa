@@ -450,19 +450,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xlM-Kh-POp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="1656" height="500"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skin1" translatesAutoresizingMaskIntoConstraints="NO" id="ODn-gD-Ggd">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
-                                                                </imageView>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skin2" translatesAutoresizingMaskIntoConstraints="NO" id="ziF-BA-9nr">
-                                                                    <rect key="frame" x="414" y="0.0" width="414" height="500"/>
-                                                                </imageView>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skin3" translatesAutoresizingMaskIntoConstraints="NO" id="EAe-Fd-4nM">
-                                                                    <rect key="frame" x="828" y="0.0" width="414" height="500"/>
-                                                                </imageView>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skin1" translatesAutoresizingMaskIntoConstraints="NO" id="BOf-as-7ty">
-                                                                    <rect key="frame" x="1242" y="0.0" width="414" height="500"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </stackView>
@@ -494,7 +485,9 @@
                                             <constraint firstAttribute="trailing" secondItem="ULM-hi-C8i" secondAttribute="trailing" id="c39-Es-pIR"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="firstImage" destination="ODn-gD-Ggd" id="AbK-o1-rjA"/>
                                             <outlet property="pageControl" destination="yrD-iK-Jdc" id="lXX-C8-Q6X"/>
+                                            <outlet property="photoPageControl" destination="yrD-iK-Jdc" id="OtM-Pa-iQM"/>
                                             <outlet property="photoStackView" destination="xlM-Kh-POp" id="Mus-lL-Cah"/>
                                             <outlet property="scrollView" destination="ULM-hi-C8i" id="hM7-JE-h7W"/>
                                         </connections>
@@ -690,8 +683,6 @@
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="selectedHeart" width="64" height="64"/>
         <image name="skin1" width="1125" height="1366"/>
-        <image name="skin2" width="534" height="400"/>
-        <image name="skin3" width="537" height="649"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="yoyogi photoshoot" width="1364" height="2048"/>
         <systemColor name="systemBackgroundColor">

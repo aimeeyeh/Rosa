@@ -77,6 +77,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell",
                                                         for: indexPath) as? PhotoCell {
+                cell.configureScrollView(article: article)
+                cell.configurePageControl(article: article)
                 return cell
             }
         case 1:
