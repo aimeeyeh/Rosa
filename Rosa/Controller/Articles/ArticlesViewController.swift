@@ -14,14 +14,12 @@ class ArticlesViewController: UIViewController {
     @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var trendingButton: UIButton!
-    @IBOutlet weak var recommendButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     var allArticles: [Article] = [] {
         didSet {
             collectionView.reloadData()
-            print(" 目前有這些： \(allArticles.count)")
         }
     }
     
@@ -82,19 +80,14 @@ class ArticlesViewController: UIViewController {
     var currentType = "follow"
 
     @IBAction func buttonPressed(_ sender: UIButton) {
-
         followButton.isSelected = false
         trendingButton.isSelected = false
-        recommendButton.isSelected = false
         sender.isSelected = !sender.isSelected
 
         followButton.setTitleColor(UIColor.darkGray, for: .selected)
         trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
-        recommendButton.setTitleColor(UIColor.darkGray, for: .selected)
 
         UIView.animate(withDuration: 0.3) {
-//            print("self.underlineView.center.x: \(self.underlineView.center.x)")
-//            print("sender.center.x: \(sender.center.x)")
             self.underlineView.center.x = sender.center.x + 16
         }
 
@@ -102,10 +95,8 @@ class ArticlesViewController: UIViewController {
             switch sender {
             case followButton:
                 currentType = "follow"
-            case trendingButton:
-                currentType = "trending"
             default:
-                currentType = "recommend"
+                currentType = "trending"
             }
         }
 //        reloadData()
@@ -229,4 +220,3 @@ extension ArticlesViewController: CollectionViewWaterfallLayoutDelegate {
         return cellSizes[indexPath.item]
     }
 }
-

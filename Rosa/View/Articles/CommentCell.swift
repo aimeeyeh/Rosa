@@ -8,16 +8,22 @@
 import UIKit
 
 class CommentCell: UITableViewCell {
-
+    @IBOutlet weak var authorPhoto: UIImageView!
+    @IBOutlet weak var authorName: UILabel!
+    @IBOutlet weak var postedDate: UILabel!
+    @IBOutlet weak var postedContent: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureCommentCell(comment: Comment) {
+        authorName.text = comment.author
+        postedContent.text = comment.content
+        if let formattedDate = comment.date.formatToDateWithoutYearOnly() {
+            postedDate.text = formattedDate
+        }
     }
 
 }

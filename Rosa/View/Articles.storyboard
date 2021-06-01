@@ -40,7 +40,7 @@
                                 <rect key="frame" x="16" y="103" width="382" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrh-2l-Mi6">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="追蹤">
@@ -54,7 +54,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TY9-hU-yae">
-                                        <rect key="frame" x="127.5" y="0.0" width="127" height="30"/>
+                                        <rect key="frame" x="191" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="熱門">
@@ -67,24 +67,10 @@
                                             <action selector="buttonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UW1-rH-RLh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYG-9G-Eez">
-                                        <rect key="frame" x="254.5" y="0.0" width="127.5" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="推薦">
-                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="m8F-ur-Fo5"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RrA-sp-6U2">
-                                <rect key="frame" x="48" y="133" width="63.5" height="1"/>
+                                <rect key="frame" x="64" y="133" width="95.5" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="8tb-36-ism"/>
@@ -274,7 +260,6 @@
                     <connections>
                         <outlet property="collectionView" destination="dkm-Bt-j0i" id="8sR-S6-siM"/>
                         <outlet property="followButton" destination="xrh-2l-Mi6" id="T20-ND-VYu"/>
-                        <outlet property="recommendButton" destination="cYG-9G-Eez" id="2q3-BR-SES"/>
                         <outlet property="tableView" destination="8Qp-uK-oLx" id="bhi-5X-9DM"/>
                         <outlet property="tableViewHeight" destination="y4p-IE-b6Y" id="lzS-xV-XpK"/>
                         <outlet property="trendingButton" destination="TY9-hU-yae" id="Xie-ip-A2F"/>
@@ -435,7 +420,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="500" estimatedRowHeight="500" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="81S-IA-JcX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="500" estimatedRowHeight="500" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="81S-IA-JcX">
                                 <rect key="frame" x="0.0" y="100" width="414" height="1820"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -616,6 +601,32 @@
                                                 <constraint firstItem="AlO-ii-xnX" firstAttribute="top" secondItem="a77-uX-V7r" secondAttribute="topMargin" constant="11" id="h8h-ns-JiC"/>
                                                 <constraint firstItem="AlO-ii-xnX" firstAttribute="leading" secondItem="elP-5x-3OT" secondAttribute="trailing" constant="8" id="mdO-2W-WvE"/>
                                                 <constraint firstItem="elP-5x-3OT" firstAttribute="leading" secondItem="a77-uX-V7r" secondAttribute="leadingMargin" id="xMN-Jh-gGn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorName" destination="AlO-ii-xnX" id="k1P-Hk-snV"/>
+                                            <outlet property="authorPhoto" destination="elP-5x-3OT" id="FXZ-i5-7aN"/>
+                                            <outlet property="postedContent" destination="dG3-M1-DzB" id="u2U-AT-uPe"/>
+                                            <outlet property="postedDate" destination="CJr-xx-7ib" id="Aph-xU-skC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoCommentCell" rowHeight="120" id="VlN-TF-S4I" customClass="NoCommentCell" customModule="Rosa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1544.5" width="414" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VlN-TF-S4I" id="rnM-Kj-olB">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前尚無任何留言" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-sb-6b0">
+                                                    <rect key="frame" x="158" y="53" width="98.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1MF-sb-6b0" firstAttribute="centerY" secondItem="rnM-Kj-olB" secondAttribute="centerY" id="EaJ-cl-rf0"/>
+                                                <constraint firstItem="1MF-sb-6b0" firstAttribute="centerX" secondItem="rnM-Kj-olB" secondAttribute="centerX" id="OfT-BQ-WHd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
