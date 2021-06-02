@@ -126,23 +126,25 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
-        switch authorization.credential {
-        case let credentials as ASAuthorizationAppleIDCredential:
-            let user = User(credentials: credentials)
-            print("""
-            ID: \(user.id),
-            Name: \(user.name),
-            Email: \(user.email)
-            """)
-
-            performSegue(withIdentifier: "showHomePage", sender: user)
-
-        default: break
-
-        }
+//        switch authorization.credential {
+//        case let credentials as ASAuthorizationAppleIDCredential:
+//            let user = User(credentials: credentials)
+//            print("""
+//            ID: \(user.id),
+//            Name: \(user.name),
+//            Email: \(user.email)
+//            """)
+//
+//            performSegue(withIdentifier: "showHomePage", sender: user)
+//
+//        default: break
+//
+//        }
      
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
 
+            let defaultUserName = User(credentials: appleIDCredential).name
+            
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
@@ -173,7 +175,13 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                     guard let user = authResult?.user else { return }
 
                     let defaults = UserDefaults.standard
-                    defaults.set(user.displayName, forKey: "userName")
+                    
+                    if let displayName = user.displayName {
+                        defaults.set(displayName, forKey: "userName")
+                    } else {
+                        defaults.set(defaultUserName, forKey: "userName")
+                    }
+                    
                     print("\(String(describing: user.displayName))")
 
                     guard let uid = Auth.auth().currentUser?.uid else { return }

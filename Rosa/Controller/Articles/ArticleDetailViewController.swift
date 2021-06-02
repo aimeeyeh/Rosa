@@ -64,6 +64,13 @@ class ArticleDetailViewController: UIViewController {
         
     }
 
+    @IBAction func editingDidEnd(_ sender: UITextField) {
+        if let text = sender.text {
+            ArticleManager.shared.postComment(documentID: article.id, comment: text)
+        }
+        commentTextfield.text = ""
+    }
+    
     @IBAction func likedArticle(_ sender: Any) {
 
         likeButton.isSelected = !likeButton.isSelected

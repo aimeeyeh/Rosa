@@ -73,6 +73,21 @@ class ArticleManager {
         }
     }
     
+    func postComment(documentID: String, comment: String) {
+        
+        let document = database.collection("articles").document(documentID).collection("comments").document()
+        let comment = Comment(id: document.documentID, author: userName ?? "Anonymous", content: comment, date: Date())
+
+        do {
+            try  document.setData(from: comment)
+            
+            print("Comment Posted Success")
+            
+        } catch let error {
+            print("Error posting comment to Firestore: \(error)")
+        }
+    }
+    
     func fetchComments(articleID: String, completion: @escaping (Result<[Comment], Error>) -> Void) {
         
         let queryCollection = database.collection("articles").document(articleID).collection("comments")

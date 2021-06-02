@@ -33,18 +33,6 @@ class RemarkTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
     }
 
-//    @IBAction func editingDidEnd(_ sender: Any) {
-//        if let text = remarkTextField.text {
-//            self.remark = text
-//            remarkTextField.resignFirstResponder()
-//        }
-//    }
-    
-//    @IBAction func valueChanged(_ sender: UITextField) {
-//        if let text = sender.text {
-//            self.remark = text
-//        }
-//    }
     @IBAction func editingChanged(_ sender: UITextField) {
         if let text = sender.text {
             self.remark = text
