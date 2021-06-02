@@ -135,7 +135,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yoyogi photoshoot" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-Mh-lhy">
-                                                    <rect key="frame" x="8" y="259" width="24" height="24"/>
+                                                    <rect key="frame" x="8" y="258" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="00c-uU-YF4"/>
                                                         <constraint firstAttribute="height" constant="24" id="qSC-zr-Ru3"/>
@@ -171,7 +171,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="BWw-8z-YzU" secondAttribute="trailing" constant="8" id="aal-K9-opS"/>
                                                 <constraint firstItem="BWw-8z-YzU" firstAttribute="leading" secondItem="ZKM-gT-bfh" secondAttribute="leading" constant="8" id="jkG-o1-uX5"/>
                                                 <constraint firstAttribute="bottom" secondItem="vgZ-W8-Mf0" secondAttribute="bottom" constant="18" id="lPX-5e-4Pd"/>
-                                                <constraint firstAttribute="bottom" secondItem="tMS-Mh-lhy" secondAttribute="bottom" constant="17" id="lxX-qf-UUN"/>
+                                                <constraint firstAttribute="bottom" secondItem="tMS-Mh-lhy" secondAttribute="bottom" constant="18" id="lxX-qf-UUN"/>
                                                 <constraint firstItem="kht-Hx-t51" firstAttribute="centerY" secondItem="vgZ-W8-Mf0" secondAttribute="centerY" id="xhI-ax-PZd"/>
                                                 <constraint firstItem="kht-Hx-t51" firstAttribute="trailing" secondItem="BWw-8z-YzU" secondAttribute="trailing" id="zO1-EV-x3p"/>
                                                 <constraint firstItem="BWw-8z-YzU" firstAttribute="top" secondItem="ZKM-gT-bfh" secondAttribute="top" constant="15" id="zWA-YW-gy2"/>

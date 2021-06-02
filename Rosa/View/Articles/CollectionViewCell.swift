@@ -21,13 +21,16 @@ class CollectionViewCell: UICollectionViewCell {
       super.awakeFromNib()
         arthorPhoto.layer.cornerRadius = arthorPhoto.frame.height / 2
         articlePhoto.layer.cornerRadius = articlePhoto.frame.height / 20
+        arthorPhoto.image = UIImage(named: "user")
      }
     
     func configureArticleCell(article: Article) {
         arthorName.text = article.author
         likedAmount.text = "\(article.likes)"
         articleTitle.text = article.title
-        articlePhoto.kf.setImage(with: URL(string: article.photos[0]))
+        if article.photos.count > 0 {
+            articlePhoto.kf.setImage(with: URL(string: article.photos[0]))
+        }
     }
     
     @IBAction func likedArticle(_ sender: Any) {

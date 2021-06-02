@@ -17,6 +17,7 @@ class ArticleManager {
     lazy var database = Firestore.firestore()
     
     let userID = UserDefaults.standard.string(forKey: "userID")
+    let userName = UserDefaults.standard.string(forKey: "userName")
     let defaultID = "Aimee"
     
     func postArticle(article: inout Article) {
@@ -24,12 +25,22 @@ class ArticleManager {
         let document = database.collection("articles").document()
         article.id = document.documentID
         article.createdTime = Date()
-        article.author = userID ?? "Anonymous"
+        article.author = userName ?? "Anonymous"
         
         do {
             try  document.setData(from: article)
-            document.collection("comments").document("default").setData(["id": "default"])
+            
+            let commentData: [String: Any] = [
+                "id": "default",
+                "author": "default",
+                "content": "default",
+                "date": Date()
+            ]
+            
+            document.collection("comments").document("default").setData(commentData)
+            
             print("Article Posted Success")
+            
         } catch let error {
             print("Error posting article to Firestore: \(error)")
         }

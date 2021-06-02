@@ -22,11 +22,10 @@ class ArticleDetailViewController: UIViewController {
                                    createdTime: Date(),
                                    likes: 0,
                                    photos: ["fail"],
-                                   title: "fail")
+                                   title: "fail") 
     
     var comments: [Comment] = [Comment(id: "fail", author: "fail", content: "fail", date: Date())] {
         didSet {
-            print(comments)
             tableView.reloadData()
         }
     }
@@ -37,9 +36,6 @@ class ArticleDetailViewController: UIViewController {
         authorName.text = article.author
         configureTextfield()
         fetchComments(articleID: article.id)
-        
-//        self.tableView.rowHeight = UITableView.automaticDimension
-//        self.tableView.estimatedRowHeight = 120.0
 
     }
     

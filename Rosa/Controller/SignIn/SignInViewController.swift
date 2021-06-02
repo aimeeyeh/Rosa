@@ -126,22 +126,37 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
+        switch authorization.credential {
+        case let credentials as ASAuthorizationAppleIDCredential:
+            let user = User(credentials: credentials)
+            print("""
+            ID: \(user.id),
+            Name: \(user.name),
+            Email: \(user.email)
+            """)
+
+            performSegue(withIdentifier: "showHomePage", sender: user)
+
+        default: break
+
+        }
+     
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            
+
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
-            
+
             guard let appleIDToken = appleIDCredential.identityToken else {
                 print("Unable to fetch identity token")
                 return
             }
-            
+
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
             }
-            
+
             // Initialize a Firebase credential.
             let credential = OAuthProvider.credential(withProviderID: "apple.com",
                                                       idToken: idTokenString,
@@ -156,18 +171,18 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                     return
                 } else {
                     guard let user = authResult?.user else { return }
-                    
+
                     let defaults = UserDefaults.standard
                     defaults.set(user.displayName, forKey: "userName")
                     print("\(String(describing: user.displayName))")
-                    
+
                     guard let uid = Auth.auth().currentUser?.uid else { return }
                     defaults.set(uid, forKey: "userID")
-                    
+
                     UserManager.shared.addNewUser()
-                    
+
                     self.performSegue(withIdentifier: "showHomePage", sender: user)
-                    
+
                 }
                 // User is signed in to Firebase with Apple.
                 // ...
