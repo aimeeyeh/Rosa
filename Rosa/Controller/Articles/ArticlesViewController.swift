@@ -60,6 +60,7 @@ class ArticlesViewController: UIViewController {
     }
     
     func fetchAllArticles() {
+        
         ArticleManager.shared.fetchAllArticles() { [weak self] result in
             
             switch result {
@@ -80,13 +81,17 @@ class ArticlesViewController: UIViewController {
     var currentType = "follow"
 
     @IBAction func buttonPressed(_ sender: UIButton) {
+        
         followButton.isSelected = false
+        
         trendingButton.isSelected = false
+        
         sender.isSelected = !sender.isSelected
 
-        followButton.setTitleColor(UIColor.darkGray, for: .selected)
-        trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
-
+//        followButton.setTitleColor(UIColor.darkGray, for: .selected)
+//        trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
+//        view.layoutIfNeeded()
+        
         UIView.animate(withDuration: 0.3) {
             self.underlineView.center.x = sender.center.x + 16
         }
