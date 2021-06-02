@@ -29,14 +29,32 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var contentTextView: UITextView!
     
     var category: String = ""
+    var photos: [String] = []
     
     private let storage = Storage.storage().reference()
     
     var currentPhotoType: ArticlePhotoType?
-    var firstImageUrl: String = ""
-    var secondImageUrl: String = ""
-    var thirdImageUrl: String = ""
-    var forthImageUrl: String = ""
+    
+    var firstImageUrl: String = "" {
+        didSet {
+            photos.append(firstImageUrl)
+        }
+    }
+    var secondImageUrl: String = ""{
+        didSet {
+            photos.append(secondImageUrl)
+        }
+    }
+    var thirdImageUrl: String = ""{
+        didSet {
+            photos.append(thirdImageUrl)
+        }
+    }
+    var forthImageUrl: String = ""{
+        didSet {
+            photos.append(forthImageUrl)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +78,16 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         switch currentPhotoType {
         case .firstImage:
             firstImage.kf.setImage(with: URL(string: url))
+            self.firstImageUrl = url
         case .secondImage:
             secondImage.kf.setImage(with: URL(string: url))
+            self.secondImageUrl = url
         case .thirdImage:
             thirdImage.kf.setImage(with: URL(string: url))
+            self.thirdImageUrl = url
         default:
             forthImage.kf.setImage(with: URL(string: url))
+            self.firstImageUrl = url
         }
         
     }
@@ -164,7 +186,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                               content: contentTextView.text,
                               createdTime: Date(),
                               likes: 0,
-                              photos: ["123"],
+                              photos: photos,
                               title: title
                               )
         
