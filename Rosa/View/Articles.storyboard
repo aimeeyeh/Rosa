@@ -334,6 +334,9 @@
                                                 <color key="value" cyan="0.0" magenta="0.45797768239999997" yellow="0.6214422584" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="followAuthor:" destination="FfD-tU-Pow" eventType="touchUpInside" id="bWU-gG-XI5"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yoyogi photoshoot" translatesAutoresizingMaskIntoConstraints="NO" id="5NN-x4-dEe">
                                         <rect key="frame" x="55" y="56.5" width="35" height="35"/>
@@ -690,6 +693,7 @@
                         <outlet property="authorName" destination="P1V-f0-KfU" id="58P-lq-OIU"/>
                         <outlet property="authorPhoto" destination="5NN-x4-dEe" id="NT1-lm-VLn"/>
                         <outlet property="commentTextfield" destination="K6R-ny-CsZ" id="S2O-nJ-Uqb"/>
+                        <outlet property="followButton" destination="exK-Ee-LHi" id="7jd-rF-epV"/>
                         <outlet property="likeButton" destination="qRY-y8-zyv" id="x1a-iE-K3q"/>
                         <outlet property="tableView" destination="81S-IA-JcX" id="wzB-nh-vmD"/>
                     </connections>
