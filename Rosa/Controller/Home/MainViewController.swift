@@ -212,7 +212,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     func fetchPreviousRecords() {
-        RecordManager.shared.fetchPast7daysRecords() { [weak self] result in
+        RecordManager.shared.fetchPast7daysRecords { [weak self] result in
             
             switch result {
             

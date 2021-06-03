@@ -65,6 +65,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
         self.navigationController?.isNavigationBarHidden = true
         
         if UIDevice.current.model.hasPrefix("iPad") {
@@ -77,7 +78,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
         // For UITest
         calnderView.accessibilityIdentifier = "calendar"
-//        checkYesterdayProgress()
         fetchAllRecords()
     }
     
@@ -93,7 +93,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     // MARK: - Firebase Related Functions
     
     func fetchAllRecords() {
-        RecordManager.shared.fetchAllRecords() { [weak self] result in
+        RecordManager.shared.fetchAllRecords { [weak self] result in
             
             switch result {
             

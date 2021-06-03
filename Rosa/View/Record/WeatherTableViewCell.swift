@@ -65,7 +65,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBAction func selectedRainy(_ sender: Any) {
         rainyButton.isSelected = !rainyButton.isSelected
         rainyButton.checkButtonState()
-        selectedWeather = "Rainy"
+        selectedWeather = "rainy"
         if rainyButton.isSelected {
             mostlyClearButton.isSelected = false
             cloudyButton.isSelected = false

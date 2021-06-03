@@ -108,7 +108,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let ref = storage.child(imageName)
         
-        ref.putData(imageData, metadata: nil) { [weak self] _ , error in
+        ref.putData(imageData, metadata: nil) { [weak self] _, error in
             guard error == nil else {
                 print("Failed to upload")
                 return

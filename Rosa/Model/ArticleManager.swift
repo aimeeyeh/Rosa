@@ -123,7 +123,7 @@ class ArticleManager {
     func queryCategory(category: String, completion: @escaping (Result<[Article], Error>) -> Void) {
         let queryCollection = database.collection("articles")
         queryCollection.whereField("category", isEqualTo: category)
-            .getDocuments() { (querySnapshot, err) in
+            .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {

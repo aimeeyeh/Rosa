@@ -61,7 +61,7 @@ class ArticlesViewController: UIViewController {
     
     func fetchAllArticles() {
         
-        ArticleManager.shared.fetchAllArticles() { [weak self] result in
+        ArticleManager.shared.fetchAllArticles { [weak self] result in
             
             switch result {
             

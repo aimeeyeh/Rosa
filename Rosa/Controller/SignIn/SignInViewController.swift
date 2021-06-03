@@ -116,10 +116,25 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func skipSignIn(_ sender: Any) {
-        performSegue(withIdentifier: "showHomePage", sender: nil)
+//        performSegue(withIdentifier: "showHomePage", sender: nil)
         let defaults = UserDefaults.standard
         defaults.set("Aimee", forKey: "userID")
         defaults.set("secretAimee", forKey: "userName")
+        
+        UserManager.shared.checkIsExistingUser { result in
+            
+            switch result {
+            
+            case .success(let user):
+                
+                self.performSegue(withIdentifier: "showHomePage", sender: user)
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+
     }
 }
 
@@ -131,7 +146,7 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
      
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
 
-            let defaultUserName = User(credentials: appleIDCredential).name
+//            guard let defaultUserName = appleIDCredential.fullName else { return }
             
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -164,10 +179,16 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
 
                     let defaults = UserDefaults.standard
                     
+//                    if let displayName = user.displayName {
+//                        defaults.set(displayName, forKey: "userName")
+//                    } else {
+//                        defaults.set(defaultUserName, forKey: "userName")
+//                    }
+                    
                     if let displayName = user.displayName {
                         defaults.set(displayName, forKey: "userName")
                     } else {
-                        defaults.set(defaultUserName, forKey: "userName")
+                        defaults.set("No Name", forKey: "userName")
                     }
                     
                     print("\(String(describing: user.displayName))")
@@ -175,9 +196,21 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                     guard let uid = Auth.auth().currentUser?.uid else { return }
                     defaults.set(uid, forKey: "userID")
 
-                    UserManager.shared.addNewUser()
+                    UserManager.shared.checkIsExistingUser { result in
+                        
+                        switch result {
+                        
+                        case .success(let user):
+                            
+                            self.performSegue(withIdentifier: "showHomePage", sender: user)
+                            
+                        case .failure(let error):
+                            
+                            print("fetchData.failure: \(error)")
+                        }
+                    }
 
-                    self.performSegue(withIdentifier: "showHomePage", sender: user)
+//                    self.performSegue(withIdentifier: "showHomePage", sender: user)
 
                 }
                 // User is signed in to Firebase with Apple.
