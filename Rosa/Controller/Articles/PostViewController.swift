@@ -181,7 +181,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         guard let title = titleTextfield.text else { return }
         
         var article = Article(id: "",
-                              author: "",
+                              authorID: "",
+                              authorName: "",
                               category: category,
                               content: contentTextView.text,
                               createdTime: Date(),

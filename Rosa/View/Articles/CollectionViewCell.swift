@@ -25,7 +25,7 @@ class CollectionViewCell: UICollectionViewCell {
      }
     
     func configureArticleCell(article: Article) {
-        arthorName.text = article.author
+        arthorName.text = article.authorName
         likedAmount.text = "\(article.likes)"
         articleTitle.text = article.title
         if article.photos.count > 0 {

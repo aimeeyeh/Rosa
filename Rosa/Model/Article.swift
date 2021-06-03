@@ -10,7 +10,8 @@ import Foundation
 struct Article: Codable {
     
     var id: String
-    var author: String
+    var authorID: String
+    var authorName: String
     var category: String
     var content: String
     var createdTime: Date

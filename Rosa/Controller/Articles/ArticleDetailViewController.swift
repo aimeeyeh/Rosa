@@ -12,12 +12,14 @@ class ArticleDetailViewController: UIViewController {
 
     @IBOutlet weak var commentTextfield: UITextField!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var authorPhoto: UIImageView!
     
     var article: Article = Article(id: "fail",
-                                   author: "fail",
+                                   authorID: "fail",
+                                   authorName: "fail",
                                    category: "fail",
                                    content: "fail",
                                    createdTime: Date(),
@@ -70,7 +72,7 @@ class ArticleDetailViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        authorName.text = article.author
+        authorName.text = article.authorName
         configureTextfield()
         fetchComments(articleID: article.id)
         tableView.allowsSelection = true
@@ -273,6 +275,9 @@ class ArticleDetailViewController: UIViewController {
             ArticleManager.shared.postComment(documentID: article.id, comment: text)
         }
         commentTextfield.text = ""
+    }
+    @IBAction func followAuthor(_ sender: UIButton) {
+        ArticleManager.shared.addToFollowed(authorID: article.authorID)
     }
     
     @IBAction func likedArticle(_ sender: UIButton) {

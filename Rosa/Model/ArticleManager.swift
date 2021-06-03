@@ -25,7 +25,8 @@ class ArticleManager {
         let document = database.collection("articles").document()
         article.id = document.documentID
         article.createdTime = Date()
-        article.author = userName ?? "Anonymous"
+        article.authorName = userName ?? "Anonymous"
+        article.authorID = userID ?? defaultID
         
         do {
             try  document.setData(from: article)
@@ -172,7 +173,6 @@ class ArticleManager {
             }
         }
 
-        
     }
     
     func unLikeArticles(articleID: String, currentLikes: Int) {
@@ -199,6 +199,23 @@ class ArticleManager {
             }
         }
         
+    }
+    
+    func addToFollowed(authorID: String) {
+        
+        guard let userID = userID else { return }
+        
+        let currentUserDocument = database.collection("user").document(userID)
+
+        currentUserDocument.updateData([
+                "followed": FieldValue.arrayUnion([authorID])
+            ])
+        
+        let followeduserDocument = database.collection("user").document(authorID)
+        
+        followeduserDocument.updateData([
+                "followers": FieldValue.arrayUnion([userID])
+            ])
         
     }
     
