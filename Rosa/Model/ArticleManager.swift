@@ -49,7 +49,7 @@ class ArticleManager {
     
     func fetchAllArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         
-        let queryCollection = database.collection("articles")
+        let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
         queryCollection.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -95,7 +95,7 @@ class ArticleManager {
     
     func fetchComments(articleID: String, completion: @escaping (Result<[Comment], Error>) -> Void) {
         
-        let queryCollection = database.collection("articles").document(articleID).collection("comments")
+        let queryCollection = database.collection("articles").document(articleID).collection("comments").order(by: "date", descending: false)
         queryCollection.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
