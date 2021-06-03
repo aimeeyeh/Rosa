@@ -43,12 +43,13 @@ class ArticlesViewController: UIViewController {
         setUpWaterfall()
         followButton.isSelected = true
         followButton.setTitleColor(UIColor.darkGray, for: .selected)
-        fetchAllArticles()
+//        fetchAllArticles()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableViewHeight.constant = 0
+        fetchAllArticles()
 
     }
 
