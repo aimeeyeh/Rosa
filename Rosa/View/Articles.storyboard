@@ -39,22 +39,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iKS-3L-D5F">
                                 <rect key="frame" x="16" y="103" width="382" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrh-2l-Mi6">
-                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="追蹤">
-                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ClR-zv-v1V"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TY9-hU-yae">
-                                        <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="熱門">
@@ -65,6 +51,20 @@
                                         </state>
                                         <connections>
                                             <action selector="buttonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UW1-rH-RLh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrh-2l-Mi6">
+                                        <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="追蹤">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ClR-zv-v1V"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -237,9 +237,9 @@
                             <constraint firstItem="RrA-sp-6U2" firstAttribute="width" secondItem="xrh-2l-Mi6" secondAttribute="width" multiplier="0.5" id="CWQ-iK-CcX"/>
                             <constraint firstItem="8Qp-uK-oLx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="EMR-Ud-ErF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Qp-uK-oLx" secondAttribute="trailing" id="GCo-Nl-Uhy"/>
+                            <constraint firstItem="RrA-sp-6U2" firstAttribute="centerX" secondItem="TY9-hU-yae" secondAttribute="centerX" id="HKD-Ia-bVk"/>
                             <constraint firstItem="01a-Q0-kuY" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="Lqg-HR-L7n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dkm-Bt-j0i" secondAttribute="bottom" id="WWz-fQ-aR2"/>
-                            <constraint firstItem="RrA-sp-6U2" firstAttribute="centerX" secondItem="xrh-2l-Mi6" secondAttribute="centerX" id="Wus-g0-XQh"/>
                             <constraint firstItem="RrA-sp-6U2" firstAttribute="top" secondItem="iKS-3L-D5F" secondAttribute="bottom" id="dWF-S9-ueW"/>
                             <constraint firstItem="dkm-Bt-j0i" firstAttribute="top" secondItem="RrA-sp-6U2" secondAttribute="bottom" constant="2" id="dg4-8E-b2W"/>
                             <constraint firstItem="bAl-6N-aTx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="27" id="fTi-JC-19u"/>
