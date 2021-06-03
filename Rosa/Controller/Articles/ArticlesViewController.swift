@@ -20,10 +20,17 @@ class ArticlesViewController: UIViewController {
     var allArticles: [Article] = [] {
         didSet {
             collectionView.reloadData()
+            followedArticles = allArticles.filter { followedList.contains($0.authorID) }
         }
     }
     
+    var followedList: [String] = []
+    
+    var followedArticles: [Article] = []
+    
     var selectedIndexPath: IndexPath?
+    
+    var currentType = "allArticles"
     
     // waterfall cell size
     lazy var cellSizes: [CGSize] = {
@@ -41,8 +48,8 @@ class ArticlesViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         underlineView.backgroundColor = UIColor.gray
         setUpWaterfall()
-        followButton.isSelected = true
-        followButton.setTitleColor(UIColor.darkGray, for: .selected)
+        trendingButton.isSelected = true
+        trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
 //        fetchAllArticles()
 
     }
@@ -50,6 +57,8 @@ class ArticlesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableViewHeight.constant = 0
         fetchAllArticles()
+        fetchFollowedList()
+        self.currentType = "allArticles"
 
     }
 
@@ -58,6 +67,15 @@ class ArticlesViewController: UIViewController {
         layout.minimumColumnSpacing = 10
         layout.minimumInteritemSpacing = 10
         collectionView.collectionViewLayout = layout
+    }
+    
+    func fetchFollowedList() {
+        if let currentUser = UserManager.shared.currentUser {
+            if let followed = currentUser.followed {
+                self.followedList = followed
+            }
+            
+        }
     }
     
     func fetchAllArticles() {
@@ -78,8 +96,6 @@ class ArticlesViewController: UIViewController {
     }
     
     // MARK: - 熱門/追蹤/推薦
-    
-    var currentType = "follow"
 
     @IBAction func buttonPressed(_ sender: UIButton) {
         
@@ -100,9 +116,13 @@ class ArticlesViewController: UIViewController {
         if sender.isSelected {
             switch sender {
             case followButton:
-                currentType = "follow"
+                currentType = "followed"
+                collectionView.reloadData()
+
             default:
-                currentType = "trending"
+                currentType = "allArticles"
+                collectionView.reloadData()
+
             }
         }
 //        reloadData()
@@ -184,7 +204,13 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
 extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        allArticles.count
+        
+        if currentType == "allArticles" {
+            return allArticles.count
+        } else {
+            return followedArticles.count
+        }
+        
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -192,8 +218,14 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
                                                          for: indexPath) as? CollectionViewCell {
-            cell.configureArticleCell(article: allArticles[indexPath.row])
-            return cell
+            if currentType == "allArticles" {
+                cell.configureArticleCell(article: allArticles[indexPath.row])
+                return cell
+                
+            } else {
+                cell.configureArticleCell(article: followedArticles[indexPath.row])
+                return cell
+            }
         }
         return UICollectionViewCell()
     }
@@ -209,7 +241,12 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
         if let controller = segue.destination as? ArticleDetailViewController {
             if let indexPath = selectedIndexPath {
                 if segue.identifier == "showArticleDetails" {
-                    controller.article = self.allArticles[indexPath.row]
+                    if currentType == "allArticles" {
+                        controller.article = self.allArticles[indexPath.row]
+                        
+                    } else {
+                        controller.article = self.followedArticles[indexPath.row]
+                    }
                 }
             }
         }
