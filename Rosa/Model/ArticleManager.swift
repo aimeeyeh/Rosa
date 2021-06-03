@@ -147,4 +147,59 @@ class ArticleManager {
             }
     }
     
+    func likeArticles(articleID: String, currentLikes: Int) {
+        
+        // update user
+        guard let userID = userID else { return }
+        
+        let document = database.collection("user").document(userID)
+
+        document.updateData([
+                "likedArticles": FieldValue.arrayUnion([articleID])
+            ])
+        
+        // update article
+        
+        let subtractedNumber = currentLikes + 1
+        let articleDocument = database.collection("articles").document(articleID)
+        articleDocument.updateData([
+            "likes": subtractedNumber
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+
+        
+    }
+    
+    func unLikeArticles(articleID: String, currentLikes: Int) {
+        
+        // update user
+        guard let userID = userID else { return }
+        
+        let document = database.collection("user").document(userID)
+
+        document.updateData([
+                "likedArticles": FieldValue.arrayRemove([articleID])
+            ])
+        
+        // update article
+        let subtractedNumber = currentLikes - 1
+        let articleDocument = database.collection("articles").document(articleID)
+        articleDocument.updateData([
+            "likes": subtractedNumber
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        
+    }
+    
 }

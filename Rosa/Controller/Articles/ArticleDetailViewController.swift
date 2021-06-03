@@ -50,6 +50,7 @@ class ArticleDetailViewController: UIViewController {
     var blockedUsers: [String]? {
         didSet {
             filterComments()
+            checkLikeButtonStatus()
         }
     }
     
@@ -79,6 +80,7 @@ class ArticleDetailViewController: UIViewController {
 
         self.tabBarController?.tabBar.isHidden = true
         reloadComments()
+//        checkLikeButtonStatus()
 
     }
     
@@ -104,6 +106,19 @@ class ArticleDetailViewController: UIViewController {
             }
         }
 
+    }
+    
+    func checkLikeButtonStatus() {
+        
+        let articleID = article.id
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        if let likedArticles = currentUser.likedArticles {
+            if likedArticles.contains(articleID) {
+                likeButton.isSelected = true
+            } else {
+                likeButton.isSelected = false
+            }
+        }
     }
     
     var displayMode = EKAttributes.DisplayMode.inferred
@@ -260,10 +275,17 @@ class ArticleDetailViewController: UIViewController {
         commentTextfield.text = ""
     }
     
-    @IBAction func likedArticle(_ sender: Any) {
-
+    @IBAction func likedArticle(_ sender: UIButton) {
+        let articleID = article.id
+        let currentLikes = article.likes
+        if sender.isSelected {
+            ArticleManager.shared.unLikeArticles(articleID: articleID, currentLikes: currentLikes)
+        } else {
+            ArticleManager.shared.likeArticles(articleID: articleID, currentLikes: currentLikes)
+        }
+        
         likeButton.isSelected = !likeButton.isSelected
-
+        
     }
     
     func fetchComments(articleID: String) {
