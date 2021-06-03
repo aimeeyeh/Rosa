@@ -117,6 +117,9 @@ class SignInViewController: UIViewController {
     
     @IBAction func skipSignIn(_ sender: Any) {
         performSegue(withIdentifier: "showHomePage", sender: nil)
+        let defaults = UserDefaults.standard
+        defaults.set("Aimee", forKey: "userID")
+        defaults.set("secretAimee", forKey: "userName")
     }
 }
 
@@ -125,21 +128,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
-        
-//        switch authorization.credential {
-//        case let credentials as ASAuthorizationAppleIDCredential:
-//            let user = User(credentials: credentials)
-//            print("""
-//            ID: \(user.id),
-//            Name: \(user.name),
-//            Email: \(user.email)
-//            """)
-//
-//            performSegue(withIdentifier: "showHomePage", sender: user)
-//
-//        default: break
-//
-//        }
      
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
 

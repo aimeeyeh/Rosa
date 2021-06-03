@@ -21,7 +21,8 @@ struct Article: Codable {
 
 struct Comment: Codable {
     var id: String
-    var author: String
+    var authorID: String
+    var authorName: String
     var content: String
     var date: Date
 }
