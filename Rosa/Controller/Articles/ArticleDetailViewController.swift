@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftEntryKit
 
 class ArticleDetailViewController: UIViewController {
 
@@ -24,19 +25,46 @@ class ArticleDetailViewController: UIViewController {
                                    photos: ["fail"],
                                    title: "fail") 
     
-    var comments: [Comment] = [Comment(id: "fail", author: "fail", content: "fail", date: Date())] {
+    var comments: [Comment] = [Comment(id: "fail",
+                                       authorID: "fail",
+                                       authorName: "fail",
+                                       content: "fail",
+                                       date: Date())] {
+        didSet {
+            filterdDefaultComments = comments.filter { $0.authorID != "default"}
+        }
+    }
+    
+    var filterdDefaultComments: [Comment]? {
         didSet {
             tableView.reloadData()
         }
     }
- 
+    
+    var blockedUsers: [String]? {
+        didSet {
+            guard let blockedUsers = self.blockedUsers else { return }
+            filteredBlockComments = filterdDefaultComments?.filter { !blockedUsers.contains($0.authorID)}
+        }
+    }
+    
+    var filteredBlockComments: [Comment]? {
+        didSet {
+            print(filteredBlockComments)
+            tableView.reloadData()
+        }
+    }
+    
+    var toBeBlockedUserID: String?
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
         authorName.text = article.author
         configureTextfield()
         fetchComments(articleID: article.id)
-
+        tableView.allowsSelection = true
+        fetchBlocklist()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +77,140 @@ class ArticleDetailViewController: UIViewController {
 
         self.tabBarController?.tabBar.isHidden = false
 
+    }
+    
+    var displayMode = EKAttributes.DisplayMode.inferred
+    
+    func setupAttributes() -> EKAttributes {
+        var attributes = EKAttributes.centerFloat
+        attributes.displayMode = displayMode
+        attributes.windowLevel = .alerts
+        attributes.displayDuration = .infinity
+        attributes.hapticFeedbackType = .success
+        attributes.screenInteraction = .absorbTouches
+        attributes.entryInteraction = .absorbTouches
+        attributes.scroll = .disabled
+        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0/255.0, alpha: 0.3),
+                                                          dark: UIColor(white: 50.0/255.0, alpha: 0.3)))
+        attributes.entryBackground = .color(color: .white)
+        attributes.entranceAnimation = .init(
+            scale: .init(
+                from: 0.9,
+                to: 1,
+                duration: 0.4,
+                spring: .init(damping: 1, initialVelocity: 0)
+            ),
+            fade: .init(
+                from: 0,
+                to: 1,
+                duration: 0.3
+            )
+        )
+        attributes.exitAnimation = .init(
+            fade: .init(
+                from: 1,
+                to: 0,
+                duration: 0.2
+            )
+        )
+        attributes.shadow = .active(
+            with: .init(
+                color: .black,
+                opacity: 0.3,
+                radius: 5
+            )
+        )
+        return attributes
+    }
+    
+    func showAlertView(attributes: EKAttributes) {
+        let title = EKProperty.LabelContent(
+            text: "Hopa!",
+            style: .init(
+                font: MainFont.medium.with(size: 15),
+                color: .black,
+                alignment: .center,
+                displayMode: displayMode
+            )
+        )
+        
+        let text =
+        """
+        Are you sure you want to block this user?
+        """
+        let description = EKProperty.LabelContent(
+            text: text,
+            style: .init(
+                font: MainFont.light.with(size: 13),
+                color: .black,
+                alignment: .center,
+                displayMode: displayMode
+            )
+        )
+        let image = EKProperty.ImageContent(
+            imageName: "rosa",
+            displayMode: displayMode,
+            size: CGSize(width: 60, height: 60),
+            contentMode: .scaleAspectFit
+        )
+        let simpleMessage = EKSimpleMessage(
+            image: image,
+            title: title,
+            description: description
+        )
+        let buttonFont = MainFont.medium.with(size: 16)
+        let closeButtonLabelStyle = EKProperty.LabelStyle(
+            font: buttonFont,
+            color: Color.Gray.a800,
+            displayMode: displayMode
+        )
+        let closeButtonLabel = EKProperty.LabelContent(
+            text: "NOT NOW",
+            style: closeButtonLabelStyle
+        )
+        let closeButton = EKProperty.ButtonContent(
+            label: closeButtonLabel,
+            backgroundColor: .clear,
+            highlightedBackgroundColor: Color.Gray.a800.with(alpha: 0.05),
+            displayMode: displayMode) {
+                SwiftEntryKit.dismiss()
+        }
+
+        let blockButtonLabelStyle = EKProperty.LabelStyle(
+            font: buttonFont,
+            color: Color.Teal.a600,
+            displayMode: displayMode
+        )
+        let blockButtonLabel = EKProperty.LabelContent(
+            text: "BLOCK",
+            style: blockButtonLabelStyle
+        )
+        let blockButton = EKProperty.ButtonContent(
+            label: blockButtonLabel,
+            backgroundColor: .clear,
+            highlightedBackgroundColor: Color.Teal.a600.with(alpha: 0.05),
+            displayMode: displayMode) {
+            SwiftEntryKit.dismiss()
+            
+            guard let toBeBlockedUserID = self.toBeBlockedUserID else { return }
+            UserManager.shared.blockUser(toBeBlockUserID: toBeBlockedUserID)
+            
+            self.fetchBlocklist()
+        }
+        
+        // Generate the content
+        let buttonsBarContent = EKProperty.ButtonBarContent(
+            with: blockButton, closeButton,
+            separatorColor: Color.Gray.light,
+            displayMode: displayMode,
+            expandAnimatedly: true
+        )
+        let alertMessage = EKAlertMessage(
+            simpleMessage: simpleMessage,
+            buttonBarContent: buttonsBarContent
+        )
+        let contentView = EKAlertMessageView(with: alertMessage)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
     @IBAction func backToArticle(_ sender: Any) {
@@ -77,6 +239,31 @@ class ArticleDetailViewController: UIViewController {
 
     }
     
+    func fetchBlocklist() {
+        
+        UserManager.shared.fetchBlockedUsers { [weak self] result in
+            
+            switch result {
+            
+            case .success(let blocklist):
+                
+                self?.blockedUsers = blocklist
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+    
+//    func filteredComment() {
+//
+//        guard let blockedUsers = self.blockedUsers else { return }
+//        for userID in blockedUsers {
+//            filteredBlockComments = filterdDefaultComments?.filter { $0.authorID != userID}
+//        }
+//    }
+    
     func fetchComments(articleID: String) {
         ArticleManager.shared.fetchComments(articleID: articleID) { [weak self] result in
             
@@ -98,11 +285,19 @@ class ArticleDetailViewController: UIViewController {
 extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if comments.count == 1 {
+//        if comments.count == 1 {
+//            return 3
+//        } else {
+//            return comments.count+1
+//        }
+        guard let filteredBlockComments = self.filteredBlockComments else { return 3 }
+        
+        if filteredBlockComments.count == 0 {
             return 3
         } else {
-            return comments.count+1
+            return filteredBlockComments.count+2
         }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,8 +328,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             } else {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell",
                                                             for: indexPath) as? CommentCell {
-                    cell.configureCommentCell(comment: comments[indexPath.row-2])
-                    
+                    if let comments = filteredBlockComments {
+                        cell.configureCommentCell(comment: comments[indexPath.row-2])
+                    }
                     return cell
                 }
             }
@@ -148,12 +344,29 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case 0:
             return 500
         case 1:
-//            return 1230
             return UITableView.automaticDimension
         default:
-//            return 120
             return UITableView.automaticDimension
         }
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if comments.count > 1 {
+            switch indexPath.row {
+            case 0:
+                return
+            case 1:
+                return
+            default:
+                self.showAlertView(attributes: setupAttributes())
+                if let comments = filteredBlockComments {
+                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
+                }
+                
+            }
+            
+        }
+    }
+    
 }

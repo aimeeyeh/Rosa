@@ -12,24 +12,22 @@ struct User: Codable {
     
     let id: String
     let name: String
-    let email: String
-    var photo: String
-    var location: Location
-    var challenge: [Challenge]
-    var record: [Record]
-    var likedArticles: [String]
-    var followed: [String]
-    var followers: [String]
-    var blocklist: [String]
+    var photo: String?
+//    var location: Location?
+//    var challenge: [Challenge]
+//    var record: [Record]
+    var likedArticles: [String]?
+    var followed: [String]?
+    var followers: [String]?
+    var blocklist: [String]?
     
     init(credentials: ASAuthorizationAppleIDCredential) {
         self.id = credentials.user
         self.name = credentials.fullName?.givenName ?? ""
-        self.email = credentials.email ?? ""
         self.photo = ""
-        self.location = Location(latitude: 0.0, longitude: 0.0)
-        self.challenge = []
-        self.record = []
+//        self.location = Location(latitude: 0.0, longitude: 0.0)
+//        self.challenge = []
+//        self.record = []
         self.likedArticles = []
         self.followed = []
         self.followers = []
@@ -38,17 +36,15 @@ struct User: Codable {
     
 }
 
-struct Location: Codable {
-    
-    var latitude: Double
-    var longitude: Double
-    
-    var toDict: [String: Any] {
-        return [
-            "latitude": latitude as Any,
-            "longitude": longitude as Any
-        ]
-    }
-    
-}
-
+//struct Location: Codable {
+//
+//    var latitude: Double
+//    var longitude: Double
+//
+//    var toDict: [String: Any] {
+//        return [
+//            "latitude": latitude as Any,
+//            "longitude": longitude as Any
+//        ]
+//    }
+//}

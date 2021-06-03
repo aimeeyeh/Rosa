@@ -76,7 +76,11 @@ class ArticleManager {
     func postComment(documentID: String, comment: String) {
         
         let document = database.collection("articles").document(documentID).collection("comments").document()
-        let comment = Comment(id: document.documentID, author: userName ?? "Anonymous", content: comment, date: Date())
+        let comment = Comment(id: document.documentID,
+                              authorID: userID ?? "Fail",
+                              authorName: userName ?? "Anonymous" ,
+                              content: comment,
+                              date: Date())
 
         do {
             try  document.setData(from: comment)

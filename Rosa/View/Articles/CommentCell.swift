@@ -19,7 +19,7 @@ class CommentCell: UITableViewCell {
     }
 
     func configureCommentCell(comment: Comment) {
-        authorName.text = comment.author
+        authorName.text = comment.authorName
         postedContent.text = comment.content
         if let formattedDate = comment.date.formatToDateWithoutYearOnly() {
             postedDate.text = formattedDate
