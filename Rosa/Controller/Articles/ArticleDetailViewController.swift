@@ -37,26 +37,35 @@ class ArticleDetailViewController: UIViewController {
     
     var filterdDefaultComments: [Comment]? {
         didSet {
+            filterComments()
+        }
+    }
+    
+    var filteredBlockComments: [Comment]? {
+        didSet {
             tableView.reloadData()
         }
     }
     
     var blockedUsers: [String]? {
         didSet {
-            guard let blockedUsers = self.blockedUsers else { return }
-            filteredBlockComments = filterdDefaultComments?.filter { !blockedUsers.contains($0.authorID)}
+            filterComments()
         }
     }
     
-    var filteredBlockComments: [Comment]? {
-        didSet {
-            print(filteredBlockComments)
-            tableView.reloadData()
+    func filterComments() {
+        guard let blockedUsers = self.blockedUsers else { return }
+        filteredBlockComments = filterdDefaultComments?.filter { !blockedUsers.contains($0.authorID)}
+    }
+    
+    func fetchBlocklist() {
+        if let currentUser = UserManager.shared.currentUser {
+            blockedUsers = currentUser.blocklist
         }
     }
     
     var toBeBlockedUserID: String?
-    
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -64,18 +73,36 @@ class ArticleDetailViewController: UIViewController {
         configureTextfield()
         fetchComments(articleID: article.id)
         tableView.allowsSelection = true
-        fetchBlocklist()
     }
     
     override func viewWillAppear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = true
+        reloadComments()
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = false
+
+    }
+    
+    func reloadComments() {
+        UserManager.shared.checkIsExistingUser { result in
+            
+            switch result {
+            
+            case .success(let user):
+                
+                self.fetchBlocklist()
+                print(user)
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
 
     }
     
@@ -195,7 +222,7 @@ class ArticleDetailViewController: UIViewController {
             guard let toBeBlockedUserID = self.toBeBlockedUserID else { return }
             UserManager.shared.blockUser(toBeBlockUserID: toBeBlockedUserID)
             
-            self.fetchBlocklist()
+            self.reloadComments()
         }
         
         // Generate the content
@@ -239,31 +266,6 @@ class ArticleDetailViewController: UIViewController {
 
     }
     
-    func fetchBlocklist() {
-        
-        UserManager.shared.fetchBlockedUsers { [weak self] result in
-            
-            switch result {
-            
-            case .success(let blocklist):
-                
-                self?.blockedUsers = blocklist
-                
-            case .failure(let error):
-                
-                print("fetchData.failure: \(error)")
-            }
-        }
-    }
-    
-//    func filteredComment() {
-//
-//        guard let blockedUsers = self.blockedUsers else { return }
-//        for userID in blockedUsers {
-//            filteredBlockComments = filterdDefaultComments?.filter { $0.authorID != userID}
-//        }
-//    }
-    
     func fetchComments(articleID: String) {
         ArticleManager.shared.fetchComments(articleID: articleID) { [weak self] result in
             
@@ -285,11 +287,7 @@ class ArticleDetailViewController: UIViewController {
 extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if comments.count == 1 {
-//            return 3
-//        } else {
-//            return comments.count+1
-//        }
+        
         guard let filteredBlockComments = self.filteredBlockComments else { return 3 }
         
         if filteredBlockComments.count == 0 {

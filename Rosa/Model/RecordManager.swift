@@ -71,7 +71,7 @@ class RecordManager {
         queryCollection
             .whereField("date", isGreaterThanOrEqualTo: startDate)
             .whereField("date", isLessThan: endDate)
-            .getDocuments() { (querySnapshot, err) in
+            .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -131,7 +131,7 @@ class RecordManager {
         queryCollection
             .whereField("date", isGreaterThanOrEqualTo: sevenDaysAgo )
             .whereField("date", isLessThanOrEqualTo: todayStartTime)
-            .getDocuments() { (querySnapshot, err) in
+            .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {

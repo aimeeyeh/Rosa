@@ -37,7 +37,7 @@ class ChallengeManager {
         queryCollection
             .whereField("setUpDate", isGreaterThanOrEqualTo: start )
             .whereField("setUpDate", isLessThan: end!)
-            .getDocuments() { (querySnapshot, err) in
+            .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -127,7 +127,7 @@ class ChallengeManager {
                 .whereField("setUpDate", isEqualTo: start )
                 .whereField("setUpDate", isGreaterThanOrEqualTo: start )
                 .whereField("setUpDate", isLessThan: end!)
-                .getDocuments() { (querySnapshot, err) in
+                .getDocuments { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
@@ -162,8 +162,8 @@ class ChallengeManager {
     }
     
     func updateDocumentProgress(documentID: String, onProgressCompleted: () -> Void) {
-        
-        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge").document("\(documentID)")
+        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+        let challengeRef = queryCollection.document("\(documentID)")
         let numberAfterAdding = self.currentProgress + 1
         
         if checkChallengeHasCompleted(progress: numberAfterAdding) {
@@ -193,7 +193,8 @@ class ChallengeManager {
     }
     
     func updateIsChecked(documentID: String) {
-        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge").document("\(documentID)")
+        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+        let challengeRef = queryCollection.document("\(documentID)")
 
         challengeRef.updateData([
             "isChecked": true
@@ -216,7 +217,7 @@ class ChallengeManager {
         func getDocumentIDs() {
             challengeRef
                 .whereField("challengeTitle", isEqualTo: challengeTitle)
-                .getDocuments() { (querySnapshot, err) in
+                .getDocuments { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
@@ -233,7 +234,7 @@ class ChallengeManager {
     
     func executeDeleteDocuments(documentID: String) {
         let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
-        challengeRef.document(documentID).delete() { err in
+        challengeRef.document(documentID).delete { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
