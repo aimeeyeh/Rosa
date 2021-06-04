@@ -19,8 +19,20 @@ class ArticlesViewController: UIViewController {
     
     var allArticles: [Article] = [] {
         didSet {
+            filterBlockedArticles()
+        }
+    }
+    
+    var blockedUsers: [String] = [] {
+        didSet {
+            filterBlockedArticles()
+        }
+    }
+    
+    var filteredArticles: [Article] = [] {
+        didSet {
             collectionView.reloadData()
-            followedArticles = allArticles.filter { followedList.contains($0.authorID) }
+            followedArticles = filteredArticles.filter { followedList.contains($0.authorID) }
         }
     }
     
@@ -37,7 +49,7 @@ class ArticlesViewController: UIViewController {
         var cellSizes = [CGSize]()
         for _ in 0...100 {
             let random = Int(arc4random_uniform((UInt32(100))))
-            cellSizes.append(CGSize(width: 200, height: 300 + random))
+            cellSizes.append(CGSize(width: 200, height: 280 + random))
         }
         return cellSizes
     }()
@@ -58,6 +70,7 @@ class ArticlesViewController: UIViewController {
         fetchAllArticles()
         fetchFollowedList()
         self.currentType = "allArticles"
+        reloadArticles()
 
     }
 
@@ -68,14 +81,7 @@ class ArticlesViewController: UIViewController {
         collectionView.collectionViewLayout = layout
     }
     
-    func fetchFollowedList() {
-        if let currentUser = UserManager.shared.currentUser {
-            if let followed = currentUser.followed {
-                self.followedList = followed
-            }
-            
-        }
-    }
+    // MARK: - fetch following authors' articles and filter out blocked user's articles
     
     func fetchAllArticles() {
         
@@ -92,6 +98,43 @@ class ArticlesViewController: UIViewController {
                 print("fetchData.failure: \(error)")
             }
         }
+    }
+    
+    func fetchFollowedList() {
+        if let currentUser = UserManager.shared.currentUser {
+            if let followed = currentUser.followed {
+                self.followedList = followed
+            }
+            
+        }
+    }
+    
+    func reloadArticles() {
+        UserManager.shared.checkIsExistingUser { result in
+            
+            switch result {
+            
+            case .success(let user):
+                
+                self.fetchBlocklist()
+                print(user)
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+        
+    }
+    
+    func fetchBlocklist() {
+        if let currentUser = UserManager.shared.currentUser {
+            blockedUsers = currentUser.blocklist ?? []
+        }
+    }
+    
+    func filterBlockedArticles() {
+        self.filteredArticles = allArticles.filter { !blockedUsers.contains($0.authorID)}
     }
     
     // MARK: - 熱門/追蹤/推薦
@@ -116,10 +159,12 @@ class ArticlesViewController: UIViewController {
             switch sender {
             case followButton:
                 currentType = "followed"
+                reloadArticles()
                 collectionView.reloadData()
 
             default:
                 currentType = "allArticles"
+                reloadArticles()
                 collectionView.reloadData()
 
             }
@@ -205,7 +250,7 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if currentType == "allArticles" {
-            return allArticles.count
+            return filteredArticles.count
         } else {
             return followedArticles.count
         }
@@ -218,7 +263,7 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
                                                          for: indexPath) as? CollectionViewCell {
             if currentType == "allArticles" {
-                cell.configureArticleCell(article: allArticles[indexPath.row])
+                cell.configureArticleCell(article: filteredArticles[indexPath.row])
                 return cell
                 
             } else {
@@ -241,7 +286,7 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
             if let indexPath = selectedIndexPath {
                 if segue.identifier == "showArticleDetails" {
                     if currentType == "allArticles" {
-                        controller.article = self.allArticles[indexPath.row]
+                        controller.article = self.filteredArticles[indexPath.row]
                         
                     } else {
                         controller.article = self.followedArticles[indexPath.row]

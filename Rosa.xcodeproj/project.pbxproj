@@ -43,6 +43,8 @@
 		7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F852655572D007597A1 /* ContentCell.swift */; };
 		7A5D9F8826555739007597A1 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F8726555739007597A1 /* CommentCell.swift */; };
 		7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B01CC265168DD0018547E /* UIButton+Extension.swift */; };
+		7A7F1921266A22250058DA98 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1920266A22250058DA98 /* PrivacyViewController.swift */; };
+		7A7F1925266A23D40058DA98 /* PrivacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1924266A23D40058DA98 /* PrivacyTableViewCell.swift */; };
 		7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB509264BB62100EE6D9D /* AppDelegate.swift */; };
 		7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */; };
 		7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* MainViewController.swift */; };
@@ -110,6 +112,8 @@
 		7A5D9F852655572D007597A1 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		7A5D9F8726555739007597A1 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		7A6B01CC265168DD0018547E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		7A7F1920266A22250058DA98 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		7A7F1924266A23D40058DA98 /* PrivacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTableViewCell.swift; sourceTree = "<group>"; };
 		7A8DB506264BB62100EE6D9D /* Rosa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rosa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8DB509264BB62100EE6D9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +218,14 @@
 			path = Challenge;
 			sourceTree = "<group>";
 		};
+		7A7F1923266A23AF0058DA98 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				7A7F1924266A23D40058DA98 /* PrivacyTableViewCell.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		7A8DB4FD264BB62100EE6D9D = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +282,7 @@
 		7AAFE486264BCC7800A20324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A7F1923266A23AF0058DA98 /* SignIn */,
 				7A1C472D26561F3200057CB4 /* Profile */,
 				7ACFDF7C2652E14F007B6B62 /* Calendar */,
 				7A475C742652BA1E00A26CF8 /* Challenge */,
@@ -390,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				7AFE439026613BA700F94330 /* SignInViewController.swift */,
+				7A7F1920266A22250058DA98 /* PrivacyViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -553,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7F1925266A23D40058DA98 /* PrivacyTableViewCell.swift in Sources */,
 				7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */,
 				7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */,
 				7A3E7F9E2657A4AF005F8768 /* Challenge.swift in Sources */,
@@ -562,6 +577,7 @@
 				7A247B0E2651216500E436D6 /* MealTableViewCell.swift in Sources */,
 				7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */,
 				7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */,
+				7A7F1921266A22250058DA98 /* PrivacyViewController.swift in Sources */,
 				7A247B102651218D00E436D6 /* ActivityTableViewCell.swift in Sources */,
 				7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */,
 				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
