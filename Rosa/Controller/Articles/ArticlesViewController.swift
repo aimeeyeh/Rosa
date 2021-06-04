@@ -50,7 +50,6 @@ class ArticlesViewController: UIViewController {
         setUpWaterfall()
         trendingButton.isSelected = true
         trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
-//        fetchAllArticles()
 
     }
     

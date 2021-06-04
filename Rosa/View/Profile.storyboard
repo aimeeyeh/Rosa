@@ -90,7 +90,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="168"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skin1" translatesAutoresizingMaskIntoConstraints="NO" id="cFx-y0-3ae">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yoyogi photoshoot" translatesAutoresizingMaskIntoConstraints="NO" id="cFx-y0-3ae">
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="168"/>
                                                 </imageView>
                                             </subviews>
@@ -267,7 +267,6 @@
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.square.fill" catalog="system" width="128" height="114"/>
-        <image name="skin1" width="1125" height="1366"/>
         <image name="yoyogi photoshoot" width="1364" height="2048"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
