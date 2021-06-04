@@ -45,6 +45,14 @@
 		7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B01CC265168DD0018547E /* UIButton+Extension.swift */; };
 		7A7F1921266A22250058DA98 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1920266A22250058DA98 /* PrivacyViewController.swift */; };
 		7A7F1925266A23D40058DA98 /* PrivacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1924266A23D40058DA98 /* PrivacyTableViewCell.swift */; };
+		7A7F1927266A6DAE0058DA98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1926266A6DAE0058DA98 /* SettingsViewController.swift */; };
+		7A7F1929266A720D0058DA98 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1928266A720D0058DA98 /* EditProfileViewController.swift */; };
+		7A7F192B266A775B0058DA98 /* EditPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F192A266A775B0058DA98 /* EditPhotoTableViewCell.swift */; };
+		7A7F192D266A77710058DA98 /* EditNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F192C266A77710058DA98 /* EditNameTableViewCell.swift */; };
+		7A7F192F266A7B2D0058DA98 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F192E266A7B2D0058DA98 /* EditNameViewController.swift */; };
+		7A7F1931266A7B3B0058DA98 /* EditBlocklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1930266A7B3B0058DA98 /* EditBlocklistViewController.swift */; };
+		7A7F1933266A7F5C0058DA98 /* EditBlocklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1932266A7F5C0058DA98 /* EditBlocklistTableViewCell.swift */; };
+		7A7F1935266A8A070058DA98 /* BlocklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1934266A8A070058DA98 /* BlocklistTableViewCell.swift */; };
 		7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB509264BB62100EE6D9D /* AppDelegate.swift */; };
 		7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */; };
 		7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* MainViewController.swift */; };
@@ -114,6 +122,14 @@
 		7A6B01CC265168DD0018547E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		7A7F1920266A22250058DA98 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		7A7F1924266A23D40058DA98 /* PrivacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTableViewCell.swift; sourceTree = "<group>"; };
+		7A7F1926266A6DAE0058DA98 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7A7F1928266A720D0058DA98 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		7A7F192A266A775B0058DA98 /* EditPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		7A7F192C266A77710058DA98 /* EditNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameTableViewCell.swift; sourceTree = "<group>"; };
+		7A7F192E266A7B2D0058DA98 /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
+		7A7F1930266A7B3B0058DA98 /* EditBlocklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBlocklistViewController.swift; sourceTree = "<group>"; };
+		7A7F1932266A7F5C0058DA98 /* EditBlocklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBlocklistTableViewCell.swift; sourceTree = "<group>"; };
+		7A7F1934266A8A070058DA98 /* BlocklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocklistTableViewCell.swift; sourceTree = "<group>"; };
 		7A8DB506264BB62100EE6D9D /* Rosa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rosa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8DB509264BB62100EE6D9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +183,10 @@
 			isa = PBXGroup;
 			children = (
 				7A1C472E26561F5500057CB4 /* ArticleCollectionViewCell.swift */,
+				7A7F1934266A8A070058DA98 /* BlocklistTableViewCell.swift */,
+				7A7F192A266A775B0058DA98 /* EditPhotoTableViewCell.swift */,
+				7A7F192C266A77710058DA98 /* EditNameTableViewCell.swift */,
+				7A7F1932266A7F5C0058DA98 /* EditBlocklistTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -370,6 +390,10 @@
 			isa = PBXGroup;
 			children = (
 				7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */,
+				7A7F192E266A7B2D0058DA98 /* EditNameViewController.swift */,
+				7A7F1930266A7B3B0058DA98 /* EditBlocklistViewController.swift */,
+				7A7F1926266A6DAE0058DA98 /* SettingsViewController.swift */,
+				7A7F1928266A720D0058DA98 /* EditProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -575,12 +599,16 @@
 				7A14BDFF265EA8CB00ED17E2 /* UIView+Message.swift in Sources */,
 				7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */,
 				7A247B0E2651216500E436D6 /* MealTableViewCell.swift in Sources */,
+				7A7F192D266A77710058DA98 /* EditNameTableViewCell.swift in Sources */,
+				7A7F1935266A8A070058DA98 /* BlocklistTableViewCell.swift in Sources */,
 				7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */,
 				7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */,
 				7A7F1921266A22250058DA98 /* PrivacyViewController.swift in Sources */,
 				7A247B102651218D00E436D6 /* ActivityTableViewCell.swift in Sources */,
 				7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */,
+				7A7F1927266A6DAE0058DA98 /* SettingsViewController.swift in Sources */,
 				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
+				7A7F1931266A7B3B0058DA98 /* EditBlocklistViewController.swift in Sources */,
 				7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
@@ -592,6 +620,7 @@
 				7AF6EDD92667C3D800F04200 /* Font.swift in Sources */,
 				7A247B0A2651210200E436D6 /* PhotoTableViewCell.swift in Sources */,
 				7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */,
+				7A7F192B266A775B0058DA98 /* EditPhotoTableViewCell.swift in Sources */,
 				7A559D7E2663E71900F73F06 /* ArticleManager.swift in Sources */,
 				7AAFE4AC264C031A00A20324 /* ArticlesViewController.swift in Sources */,
 				7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */,
@@ -604,16 +633,19 @@
 				7A3E7FA22657A4CD005F8768 /* ChallengeManager.swift in Sources */,
 				7A5D9F8826555739007597A1 /* CommentCell.swift in Sources */,
 				7A3E7FA02657A4B9005F8768 /* User.swift in Sources */,
+				7A7F1933266A7F5C0058DA98 /* EditBlocklistTableViewCell.swift in Sources */,
 				7A3E7FA42657A4D8005F8768 /* UserManager.swift in Sources */,
 				7A247B062651206C00E436D6 /* WeatherTableViewCell.swift in Sources */,
 				7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */,
 				7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */,
 				7A3E7F9C2657A279005F8768 /* Record.swift in Sources */,
+				7A7F192F266A7B2D0058DA98 /* EditNameViewController.swift in Sources */,
 				7A3E7FA62657A5F2005F8768 /* Article.swift in Sources */,
 				7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */,
 				7A20F636264CF4DA00019D3D /* UIColor+Extension.swift in Sources */,
 				7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */,
 				7A329BCD2662B1A800DE4630 /* ChartXAxisFormatter.swift in Sources */,
+				7A7F1929266A720D0058DA98 /* EditProfileViewController.swift in Sources */,
 				7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */,
 				7A489FC92666865300B692A9 /* NoCommentCell.swift in Sources */,
 				7A247B08265120F200E436D6 /* RoutineTableViewCell.swift in Sources */,

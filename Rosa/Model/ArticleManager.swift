@@ -22,6 +22,8 @@ class ArticleManager {
     
     func postArticle(article: inout Article) {
         
+        // update articles
+        
         let document = database.collection("articles").document()
         article.id = document.documentID
         article.createdTime = Date()
@@ -48,6 +50,8 @@ class ArticleManager {
     }
     
     func fetchAllArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
+        
+        reloadArticles()
         
         let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
         queryCollection.addSnapshotListener { (querySnapshot, err) in
@@ -234,6 +238,86 @@ class ArticleManager {
         followeduserDocument.updateData([
                 "followers": FieldValue.arrayRemove([userID])
             ])
+        
+    }
+    
+    func fetchPostedArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
+        
+        reloadArticles()
+        
+        guard let userID = userID else { return }
+        let queryCollection = database.collection("articles")
+        queryCollection.whereField("authorID", isEqualTo: userID)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    var articles = [Article]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                                articles.append(article)
+                            }
+                            
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    }
+                    completion(.success(articles))
+                }
+            }
+    }
+    
+    func fetchLikedArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
+        
+        reloadArticles()
+        
+        let user = UserManager.shared.currentUser
+        guard let userLikedArticles = user?.likedArticles else { return }
+        
+        let queryCollection = database.collection("articles")
+        queryCollection.whereField("id", in: userLikedArticles)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    var articles = [Article]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                                articles.append(article)
+                            }
+                            
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    }
+                    completion(.success(articles))
+                }
+            }
+        
+    }
+    
+    func reloadArticles() {
+        UserManager.shared.checkIsExistingUser { result in
+            
+            switch result {
+            
+            case .success(let user):
+                
+                print(user)
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
         
     }
     

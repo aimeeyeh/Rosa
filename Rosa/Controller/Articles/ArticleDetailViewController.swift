@@ -82,6 +82,7 @@ class ArticleDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
         reloadComments()
 
     }
@@ -89,6 +90,7 @@ class ArticleDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
 
     }
     
@@ -295,7 +297,7 @@ class ArticleDetailViewController: UIViewController {
         followButton.setTitle("追蹤", for: .normal)
         followButton.setTitleColor(UIColor.rgb(red: 229, green: 131, blue: 85, alpha: 1), for: .selected)
         
-        followButton.setTitle("已追蹤", for: .selected)
+        followButton.setTitle("追蹤中", for: .selected)
         followButton.setTitleColor(.systemGray2, for: .selected)
         
         if followButton.isSelected {

@@ -49,7 +49,7 @@ class ArticlesViewController: UIViewController {
         var cellSizes = [CGSize]()
         for _ in 0...100 {
             let random = Int(arc4random_uniform((UInt32(100))))
-            cellSizes.append(CGSize(width: 200, height: 280 + random))
+            cellSizes.append(CGSize(width: 200, height: 300 + random))
         }
         return cellSizes
     }()
