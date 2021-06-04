@@ -76,13 +76,14 @@ class ArticleDetailViewController: UIViewController {
         configureTextfield()
         fetchComments(articleID: article.id)
         tableView.allowsSelection = true
+        checkFollowButtonStatus()
+        configureFollowButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = true
         reloadComments()
-//        checkLikeButtonStatus()
 
     }
     
@@ -119,6 +120,19 @@ class ArticleDetailViewController: UIViewController {
                 likeButton.isSelected = true
             } else {
                 likeButton.isSelected = false
+            }
+        }
+    }
+    
+    func checkFollowButtonStatus() {
+        
+        let articleAuthorID = article.authorID
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        if let followed = currentUser.followed {
+            if followed.contains(articleAuthorID) {
+                followButton.isSelected = true
+            } else {
+                followButton.isSelected = false
             }
         }
     }
@@ -276,8 +290,33 @@ class ArticleDetailViewController: UIViewController {
         }
         commentTextfield.text = ""
     }
+    
+    func configureFollowButton() {
+        
+        followButton.setTitle("追蹤", for: .normal)
+        followButton.setTitleColor(UIColor.rgb(red: 229, green: 131, blue: 85, alpha: 1), for: .selected)
+        
+        followButton.setTitle("已追蹤", for: .selected)
+        followButton.setTitleColor(.systemGray2, for: .selected)
+        
+        if followButton.isSelected {
+            followButton.buttonBorderColor = UIColor.systemGray3
+        } else {
+            followButton.buttonBorderColor = UIColor.rgb(red: 229, green: 131, blue: 85, alpha: 1)
+        }
+    }
+    
     @IBAction func followAuthor(_ sender: UIButton) {
-        ArticleManager.shared.addToFollowed(authorID: article.authorID)
+        
+        if sender.isSelected {
+            ArticleManager.shared.removeFromFollowed(authorID: article.authorID)
+        } else {
+            ArticleManager.shared.addToFollowed(authorID: article.authorID)
+        }
+        
+        followButton.isSelected = !followButton.isSelected
+        configureFollowButton()
+
     }
     
     @IBAction func likedArticle(_ sender: UIButton) {
