@@ -39,7 +39,7 @@ class ArticleDetailViewController: UIViewController {
     
     var filterdDefaultComments: [Comment]? {
         didSet {
-            filterComments()
+            filterComments() // 跟blocked user didset裡的filterComments()是否留一個就夠？
         }
     }
     
@@ -49,7 +49,7 @@ class ArticleDetailViewController: UIViewController {
         }
     }
     
-    var blockedUsers: [String]? {
+    var blockedUsers: [String] = [] {
         didSet {
             filterComments()
             checkLikeButtonStatus()
@@ -57,13 +57,12 @@ class ArticleDetailViewController: UIViewController {
     }
     
     func filterComments() {
-        guard let blockedUsers = self.blockedUsers else { return }
         filteredBlockComments = filterdDefaultComments?.filter { !blockedUsers.contains($0.authorID)}
     }
     
     func fetchBlocklist() {
         if let currentUser = UserManager.shared.currentUser {
-            blockedUsers = currentUser.blocklist
+            blockedUsers = currentUser.blocklist ?? []
         }
     }
     
