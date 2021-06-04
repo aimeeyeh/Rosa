@@ -219,4 +219,22 @@ class ArticleManager {
         
     }
     
+    func removeFromFollowed(authorID: String) {
+        
+        guard let userID = userID else { return }
+        
+        let currentUserDocument = database.collection("user").document(userID)
+
+        currentUserDocument.updateData([
+                "followed": FieldValue.arrayRemove([authorID])
+            ])
+        
+        let followeduserDocument = database.collection("user").document(authorID)
+        
+        followeduserDocument.updateData([
+                "followers": FieldValue.arrayRemove([userID])
+            ])
+        
+    }
+    
 }
