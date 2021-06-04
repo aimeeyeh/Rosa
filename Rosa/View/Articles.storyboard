@@ -192,7 +192,7 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="4wN-Yp-XUW"/>
                                 </connections>
                             </collectionView>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Qp-uK-oLx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Qp-uK-oLx">
                                 <rect key="frame" x="0.0" y="103" width="414" height="261"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -304,7 +304,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKF-qt-OZp">
-                                        <rect key="frame" x="369" y="59" width="30" height="30"/>
+                                        <rect key="frame" x="369" y="58" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="c6l-7z-bpz"/>
                                             <constraint firstAttribute="width" constant="30" id="hex-sZ-dZc"/>
@@ -319,14 +319,14 @@
                                             <constraint firstAttribute="height" constant="25" id="i4n-bU-tC1"/>
                                             <constraint firstAttribute="width" constant="60" id="v9P-lE-fTO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="追蹤">
                                             <color key="titleColor" cyan="0.0" magenta="0.45797768239999997" yellow="0.6214422584" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="buttonBorderWidth">
-                                                <real key="value" value="0.5"/>
+                                                <real key="value" value="0.80000000000000004"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
                                                 <real key="value" value="12"/>
@@ -357,7 +357,6 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="DKF-qt-OZp" firstAttribute="centerY" secondItem="exK-Ee-LHi" secondAttribute="centerY" id="3ww-vv-tsz"/>
                                     <constraint firstItem="P1V-f0-KfU" firstAttribute="leading" secondItem="5NN-x4-dEe" secondAttribute="trailing" constant="8" symbolic="YES" id="8Dt-gX-Kew"/>
                                     <constraint firstItem="DKF-qt-OZp" firstAttribute="leading" secondItem="exK-Ee-LHi" secondAttribute="trailing" constant="10" id="BIB-Yb-bu0"/>
                                     <constraint firstItem="5NN-x4-dEe" firstAttribute="centerY" secondItem="0cP-zg-6Al" secondAttribute="centerY" id="BZa-gL-JtW"/>
@@ -366,6 +365,7 @@
                                     <constraint firstItem="5NN-x4-dEe" firstAttribute="leading" secondItem="0cP-zg-6Al" secondAttribute="trailing" constant="5" id="W4R-p1-gMM"/>
                                     <constraint firstAttribute="bottom" secondItem="0cP-zg-6Al" secondAttribute="bottom" constant="15" id="ZJx-6w-RrB"/>
                                     <constraint firstItem="exK-Ee-LHi" firstAttribute="centerY" secondItem="P1V-f0-KfU" secondAttribute="centerY" id="j4W-X2-dcz"/>
+                                    <constraint firstAttribute="bottom" secondItem="DKF-qt-OZp" secondAttribute="bottom" constant="12" id="oTN-AI-mcR"/>
                                     <constraint firstItem="0cP-zg-6Al" firstAttribute="leading" secondItem="KW9-FY-eRn" secondAttribute="leading" constant="15" id="wDG-95-fwj"/>
                                     <constraint firstItem="P1V-f0-KfU" firstAttribute="centerY" secondItem="5NN-x4-dEe" secondAttribute="centerY" id="yVR-iU-o8h"/>
                                 </constraints>
