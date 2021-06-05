@@ -10,11 +10,26 @@ import UIKit
 class EditNameViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         textField.borderStyle = .roundedRect
         textField.tintColor = .lightGray
+        configurePlaceholder()
         
     }
+    func configurePlaceholder() {
+        guard let name = UserManager.shared.currentUser?.name else { return }
+        textField.attributedPlaceholder = NSAttributedString(string: name)
+    }
+    
+    @IBAction func editName(_ sender: Any) {
+        
+        if let name = textField.text {
+            UserManager.shared.updateUserName(name: name)
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

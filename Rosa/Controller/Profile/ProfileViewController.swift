@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -16,6 +17,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var followedNumber: UILabel!
     @IBOutlet weak var followersNumber: UILabel!
     @IBOutlet weak var postedArticlesNumber: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var currentType = "postedArticles"
     
@@ -37,8 +40,16 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         fetchPostedArticles()
         fetchLikedArticles()
+        configureProfile() 
     }
     
+    func configureProfile() {
+        if let user = UserManager.shared.currentUser {
+            nameLabel.text = user.name
+            guard let photo = user.photo else { return }
+            profileImage.kf.setImage(with: URL(string: photo))
+        }
+    }
     func fetchPostedArticles() {
         
         ArticleManager.shared.fetchPostedArticles { [weak self] result in

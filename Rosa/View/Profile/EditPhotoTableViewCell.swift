@@ -8,7 +8,11 @@
 import UIKit
 
 class EditPhotoTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var uploadButton: UIButton!
+    
+    var onButtonPressed: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,4 +24,7 @@ class EditPhotoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func uploadPhoto(_ sender: Any) {
+        onButtonPressed?()
+    }
 }

@@ -82,36 +82,81 @@ class UserManager {
                 "blocklist": FieldValue.arrayUnion([toBeBlockUserID])
             ])
     }
+
+    func updateUserProfilePhoto(photoURL: String) {
+        guard let userID = userID else { return }
+        
+        let currentUserDocument = database.collection("user").document(userID)
+        
+        currentUserDocument.updateData([
+            "photo": photoURL
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Photo successfully updated")
+            }
+        }
+    }
     
-//    func fetchBlockedUsers(completion: @escaping (Result<[String], Error>) -> Void) {
-//        
-//        guard let userID = userID else { return }
-//        
-//        let queryCollection = database.collection("user")
-//        let currentUserDocument = queryCollection.whereField("id", isEqualTo: userID)
-//        currentUserDocument.getDocuments() { (querySnapshot, err) in
-//                   if let err = err {
-//                       print("Error getting documents: \(err)")
-//                   } else {
-//                    
-//                    var blocklistIDs = [String]()
-//    
-//                    for document in querySnapshot!.documents {
-//                        
-//                        do {
-//                            if let currentUser = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-//                                blocklistIDs = currentUser.blocklist ?? []
-//                            }
-//                            
-//                        } catch {
-//                            
-//                            completion(.failure(error))
-//                        }
-//                    }
-//                    completion(.success(blocklistIDs))
-//                }
-//           }
-//
-//    }
+    func updateUserName(name: String) {
+        guard let userID = userID else { return }
+        
+        let currentUserDocument = database.collection("user").document(userID)
+        
+        currentUserDocument.updateData([
+            "name": name
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Name successfully updated")
+            }
+        }
+    }
+    
+    func fetchBlocklistUserData(blocklist: [String], completion: @escaping (Result<[User], Error>) -> Void) {
+        
+        let queryCollection = database.collection("user")
+        queryCollection.whereField("id", in: blocklist)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    var users = [User]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                users.append(user)
+                            }
+                            
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    }
+                    completion(.success(users))
+                }
+            }
+    }
+    
+    func removeFromBlocklist(blocklistUserID: String) {
+        
+        guard let userID = userID else { return }
+        
+        let document = database.collection("user").document(userID)
+        
+        document.updateData([
+            "blocklist": FieldValue.arrayRemove([blocklistUserID])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Blocklist successfully updated")
+            }
+        }
+    }
     
 }
