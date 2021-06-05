@@ -16,11 +16,20 @@ class ArticleManager {
     
     lazy var database = Firestore.firestore()
     
-    let userID = UserDefaults.standard.string(forKey: "userID")
-    let userName = UserDefaults.standard.string(forKey: "userName")
+    let user = UserManager.shared.currentUser
+    
+//    let userID = UserDefaults.standard.string(forKey: "userID")
+//    let userName = UserDefaults.standard.string(forKey: "userName")
+
     let defaultID = "Aimee"
     
     func postArticle(article: inout Article) {
+//
+//        guard let userID = user?.id else { return }
+//        guard let userName = user?.name else { return }
+        let userID = user?.id
+        let userName = user?.name
+        guard let userPhoto = user?.photo else { return }
         
         // update articles
         
@@ -29,6 +38,7 @@ class ArticleManager {
         article.createdTime = Date()
         article.authorName = userName ?? "Anonymous"
         article.authorID = userID ?? defaultID
+        article.authorPhoto = userPhoto
         
         do {
             try  document.setData(from: article)
@@ -80,10 +90,15 @@ class ArticleManager {
     
     func postComment(documentID: String, comment: String) {
         
+        let userID = user?.id
+        let userName = user?.name
+        guard let userPhoto = user?.photo else { return }
+        
         let document = database.collection("articles").document(documentID).collection("comments").document()
         let comment = Comment(id: document.documentID,
                               authorID: userID ?? "Fail",
-                              authorName: userName ?? "Anonymous" ,
+                              authorName: userName ?? "Anonymous",
+                              authorPhoto: userPhoto ,
                               content: comment,
                               date: Date())
 
@@ -99,7 +114,8 @@ class ArticleManager {
     
     func fetchComments(articleID: String, completion: @escaping (Result<[Comment], Error>) -> Void) {
         
-        let queryCollection = database.collection("articles").document(articleID).collection("comments").order(by: "date", descending: false)
+        let queryCollection = database.collection("articles").document(articleID).collection("comments")
+            .order(by: "date", descending: false)
         queryCollection.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -155,7 +171,7 @@ class ArticleManager {
     func likeArticles(articleID: String, currentLikes: Int) {
         
         // update user
-        guard let userID = userID else { return }
+        guard let userID = user?.id else { return }
         
         let document = database.collection("user").document(userID)
 
@@ -182,7 +198,7 @@ class ArticleManager {
     func unLikeArticles(articleID: String, currentLikes: Int) {
         
         // update user
-        guard let userID = userID else { return }
+        guard let userID = user?.id else { return }
         
         let document = database.collection("user").document(userID)
 
@@ -207,7 +223,7 @@ class ArticleManager {
     
     func addToFollowed(authorID: String) {
         
-        guard let userID = userID else { return }
+        guard let userID = user?.id else { return }
         
         let currentUserDocument = database.collection("user").document(userID)
 
@@ -225,7 +241,7 @@ class ArticleManager {
     
     func removeFromFollowed(authorID: String) {
         
-        guard let userID = userID else { return }
+        guard let userID = user?.id else { return }
         
         let currentUserDocument = database.collection("user").document(userID)
 
@@ -245,7 +261,7 @@ class ArticleManager {
         
         reloadArticles()
         
-        guard let userID = userID else { return }
+        guard let userID = user?.id else { return }
         let queryCollection = database.collection("articles")
         queryCollection.whereField("authorID", isEqualTo: userID)
             .getDocuments { (querySnapshot, err) in

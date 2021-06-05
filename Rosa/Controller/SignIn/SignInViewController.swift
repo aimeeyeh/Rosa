@@ -13,6 +13,7 @@ import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
+    @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var lottieView: AnimationView!
     
     override func viewDidLoad() {
@@ -117,6 +118,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func skipSignIn(_ sender: Any) {
 //        performSegue(withIdentifier: "showHomePage", sender: nil)
+        signinButton.isEnabled = false
         let defaults = UserDefaults.standard
         defaults.set("Aimee", forKey: "userID")
         defaults.set("secretAimee", forKey: "userName")
@@ -146,8 +148,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
      
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
 
-//            guard let defaultUserName = appleIDCredential.fullName else { return }
-            
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }

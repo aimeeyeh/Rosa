@@ -20,6 +20,7 @@ class ArticleDetailViewController: UIViewController {
     var article: Article = Article(id: "fail",
                                    authorID: "fail",
                                    authorName: "fail",
+                                   authorPhoto: "fail",
                                    category: "fail",
                                    content: "fail",
                                    createdTime: Date(),
@@ -30,6 +31,7 @@ class ArticleDetailViewController: UIViewController {
     var comments: [Comment] = [Comment(id: "fail",
                                        authorID: "fail",
                                        authorName: "fail",
+                                       authorPhoto: "fail",
                                        content: "fail",
                                        date: Date())] {
         didSet {
@@ -384,7 +386,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             }
             
         default:
-            if comments.count == 1 {
+            if comments.count <= 1 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "NoCommentCell",
                                                             for: indexPath) as? NoCommentCell {
                     

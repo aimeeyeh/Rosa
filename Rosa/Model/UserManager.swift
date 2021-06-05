@@ -159,4 +159,33 @@ class UserManager {
         }
     }
     
+    func fetchAuthorPhoto(authorID: String, completion: @escaping (Result<User, Error>) -> Void) {
+        
+        let queryCollection = database.collection("user")
+        queryCollection.whereField("id", isEqualTo: authorID)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    var userData: User?
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                userData = user
+                            }
+                            
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    }
+                    if let user = userData {
+                        completion(.success(user))
+                    }
+                }
+            }
+    }
+    
 }

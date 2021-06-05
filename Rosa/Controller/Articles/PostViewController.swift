@@ -183,6 +183,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         var article = Article(id: "",
                               authorID: "",
                               authorName: "",
+                              authorPhoto: "",
                               category: category,
                               content: contentTextView.text,
                               createdTime: Date(),
