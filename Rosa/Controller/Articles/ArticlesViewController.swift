@@ -260,8 +260,9 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell",
                                                          for: indexPath) as? CollectionViewCell {
+            
             if currentType == "allArticles" {
                 cell.configureArticleCell(article: filteredArticles[indexPath.row])
                 return cell
@@ -270,6 +271,7 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
                 cell.configureArticleCell(article: followedArticles[indexPath.row])
                 return cell
             }
+            
         }
         return UICollectionViewCell()
     }

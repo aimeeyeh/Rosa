@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CommentCell: UITableViewCell {
     @IBOutlet weak var authorPhoto: UIImageView!
@@ -19,6 +20,7 @@ class CommentCell: UITableViewCell {
     }
 
     func configureCommentCell(comment: Comment) {
+        authorPhoto.kf.setImage(with: URL(string: comment.authorPhoto))
         authorName.text = comment.authorName
         postedContent.text = comment.content
         if let formattedDate = comment.date.formatToDateWithoutYearOnly() {

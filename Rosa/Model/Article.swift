@@ -12,6 +12,7 @@ struct Article: Codable {
     var id: String
     var authorID: String
     var authorName: String
+    var authorPhoto: String
     var category: String
     var content: String
     var createdTime: Date
@@ -24,6 +25,7 @@ struct Comment: Codable {
     var id: String
     var authorID: String
     var authorName: String
+    var authorPhoto: String 
     var content: String
     var date: Date
 }
