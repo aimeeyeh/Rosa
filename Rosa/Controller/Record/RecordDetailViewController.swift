@@ -163,7 +163,8 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
             return
         }
         
-        let userID = "kimaiku"
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
         let imageName = "images/\(userID)/\(Date()).png"
         
         let ref = storage.child(imageName)

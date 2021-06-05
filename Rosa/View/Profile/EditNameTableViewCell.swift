@@ -8,7 +8,9 @@
 import UIKit
 
 class EditNameTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +20,12 @@ class EditNameTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureName() {
+        if let name = UserManager.shared.currentUser?.name {
+            nameLabel.text = name
+        }
     }
 
 }
