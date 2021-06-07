@@ -19,13 +19,14 @@ class RoutineTableViewCell: UITableViewCell {
 
     }
 
-    @IBAction func selectedWater(_ sender: Any) {
-        waterButton.isSelected = !waterButton.isSelected
-        waterButton.checkButtonState()
-    }
-    @IBAction func selectedSleep(_ sender: Any) {
-        sleepButton.isSelected = !sleepButton.isSelected
-        sleepButton.checkButtonState()
-    }
+//    @IBAction func selectedWater(_ sender: Any) {
+//        waterButton.isSelected = !waterButton.isSelected
+//        waterButton.checkButtonState()
+//    }
+    
+//    @IBAction func selectedSleep(_ sender: Any) {
+//        sleepButton.isSelected = !sleepButton.isSelected
+//        sleepButton.checkButtonState()
+//    }
     
 }

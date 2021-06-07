@@ -17,14 +17,30 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        checkboxButton.setImage(UIImage(named: "checked"), for: .disabled)
+        checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
+        checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
+
+    }
+    
+    override func prepareForReuse() {
+        checkboxButton.isSelected = false
+        checkboxButton.isUserInteractionEnabled = true
+        checkboxButton.setImage(UIImage(named: "checked"), for: .disabled)
+        checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
+        checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
+        
     }
     
     var onButtonPressed: (() -> Void)?
 
     @IBAction func checkChallenge(_ sender: Any) {
-        checkboxButton.isEnabled = false
-        checkboxButton.setImage(UIImage(named: "checked"), for: .disabled)
+        checkboxButton.isUserInteractionEnabled = false
+        checkboxButton.isSelected = true
         onButtonPressed?()
+        checkboxButton.setImage(UIImage(named: "checked"), for: .disabled)
+        checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
+        checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
     }
     
     func challengeConfigure(challenges: [Challenge], indexPath: IndexPath) {
@@ -35,8 +51,6 @@ class CalendarChallengeTableViewCell: UITableViewCell {
         challengeDesciption.text = "Skincare is Healthcare"
         challengeDesciption.textColor = .systemGray6
         challengeBackground.backgroundColor = UIColor.challengeColor(challenge: title)
-        checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
-        checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
         checkboxButton.isUserInteractionEnabled = !challenges[indexPath.row].isChecked
         checkboxButton.isSelected = challenges[indexPath.row].isChecked
        

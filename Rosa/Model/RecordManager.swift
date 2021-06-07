@@ -96,14 +96,14 @@ class RecordManager {
             }
     }
 
-    func postDailyRecord(record: inout Record, completion: @escaping (Result<String, Error>) -> Void) {
+    func postDailyRecord(record: inout Record, selectedDate: Date, completion: @escaping (Result<String, Error>) -> Void) {
         
         let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
         let document = queryCollection.document()
         // 需要先有Aimee這個user
-        let today = Date()
+//        let today = Date()
         let calendar = Calendar.current
-        let todayStartTime = calendar.startOfDay(for: today)
+        let todayStartTime = calendar.startOfDay(for: selectedDate)
         
         record.id = document.documentID
         record.date = todayStartTime
