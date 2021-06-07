@@ -30,7 +30,7 @@ class StatusTableViewCell: UITableViewCell {
     @IBAction func selectedHappy(_ sender: Any) {
         happyButton.isSelected = !happyButton.isSelected
         happyButton.checkButtonState()
-        selectedFeeling = "happy"
+        selectedFeeling = "Happy"
         if happyButton.isSelected {
             okButton.isSelected = false
             mehButton.isSelected = false
@@ -43,7 +43,7 @@ class StatusTableViewCell: UITableViewCell {
     @IBAction func selectedOk(_ sender: Any) {
         okButton.isSelected = !okButton.isSelected
         okButton.checkButtonState()
-        selectedFeeling = "nice"
+        selectedFeeling = "Nice"
         if okButton.isSelected {
             happyButton.isSelected = false
             mehButton.isSelected = false
@@ -56,7 +56,7 @@ class StatusTableViewCell: UITableViewCell {
     @IBAction func selectedMeh(_ sender: Any) {
         mehButton.isSelected = !mehButton.isSelected
         mehButton.checkButtonState()
-        selectedFeeling = "meh"
+        selectedFeeling = "Meh"
         if mehButton.isSelected {
             okButton.isSelected = false
             happyButton.isSelected = false
@@ -69,7 +69,7 @@ class StatusTableViewCell: UITableViewCell {
     @IBAction func selectedSad(_ sender: Any) {
         sadButton.isSelected = !sadButton.isSelected
         sadButton.checkButtonState()
-        selectedFeeling = "sad"
+        selectedFeeling = "Sad"
         if sadButton.isSelected {
             okButton.isSelected = false
             mehButton.isSelected = false
@@ -82,7 +82,7 @@ class StatusTableViewCell: UITableViewCell {
     @IBAction func selectedAngry(_ sender: Any) {
         angryButton.isSelected = !angryButton.isSelected
         angryButton.checkButtonState()
-        selectedFeeling = "angry"
+        selectedFeeling = "Angry"
         if angryButton.isSelected {
             okButton.isSelected = false
             mehButton.isSelected = false
