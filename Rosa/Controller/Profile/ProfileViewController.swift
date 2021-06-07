@@ -38,8 +38,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchPostedArticles()
-        fetchLikedArticles()
+        reloadArticles()
         configureProfile() 
     }
     
@@ -84,6 +83,25 @@ class ProfileViewController: UIViewController {
             case .success(let articles):
                 
                 self?.likedArticles = articles
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+        
+    }
+    
+    func reloadArticles() {
+        UserManager.shared.fetchUser { result in
+            
+            switch result {
+            
+            case .success(let user):
+                
+                self.fetchLikedArticles()
+                self.fetchPostedArticles()
+                print(user)
                 
             case .failure(let error):
                 

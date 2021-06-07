@@ -61,8 +61,6 @@ class ArticleManager {
     
     func fetchAllArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         
-        reloadArticles()
-        
         let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
         queryCollection.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
@@ -259,8 +257,6 @@ class ArticleManager {
     
     func fetchPostedArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         
-        reloadArticles()
-        
         guard let userID = user?.id else { return }
         let queryCollection = database.collection("articles")
         queryCollection.whereField("authorID", isEqualTo: userID)
@@ -289,8 +285,6 @@ class ArticleManager {
     
     func fetchLikedArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         
-        reloadArticles()
-        
         let user = UserManager.shared.currentUser
         guard let userLikedArticles = user?.likedArticles else { return }
         
@@ -317,23 +311,6 @@ class ArticleManager {
                     completion(.success(articles))
                 }
             }
-        
-    }
-    
-    func reloadArticles() {
-        UserManager.shared.checkIsExistingUser { result in
-            
-            switch result {
-            
-            case .success(let user):
-                
-                print(user)
-                
-            case .failure(let error):
-                
-                print("fetchData.failure: \(error)")
-            }
-        }
         
     }
     

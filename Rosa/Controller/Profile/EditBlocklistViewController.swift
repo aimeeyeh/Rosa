@@ -40,7 +40,7 @@ class EditBlocklistViewController: UIViewController {
     
     func getUserBlocklist() {
         
-        UserManager.shared.checkIsExistingUser { result in
+        UserManager.shared.fetchUser { result in
             
             switch result {
             

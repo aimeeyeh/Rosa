@@ -17,11 +17,7 @@ class ArticlesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
-    var allArticles: [Article] = [] {
-        didSet {
-            filterBlockedArticles()
-        }
-    }
+    var allArticles: [Article] = []
     
     var blockedUsers: [String] = [] {
         didSet {
@@ -32,13 +28,20 @@ class ArticlesViewController: UIViewController {
     var filteredArticles: [Article] = [] {
         didSet {
             collectionView.reloadData()
+        }
+    }
+    
+    var followedList: [String] = [] {
+        didSet {
             followedArticles = filteredArticles.filter { followedList.contains($0.authorID) }
         }
     }
     
-    var followedList: [String] = []
-    
-    var followedArticles: [Article] = []
+    var followedArticles: [Article] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     var selectedIndexPath: IndexPath?
     
@@ -49,7 +52,7 @@ class ArticlesViewController: UIViewController {
         var cellSizes = [CGSize]()
         for _ in 0...100 {
             let random = Int(arc4random_uniform((UInt32(100))))
-            cellSizes.append(CGSize(width: 200, height: 300 + random))
+            cellSizes.append(CGSize(width: 200, height: 290 + random))
         }
         return cellSizes
     }()
@@ -110,12 +113,13 @@ class ArticlesViewController: UIViewController {
     }
     
     func reloadArticles() {
-        UserManager.shared.checkIsExistingUser { result in
+        UserManager.shared.fetchUser { result in
             
             switch result {
             
             case .success(let user):
-                
+                self.fetchAllArticles()
+                self.fetchFollowedList()
                 self.fetchBlocklist()
                 print(user)
                 

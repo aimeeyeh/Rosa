@@ -16,6 +16,8 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var lottieView: AnimationView!
     
+    var defaultName = ""
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -117,13 +119,12 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func skipSignIn(_ sender: Any) {
-//        performSegue(withIdentifier: "showHomePage", sender: nil)
+
         signinButton.isEnabled = false
         let defaults = UserDefaults.standard
         defaults.set("Aimee", forKey: "userID")
-        defaults.set("secretAimee", forKey: "userName")
         
-        UserManager.shared.checkIsExistingUser { result in
+        UserManager.shared.checkIsExistingUser(userName: "secretAimee") { result in
             
             switch result {
             
@@ -147,7 +148,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
      
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
@@ -161,7 +161,10 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
             }
-
+            
+            if let defaultName = appleIDCredential.fullName?.givenName {
+                self.defaultName = defaultName
+            }
             // Initialize a Firebase credential.
             let credential = OAuthProvider.credential(withProviderID: "apple.com",
                                                       idToken: idTokenString,
@@ -178,25 +181,13 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                     guard let user = authResult?.user else { return }
 
                     let defaults = UserDefaults.standard
-                    
-//                    if let displayName = user.displayName {
-//                        defaults.set(displayName, forKey: "userName")
-//                    } else {
-//                        defaults.set(defaultUserName, forKey: "userName")
-//                    }
-                    
-                    if let displayName = user.displayName {
-                        defaults.set(displayName, forKey: "userName")
-                    } else {
-                        defaults.set("No Name", forKey: "userName")
-                    }
-                    
+                                        
                     print("\(String(describing: user.displayName))")
 
                     guard let uid = Auth.auth().currentUser?.uid else { return }
                     defaults.set(uid, forKey: "userID")
 
-                    UserManager.shared.checkIsExistingUser { result in
+                    UserManager.shared.checkIsExistingUser(userName: user.displayName ?? self.defaultName) { result in
                         
                         switch result {
                         
