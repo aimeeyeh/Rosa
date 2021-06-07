@@ -118,16 +118,21 @@ class MainViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        configureViews()
-        configureProgressView()
-//        self.sleepLineChartView.ishidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        sleepArray = []
-        waterArray = []
+        self.resetData()
         fetchChallenge(date: Date())
         fetchPreviousRecords()
+        configureViews()
+        configureProgressView()
+    }
+    
+    func resetData() {
+        self.sleepArray = []
+        self.waterArray = []
+        self.sleepLineChartYValues = []
+        self.waterBarChartYValues = []
     }
     
     func configureViews() {
@@ -163,7 +168,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         topAxis.drawAxisLineEnabled = false
         waterChartView.rightAxis.drawGridLinesEnabled = false
         waterChartView.rightAxis.granularityEnabled = true
-        waterChartView.rightAxis.granularity = 750
+        waterChartView.rightAxis.granularity = 500
         waterChartView.maxVisibleCount = 60
         waterChartView.notifyDataSetChanged()
         waterChartView.animate(yAxisDuration: 2.0)
