@@ -36,13 +36,11 @@ class EditProfileViewController: UIViewController {
     }
     
     func reloadEditProfile() {
-        UserManager.shared.checkIsExistingUser { result in
+        UserManager.shared.fetchUser { result in
             
             switch result {
             
             case .success(let user):
-                
-//                self.profilePhotoURL = user.photo
                 print(user)
                 self.tableView.reloadData()
                 

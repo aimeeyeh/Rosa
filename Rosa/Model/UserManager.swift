@@ -16,12 +16,9 @@ class UserManager {
     lazy var database = Firestore.firestore()
     var currentUser: User?
     
-    let userID = UserDefaults.standard.string(forKey: "userID")
-    let userName = UserDefaults.standard.string(forKey: "userName")
+    let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
     
-    func checkIsExistingUser(completion: @escaping (Result<User, Error>) -> Void) {
-        
-        guard let userID = userID else { return }
+    func checkIsExistingUser(userName: String, completion: @escaping (Result<User, Error>) -> Void) {
 
         let queryCollection = database.collection("user")
         let currentUserDocument = queryCollection.whereField("id", isEqualTo: userID)
@@ -33,16 +30,20 @@ class UserManager {
                     // 新用戶
                     if querySnapshot!.documents.count == 0 {
                         
-                        self.currentUser = User(id: userID, name: self.userName ?? "No name")
+                        self.currentUser = User(id: self.userID, name: userName )
                         
                         let queryCollection = self.database.collection("user")
                         
-                        queryCollection.document(userID).setData(["id": userID,
-                                                                  "name": self.userName ?? "No name"]) { err in
+                        queryCollection.document(self.userID).setData(["id": self.userID,
+                                                                  "name": userName]) { err in
                             if let err = err {
                                 print("Error writing document: \(err)")
+                                completion(.failure(err))
                             } else {
                                 print("Document successfully written!")
+                                if let currentUser = self.currentUser {
+                                    completion(.success(currentUser))
+                                }
                             }
                         }
 
@@ -72,9 +73,37 @@ class UserManager {
 
     }
     
-    func blockUser(toBeBlockUserID: String) {
+    func fetchUser(completion: @escaping (Result<User, Error>) -> Void) {
         
-        guard let userID = userID else { return }
+        let queryCollection = database.collection("user")
+        let currentUserDocument = queryCollection.whereField("id", isEqualTo: userID)
+        currentUserDocument.getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            self.currentUser = user
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                }
+                
+                if let currentUser = self.currentUser {
+                    completion(.success(currentUser))
+                }
+            }
+            
+        }
+    }
+    
+    func blockUser(toBeBlockUserID: String) {
         
         let document = database.collection("user").document(userID)
 
@@ -84,7 +113,6 @@ class UserManager {
     }
 
     func updateUserProfilePhoto(photoURL: String) {
-        guard let userID = userID else { return }
         
         let currentUserDocument = database.collection("user").document(userID)
         
@@ -100,7 +128,6 @@ class UserManager {
     }
     
     func updateUserName(name: String) {
-        guard let userID = userID else { return }
         
         let currentUserDocument = database.collection("user").document(userID)
         
@@ -143,8 +170,6 @@ class UserManager {
     }
     
     func removeFromBlocklist(blocklistUserID: String) {
-        
-        guard let userID = userID else { return }
         
         let document = database.collection("user").document(userID)
         

@@ -97,7 +97,7 @@ class ArticleDetailViewController: UIViewController {
     }
     
     func reloadComments() {
-        UserManager.shared.checkIsExistingUser { result in
+        UserManager.shared.fetchUser { result in
             
             switch result {
             
