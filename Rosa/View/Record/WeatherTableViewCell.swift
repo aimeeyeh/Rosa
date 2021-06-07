@@ -29,7 +29,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBAction func selectedSunny(_ sender: Any) {
         sunnyButton.isSelected = !sunnyButton.isSelected
         sunnyButton.checkButtonState()
-        selectedWeather = "sunny"
+        selectedWeather = "Sunny"
         if sunnyButton.isSelected {
             mostlyClearButton.isSelected = false
             cloudyButton.isSelected = false
@@ -41,7 +41,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBAction func selctedMostlyClear(_ sender: Any) {
         mostlyClearButton.isSelected = !mostlyClearButton.isSelected
         mostlyClearButton.checkButtonState()
-        selectedWeather = "mostlyClear"
+        selectedWeather = "MostlyClear"
         if mostlyClearButton.isSelected {
             sunnyButton.isSelected = false
             cloudyButton.isSelected = false
@@ -53,7 +53,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBAction func slectedCloudy(_ sender: Any) {
         cloudyButton.isSelected = !cloudyButton.isSelected
         cloudyButton.checkButtonState()
-        selectedWeather = "cloudy"
+        selectedWeather = "Cloudy"
         if cloudyButton.isSelected {
             mostlyClearButton.isSelected = false
             sunnyButton.isSelected = false
@@ -65,7 +65,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBAction func selectedRainy(_ sender: Any) {
         rainyButton.isSelected = !rainyButton.isSelected
         rainyButton.checkButtonState()
-        selectedWeather = "rainy"
+        selectedWeather = "Rainy"
         if rainyButton.isSelected {
             mostlyClearButton.isSelected = false
             cloudyButton.isSelected = false
