@@ -43,6 +43,8 @@
 		7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F852655572D007597A1 /* ContentCell.swift */; };
 		7A5D9F8826555739007597A1 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F8726555739007597A1 /* CommentCell.swift */; };
 		7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B01CC265168DD0018547E /* UIButton+Extension.swift */; };
+		7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B050F266E2E0A0047014C /* PopUpMessage.swift */; };
+		7A6B0512266E2FC80047014C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B0511266E2FC80047014C /* FloatingButton.swift */; };
 		7A7F1921266A22250058DA98 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1920266A22250058DA98 /* PrivacyViewController.swift */; };
 		7A7F1925266A23D40058DA98 /* PrivacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1924266A23D40058DA98 /* PrivacyTableViewCell.swift */; };
 		7A7F1927266A6DAE0058DA98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1926266A6DAE0058DA98 /* SettingsViewController.swift */; };
@@ -120,6 +122,8 @@
 		7A5D9F852655572D007597A1 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		7A5D9F8726555739007597A1 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		7A6B01CC265168DD0018547E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		7A6B050F266E2E0A0047014C /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
+		7A6B0511266E2FC80047014C /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7A7F1920266A22250058DA98 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		7A7F1924266A23D40058DA98 /* PrivacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTableViewCell.swift; sourceTree = "<group>"; };
 		7A7F1926266A6DAE0058DA98 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -418,7 +422,9 @@
 			isa = PBXGroup;
 			children = (
 				7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */,
+				7A6B050F266E2E0A0047014C /* PopUpMessage.swift */,
 				7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */,
+				7A6B0511266E2FC80047014C /* FloatingButton.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
 				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
+				7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
 				7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */,
 				7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */,
@@ -621,6 +628,7 @@
 				7A247B0A2651210200E436D6 /* PhotoTableViewCell.swift in Sources */,
 				7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */,
 				7A7F192B266A775B0058DA98 /* EditPhotoTableViewCell.swift in Sources */,
+				7A6B0512266E2FC80047014C /* FloatingButton.swift in Sources */,
 				7A559D7E2663E71900F73F06 /* ArticleManager.swift in Sources */,
 				7AAFE4AC264C031A00A20324 /* ArticlesViewController.swift in Sources */,
 				7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */,

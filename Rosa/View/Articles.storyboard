@@ -228,6 +228,25 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Vu5-jo-tjO"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFJ-kd-poI">
+                                <rect key="frame" x="341" y="740" width="58" height="58"/>
+                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="a10-xW-Sgn"/>
+                                    <constraint firstAttribute="height" constant="58" id="o9U-ip-Iop"/>
+                                </constraints>
+                                <state key="normal" image="plus">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                        <real key="value" value="29"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showPostArticlePage:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ax5-z3-tVv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -238,10 +257,12 @@
                             <constraint firstItem="8Qp-uK-oLx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="EMR-Ud-ErF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Qp-uK-oLx" secondAttribute="trailing" id="GCo-Nl-Uhy"/>
                             <constraint firstItem="RrA-sp-6U2" firstAttribute="centerX" secondItem="TY9-hU-yae" secondAttribute="centerX" id="HKD-Ia-bVk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FFJ-kd-poI" secondAttribute="trailing" constant="15" id="Khm-RF-qbg"/>
                             <constraint firstItem="01a-Q0-kuY" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="Lqg-HR-L7n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dkm-Bt-j0i" secondAttribute="bottom" id="WWz-fQ-aR2"/>
                             <constraint firstItem="RrA-sp-6U2" firstAttribute="top" secondItem="iKS-3L-D5F" secondAttribute="bottom" id="dWF-S9-ueW"/>
                             <constraint firstItem="dkm-Bt-j0i" firstAttribute="top" secondItem="RrA-sp-6U2" secondAttribute="bottom" id="dg4-8E-b2W"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="FFJ-kd-poI" secondAttribute="bottom" constant="15" id="fPt-0p-675"/>
                             <constraint firstItem="bAl-6N-aTx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="27" id="fTi-JC-19u"/>
                             <constraint firstItem="iKS-3L-D5F" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="g8Q-Es-End"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dkm-Bt-j0i" secondAttribute="trailing" constant="8" id="gYW-Lm-OlA"/>
@@ -260,6 +281,7 @@
                     <connections>
                         <outlet property="collectionView" destination="dkm-Bt-j0i" id="8sR-S6-siM"/>
                         <outlet property="followButton" destination="xrh-2l-Mi6" id="T20-ND-VYu"/>
+                        <outlet property="postArticleButton" destination="FFJ-kd-poI" id="F9i-lC-Zq8"/>
                         <outlet property="tableView" destination="8Qp-uK-oLx" id="bhi-5X-9DM"/>
                         <outlet property="tableViewHeight" destination="y4p-IE-b6Y" id="lzS-xV-XpK"/>
                         <outlet property="trendingButton" destination="TY9-hU-yae" id="Xie-ip-A2F"/>
@@ -728,6 +750,7 @@
         <image name="heart " width="64" height="64"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
+        <image name="plus" width="100" height="100"/>
         <image name="selectedHeart" width="64" height="64"/>
         <image name="skin1" width="1125" height="1366"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

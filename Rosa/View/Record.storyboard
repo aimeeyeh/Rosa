@@ -96,7 +96,7 @@
         <!--Post View Controller-->
         <scene sceneID="nno-qA-uDI">
             <objects>
-                <viewController id="hHC-x0-cTk" customClass="PostViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="hHC-x0-cTk" customClass="PostViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wtq-NV-QIh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,7 +358,7 @@
         <!--膚況紀錄-->
         <scene sceneID="qZH-De-VHC">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="yzZ-Gh-HtQ" customClass="RecordDetailViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordDetailViewController" modalPresentationStyle="overCurrentContext" id="yzZ-Gh-HtQ" customClass="RecordDetailViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="28J-3r-RLr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

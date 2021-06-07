@@ -21,5 +21,7 @@ target 'Rosa' do
   pod 'Kingfisher', '~> 6.0'
   pod 'lottie-ios'
   pod 'IQKeyboardManagerSwift'
+  pod "LiquidFloatingActionButton"
+  pod 'SnapKit', '~> 5.0.0'
   
 end

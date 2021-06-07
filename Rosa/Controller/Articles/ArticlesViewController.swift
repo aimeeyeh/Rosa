@@ -16,6 +16,7 @@ class ArticlesViewController: UIViewController {
     @IBOutlet weak var trendingButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var postArticleButton: UIButton!
     
     var allArticles: [Article] = []
     
@@ -60,6 +61,7 @@ class ArticlesViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        appendShadow()
         self.navigationController?.isNavigationBarHidden = true
         underlineView.backgroundColor = UIColor.gray
         setUpWaterfall()
@@ -76,12 +78,26 @@ class ArticlesViewController: UIViewController {
         reloadArticles()
 
     }
+    
+    func appendShadow() {
+        postArticleButton.layer.shadowColor = UIColor.black.cgColor
+        postArticleButton.layer.shadowRadius = 2.0
+        postArticleButton.layer.shadowOpacity = 0.1
+        postArticleButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        postArticleButton.layer.masksToBounds = false
+    }
 
     func setUpWaterfall() {
         let layout = CollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 10
         layout.minimumInteritemSpacing = 10
         collectionView.collectionViewLayout = layout
+    }
+    
+    @IBAction func showPostArticlePage(_ sender: Any) {
+        if let postArticleVC = UIStoryboard(name: "Record", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? PostViewController {
+            self.navigationController?.pushViewController(postArticleVC, animated: true)
+        }
     }
     
     // MARK: - fetch following authors' articles and filter out blocked user's articles

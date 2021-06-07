@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EmployeePickerDelegate: AnyObject {
+    func employeeAssigned()
+}
+
 class ChallengeViewController: UIViewController {
 
     @IBOutlet weak var popUpView: UIView!
@@ -14,6 +18,8 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    weak var delegate: EmployeePickerDelegate?
 
     let blackView = UIView(frame: UIScreen.main.bounds)
     
@@ -51,7 +57,8 @@ class ChallengeViewController: UIViewController {
     }
     
     @IBAction func confirmChallenge(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        delegate?.employeeAssigned()
+//        dismiss(animated: true, completion: nil)
         blackView.removeFromSuperview()
         self.tabBarController?.tabBar.isHidden = false
         for index in 0..<selectedChallenges.count {
