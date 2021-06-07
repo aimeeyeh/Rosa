@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var postedArticlesNumber: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
+
     var currentType = "postedArticles"
     
     var postedArticles: [Article] = [] {

@@ -9,13 +9,19 @@ import UIKit
 import FSCalendar
 import SwiftEntryKit
 import Kingfisher
+import SnapKit
+import LiquidFloatingActionButton
 
-class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDataSource,
-                              UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate {
+class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSCalendarDataSource, FSCalendarDelegate {
     
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calnderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    
+    let blackView = UIView(frame: UIScreen.main.bounds)
+    
+    var cells: [LiquidFloatingCell] = []
+    var floatingActionButton: LiquidFloatingActionButton!
     
     var dateArray = [Date]()
     
@@ -59,12 +65,14 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         panGesture.maximumNumberOfTouches = 2
         return panGesture
     }()
-    
+
     // MARK: - viewDidLoad
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        floatingButtonSetup()
         
         self.navigationController?.isNavigationBarHidden = true
         
@@ -89,7 +97,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         fetchRecord(date: Date())
         
     }
-    
+
     // MARK: - Firebase Related Functions
     
     func fetchAllRecords() {
@@ -207,16 +215,16 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         You've completed the challenge.      \
         Keep on your good work, \
         and let your Skin be the first priority.
-        
+
         """
         let button = "Got it!"
         SwiftEntryKit.display(entry: MyPopUpView(with: setupMessage(image: image,
                                                                     title: title,
                                                                     description: description,
                                                                     button: button)),
-                              using: setupAttributes())
+                              using: PopUpMessage.shared.setupAttributes())
     }
-    
+
     func displayFailureMessage() {
         let image = "fail"
         let title = "Oh No!"
@@ -225,13 +233,13 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         You've missed yesterday's challenge. \
         Add the challenge again \
         and Restart your 30 day challenge!
-        
+
         """
         let button = "Try again"
         SwiftEntryKit.display(entry: MyPopUpView(with: setupMessage(image: image,
                                                                     title: title,
                                                                     description: description, button: button)),
-                              using: setupAttributes())
+                              using: PopUpMessage.shared.setupAttributes())
     }
     
     func checkYesterdayProgress() {
@@ -244,55 +252,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                 return
             }
         }
-    }
-    
-    func setupAttributes() -> EKAttributes {
-        var attributes = EKAttributes.centerFloat
-        attributes.displayDuration = .infinity
-        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0/255.0, alpha: 0.3),
-                                                          dark: UIColor(white: 50.0/255.0, alpha: 0.3)))
-        attributes.shadow = .active(
-            with: .init(
-                color: .black,
-                opacity: 0.3,
-                radius: 8
-            )
-        )
-        
-        attributes.entryBackground = .color(color: .standardBackground)
-        attributes.roundCorners = .all(radius: 25)
-        attributes.screenInteraction = .dismiss
-        attributes.entryInteraction = .absorbTouches
-        attributes.scroll = .enabled(
-            swipeable: true,
-            pullbackAnimation: .jolt
-        )
-        
-        attributes.entranceAnimation = .init(
-            translate: .init(
-                duration: 0.7,
-                spring: .init(damping: 1, initialVelocity: 0)
-            ),
-            scale: .init(
-                from: 1.05,
-                to: 1,
-                duration: 0.4,
-                spring: .init(damping: 1, initialVelocity: 0)
-            )
-        )
-        
-        attributes.exitAnimation = .init(
-            translate: .init(duration: 0.2)
-        )
-        attributes.popBehavior = .animated(
-            animation: .init(
-                translate: .init(duration: 0.2)
-            )
-        )
-        
-        attributes.positionConstraints.verticalOffset = 10
-        attributes.statusBar = .dark
-        return attributes
     }
     
     func setupMessage(image: String, title: String, description: String, button: String) -> EKPopUpMessage {
@@ -341,47 +300,51 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         return message
     }
     
+}
+    
     // MARK: - UITableViewDataSource
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if challenges.count != 0 {
-            return challenges.count + 1
-        } else {
-            return 2
+    extension CalenderViewController: UITableViewDataSource, UITableViewDelegate {
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            if challenges.count != 0 {
+                return challenges.count + 1
+            } else {
+                return 2
+            }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 沒有challenge
-        if challenges.count == 0 {
-            switch indexPath.row {
-            case 0:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
-                                                            for: indexPath) as? CalendarChallengeTableViewCell {
-                    cell.noChallengeConfigure()
-                    return cell
-                }
-            default:
-                if record == nil { // 沒有record
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            // 沒有challenge
+            if challenges.count == 0 {
+                switch indexPath.row {
+                case 0:
                     if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
                                                                 for: indexPath) as? CalendarChallengeTableViewCell {
-                        cell.noRecordConfigure()
+                        cell.noChallengeConfigure()
                         return cell
                     }
-                } else { // 有record
-                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
-                                                                for: indexPath) as? CalendarRecordTableViewCell {
-                        if let record = record {
-                            cell.configure(record: record)
+                default:
+                    if record == nil { // 沒有record
+                        if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                                    for: indexPath) as? CalendarChallengeTableViewCell {
+                            cell.noRecordConfigure()
+                            return cell
                         }
-                        return cell
+                    } else { // 有record
+                        if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
+                                                                    for: indexPath) as? CalendarRecordTableViewCell {
+                            if let record = record {
+                                cell.configure(record: record)
+                            }
+                            return cell
+                        }
                     }
                 }
-            }
-        // 有challenge
-        } else {
-            switch indexPath.row {
-            case 0..<challenges.count: // 前面幾個cell
+                // 有challenge
+            } else {
+                switch indexPath.row {
+                case 0..<challenges.count: // 前面幾個cell
                     if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
                                                                 for: indexPath) as? CalendarChallengeTableViewCell {
                         cell.challengeConfigure(challenges: challenges, indexPath: indexPath)
@@ -398,59 +361,149 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                                                                             currentChallengeTitle: title) {
                                 [weak self] in self?.displaySuccessMessage()
                                 self?.challenges[indexPath.row].isChecked = true
-
+                                
                             }
                             self.challenges[indexPath.row].isChecked = true
-                        
+                            
                         }
                         return cell
                     }
-                
-            default: // 最後一個cell
-                if record == nil { // 沒record
-                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
-                                                                for: indexPath) as? CalendarChallengeTableViewCell {
-                        cell.noRecordConfigure()
-                        return cell
-                    }
-                } else { // 有record
-                    if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
-                                                                for: indexPath) as? CalendarRecordTableViewCell {
-                        if let record = record {
-                            cell.configure(record: record)
+                    
+                default: // 最後一個cell
+                    if record == nil { // 沒record
+                        if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarChallengeTableViewCell",
+                                                                    for: indexPath) as? CalendarChallengeTableViewCell {
+                            cell.noRecordConfigure()
+                            return cell
                         }
-                        return cell
+                    } else { // 有record
+                        if let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarRecordTableViewCell",
+                                                                    for: indexPath) as? CalendarRecordTableViewCell {
+                            if let record = record {
+                                cell.configure(record: record)
+                            }
+                            return cell
+                        }
                     }
                 }
             }
+            return UITableViewCell()
         }
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if challenges.count != 0 {
-            if record != nil {
-                switch indexPath.row {
-                case challenges.count:
-                    return 900
-                default:
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            if challenges.count != 0 {
+                if record != nil {
+                    switch indexPath.row {
+                    case challenges.count:
+                        return 900
+                    default:
+                        return 90
+                    }
+                } else {
                     return 90
                 }
             } else {
-                return 90
-            }
-        } else {
-            if record != nil {
-                switch indexPath.row {
-                case 0:
+                if record != nil {
+                    switch indexPath.row {
+                    case 0:
+                        return 90
+                    default:
+                        return 900
+                    }
+                } else {
                     return 90
-                default:
-                    return 900
                 }
-            } else {
-                return 90
             }
         }
+}
+
+// MARK: - Floating Button
+
+extension CalenderViewController: LiquidFloatingActionButtonDataSource,
+                                  LiquidFloatingActionButtonDelegate,
+                                  EmployeePickerDelegate {
+    
+    func employeeAssigned() {
+        dismiss(animated: true, completion: {
+            self.fetchChallenge(date: Date())
+            self.fetchRecord(date: Date())
+               })
+    }
+
+    func floatingButtonSetup() {
+
+        let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton = { (frame, style) in
+            let floatingActionButton = CustomDrawingActionButton(frame: frame)
+            floatingActionButton.animateStyle = style
+            floatingActionButton.dataSource = self
+            floatingActionButton.delegate = self
+            return floatingActionButton
+        }
+        
+//        let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
+//            let cell = LiquidFloatingCell(icon: UIImage(named: iconName)!)
+//            return cell
+//        }
+        
+        let customCellFactory: (String) -> LiquidFloatingCell = { (iconName) in
+            let cell = CustomCell(icon: UIImage(named: iconName)!, name: iconName)
+            return cell
+        }
+        
+        cells.append(customCellFactory("Record"))
+        cells.append(customCellFactory("Challenge"))
+        
+        let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16,
+                                   y: self.view.frame.height - 155,
+                                   width: 56, height: 56)
+        let bottomRightButton = createButton(floatingFrame, .up)
+        
+        let image = UIImage(named: "plus")
+        bottomRightButton.image = image
+        
+        bottomRightButton.color = UIColor.rgb(red: 255, green: 153, blue: 94, alpha: 1)
+
+        self.view.addSubview(bottomRightButton)
+    }
+
+    func numberOfCells(_ liquidFloatingActionButton: LiquidFloatingActionButton) -> Int {
+        return cells.count
     }
     
+    func cellForIndex(_ index: Int) -> LiquidFloatingCell {
+        return cells[index]
+    }
+    
+    func liquidFloatingActionButton(_ liquidFloatingActionButton: LiquidFloatingActionButton,
+                                    didSelectItemAtIndex index: Int) {
+        switch index {
+        case 0:
+            if let recordDetailVC = UIStoryboard(name: "Record", bundle: nil).instantiateViewController(withIdentifier: "RecordDetailViewController") as? RecordDetailViewController {
+                self.navigationController?.pushViewController(recordDetailVC, animated: true)
+            }
+
+        default:
+            if let challengeVC = UIStoryboard(name: "Challenge", bundle: nil).instantiateViewController(withIdentifier: "ChallengeViewController") as? ChallengeViewController {
+                challengeVC.delegate = self
+                present(challengeVC, animated: true, completion: nil)
+            }
+        }
+        liquidFloatingActionButton.close()
+    }
+        
+    func liquidFloatingActionButtonWillOpenDrawer(_ liquidFloatingActionButton: LiquidFloatingActionButton) {
+        blackView.backgroundColor = .black
+        blackView.alpha = 0
+        blackView.tag = 100
+        self.view.insertSubview(blackView, at: 2)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
+            self.blackView.alpha = 0.5
+        }
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func liquidFloatingActionButtonWillCloseDrawer(_ liquidFloatingActionButton: LiquidFloatingActionButton) {
+        blackView.removeFromSuperview()
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }

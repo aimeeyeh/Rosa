@@ -311,6 +311,7 @@ PODS:
   - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (6.3.0)
   - leveldb-library (1.22.1)
+  - LiquidFloatingActionButton (1.2.0)
   - lottie-ios (3.2.3)
   - MKRingProgressView (2.2.3)
   - nanopb (1.30906.0):
@@ -320,6 +321,7 @@ PODS:
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
   - QuickLayout (3.0.0)
+  - SnapKit (5.0.1)
   - SwiftEntryKit (1.2.7):
     - QuickLayout (= 3.0.0)
   - SwiftLint (0.43.1)
@@ -335,8 +337,10 @@ DEPENDENCIES:
   - HGCircularSlider (~> 2.2.0)
   - IQKeyboardManagerSwift
   - Kingfisher (~> 6.0)
+  - LiquidFloatingActionButton
   - lottie-ios
   - MKRingProgressView
+  - SnapKit (~> 5.0.0)
   - SwiftEntryKit (= 1.2.7)
   - SwiftLint
 
@@ -363,11 +367,13 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Kingfisher
     - leveldb-library
+    - LiquidFloatingActionButton
     - lottie-ios
     - MKRingProgressView
     - nanopb
     - PromisesObjC
     - QuickLayout
+    - SnapKit
     - SwiftEntryKit
     - SwiftLint
 
@@ -393,14 +399,16 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  LiquidFloatingActionButton: 9c28961915754e08cf596ea6bdd60f9cd949f172
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: d62ae10159a202a7da008088f8fbe4771da501e9
+PODFILE CHECKSUM: 3efa1bc3cd1d24307f780d63b014c71d22a9ec54
 
 COCOAPODS: 1.10.1

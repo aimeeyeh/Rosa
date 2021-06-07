@@ -454,16 +454,6 @@
             </objects>
             <point key="canvasLocation" x="-106" y="737"/>
         </scene>
-        <!--Record-->
-        <scene sceneID="tWp-xY-hE1">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Record" id="ZYY-iq-r4c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="KfT-bN-1B8"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yyU-4O-PKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="402" y="713"/>
-        </scene>
         <!--Calender-->
         <scene sceneID="E3w-TZ-vdQ">
             <objects>
@@ -487,7 +477,6 @@
                     <connections>
                         <segue destination="1ou-Xg-4o8" kind="relationship" relationship="viewControllers" id="Gav-WX-faC"/>
                         <segue destination="fiv-Iv-4fC" kind="relationship" relationship="viewControllers" id="sFm-uS-yrl"/>
-                        <segue destination="ZYY-iq-r4c" kind="relationship" relationship="viewControllers" id="1iu-Yz-rdh"/>
                         <segue destination="8JI-EM-yaT" kind="relationship" relationship="viewControllers" id="PKQ-tJ-hlg"/>
                         <segue destination="gAc-oJ-Ar4" kind="relationship" relationship="viewControllers" id="5xj-F4-vr3"/>
                     </connections>

@@ -140,7 +140,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsJ-fk-HQ1">
                                                             <rect key="frame" x="0.0" y="10" width="364" height="82"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="HL3-rW-ALk">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunny" translatesAutoresizingMaskIntoConstraints="NO" id="HL3-rW-ALk">
                                                                     <rect key="frame" x="20" y="22" width="40" height="40"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="HL3-rW-ALk" secondAttribute="height" multiplier="1:1" id="RFs-CX-xPo"/>
@@ -252,7 +252,7 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy" translatesAutoresizingMaskIntoConstraints="NO" id="3Ot-gR-LvI">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Happy" translatesAutoresizingMaskIntoConstraints="NO" id="3Ot-gR-LvI">
                                                                     <rect key="frame" x="20" y="22" width="40" height="40"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="IZ8-if-2Ey"/>
@@ -567,11 +567,22 @@
                         <outlet property="calenderHeightConstraint" destination="oSg-30-vkE" id="g4F-2F-4Bx"/>
                         <outlet property="calnderView" destination="c1t-fs-0ux" id="KKc-G4-w6w"/>
                         <outlet property="tableView" destination="oAK-GH-tdU" id="vmx-al-39g"/>
+                        <segue destination="fp3-5H-P97" kind="show" identifier="showChallengePage" id="eay-Dv-XHX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="79.6875"/>
+        </scene>
+        <!--Challenge-->
+        <scene sceneID="eZs-06-Ktx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Challenge" id="fp3-5H-P97" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="M4Z-sU-lmr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49S-VK-U0z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2068" y="49"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fJB-Nf-rjd">
@@ -593,15 +604,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Happy" width="512" height="512"/>
+        <image name="Sunny" width="512" height="512"/>
         <image name="activities" width="512" height="512"/>
         <image name="after" width="962" height="1103"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checked" width="512" height="512"/>
-        <image name="happy" width="512" height="512"/>
         <image name="information" width="512" height="512"/>
         <image name="meal" width="512" height="512"/>
         <image name="sleep" width="512" height="512"/>
-        <image name="sunny" width="512" height="512"/>
         <image name="unchecked" width="64" height="64"/>
         <image name="water" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
