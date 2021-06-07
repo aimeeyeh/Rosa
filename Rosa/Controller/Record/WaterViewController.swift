@@ -66,15 +66,20 @@ class WaterViewController: UIViewController {
         
     }
     
+    var onCancelButtonPressed: (() -> Void)?
+    
     @IBAction func cancelWater(_ sender: Any) {
+        onCancelButtonPressed?()
         dismiss(animated: true, completion: nil)
         blackView.removeFromSuperview()
     }
     
     var touchHandler: ((Int) -> Void)?
+    var onConfirmButtonPressed: (() -> Void)?
 
     @IBAction func confirmWater(_ sender: Any) {
         touchHandler?(glassAmount)
+        onConfirmButtonPressed?()
         dismiss(animated: true, completion: nil)
         blackView.removeFromSuperview()
     }

@@ -65,13 +65,17 @@ class SleepViewController: UIViewController {
     }
     
     var touchHandler: ((Double) -> Void)?
+    var onSleepCancelButtonPressed: (() -> Void)?
+    var onSleepConfirmButtonPressed: (() -> Void)?
     
     @IBAction func confirmSleep(_ sender: Any) {
         touchHandler?(sleepAmount)
+        onSleepConfirmButtonPressed?()
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func cancelSleep(_ sender: Any) {
+        onSleepCancelButtonPressed?()
         self.navigationController?.popViewController(animated: true)
     }
     

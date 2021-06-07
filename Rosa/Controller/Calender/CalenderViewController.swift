@@ -72,10 +72,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             calenderHeightConstraint.constant = 400
         }
         
-        calnderView.select(Date())
-        self.view.addGestureRecognizer(self.scopeGesture)
-        self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
-        
         // For UITest
         calnderView.accessibilityIdentifier = "calendar"
         fetchAllRecords()
@@ -84,6 +80,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     // MARK: - viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        calnderView.select(Date())
+        self.view.addGestureRecognizer(self.scopeGesture)
+        self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         
         fetchChallenge(date: Date())
         fetchRecord(date: Date())
@@ -397,7 +397,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                                                                             currentProgress: progress,
                                                                             currentChallengeTitle: title) {
                                 [weak self] in self?.displaySuccessMessage()
+                                self?.challenges[indexPath.row].isChecked = true
+
                             }
+                            self.challenges[indexPath.row].isChecked = true
                         
                         }
                         return cell

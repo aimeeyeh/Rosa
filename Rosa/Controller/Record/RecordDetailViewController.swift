@@ -13,8 +13,6 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import Kingfisher
 
-// swiftlint:disable all
-
 enum PhotoType {
     case fullPhoto
     case leftPhoto
@@ -28,6 +26,17 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
     
     private let storage = Storage.storage().reference()
+    
+    var waterButtonState: Bool = false {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var sleepButtonState: Bool = false {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     var weather: String = "" 
     var feeling: String = ""
@@ -48,8 +57,6 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     var leftPhotoUrl: String = ""
     var rightPhotoUrl: String = ""
     
-    
-
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -152,9 +159,14 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     
 }
 
-extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension RecordDetailViewController: UITableViewDataSource,
+                                      UITableViewDelegate,
+                                      UIImagePickerControllerDelegate,
+                                      UINavigationControllerDelegate {
+    
     // MARK: - here
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
@@ -169,7 +181,7 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
         
         let ref = storage.child(imageName)
         
-        ref.putData(imageData, metadata: nil) { [weak self] _ , error in
+        ref.putData(imageData, metadata: nil) { [weak self] _, error in
             guard error == nil else {
                 print("Failed to upload")
                 return
@@ -208,6 +220,15 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                     
                     self?.glassAmount = glassAmount
                 }
+                
+                waterVC.onConfirmButtonPressed = {
+                    self.waterButtonState = true
+                }
+                
+                waterVC.onCancelButtonPressed = {
+                    self.waterButtonState = false
+                }
+
             }
         } else if segue.identifier == "showSleepPage" {
             if let sleepVC = segue.destination as? SleepViewController {
@@ -216,10 +237,21 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
     
                     self?.sleepAmount = sleepAmount
                 }
+                
+                sleepVC.onSleepConfirmButtonPressed = {
+                    self.sleepButtonState = true
+                }
+                
+                sleepVC.onSleepCancelButtonPressed = {
+                    self.sleepButtonState = false
+                }
+
             }
             
         }
     }
+    
+    // swiftlint:disable all
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -237,6 +269,12 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "RoutineTableViewCell",
                                                         for: indexPath) as? RoutineTableViewCell {
+                
+                cell.waterButton.isSelected = self.waterButtonState
+                cell.waterButton.checkButtonState()
+                
+                cell.sleepButton.isSelected = self.sleepButtonState
+                cell.sleepButton.checkButtonState()
                 
                 return cell
             }
@@ -326,11 +364,25 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                     // Do what you need to, no need to capture self however, if you won't access it.
                     self.navigationController?.popViewController(animated: true)
                     self.tabBarController?.tabBar.isHidden = false
-                    var record = Record(id: "default", date: selectedDate, weather: weather,
-                                        fullPhoto: fullPhotoUrl, leftPhoto: leftPhotoUrl, rightPhoto: rightPhotoUrl, feeling: feeling, water: glassAmount, sleep: sleepAmount, mealDairyFree: mealDairyFree, mealGlutenFree: mealGlutenFree, mealJunkFree: mealJunkFree, mealSugarFree: mealSugarFree, outdoor: outdoor,
-                                                makeup: makeup, menstrual: menstrual, remark: remark)
+                    var record = Record(id: "default",
+                                        date: selectedDate,
+                                        weather: weather,
+                                        fullPhoto: fullPhotoUrl,
+                                        leftPhoto: leftPhotoUrl,
+                                        rightPhoto: rightPhotoUrl,
+                                        feeling: feeling,
+                                        water: glassAmount,
+                                        sleep: sleepAmount,
+                                        mealDairyFree: mealDairyFree,
+                                        mealGlutenFree: mealGlutenFree,
+                                        mealJunkFree: mealJunkFree,
+                                        mealSugarFree: mealSugarFree,
+                                        outdoor: outdoor,
+                                        makeup: makeup,
+                                        menstrual: menstrual,
+                                        remark: remark)
                     
-                    RecordManager.shared.postDailyRecord(record: &record) { result in
+                    RecordManager.shared.postDailyRecord(record: &record, selectedDate: selectedDate) { result in
                         
                         switch result {
                         
@@ -343,6 +395,7 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
                             print("onTapUploadRecord, failure: \(error)")
                         }
                     }
+                    
                 }
                 
                 cell.cancelButtonPressed = { [unowned self] in
@@ -359,8 +412,8 @@ extension RecordDetailViewController: UITableViewDataSource, UITableViewDelegate
 
 }
 
+// swiftlint:enable all
+
 extension RecordDetailViewController: FSCalendarDataSource, FSCalendarDelegate {
     
 }
-
-// swiftlint:enable all
