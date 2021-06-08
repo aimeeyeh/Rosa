@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
 import Kingfisher
+import Lottie
 
 enum PhotoType {
     case fullPhoto
@@ -21,6 +22,7 @@ enum PhotoType {
 
 class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var lottieView: AnimationView!
     @IBOutlet weak var calenderView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
@@ -93,7 +95,8 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        lottieView.isHidden = true
+        showLoadingView()
         self.tabBarController?.tabBar.isHidden = true
 
     }
@@ -167,6 +170,7 @@ extension RecordDetailViewController: UITableViewDataSource,
     // MARK: - here
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        lottieView.isHidden = false
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
@@ -193,6 +197,7 @@ extension RecordDetailViewController: UITableViewDataSource,
                 let urlString = url.absoluteString
                 
                 print("Download URL: \(urlString)")
+                self?.lottieView.isHidden = true
                 
                 self?.setPhotoUrl(url: urlString)
 
@@ -205,7 +210,15 @@ extension RecordDetailViewController: UITableViewDataSource,
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
+    func showLoadingView() {
+        let animationView = Animation.named("bouncingBall")
+        lottieView.animation = animationView
+        lottieView.animationSpeed = 0.8
+        lottieView.play()
+        lottieView.loopMode = .loop
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }

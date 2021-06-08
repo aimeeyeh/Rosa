@@ -11,20 +11,14 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
 import Kingfisher
+import Lottie
 
 class EditProfileViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     private let storage = Storage.storage().reference()
-    
-//    var profilePhotoURL: String? {
-//        didSet {
-//            guard let url = profilePhotoURL else { return }
-//            UserManager.shared.updateUserProfilePhoto(photoURL: url)
-//            tableView.reloadData()
-//        }
-//    }
+    @IBOutlet weak var lottieView: AnimationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +26,20 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         reloadEditProfile()
-//        tableView.reloadData()
+        lottieView.isHidden = true
+        showLoadingView()
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func showLoadingView() {
+        let animationView = Animation.named("bouncingBall")
+        lottieView.animation = animationView
+        lottieView.animationSpeed = 0.8
+        lottieView.play()
+        lottieView.loopMode = .loop
     }
     
     func reloadEditProfile() {
@@ -56,8 +63,10 @@ class EditProfileViewController: UIViewController {
 extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        lottieView.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
@@ -85,6 +94,9 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource,
                 print("Download URL: \(urlString)")
                 UserManager.shared.updateUserProfilePhoto(photoURL: urlString)
                 self?.reloadEditProfile()
+                self?.lottieView.isHidden = true
+                self?.tabBarController?.tabBar.isHidden = false
+                self?.navigationController?.isNavigationBarHidden = false
 
             }
             

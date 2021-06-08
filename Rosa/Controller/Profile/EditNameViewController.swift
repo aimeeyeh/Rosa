@@ -19,6 +19,11 @@ class EditNameViewController: UIViewController {
         configurePlaceholder()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func configurePlaceholder() {
         guard let name = UserManager.shared.currentUser?.name else { return }
         textField.attributedPlaceholder = NSAttributedString(string: name)
