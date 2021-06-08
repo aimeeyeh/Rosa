@@ -36,7 +36,7 @@ extension UIColor {
             return UIColor.rgb(red: 255, green: 104, blue: 132, alpha: 1)
         case"Toothpaste":
             return UIColor.rgb(red: 197, green: 153, blue: 255, alpha: 1)
-        case "No cusion":
+        case "No cushion":
             return UIColor.rgb(red: 255, green: 193, blue: 218, alpha: 1)
         case "Facial Mask":
             return UIColor.rgb(red: 247, green: 172, blue: 143, alpha: 1)
