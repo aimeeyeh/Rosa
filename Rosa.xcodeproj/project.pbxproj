@@ -41,6 +41,7 @@
 		7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F832655571F007597A1 /* PhotoCell.swift */; };
 		7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F852655572D007597A1 /* ContentCell.swift */; };
 		7A5D9F8826555739007597A1 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F8726555739007597A1 /* CommentCell.swift */; };
+		7A605D1C266F7CB5007BF42B /* bouncingBall.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A605D1B266F7CB5007BF42B /* bouncingBall.json */; };
 		7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B01CC265168DD0018547E /* UIButton+Extension.swift */; };
 		7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B050F266E2E0A0047014C /* PopUpMessage.swift */; };
 		7A6B0512266E2FC80047014C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B0511266E2FC80047014C /* FloatingButton.swift */; };
@@ -120,6 +121,7 @@
 		7A5D9F832655571F007597A1 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		7A5D9F852655572D007597A1 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		7A5D9F8726555739007597A1 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		7A605D1B266F7CB5007BF42B /* bouncingBall.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bouncingBall.json; sourceTree = "<group>"; };
 		7A6B01CC265168DD0018547E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		7A6B050F266E2E0A0047014C /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		7A6B0511266E2FC80047014C /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				7AAFE487264BCC7E00A20324 /* Controller */,
 				7AAFE486264BCC7800A20324 /* View */,
 				7A8DB509264BB62100EE6D9D /* AppDelegate.swift */,
+				7A605D1B266F7CB5007BF42B /* bouncingBall.json */,
 				7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */,
 				7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */,
 				7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */,
@@ -516,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
+				7A605D1C266F7CB5007BF42B /* bouncingBall.json in Resources */,
 				7AAFE499264BE3E800A20324 /* Profile.storyboard in Resources */,
 				7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */,
 				7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */,

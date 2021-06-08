@@ -425,19 +425,28 @@
                                     <outlet property="delegate" destination="3iO-Vw-dR8" id="4hn-FM-qe1"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlP-dK-hsl" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wlU-Zs-taK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="TlP-dK-hsl" firstAttribute="leading" secondItem="wlU-Zs-taK" secondAttribute="leading" id="Fuq-J0-a9I"/>
                             <constraint firstItem="zS0-bh-Tfd" firstAttribute="top" secondItem="wlU-Zs-taK" secondAttribute="top" id="G2N-jh-cGd"/>
+                            <constraint firstAttribute="bottom" secondItem="TlP-dK-hsl" secondAttribute="bottom" id="J5R-x5-9mE"/>
                             <constraint firstItem="zS0-bh-Tfd" firstAttribute="leading" secondItem="wlU-Zs-taK" secondAttribute="leading" id="TrK-fb-8rz"/>
+                            <constraint firstItem="TlP-dK-hsl" firstAttribute="top" secondItem="4X6-NZ-Qfj" secondAttribute="top" id="hMP-a4-Q0N"/>
                             <constraint firstItem="wlU-Zs-taK" firstAttribute="trailing" secondItem="zS0-bh-Tfd" secondAttribute="trailing" id="iRC-gq-Ppz"/>
+                            <constraint firstItem="wlU-Zs-taK" firstAttribute="trailing" secondItem="TlP-dK-hsl" secondAttribute="trailing" id="ovu-vu-L5Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="c0d-LW-nXp">
                         <barButtonItem key="backBarButtonItem" title="  " id="dxN-ar-EwK"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="lottieView" destination="TlP-dK-hsl" id="Bhe-Ev-Ufz"/>
                         <outlet property="tableView" destination="zS0-bh-Tfd" id="U1T-8E-pm2"/>
                         <segue destination="9gx-OX-12z" kind="show" identifier="showEditNameVC" id="8KX-4R-S5H"/>
                         <segue destination="SZr-GP-EOw" kind="show" identifier="showEditBlocklistVC" id="smE-6J-u0M"/>

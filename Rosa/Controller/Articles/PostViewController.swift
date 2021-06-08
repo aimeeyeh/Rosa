@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import FirebaseStorage
+import Lottie
 
 enum ArticlePhotoType {
     case firstImage
@@ -27,6 +28,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var forthButton: UIButton!
     @IBOutlet weak var titleTextfield: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var lottieView: AnimationView!
     
     var category: String = ""
     var photos: [String] = []
@@ -62,7 +64,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
+        lottieView.isHidden = true
+        showLoadingView()
         self.tabBarController?.tabBar.isHidden = true
 
     }
@@ -71,6 +75,14 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         self.tabBarController?.tabBar.isHidden = false
 
+    }
+    
+    func showLoadingView() {
+        let animationView = Animation.named("bouncingBall")
+        lottieView.animation = animationView
+        lottieView.animationSpeed = 0.8
+        lottieView.play()
+        lottieView.loopMode = .loop
     }
     
     func setPhotoUrl(url: String) {
@@ -94,6 +106,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        lottieView.isHidden = false
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
@@ -120,6 +133,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 let urlString = url.absoluteString
                 
                 print("Download URL: \(urlString)")
+                self?.lottieView.isHidden = true
                 
                 self?.setPhotoUrl(url: urlString)
 

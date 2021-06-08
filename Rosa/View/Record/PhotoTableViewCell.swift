@@ -17,6 +17,9 @@ class PhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
     
+    @IBOutlet weak var frontalLabel: UILabel!
+    @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var leftLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -26,12 +29,15 @@ class PhotoTableViewCell: UITableViewCell {
     var onRightButtonPressed: (() -> Void)?
 
     @IBAction func uploadFullPhoto(_ sender: UIButton) {
+        frontalLabel.isHidden = true
         onFullButtonPressed?()
     }
     @IBAction func uploadLeftPhoto(_ sender: UIButton) {
+        leftLabel.isHidden = true
         onLeftButtonPressed?()
     }
     @IBAction func uploadRightPhoto(_ sender: UIButton) {
+        rightLabel.isHidden = true
         onRightButtonPressed?()
     }
 }
