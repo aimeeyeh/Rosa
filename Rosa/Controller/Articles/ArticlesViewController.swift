@@ -195,7 +195,7 @@ class ArticlesViewController: UIViewController {
     // MARK: - 文章分類
     
     @IBAction func showCategory(_ sender: Any) {
-        tableViewHeight.constant = tableViewHeight.constant == 0 ? 261 : 0
+        tableViewHeight.constant = tableViewHeight.constant == 0 ? 217.5 : 0
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
           self.tableView.alpha = 1
           self.view.layoutIfNeeded()
@@ -210,7 +210,7 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 6
+      return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -225,7 +225,6 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let queryArray = [
-            "熱門",
             "酒糟",
             "保養",
             "戒斷",
@@ -233,30 +232,21 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
             "醫美"
         ]
         
-        if indexPath.row == 0 {
-    
-            self.tableViewHeight.constant = 0
-            fetchAllArticles()
-            tableView.reloadData()
+        ArticleManager.shared.queryCategory(category: queryArray[indexPath.row]) { [weak self] result in
             
-        } else {
+            switch result {
             
-            ArticleManager.shared.queryCategory(category: queryArray[indexPath.row]) { [weak self] result in
+            case .success(let articles):
                 
-                switch result {
+                self?.allArticles = articles
                 
-                case .success(let articles):
-                    
-                    self?.allArticles = articles
-                    
-                    self?.tableViewHeight.constant = 0
-                    
-                    tableView.reloadData()
-                    
-                case .failure(let error):
-                    
-                    print("fetchData.failure: \(error)")
-                }
+                self?.fetchBlocklist()
+                
+                self?.tableViewHeight.constant = 0
+            
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
             }
         }
     }

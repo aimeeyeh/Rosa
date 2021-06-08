@@ -309,8 +309,8 @@ class ChallengeManager {
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 255, green: 193, blue: 218, alpha: 0.5),
-                challengeImage: "cusion",
-                challengeTitle: "No cusion",
+                challengeImage: "cushion",
+                challengeTitle: "No cushion",
                 category: "withdrawal"
             ),
             DefaultChallenge(

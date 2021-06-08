@@ -17,7 +17,6 @@ class FilterTableViewCell: UITableViewCell {
     }
     
     let itemArray = [
-        "熱門",
         "酒糟",
         "保養",
         "戒斷",

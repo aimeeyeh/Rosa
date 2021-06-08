@@ -121,11 +121,32 @@
                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="bc8-CT-a6d"/>
                                         </connections>
                                     </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="znN-vb-HhG">
+                                        <rect key="frame" x="146.5" y="426" width="81" height="30"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="What is this?">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.8097717711975525" green="0.80585983027389285" blue="0.81368371212121215" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <font key="NSFont" size="13" name="PingFangTC-Medium"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                        <color key="NSUnderlineColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <segue destination="N0P-ga-Ye0" kind="presentation" id="L2J-0p-345"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Rbo-OI-38S" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" id="5bU-8S-uKZ"/>
+                                    <constraint firstItem="znN-vb-HhG" firstAttribute="centerX" secondItem="x6r-Wk-t6y" secondAttribute="centerX" id="I7m-P1-Yek"/>
                                     <constraint firstItem="mVR-PD-cUg" firstAttribute="top" secondItem="Rbo-OI-38S" secondAttribute="bottom" id="LJ4-Kh-szU"/>
+                                    <constraint firstAttribute="bottom" secondItem="znN-vb-HhG" secondAttribute="bottom" constant="8" id="Z6q-tl-Sju"/>
                                     <constraint firstItem="mVR-PD-cUg" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" constant="8" id="eFu-tU-u51"/>
                                     <constraint firstAttribute="bottom" secondItem="mVR-PD-cUg" secondAttribute="bottom" constant="1.5" id="eys-Xd-eiz"/>
                                     <constraint firstItem="Rbo-OI-38S" firstAttribute="top" secondItem="x6r-Wk-t6y" secondAttribute="top" id="sru-48-Mar"/>
@@ -191,6 +212,83 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="138.61607142857142"/>
         </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="eas-XK-Kbt">
+            <objects>
+                <viewController id="N0P-ga-Ye0" customClass="TutorialViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R0q-Mk-AkX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 DAY CHALLENGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35G-0a-eMI">
+                                <rect key="frame" x="61.5" y="100" width="291" height="37"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
+                                <color key="textColor" red="1" green="0.59999999999999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZn-3X-ZYf">
+                                <rect key="frame" x="30" y="199" width="354" height="81.5"/>
+                                <string key="text">For 30 days, try these easy skincare challenges as well as addressing your skin issues from the inside out—and you’ll notice fresher-looking, more glowing skin! </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update your progress by ticking the checkbox in the Calendar Page everyday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZk-YJ-ylk">
+                                <rect key="frame" x="30" y="509.5" width="354" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These challenges are actions you need to follow everyday. Even one day missing would fail the 30 day challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSY-eN-WSb">
+                                <rect key="frame" x="30" y="364.5" width="354" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvh-5R-Spt">
+                                <rect key="frame" x="178.5" y="335.5" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIi-Sl-k0u">
+                                <rect key="frame" x="182.5" y="480.5" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkedExample" translatesAutoresizingMaskIntoConstraints="NO" id="pFF-zg-uae">
+                                <rect key="frame" x="75" y="550.5" width="264" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oJa-mt-n7R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HZk-YJ-ylk" firstAttribute="top" secondItem="YIi-Sl-k0u" secondAttribute="bottom" constant="8" symbolic="YES" id="4Ia-VD-Op5"/>
+                            <constraint firstAttribute="trailing" secondItem="aZn-3X-ZYf" secondAttribute="trailing" constant="30" id="4O2-wD-wnk"/>
+                            <constraint firstItem="Lvh-5R-Spt" firstAttribute="top" secondItem="aZn-3X-ZYf" secondAttribute="bottom" constant="55" id="CZi-VB-TYK"/>
+                            <constraint firstItem="aZn-3X-ZYf" firstAttribute="leading" secondItem="oJa-mt-n7R" secondAttribute="leading" constant="30" id="EZS-85-Hbx"/>
+                            <constraint firstItem="aZn-3X-ZYf" firstAttribute="top" secondItem="35G-0a-eMI" secondAttribute="bottom" constant="62" id="Q5I-WZ-mwS"/>
+                            <constraint firstItem="Lvh-5R-Spt" firstAttribute="centerX" secondItem="R0q-Mk-AkX" secondAttribute="centerX" id="aCM-Um-sPK"/>
+                            <constraint firstItem="HZk-YJ-ylk" firstAttribute="leading" secondItem="oJa-mt-n7R" secondAttribute="leading" constant="30" id="aCQ-xc-IkT"/>
+                            <constraint firstItem="YIi-Sl-k0u" firstAttribute="centerX" secondItem="R0q-Mk-AkX" secondAttribute="centerX" id="eWz-ag-RW6"/>
+                            <constraint firstAttribute="trailing" secondItem="QSY-eN-WSb" secondAttribute="trailing" constant="30" id="ede-JT-jcT"/>
+                            <constraint firstItem="YIi-Sl-k0u" firstAttribute="top" secondItem="QSY-eN-WSb" secondAttribute="bottom" constant="55" id="g0C-hg-ezJ"/>
+                            <constraint firstAttribute="trailing" secondItem="HZk-YJ-ylk" secondAttribute="trailing" constant="30" id="gHT-rB-7z6"/>
+                            <constraint firstItem="35G-0a-eMI" firstAttribute="centerX" secondItem="R0q-Mk-AkX" secondAttribute="centerX" id="gIi-3O-w2K"/>
+                            <constraint firstItem="QSY-eN-WSb" firstAttribute="top" secondItem="Lvh-5R-Spt" secondAttribute="bottom" constant="8" symbolic="YES" id="geo-EN-AzG"/>
+                            <constraint firstItem="35G-0a-eMI" firstAttribute="top" secondItem="oJa-mt-n7R" secondAttribute="top" constant="100" id="l0G-Js-u6f"/>
+                            <constraint firstItem="pFF-zg-uae" firstAttribute="top" secondItem="HZk-YJ-ylk" secondAttribute="bottom" id="l4L-6A-g09"/>
+                            <constraint firstAttribute="trailing" secondItem="pFF-zg-uae" secondAttribute="trailing" constant="75" id="nqX-iI-Lw8"/>
+                            <constraint firstItem="pFF-zg-uae" firstAttribute="leading" secondItem="oJa-mt-n7R" secondAttribute="leading" constant="75" id="qjZ-cB-pa5"/>
+                            <constraint firstItem="QSY-eN-WSb" firstAttribute="leading" secondItem="oJa-mt-n7R" secondAttribute="leading" constant="30" id="tOX-Sz-EoY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8WU-qJ-bA7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2869.5652173913045" y="138.61607142857142"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JxY-k6-igb">
             <objects>
@@ -211,6 +309,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkedExample" width="568" height="128"/>
         <image name="glutenFree" width="48" height="48"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
