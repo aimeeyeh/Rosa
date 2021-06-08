@@ -24,20 +24,21 @@
                                     <constraint firstAttribute="width" constant="300" id="cnF-aN-CIC"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="按下 Sign in with Apple 即代表同意服務條款與隱私權政策" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpv-RY-LGW">
-                                <rect key="frame" x="61.5" y="808.5" width="291.5" height="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By tapping &quot;Sign in with Apple&quot; you agree to our Privacy Policy &amp; Terms of Service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpv-RY-LGW">
+                                <rect key="frame" x="60" y="795.5" width="294" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa8-bR-nIr">
-                                <rect key="frame" x="140.5" y="664" width="133" height="74.5"/>
+                                <rect key="frame" x="108.5" y="664" width="197" height="61.5"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="服務條款與隱私權政策">
+                                        <fragment content="Privacy Policy &amp; Terms of Sevice">
                                             <attributes>
                                                 <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <font key="NSFont" usesAppearanceFont="YES"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
                                         </fragment>
@@ -62,8 +63,10 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3oN-es-TuI" secondAttribute="trailing" constant="20" id="Csv-Q4-LSY"/>
                             <constraint firstItem="1gY-Hz-r6U" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="Hhz-fq-wg0"/>
+                            <constraint firstItem="Lpv-RY-LGW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="60" id="IVX-WC-Ypx"/>
                             <constraint firstItem="1gY-Hz-r6U" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="SF0-xo-WVv"/>
                             <constraint firstItem="Xa8-bR-nIr" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="b9K-ff-cCU"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Lpv-RY-LGW" secondAttribute="trailing" constant="60" id="dtL-id-OUn"/>
                             <constraint firstItem="Xa8-bR-nIr" firstAttribute="top" secondItem="1gY-Hz-r6U" secondAttribute="bottom" constant="130" id="eGK-Y1-Hjg"/>
                             <constraint firstItem="3oN-es-TuI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="gMC-E5-tfR"/>
                             <constraint firstItem="Lpv-RY-LGW" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="jPy-XG-JLa"/>
@@ -112,8 +115,8 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMv-G8-GnY">
                                                     <rect key="frame" x="23" y="31" width="368" height="3303"/>
-                                                    <string key="text">Privacy Policy
-Last updated: June 04, 2021
+                                                    <mutableString key="text">Privacy Policy
+Last updated: June 08, 2021
 
 This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
 
@@ -181,10 +184,7 @@ You may also have the option of sharing additional information with the Company 
 Information Collected while Using the Application
 While using Our Application, in order to provide features of Our Application, We may collect, with Your prior permission:
 
-Information regarding your location
-
 Pictures and other information from your Device's camera and photo library
-
 We use this information to provide features of Our Service, to improve and customize Our Service. The information may be uploaded to the Company's servers and/or a Service Provider's server or it may be simply stored on Your device.
 
 You can enable or disable access to this information at any time, through Your Device settings.
@@ -266,7 +266,7 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 Contact Us
 If you have any questions about this Privacy Policy, You can contact us:
 
-By email: yehchihchen@gmail.com</string>
+By email: yehchihchen@gmail.com</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

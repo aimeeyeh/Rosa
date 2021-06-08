@@ -10,13 +10,16 @@ import UIKit
 class EditBlocklistViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noBlockedUserLabel: UILabel!
     
     var blocklist: [String] = [] {
         didSet {
             if blocklist.count != 0 {
                 tableView.isHidden = false
+                noBlockedUserLabel.isHidden = true
                 fetchBlocklistUserData()
             } else {
+                noBlockedUserLabel.isHidden = false
                 tableView.isHidden = true
             }
             

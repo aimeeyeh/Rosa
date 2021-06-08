@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--個人主頁-->
+        <!--Personal-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="ProfileViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="文章">
+                                        <state key="normal" title="Posts">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected">
@@ -54,7 +54,7 @@
                                         <rect key="frame" x="191" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="讚過">
+                                        <state key="normal" title="Liked">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected">
@@ -154,20 +154,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="關注" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AQ-oC-NmG">
-                                <rect key="frame" x="156.5" y="162" width="27" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AQ-oC-NmG">
+                                <rect key="frame" x="141.5" y="162" width="57.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粉絲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQO-I3-kif">
-                                <rect key="frame" x="236.5" y="162" width="27" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQO-I3-kif">
+                                <rect key="frame" x="221.5" y="162" width="57.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文章" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V92-OA-Ljx">
-                                <rect key="frame" x="316.5" y="162" width="27" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V92-OA-Ljx">
+                                <rect key="frame" x="313" y="162" width="34" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -182,7 +182,7 @@
                                 <rect key="frame" x="140" y="193" width="244" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="編輯個人檔案"/>
+                                <state key="normal" title="Edit Profile"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="buttonBorderColor">
                                         <color key="value" systemColor="systemGray5Color"/>
@@ -235,7 +235,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person.crop.square.fill" catalog="system" id="282-lJ-xBi"/>
-                    <navigationItem key="navigationItem" title="個人主頁" id="pHW-Jb-eEU">
+                    <navigationItem key="navigationItem" title="Personal" id="pHW-Jb-eEU">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="YeY-ET-da2">
                             <imageReference key="image" image="gear" catalog="system" symbolScale="large"/>
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kdY-sO-4BF">
@@ -269,7 +269,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="79.6875"/>
         </scene>
-        <!--編輯資料-->
+        <!--Edit Profile-->
         <scene sceneID="iiz-6Z-aLO">
             <objects>
                 <viewController id="3iO-Vw-dR8" customClass="EditProfileViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
@@ -397,8 +397,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocklist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZ1-qM-R9k">
-                                                    <rect key="frame" x="20" y="18.5" width="58" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocked Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZ1-qM-R9k">
+                                                    <rect key="frame" x="20" y="18.5" width="123" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -434,7 +434,7 @@
                             <constraint firstItem="wlU-Zs-taK" firstAttribute="trailing" secondItem="zS0-bh-Tfd" secondAttribute="trailing" id="iRC-gq-Ppz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="編輯資料" id="c0d-LW-nXp">
+                    <navigationItem key="navigationItem" title="Edit Profile" id="c0d-LW-nXp">
                         <barButtonItem key="backBarButtonItem" title="  " id="dxN-ar-EwK"/>
                     </navigationItem>
                     <connections>
@@ -502,7 +502,7 @@
             </objects>
             <point key="canvasLocation" x="2634.7826086956525" y="67.633928571428569"/>
         </scene>
-        <!--Blocklist-->
+        <!--Blocked Accounts-->
         <scene sceneID="Kxn-6k-2p6">
             <objects>
                 <viewController id="SZr-GP-EOw" customClass="EditBlocklistViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
@@ -510,7 +510,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="65" estimatedRowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9gs-f4-soy">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="65" estimatedRowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9gs-f4-soy">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -547,7 +547,7 @@
                                                         <constraint firstAttribute="width" constant="70" id="Swr-bp-Gva"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="解除封鎖">
+                                                    <state key="normal" title="Unblock">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -582,18 +582,27 @@
                                     <outlet property="delegate" destination="SZr-GP-EOw" id="XKX-0w-Bdz"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No account is currently blocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evl-LF-9XL">
+                                <rect key="frame" x="102" y="439.5" width="210" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zgq-Wk-zt5"/>
                         <color key="backgroundColor" red="0.96862745289999996" green="0.96862745289999996" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="evl-LF-9XL" firstAttribute="centerY" secondItem="DC1-VL-AYF" secondAttribute="centerY" id="8ao-31-7Hl"/>
                             <constraint firstItem="zgq-Wk-zt5" firstAttribute="trailing" secondItem="9gs-f4-soy" secondAttribute="trailing" id="AG7-rL-yxt"/>
-                            <constraint firstItem="zgq-Wk-zt5" firstAttribute="bottom" secondItem="9gs-f4-soy" secondAttribute="bottom" id="Bc9-ad-lS4"/>
                             <constraint firstItem="9gs-f4-soy" firstAttribute="top" secondItem="zgq-Wk-zt5" secondAttribute="top" id="KAM-v4-dBx"/>
+                            <constraint firstItem="evl-LF-9XL" firstAttribute="centerX" secondItem="DC1-VL-AYF" secondAttribute="centerX" id="LTf-di-H0J"/>
                             <constraint firstItem="9gs-f4-soy" firstAttribute="leading" secondItem="zgq-Wk-zt5" secondAttribute="leading" id="Qdo-3O-PXR"/>
+                            <constraint firstItem="zgq-Wk-zt5" firstAttribute="bottom" secondItem="9gs-f4-soy" secondAttribute="bottom" id="V6F-54-eoT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Blocklist" id="B5P-e1-9W8"/>
+                    <navigationItem key="navigationItem" title="Blocked Accounts" id="B5P-e1-9W8"/>
                     <connections>
+                        <outlet property="noBlockedUserLabel" destination="evl-LF-9XL" id="yIf-q3-C7k"/>
                         <outlet property="tableView" destination="9gs-f4-soy" id="zKd-AK-wwP"/>
                     </connections>
                 </viewController>

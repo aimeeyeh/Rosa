@@ -272,7 +272,7 @@ class ChallengeManager {
                 category: "withdrawal"
             ),
             DefaultChallenge(
-                backgroundColor: UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 0.5),
+                backgroundColor: UIColor.rgb(red: 255, green: 163, blue: 135, alpha: 0.5),
                 challengeImage: "sugarFree",
                 challengeTitle: "Sugar Free",
                 category: "withdrawal"
