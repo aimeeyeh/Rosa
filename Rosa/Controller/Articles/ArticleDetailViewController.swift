@@ -296,10 +296,10 @@ class ArticleDetailViewController: UIViewController {
     
     func configureFollowButton() {
         
-        followButton.setTitle("追蹤", for: .normal)
+        followButton.setTitle("Follow", for: .normal)
         followButton.setTitleColor(UIColor.rgb(red: 229, green: 131, blue: 85, alpha: 1), for: .selected)
         
-        followButton.setTitle("追蹤中", for: .selected)
+        followButton.setTitle("Following", for: .selected)
         followButton.setTitleColor(.systemGray2, for: .selected)
         
         if followButton.isSelected {

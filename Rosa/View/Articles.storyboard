@@ -43,7 +43,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="熱門">
+                                        <state key="normal" title="Trending ">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected">
@@ -57,7 +57,7 @@
                                         <rect key="frame" x="191" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="追蹤">
+                                        <state key="normal" title="Following">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected">
@@ -336,14 +336,14 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exK-Ee-LHi">
-                                        <rect key="frame" x="299" y="61.5" width="60" height="25"/>
+                                        <rect key="frame" x="279" y="61.5" width="80" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="i4n-bU-tC1"/>
-                                            <constraint firstAttribute="width" constant="60" id="v9P-lE-fTO"/>
+                                            <constraint firstAttribute="width" constant="80" id="v9P-lE-fTO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="追蹤">
+                                        <state key="normal" title="Follow">
                                             <color key="titleColor" cyan="0.0" magenta="0.45797768239999997" yellow="0.6214422584" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -351,7 +351,7 @@
                                                 <real key="value" value="0.80000000000000004"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
-                                                <real key="value" value="12"/>
+                                                <real key="value" value="12.5"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="buttonBorderColor">
                                                 <color key="value" cyan="0.0" magenta="0.45797768239999997" yellow="0.6214422584" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
@@ -673,8 +673,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前尚無任何留言" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-sb-6b0">
-                                                    <rect key="frame" x="158" y="37" width="98.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No comments yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-sb-6b0">
+                                                    <rect key="frame" x="157.5" y="37" width="99.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
