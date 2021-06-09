@@ -8,6 +8,7 @@
 import UIKit
 import MKRingProgressView
 import Charts
+import Kingfisher
 
 class MainViewController: UIViewController, ChartViewDelegate {
 
@@ -23,6 +24,27 @@ class MainViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var noSleepRecord: UILabel!
     @IBOutlet weak var noWaterRecord: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    @IBOutlet weak var frontalFirstDay: UILabel!
+    @IBOutlet weak var frontalToday: UILabel!
+    @IBOutlet weak var frontalBeforeImage: UIImageView!
+    @IBOutlet weak var frontalAfterImage: UIImageView!
+    @IBOutlet weak var frontalNoComparisonLabel: UILabel!
+    @IBOutlet weak var frontalStackView: UIStackView!
+    
+    @IBOutlet weak var leftFirstDay: UILabel!
+    @IBOutlet weak var leftToday: UILabel!
+    @IBOutlet weak var leftBefore: UIImageView!
+    @IBOutlet weak var leftAfter: UIImageView!
+    @IBOutlet weak var leftNoComparisonLabel: UILabel!
+    @IBOutlet weak var leftStackView: UIStackView!
+    
+    @IBOutlet weak var rightFirstDay: UILabel!
+    @IBOutlet weak var rightLastDay: UILabel!
+    @IBOutlet weak var rightBefore: UIImageView!
+    @IBOutlet weak var rightAfter: UIImageView!
+    @IBOutlet weak var rightNoComparisonLabel: UILabel!
+    @IBOutlet weak var rightStackView: UIStackView!
     
     func createPastSevenDays() -> [Date] {
         var past7Days = [Date]()
@@ -90,6 +112,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
                 }
                 setUpSleepChartData()
                 setUpWaterChartData()
+                configurePhotoView()
             }
         }
     }
@@ -127,6 +150,9 @@ class MainViewController: UIViewController, ChartViewDelegate {
         fetchPreviousRecords()
         configureViews()
         configureProgressView()
+        frontalNoComparisonLabel.isHidden = true
+        leftNoComparisonLabel.isHidden = true
+        rightNoComparisonLabel.isHidden = true
     }
     
     func resetData() {
@@ -134,6 +160,57 @@ class MainViewController: UIViewController, ChartViewDelegate {
         self.waterArray = []
         self.sleepLineChartYValues = []
         self.waterBarChartYValues = []
+    }
+    
+    func configurePhotoView() {
+        let sevenDays = createPastSevenDays()
+        let firstDay = sevenDays[0].formatForMainPage()
+        let today = sevenDays[6].formatForMainPage()
+            
+        let firstDayFrontalPhoto = last7DayRecords[0].fullPhoto
+        let todayFrontalPhoto = last7DayRecords[6].fullPhoto
+        if firstDayFrontalPhoto == "" || todayFrontalPhoto == "" {
+            frontalFirstDay.isHidden = true
+            frontalToday.isHidden = true
+            frontalStackView.isHidden = true
+            frontalNoComparisonLabel.isHidden = false
+        } else {
+            frontalFirstDay.isHidden = false
+            frontalToday.isHidden = false
+            frontalStackView.isHidden = false
+            frontalFirstDay.text = firstDay
+            frontalToday.text = today
+            frontalBeforeImage.kf.setImage(with: URL(string: firstDayFrontalPhoto))
+            frontalAfterImage.kf.setImage(with: URL(string: todayFrontalPhoto))
+        }
+        
+        let firstDayLeftPhoto = last7DayRecords[0].leftPhoto
+        let todayLeftPhoto = last7DayRecords[6].rightPhoto
+        if firstDayLeftPhoto == "" || todayLeftPhoto == "" {
+            leftFirstDay.isHidden = true
+            leftToday.isHidden = true
+            leftStackView.isHidden = true
+            leftNoComparisonLabel.isHidden = false
+        } else {
+            leftFirstDay.text = firstDay
+            leftToday.text = today
+            leftBefore.kf.setImage(with: URL(string: firstDayLeftPhoto))
+            leftAfter.kf.setImage(with: URL(string: todayLeftPhoto))
+        }
+        
+        let firstDayRightPhoto = last7DayRecords[0].rightPhoto
+        let todayRightPhoto = last7DayRecords[6].rightPhoto
+        if firstDayRightPhoto == "" || todayRightPhoto == "" {
+            rightFirstDay.isHidden = true
+            rightLastDay.isHidden = true
+            rightStackView.isHidden = true
+            rightNoComparisonLabel.isHidden = false
+        } else {
+            rightFirstDay.text = firstDay
+            rightLastDay.text = today
+            rightBefore.kf.setImage(with: URL(string: firstDayRightPhoto))
+            rightAfter.kf.setImage(with: URL(string: todayRightPhoto))
+        }
     }
     
     func configureViews() {
@@ -169,7 +246,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         topAxis.drawAxisLineEnabled = false
         waterChartView.rightAxis.drawGridLinesEnabled = false
         waterChartView.rightAxis.granularityEnabled = true
-        waterChartView.rightAxis.granularity = 500
+        waterChartView.rightAxis.granularity = 750
         waterChartView.maxVisibleCount = 60
         waterChartView.notifyDataSetChanged()
         waterChartView.animate(yAxisDuration: 2.0)
@@ -241,5 +318,3 @@ extension MainViewController: UIScrollViewDelegate {
         pageControl.currentPage = Int(page)
     }
 }
-
-
