@@ -15,13 +15,17 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var lottieView: AnimationView!
+    @IBOutlet weak var privacyButton: UIButton!
     
-    var defaultName = ""
+    var defaultName = "Anonymous"
+    
+    let appleButton = ASAuthorizationAppleIDButton()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         setupAppleButton()
+        setUpPrivacyConstraints()
         setupLottie()
     }
     
@@ -65,7 +69,6 @@ class SignInViewController: UIViewController {
     
     func setupAppleButton() {
         
-        let appleButton = ASAuthorizationAppleIDButton()
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
         view.addSubview(appleButton)
@@ -84,6 +87,18 @@ class SignInViewController: UIViewController {
         lottieView.animationSpeed = 0.8
         lottieView.play()
         lottieView.loopMode = .loop
+        lottieView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            lottieView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130)
+        ])
+    }
+    
+    func setUpPrivacyConstraints() {
+        privacyButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            privacyButton.topAnchor.constraint(equalTo: appleButton.bottomAnchor, constant: 30),
+            privacyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
     @objc
@@ -182,7 +197,7 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
 
                     let defaults = UserDefaults.standard
                                         
-                    print("\(String(describing: user.displayName))")
+//                    print("\(String(describing: user.displayName))")
 
                     guard let uid = Auth.auth().currentUser?.uid else { return }
                     defaults.set(uid, forKey: "userID")
@@ -216,37 +231,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     }
     
 }
-
-//    func authorizationController(controller: ASAuthorizationController,
-//                                 didCompleteWithAuthorization authorization: ASAuthorization) {
-//
-//        switch authorization.credential {
-//
-//        case let credentials as ASAuthorizationAppleIDCredential:
-//            let user = User(credentials: credentials)
-//
-//            let defaults = UserDefaults.standard
-//            defaults.set(user.name, forKey: "userName")
-//            defaults.set(user.id, forKey: "userID")
-//
-//            UserManager.shared.addNewUser()
-//
-//            print("""
-//            ID: \(user.id),
-//            Name: \(user.name),
-//            Email: \(user.email)
-//            """)
-//
-//            performSegue(withIdentifier: "showHomePage", sender: user)
-//
-//        default: break
-//        }
-//    }
-//
-//    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//        print("Sign In Error: \(error)")
-//    }
-// }
 
 extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
     

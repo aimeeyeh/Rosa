@@ -19,10 +19,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gY-Hz-r6U" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="57" y="134" width="300" height="400"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="ZSH-RI-9aV"/>
-                                    <constraint firstAttribute="width" constant="300" id="cnF-aN-CIC"/>
-                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By tapping &quot;Sign in with Apple&quot; you agree to our Privacy Policy &amp; Terms of Service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpv-RY-LGW">
                                 <rect key="frame" x="60" y="795.5" width="294" height="26.5"/>
@@ -30,8 +26,8 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa8-bR-nIr">
-                                <rect key="frame" x="108.5" y="664" width="197" height="61.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa8-bR-nIr">
+                                <rect key="frame" x="108.5" y="664" width="197" height="27.5"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Privacy Policy &amp; Terms of Sevice">
@@ -61,21 +57,22 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1gY-Hz-r6U" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.724638" id="2Ue-2G-SHI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3oN-es-TuI" secondAttribute="trailing" constant="20" id="Csv-Q4-LSY"/>
                             <constraint firstItem="1gY-Hz-r6U" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="Hhz-fq-wg0"/>
                             <constraint firstItem="Lpv-RY-LGW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="60" id="IVX-WC-Ypx"/>
                             <constraint firstItem="1gY-Hz-r6U" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="SF0-xo-WVv"/>
+                            <constraint firstItem="1gY-Hz-r6U" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.446429" id="Xt6-ay-RTA"/>
                             <constraint firstItem="Xa8-bR-nIr" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="b9K-ff-cCU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Lpv-RY-LGW" secondAttribute="trailing" constant="60" id="dtL-id-OUn"/>
-                            <constraint firstItem="Xa8-bR-nIr" firstAttribute="top" secondItem="1gY-Hz-r6U" secondAttribute="bottom" constant="130" id="eGK-Y1-Hjg"/>
                             <constraint firstItem="3oN-es-TuI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="gMC-E5-tfR"/>
                             <constraint firstItem="Lpv-RY-LGW" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="jPy-XG-JLa"/>
-                            <constraint firstItem="Lpv-RY-LGW" firstAttribute="top" secondItem="Xa8-bR-nIr" secondAttribute="bottom" constant="70" id="jzN-h0-BKd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Lpv-RY-LGW" secondAttribute="bottom" constant="40" id="rWV-z4-wJx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="lottieView" destination="1gY-Hz-r6U" id="kf6-lK-KIO"/>
+                        <outlet property="privacyButton" destination="Xa8-bR-nIr" id="Bh3-hW-uhz"/>
                         <outlet property="signinButton" destination="3oN-es-TuI" id="XKd-gl-H3a"/>
                         <segue destination="nY8-8y-Y3l" kind="show" identifier="showHomePage" id="2MK-ZV-v0B"/>
                     </connections>
@@ -115,7 +112,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMv-G8-GnY">
                                                     <rect key="frame" x="23" y="31" width="368" height="3303"/>
-                                                    <mutableString key="text">Privacy Policy
+                                                    <string key="text">Privacy Policy
 Last updated: June 08, 2021
 
 This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
@@ -266,7 +263,7 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 Contact Us
 If you have any questions about this Privacy Policy, You can contact us:
 
-By email: yehchihchen@gmail.com</mutableString>
+By email: yehchihchen@gmail.com</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

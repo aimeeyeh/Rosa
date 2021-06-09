@@ -17,16 +17,11 @@ class ArticleManager {
     lazy var database = Firestore.firestore()
     
     let user = UserManager.shared.currentUser
-    
-//    let userID = UserDefaults.standard.string(forKey: "userID")
-//    let userName = UserDefaults.standard.string(forKey: "userName")
 
     let defaultID = "Aimee"
     
     func postArticle(article: inout Article) {
-//
-//        guard let userID = user?.id else { return }
-//        guard let userName = user?.name else { return }
+
         let userID = user?.id
         let userName = user?.name
         guard let userPhoto = user?.photo else { return }
@@ -258,7 +253,7 @@ class ArticleManager {
     func fetchPostedArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         
         guard let userID = user?.id else { return }
-        let queryCollection = database.collection("articles")
+        let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
         queryCollection.whereField("authorID", isEqualTo: userID)
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
@@ -288,7 +283,7 @@ class ArticleManager {
         let user = UserManager.shared.currentUser
         guard let userLikedArticles = user?.likedArticles else { return }
         
-        let queryCollection = database.collection("articles")
+        let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
         queryCollection.whereField("id", in: userLikedArticles)
             .getDocuments { (querySnapshot, err) in
                 if let err = err {

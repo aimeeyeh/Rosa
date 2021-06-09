@@ -34,20 +34,24 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setRightBarButton(nil, animated: true)
+        profileImage.layoutIfNeeded()
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         reloadArticles()
-        configureProfile() 
+        configureProfile()
     }
     
     func configureProfile() {
+        profileImage.clipsToBounds = true
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
         if let user = UserManager.shared.currentUser {
             nameLabel.text = user.name
             guard let photo = user.photo else { return }
             profileImage.kf.setImage(with: URL(string: photo))
         }
+
     }
     func fetchPostedArticles() {
         
@@ -177,7 +181,9 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 280)
+        let width = (self.view.frame.width - 30) / 2
+        let height = width * 1.5
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView,
