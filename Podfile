@@ -12,6 +12,7 @@ target 'Rosa' do
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
+  pod 'Firebase/Crashlytics'
   pod "CollectionViewWaterfallLayout"
   pod 'MKRingProgressView'
   pod 'FSCalendar'

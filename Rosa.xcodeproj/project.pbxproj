@@ -471,6 +471,7 @@
 				7A8DB504264BB62100EE6D9D /* Resources */,
 				7A24297A264BBB4F0069CB73 /* SwiftLint */,
 				CD2DA1BCE170D80E0490BAA2 /* [CP] Embed Pods Frameworks */,
+				7AC4F06F2670ADCD00756D3A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -553,6 +554,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\n";
+		};
+		7AC4F06F2670ADCD00756D3A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		BA83060693B8F66A447486ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -814,6 +834,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Rosa/Rosa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZD95UZDB52;
 				INFOPLIST_FILE = Rosa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -823,7 +844,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aimeeyeh.Rosa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -835,6 +856,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Rosa/Rosa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZD95UZDB52;
 				INFOPLIST_FILE = Rosa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -844,7 +866,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aimeeyeh.Rosa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
