@@ -119,7 +119,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-    }
+}
     
     override func viewWillAppear(_ animated: Bool) {
         self.resetData()
@@ -242,17 +242,4 @@ extension MainViewController: UIScrollViewDelegate {
     }
 }
 
-//extension MainViewController {
-//    
-//    func setUpConstraintsForAllViews() {
-//        challengeProgressView.translatesAutoresizingMaskIntoConstraints = false
-//        let width = (view.frame.width - 75) / 2
-//        NSLayoutConstraint.activate([
-//            challengeProgressView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 180),
-//            challengeProgressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-//            challengeProgressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-//            challengeProgressView.widthAnchor.constraint(equalTo: width)
-//        ])
-//        
-//    }
-//}
+
