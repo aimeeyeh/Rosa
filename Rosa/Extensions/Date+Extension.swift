@@ -29,4 +29,14 @@ extension Date {
         return date
     }
     
+    func formatForMainPage() -> String? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+
+        let date = dateFormatter.string(from: self)
+        
+        return date
+    }
+    
 }
