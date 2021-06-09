@@ -22,6 +22,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var sleepLineChartView: LineChartView!
     @IBOutlet weak var noSleepRecord: UILabel!
     @IBOutlet weak var noWaterRecord: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     func createPastSevenDays() -> [Date] {
         var past7Days = [Date]()
@@ -233,3 +234,25 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
 
 }
+
+extension MainViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page = scrollView.contentOffset.x / scrollView.bounds.width
+        pageControl.currentPage = Int(page)
+    }
+}
+
+//extension MainViewController {
+//    
+//    func setUpConstraintsForAllViews() {
+//        challengeProgressView.translatesAutoresizingMaskIntoConstraints = false
+//        let width = (view.frame.width - 75) / 2
+//        NSLayoutConstraint.activate([
+//            challengeProgressView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 180),
+//            challengeProgressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+//            challengeProgressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+//            challengeProgressView.widthAnchor.constraint(equalTo: width)
+//        ])
+//        
+//    }
+//}

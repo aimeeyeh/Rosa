@@ -34,8 +34,15 @@ class UserManager {
                         
                         let queryCollection = self.database.collection("user")
                         
+                        // swiftlint:disable all
+                        
+                        let defaultPhoto = "https://firebasestorage.googleapis.com/v0/b/rosa-5438e.appspot.com/o/images%2FAimee%2F2021-06-08%2011:20:40%20%2B0000.png?alt=media&token=eb673f9d-7e4c-48ae-aad7-2e09583c3ff0"
+                        
+                        // swiftlint:enable all
+                        
                         queryCollection.document(self.userID).setData(["id": self.userID,
-                                                                  "name": userName]) { err in
+                                                                       "name": userName,
+                                                                       "photo": defaultPhoto]) { err in
                             if let err = err {
                                 print("Error writing document: \(err)")
                                 completion(.failure(err))

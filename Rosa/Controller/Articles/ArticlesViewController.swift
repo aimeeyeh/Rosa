@@ -7,6 +7,7 @@
 
 import UIKit
 import CollectionViewWaterfallLayout
+import Lottie
 
 class ArticlesViewController: UIViewController {
 
@@ -18,7 +19,11 @@ class ArticlesViewController: UIViewController {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postArticleButton: UIButton!
     
-    var allArticles: [Article] = []
+    var allArticles: [Article] = [] {
+        didSet {
+            fetchBlocklist()
+        }
+    }
     
     var blockedUsers: [String] = [] {
         didSet {
@@ -71,12 +76,9 @@ class ArticlesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableViewHeight.constant = 0
-        fetchAllArticles()
-        fetchFollowedList()
-        self.currentType = "allArticles"
         reloadArticles()
-
+        tableViewHeight.constant = 0
+        self.currentType = "allArticles"
     }
     
     func appendShadow() {
@@ -136,7 +138,6 @@ class ArticlesViewController: UIViewController {
             case .success(let user):
                 self.fetchAllArticles()
                 self.fetchFollowedList()
-                self.fetchBlocklist()
                 print(user)
                 
             case .failure(let error):
@@ -195,6 +196,7 @@ class ArticlesViewController: UIViewController {
     // MARK: - 文章分類
     
     @IBAction func showCategory(_ sender: Any) {
+    
         tableViewHeight.constant = tableViewHeight.constant == 0 ? 217.5 : 0
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
           self.tableView.alpha = 1
@@ -239,8 +241,6 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
             case .success(let articles):
                 
                 self?.allArticles = articles
-                
-                self?.fetchBlocklist()
                 
                 self?.tableViewHeight.constant = 0
             
