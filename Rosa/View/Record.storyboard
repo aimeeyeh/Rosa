@@ -343,7 +343,7 @@
                                                     <state key="normal" title="Sunny" image="Rainy">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                     </state>
-                                                    <state key="selected" image="rainy"/>
+                                                    <state key="selected" image="Rainy"/>
                                                     <connections>
                                                         <action selector="selectedRainy:" destination="PAX-6U-XtK" eventType="touchUpInside" id="QW7-mc-qpC"/>
                                                     </connections>
@@ -1541,7 +1541,6 @@
         <image name="menstrualcycle" width="512" height="512"/>
         <image name="outdoor" width="512" height="512"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="rainy" width="512" height="512"/>
         <image name="sleep" width="512" height="512"/>
         <image name="sugarFree" width="48" height="48"/>
         <image name="water" width="512" height="512"/>

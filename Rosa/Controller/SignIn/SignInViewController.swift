@@ -27,8 +27,8 @@ class SignInViewController: UIViewController {
         setupAppleButton()
         setUpPrivacyConstraints()
         setupLottie()
-        signinButton.isHidden = true
-        signinButton.isEnabled = false
+//        signinButton.isHidden = true
+//        signinButton.isEnabled = false
     }
     
     // Unhashed nonce.

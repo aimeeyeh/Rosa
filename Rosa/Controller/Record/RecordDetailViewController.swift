@@ -168,7 +168,7 @@ extension RecordDetailViewController: UITableViewDataSource,
                                       UIImagePickerControllerDelegate,
                                       UINavigationControllerDelegate {
     
-    // MARK: - here
+    // MARK: - Image Picker
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         lottieView.isHidden = false
@@ -308,22 +308,42 @@ extension RecordDetailViewController: UITableViewDataSource,
                 
                 cell.onFullButtonPressed = {
                     showPicker(PhotoType.fullPhoto)
-                    cell.uploadFull.tintColor = .clear
                 }
                 
                 cell.onLeftButtonPressed = {
                     showPicker(PhotoType.leftPhoto)
-                    cell.uploadLeft.tintColor = .clear
                 }
                 
                 cell.onRightButtonPressed = {
                     showPicker(PhotoType.rightPhoto)
-                    cell.uploadRight.tintColor = .clear
                 }
                 
-                cell.fullImage.kf.setImage(with: URL(string: fullPhotoUrl))
-                cell.leftImage.kf.setImage(with: URL(string: leftPhotoUrl))
-                cell.rightImage.kf.setImage(with: URL(string: rightPhotoUrl))
+                if fullPhotoUrl.isEmpty {
+                    cell.uploadFull.tintColor = .lightGray
+                    cell.frontalLabel.isHidden = false
+                } else {
+                    cell.frontalLabel.isHidden = true
+                    cell.uploadFull.tintColor = .clear
+                    cell.fullImage.kf.setImage(with: URL(string: fullPhotoUrl))
+                }
+                
+                if leftPhotoUrl.isEmpty {
+                    cell.leftLabel.isHidden = false
+                    cell.uploadLeft.tintColor = .lightGray
+                } else {
+                    cell.leftLabel.isHidden = true
+                    cell.uploadLeft.tintColor = .clear
+                    cell.leftImage.kf.setImage(with: URL(string: leftPhotoUrl))
+                }
+                
+                if rightPhotoUrl.isEmpty {
+                    cell.rightLabel.isHidden = false
+                    cell.uploadRight.tintColor = .lightGray
+                } else {
+                    cell.rightLabel.isHidden = true
+                    cell.uploadRight.tintColor = .clear
+                    cell.rightImage.kf.setImage(with: URL(string: rightPhotoUrl))
+                }
                 
                 return cell
             }

@@ -27,6 +27,12 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    var categoryArticles: [Article] = [] {
+        didSet {
+            fetchBlocklist()
+        }
+    }
+    
     var blockedUsers: [String] = [] {
         didSet {
             filterBlockedArticles()
@@ -241,13 +247,15 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
             "醫美"
         ]
         
+        currentType = "categoryArticles"
+        
         ArticleManager.shared.queryCategory(category: queryArray[indexPath.row]) { [weak self] result in
             
             switch result {
             
             case .success(let articles):
                 
-                self?.allArticles = articles
+                self?.categoryArticles = articles
                 
                 self?.tableViewHeight.constant = 0
             
@@ -266,12 +274,15 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if currentType == "allArticles" {
+        switch currentType {
+        case "allArticles":
             return filteredArticles.count
-        } else {
+        case "categoryArticles":
+            return categoryArticles.count
+        default:
             return followedArticles.count
         }
-        
+
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -280,11 +291,14 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell",
                                                          for: indexPath) as? CollectionViewCell {
             
-            if currentType == "allArticles" {
+            switch currentType {
+            case "allArticles":
                 cell.configureArticleCell(article: filteredArticles[indexPath.row])
                 return cell
-                
-            } else {
+            case "categoryArticles":
+                cell.configureArticleCell(article: categoryArticles[indexPath.row])
+                return cell
+            default:
                 cell.configureArticleCell(article: followedArticles[indexPath.row])
                 return cell
             }

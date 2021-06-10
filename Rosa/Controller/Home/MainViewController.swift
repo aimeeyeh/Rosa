@@ -91,13 +91,13 @@ class MainViewController: UIViewController, ChartViewDelegate {
             if last7DayRecords.count == 0 {
                 waterChartView.isHidden = true
                 sleepLineChartView.isHidden = true
-                noWaterRecord.isHidden = false
-                noSleepRecord.isHidden = false
+//                noWaterRecord.isHidden = false
+//                noSleepRecord.isHidden = false
             } else {
                 waterChartView.isHidden = false
                 sleepLineChartView.isHidden = false
-                noWaterRecord.isHidden = true
-                noSleepRecord.isHidden = true
+//                noWaterRecord.isHidden = true
+//                noSleepRecord.isHidden = true
                 let past7Days = createPastSevenDays()
                 for day in past7Days {
                     let filteredRecords = last7DayRecords.filter { $0.date == day }
@@ -132,6 +132,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     var overallProgress: Double = 0.0 {
         didSet {
             challengeProgressLabel.text = "\(lround(overallProgress))%"
+            self.ringProgressView.isHidden = false
             UIView.animate(withDuration: 1.0) {
                 let progress = Double(self.overallProgress) / 100.0
                 self.ringProgressView.progress = progress
@@ -142,6 +143,8 @@ class MainViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        noWaterRecord.isHidden = true
+        noSleepRecord.isHidden = true
         
 }
     

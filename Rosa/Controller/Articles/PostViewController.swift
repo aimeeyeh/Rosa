@@ -31,7 +31,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var lottieView: AnimationView!
     
-    var category: String = ""
+    var category: String = "酒糟"
     var photos: [String] = []
     
     private let storage = Storage.storage().reference()
@@ -164,6 +164,16 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+        switch currentPhotoType {
+        case .firstImage:
+            firstButton.tintColor = .lightGray
+        case .secondImage:
+            secondButton.tintColor = .lightGray
+        case .thirdImage:
+            thirdButton.tintColor = .lightGray
+        default:
+            forthButton.tintColor = .lightGray
+        }
     }
     
     func showPicker(_ photoType: ArticlePhotoType) {
