@@ -282,6 +282,7 @@
                         <outlet property="collectionView" destination="dkm-Bt-j0i" id="8sR-S6-siM"/>
                         <outlet property="followButton" destination="xrh-2l-Mi6" id="T20-ND-VYu"/>
                         <outlet property="postArticleButton" destination="FFJ-kd-poI" id="F9i-lC-Zq8"/>
+                        <outlet property="searchBar" destination="01a-Q0-kuY" id="TlN-C0-zct"/>
                         <outlet property="tableView" destination="8Qp-uK-oLx" id="bhi-5X-9DM"/>
                         <outlet property="tableViewHeight" destination="y4p-IE-b6Y" id="lzS-xV-XpK"/>
                         <outlet property="trendingButton" destination="TY9-hU-yae" id="Xie-ip-A2F"/>

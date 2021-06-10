@@ -573,7 +573,7 @@
                                             <outlet property="leftImage" destination="Vtf-yV-YEY" id="CAk-rg-8tN"/>
                                             <outlet property="leftLabel" destination="Bt4-jG-wyL" id="FKr-U8-Yam"/>
                                             <outlet property="rightImage" destination="Svu-Hl-yXN" id="E2T-TA-r7Y"/>
-                                            <outlet property="rightLabel" destination="Svu-Hl-yXN" id="rGx-BS-aiV"/>
+                                            <outlet property="rightLabel" destination="Z8f-QH-Mpq" id="bAW-Yb-pRr"/>
                                             <outlet property="uploadFull" destination="STG-CG-3KL" id="RCF-iV-c2x"/>
                                             <outlet property="uploadLeft" destination="NRi-dp-zI7" id="AY8-1M-5aR"/>
                                             <outlet property="uploadRight" destination="61a-uu-ugr" id="I64-If-KeY"/>

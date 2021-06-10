@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftEntryKit
+import IQKeyboardManagerSwift
 
 class ArticleDetailViewController: UIViewController {
 
@@ -74,6 +75,7 @@ class ArticleDetailViewController: UIViewController {
 
         super.viewDidLoad()
         authorName.text = article.authorName
+        authorPhoto.kf.setImage(with: URL(string: article.authorPhoto))
         configureTextfield()
         fetchComments(articleID: article.id)
         tableView.allowsSelection = true

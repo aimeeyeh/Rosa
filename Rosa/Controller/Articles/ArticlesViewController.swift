@@ -8,8 +8,9 @@
 import UIKit
 import CollectionViewWaterfallLayout
 import Lottie
+import IQKeyboardManagerSwift
 
-class ArticlesViewController: UIViewController {
+class ArticlesViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var underlineView: UIView!
@@ -18,6 +19,7 @@ class ArticlesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postArticleButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var allArticles: [Article] = [] {
         didSet {
@@ -72,6 +74,7 @@ class ArticlesViewController: UIViewController {
         setUpWaterfall()
         trendingButton.isSelected = true
         trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
+        self.searchBar.delegate = self
 
     }
     
@@ -87,6 +90,10 @@ class ArticlesViewController: UIViewController {
         postArticleButton.layer.shadowOpacity = 0.1
         postArticleButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         postArticleButton.layer.masksToBounds = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     func setUpWaterfall() {
