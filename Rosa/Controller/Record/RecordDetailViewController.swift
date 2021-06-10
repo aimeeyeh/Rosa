@@ -13,6 +13,7 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import Kingfisher
 import Lottie
+import IQKeyboardManagerSwift
 
 enum PhotoType {
     case fullPhoto

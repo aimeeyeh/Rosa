@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         reloadArticles()
-        configureProfile()
+//        configureProfile()
     }
     
     func configureProfile() {
@@ -53,6 +53,7 @@ class ProfileViewController: UIViewController {
         }
 
     }
+    
     func fetchPostedArticles() {
         
         ArticleManager.shared.fetchPostedArticles { [weak self] result in
@@ -71,6 +72,7 @@ class ProfileViewController: UIViewController {
     }
     
     func configureNumbers() {
+        
         postedArticlesNumber.text = "\(postedArticles.count)"
         let followers = UserManager.shared.currentUser?.followers?.count ?? 0
         let followed = UserManager.shared.currentUser?.followed?.count ?? 0
@@ -102,7 +104,7 @@ class ProfileViewController: UIViewController {
             switch result {
             
             case .success(let user):
-                
+                self.configureProfile()
                 self.fetchLikedArticles()
                 self.fetchPostedArticles()
                 print(user)
@@ -116,6 +118,9 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
+        
+        view.layoutIfNeeded()
+        
         postedButton.isSelected = false
         likedButton.isSelected = false
         sender.isSelected = !sender.isSelected

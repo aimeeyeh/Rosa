@@ -440,11 +440,6 @@ extension CalenderViewController: LiquidFloatingActionButtonDataSource,
             return floatingActionButton
         }
         
-//        let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
-//            let cell = LiquidFloatingCell(icon: UIImage(named: iconName)!)
-//            return cell
-//        }
-        
         let customCellFactory: (String) -> LiquidFloatingCell = { (iconName) in
             let cell = CustomCell(icon: UIImage(named: iconName)!, name: iconName)
             return cell

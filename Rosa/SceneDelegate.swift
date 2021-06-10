@@ -6,6 +6,7 @@
 //
 // swiftlint:disable all
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -37,8 +38,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-        window?.rootViewController = storyboard.instantiateInitialViewController()
+        var Storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+        
+        let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
+        
+        if userID == "" {
+            Storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+        } else {
+            Storyboard = UIStoryboard(name: "Main", bundle: nil)
+        }
+        
+        window?.rootViewController = Storyboard.instantiateInitialViewController()
         window?.makeKeyAndVisible()
     }
 

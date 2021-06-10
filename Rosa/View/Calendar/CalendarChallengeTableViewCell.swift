@@ -26,6 +26,7 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         checkboxButton.isSelected = false
         checkboxButton.isUserInteractionEnabled = true
+        checkboxButton.isHidden = false
         checkboxButton.setImage(UIImage(named: "checked"), for: .disabled)
         checkboxButton.setImage(UIImage(named: "unchecked"), for: .normal)
         checkboxButton.setImage(UIImage(named: "checked"), for: .selected)
@@ -57,8 +58,7 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     }
     
     func noRecordConfigure() {
-        checkboxButton.setImage(nil, for: .normal)
-        checkboxButton.setImage(nil, for: .selected)
+        checkboxButton.isHidden = true
         challengeImage.image = UIImage(named: "information")
         challengeTitle.text = "No Record..."
         challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)
@@ -69,8 +69,7 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     }
 
     func noChallengeConfigure() {
-        checkboxButton.setImage(nil, for: .normal)
-        checkboxButton.setImage(nil, for: .selected)
+        checkboxButton.isHidden = true
         challengeImage.image = UIImage(named: "information")
         challengeTitle.text = "No Challenges..."
         challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)

@@ -142,6 +142,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        
 }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,9 +151,8 @@ class MainViewController: UIViewController, ChartViewDelegate {
         fetchPreviousRecords()
         configureViews()
         configureProgressView()
-        frontalNoComparisonLabel.isHidden = true
-        leftNoComparisonLabel.isHidden = true
-        rightNoComparisonLabel.isHidden = true
+        configurePhotoView()
+
     }
     
     func resetData() {
@@ -163,53 +163,74 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     func configurePhotoView() {
+        
         let sevenDays = createPastSevenDays()
         let firstDay = sevenDays[0].formatForMainPage()
         let today = sevenDays[6].formatForMainPage()
-            
-        let firstDayFrontalPhoto = last7DayRecords[0].fullPhoto
-        let todayFrontalPhoto = last7DayRecords[6].fullPhoto
-        if firstDayFrontalPhoto == "" || todayFrontalPhoto == "" {
+        
+        func hideFrontalCard() {
             frontalFirstDay.isHidden = true
             frontalToday.isHidden = true
             frontalStackView.isHidden = true
             frontalNoComparisonLabel.isHidden = false
-        } else {
-            frontalFirstDay.isHidden = false
-            frontalToday.isHidden = false
-            frontalStackView.isHidden = false
-            frontalFirstDay.text = firstDay
-            frontalToday.text = today
-            frontalBeforeImage.kf.setImage(with: URL(string: firstDayFrontalPhoto))
-            frontalAfterImage.kf.setImage(with: URL(string: todayFrontalPhoto))
         }
         
-        let firstDayLeftPhoto = last7DayRecords[0].leftPhoto
-        let todayLeftPhoto = last7DayRecords[6].rightPhoto
-        if firstDayLeftPhoto == "" || todayLeftPhoto == "" {
+        func hideLeftCard() {
             leftFirstDay.isHidden = true
             leftToday.isHidden = true
             leftStackView.isHidden = true
             leftNoComparisonLabel.isHidden = false
-        } else {
-            leftFirstDay.text = firstDay
-            leftToday.text = today
-            leftBefore.kf.setImage(with: URL(string: firstDayLeftPhoto))
-            leftAfter.kf.setImage(with: URL(string: todayLeftPhoto))
         }
         
-        let firstDayRightPhoto = last7DayRecords[0].rightPhoto
-        let todayRightPhoto = last7DayRecords[6].rightPhoto
-        if firstDayRightPhoto == "" || todayRightPhoto == "" {
+        func hideRightCard() {
             rightFirstDay.isHidden = true
             rightLastDay.isHidden = true
             rightStackView.isHidden = true
             rightNoComparisonLabel.isHidden = false
+        }
+        
+        if last7DayRecords.count <= 7 {
+            hideFrontalCard()
+            hideLeftCard()
+            hideRightCard()
+            
         } else {
-            rightFirstDay.text = firstDay
-            rightLastDay.text = today
-            rightBefore.kf.setImage(with: URL(string: firstDayRightPhoto))
-            rightAfter.kf.setImage(with: URL(string: todayRightPhoto))
+            
+            let firstDayFrontalPhoto = last7DayRecords[0].fullPhoto
+            let todayFrontalPhoto = last7DayRecords[6].fullPhoto
+            if firstDayFrontalPhoto == "" || todayFrontalPhoto == "" {
+                hideFrontalCard()
+            } else {
+                frontalFirstDay.isHidden = false
+                frontalToday.isHidden = false
+                frontalStackView.isHidden = false
+                frontalFirstDay.text = firstDay
+                frontalToday.text = today
+                frontalBeforeImage.kf.setImage(with: URL(string: firstDayFrontalPhoto))
+                frontalAfterImage.kf.setImage(with: URL(string: todayFrontalPhoto))
+            }
+            
+            let firstDayLeftPhoto = last7DayRecords[0].leftPhoto
+            let todayLeftPhoto = last7DayRecords[6].rightPhoto
+            if firstDayLeftPhoto == "" || todayLeftPhoto == "" {
+                hideLeftCard()
+            } else {
+                leftFirstDay.text = firstDay
+                leftToday.text = today
+                leftBefore.kf.setImage(with: URL(string: firstDayLeftPhoto))
+                leftAfter.kf.setImage(with: URL(string: todayLeftPhoto))
+            }
+            
+            let firstDayRightPhoto = last7DayRecords[0].rightPhoto
+            let todayRightPhoto = last7DayRecords[6].rightPhoto
+            if firstDayRightPhoto == "" || todayRightPhoto == "" {
+                hideRightCard()
+            } else {
+                rightFirstDay.text = firstDay
+                rightLastDay.text = today
+                rightBefore.kf.setImage(with: URL(string: firstDayRightPhoto))
+                rightAfter.kf.setImage(with: URL(string: todayRightPhoto))
+            }
         }
     }
     

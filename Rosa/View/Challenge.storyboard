@@ -18,19 +18,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6r-Wk-t6y">
-                                <rect key="frame" x="24.5" y="238" width="365" height="420"/>
+                                <rect key="frame" x="32" y="238" width="350" height="420"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbo-OI-38S">
-                                        <rect key="frame" x="0.0" y="0.0" width="365" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9w-pH-TqW">
-                                                <rect key="frame" x="142.5" y="8" width="80" height="21"/>
+                                                <rect key="frame" x="135" y="8" width="80" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue for 30 days to experience the difference!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPU-Oj-P7E">
-                                                <rect key="frame" x="50" y="34" width="265" height="14"/>
+                                                <rect key="frame" x="42.5" y="34" width="265" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mVR-PD-cUg">
-                                        <rect key="frame" x="8" y="60" width="349" height="358.5"/>
+                                        <rect key="frame" x="15" y="60" width="320" height="358.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YOF-Bp-xKw">
                                             <size key="itemSize" width="70" height="85"/>
@@ -122,7 +122,7 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="znN-vb-HhG">
-                                        <rect key="frame" x="142" y="382" width="81" height="30"/>
+                                        <rect key="frame" x="134.5" y="382" width="81" height="30"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="What is this?">
@@ -147,17 +147,17 @@
                                     <constraint firstItem="znN-vb-HhG" firstAttribute="centerX" secondItem="x6r-Wk-t6y" secondAttribute="centerX" id="I7m-P1-Yek"/>
                                     <constraint firstItem="mVR-PD-cUg" firstAttribute="top" secondItem="Rbo-OI-38S" secondAttribute="bottom" id="LJ4-Kh-szU"/>
                                     <constraint firstAttribute="bottom" secondItem="znN-vb-HhG" secondAttribute="bottom" constant="8" id="Z6q-tl-Sju"/>
-                                    <constraint firstItem="mVR-PD-cUg" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" constant="8" id="eFu-tU-u51"/>
+                                    <constraint firstItem="mVR-PD-cUg" firstAttribute="leading" secondItem="x6r-Wk-t6y" secondAttribute="leading" constant="15" id="eFu-tU-u51"/>
                                     <constraint firstAttribute="bottom" secondItem="mVR-PD-cUg" secondAttribute="bottom" constant="1.5" id="eys-Xd-eiz"/>
-                                    <constraint firstAttribute="width" constant="365" id="oov-F2-Znv"/>
+                                    <constraint firstAttribute="width" constant="350" id="oov-F2-Znv"/>
                                     <constraint firstItem="Rbo-OI-38S" firstAttribute="top" secondItem="x6r-Wk-t6y" secondAttribute="top" id="sru-48-Mar"/>
                                     <constraint firstAttribute="height" constant="420" id="tHI-iA-dpZ"/>
                                     <constraint firstAttribute="trailing" secondItem="Rbo-OI-38S" secondAttribute="trailing" id="vUV-NE-6r6"/>
-                                    <constraint firstAttribute="trailing" secondItem="mVR-PD-cUg" secondAttribute="trailing" constant="8" id="zPk-6g-Men"/>
+                                    <constraint firstAttribute="trailing" secondItem="mVR-PD-cUg" secondAttribute="trailing" constant="15" id="zPk-6g-Men"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-Lq-N5K">
-                                <rect key="frame" x="52.5" y="673" width="130" height="38"/>
+                                <rect key="frame" x="67" y="673" width="130" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="8zS-gg-C7G"/>
@@ -172,7 +172,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-uL-laq">
-                                <rect key="frame" x="231.5" y="673" width="130" height="38"/>
+                                <rect key="frame" x="217" y="673" width="130" height="38"/>
                                 <color key="backgroundColor" cyan="0.0" magenta="0.1753458796" yellow="0.38353303220000001" black="0.0009943443583" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="tRM-c6-KdO"/>

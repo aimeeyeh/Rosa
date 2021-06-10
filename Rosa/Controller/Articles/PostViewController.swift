@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 import FirebaseStorage
 import Lottie
+import IQKeyboardManagerSwift
 
 enum ArticlePhotoType {
     case firstImage
@@ -60,6 +61,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUser()
 
     }
     
@@ -75,6 +77,23 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         self.tabBarController?.tabBar.isHidden = false
 
+    }
+    
+    func fetchUser() {
+        UserManager.shared.fetchUser { result in
+            
+            switch result {
+            
+            case .success(let user):
+                
+                print(user)
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+        
     }
     
     func showLoadingView() {
