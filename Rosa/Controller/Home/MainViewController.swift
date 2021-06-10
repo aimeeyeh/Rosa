@@ -192,7 +192,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
             rightNoComparisonLabel.isHidden = false
         }
         
-        if last7DayRecords.count <= 7 {
+        if last7DayRecords.count < 7 {
             hideFrontalCard()
             hideLeftCard()
             hideRightCard()
@@ -204,6 +204,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
             if firstDayFrontalPhoto == "" || todayFrontalPhoto == "" {
                 hideFrontalCard()
             } else {
+                frontalNoComparisonLabel.isHidden = true
                 frontalFirstDay.isHidden = false
                 frontalToday.isHidden = false
                 frontalStackView.isHidden = false
@@ -214,10 +215,14 @@ class MainViewController: UIViewController, ChartViewDelegate {
             }
             
             let firstDayLeftPhoto = last7DayRecords[0].leftPhoto
-            let todayLeftPhoto = last7DayRecords[6].rightPhoto
+            let todayLeftPhoto = last7DayRecords[6].leftPhoto
             if firstDayLeftPhoto == "" || todayLeftPhoto == "" {
                 hideLeftCard()
             } else {
+                leftNoComparisonLabel.isHidden = true
+                leftFirstDay.isHidden = false
+                leftToday.isHidden = false
+                leftStackView.isHidden = false
                 leftFirstDay.text = firstDay
                 leftToday.text = today
                 leftBefore.kf.setImage(with: URL(string: firstDayLeftPhoto))
@@ -229,6 +234,10 @@ class MainViewController: UIViewController, ChartViewDelegate {
             if firstDayRightPhoto == "" || todayRightPhoto == "" {
                 hideRightCard()
             } else {
+                rightNoComparisonLabel.isHidden = true
+                rightFirstDay.isHidden = false
+                rightLastDay.isHidden = false
+                rightStackView.isHidden = false
                 rightFirstDay.text = firstDay
                 rightLastDay.text = today
                 rightBefore.kf.setImage(with: URL(string: firstDayRightPhoto))
