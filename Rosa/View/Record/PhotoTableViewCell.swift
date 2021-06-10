@@ -29,15 +29,12 @@ class PhotoTableViewCell: UITableViewCell {
     var onRightButtonPressed: (() -> Void)?
 
     @IBAction func uploadFullPhoto(_ sender: UIButton) {
-        frontalLabel.isHidden = true
         onFullButtonPressed?()
     }
     @IBAction func uploadLeftPhoto(_ sender: UIButton) {
-        leftLabel.isHidden = true
         onLeftButtonPressed?()
     }
     @IBAction func uploadRightPhoto(_ sender: UIButton) {
-        rightLabel.isHidden = true
         onRightButtonPressed?()
     }
 }

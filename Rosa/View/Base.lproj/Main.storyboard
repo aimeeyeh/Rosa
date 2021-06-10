@@ -22,17 +22,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Io-f5-HBI" customClass="MKRingProgressView">
                                         <rect key="frame" x="15" y="44.5" width="139.5" height="111"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何挑戰" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C62-lo-M8j">
-                                                <rect key="frame" x="30" y="47.5" width="80" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C62-lo-M8j">
+                                                <rect key="frame" x="4" y="10" width="131.5" height="91"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="C62-lo-M8j" secondAttribute="trailing" constant="4" id="7CM-LY-ePY"/>
+                                            <constraint firstAttribute="bottom" secondItem="C62-lo-M8j" secondAttribute="bottom" constant="10" id="BFI-ta-imh"/>
+                                            <constraint firstItem="C62-lo-M8j" firstAttribute="leading" secondItem="8Io-f5-HBI" secondAttribute="leading" constant="4" id="OPk-R6-09S"/>
                                             <constraint firstItem="C62-lo-M8j" firstAttribute="centerY" secondItem="8Io-f5-HBI" secondAttribute="centerY" id="glC-Ot-YiW"/>
-                                            <constraint firstItem="C62-lo-M8j" firstAttribute="centerX" secondItem="8Io-f5-HBI" secondAttribute="centerX" id="t4Z-fP-gz7"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-FI-ShG">

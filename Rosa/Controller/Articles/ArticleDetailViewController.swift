@@ -17,6 +17,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var authorPhoto: UIImageView!
+    @IBOutlet weak var shareButton: UIButton!
     
     var article: Article = Article(id: "fail",
                                    authorID: "fail",
@@ -81,6 +82,7 @@ class ArticleDetailViewController: UIViewController {
         tableView.allowsSelection = true
         checkFollowButtonStatus()
         configureFollowButton()
+//        shareButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -288,11 +290,29 @@ class ArticleDetailViewController: UIViewController {
         commentTextfield.clipsToBounds = true
         
     }
-
+    
+    @IBAction func shareArticle(_ sender: Any) {
+        let text = "Download Rosa to see more articles!"
+        let image = UIImage(named: "Rosa")
+//        let myWebsite = NSURL(string:"https://stackoverflow.com/users/4600136/mr-javed-multani?tab=profile")
+//        let shareAll = [text, image, myWebsite]
+        let shareAll = [text, image as Any] as [Any]
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func editingDidEnd(_ sender: UITextField) {
+        
         if let text = sender.text {
-            ArticleManager.shared.postComment(documentID: article.id, comment: text)
+            if text != "" {
+                ArticleManager.shared.postComment(documentID: article.id, comment: text)
+                
+            } else {
+                return
+            }
         }
+        
         commentTextfield.text = ""
     }
     

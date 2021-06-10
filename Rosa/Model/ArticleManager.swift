@@ -39,9 +39,11 @@ class ArticleManager {
             try  document.setData(from: article)
             
             let commentData: [String: Any] = [
-                "id": "default",
-                "author": "default",
+                "authorID": "default",
+                "authorName": "default",
+                "authorPhoto": "default",
                 "content": "default",
+                "id": "default",
                 "date": Date()
             ]
             
