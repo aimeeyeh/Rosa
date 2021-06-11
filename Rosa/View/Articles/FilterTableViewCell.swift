@@ -28,7 +28,7 @@ class FilterTableViewCell: UITableViewCell {
         "Rosacea",
         "Skincare",
         "Diet",
-        "Sunscreen",
+        "Sun Protection",
         "Cosmetics"
     ]
     

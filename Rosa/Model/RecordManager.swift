@@ -96,7 +96,8 @@ class RecordManager {
             }
     }
 
-    func postDailyRecord(record: inout Record, selectedDate: Date, completion: @escaping (Result<String, Error>) -> Void) {
+    func postDailyRecord(record: inout Record, selectedDate: Date,
+                         completion: @escaping (Result<String, Error>) -> Void) {
         
         let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
         let document = queryCollection.document()

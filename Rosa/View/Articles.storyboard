@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nzu-66-Za6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -297,7 +298,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="0ol-YQ-Yo2">
             <objects>
-                <viewController storyboardIdentifier="ArticleDetailViewController" id="FfD-tU-Pow" customClass="ArticleDetailViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleDetailViewController" modalPresentationStyle="overCurrentContext" id="FfD-tU-Pow" customClass="ArticleDetailViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nO6-gi-aZH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,7 +306,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KW9-FY-eRn" userLabel="UpperView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-zg-6Al">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-zg-6Al" userLabel="backButton">
                                         <rect key="frame" x="15" y="28" width="35" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="raz-F1-thW"/>
@@ -380,6 +381,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFh-m3-KxM" userLabel="MoreInfoButton">
+                                        <rect key="frame" x="371.5" y="27.5" width="25" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="fYs-Ed-3uK"/>
+                                            <constraint firstAttribute="height" constant="23" id="h4H-vt-OZl"/>
+                                        </constraints>
+                                        <state key="normal" image="more"/>
+                                        <connections>
+                                            <action selector="showMoreInfo:" destination="FfD-tU-Pow" eventType="touchUpInside" id="UJ7-TK-03P"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -388,10 +400,12 @@
                                     <constraint firstItem="5NN-x4-dEe" firstAttribute="centerY" secondItem="0cP-zg-6Al" secondAttribute="centerY" id="BZa-gL-JtW"/>
                                     <constraint firstAttribute="height" constant="65" id="CEA-eB-YJk"/>
                                     <constraint firstAttribute="trailing" secondItem="DKF-qt-OZp" secondAttribute="trailing" constant="15" id="Fzr-rT-GGV"/>
+                                    <constraint firstItem="hFh-m3-KxM" firstAttribute="centerY" secondItem="exK-Ee-LHi" secondAttribute="centerY" id="N0x-Db-9Eq"/>
                                     <constraint firstItem="5NN-x4-dEe" firstAttribute="leading" secondItem="0cP-zg-6Al" secondAttribute="trailing" constant="5" id="W4R-p1-gMM"/>
                                     <constraint firstAttribute="bottom" secondItem="0cP-zg-6Al" secondAttribute="bottom" constant="15" id="ZJx-6w-RrB"/>
                                     <constraint firstItem="exK-Ee-LHi" firstAttribute="centerY" secondItem="P1V-f0-KfU" secondAttribute="centerY" id="j4W-X2-dcz"/>
                                     <constraint firstAttribute="bottom" secondItem="DKF-qt-OZp" secondAttribute="bottom" constant="12" id="oTN-AI-mcR"/>
+                                    <constraint firstItem="hFh-m3-KxM" firstAttribute="centerX" secondItem="DKF-qt-OZp" secondAttribute="centerX" id="qgm-3t-KcM"/>
                                     <constraint firstItem="0cP-zg-6Al" firstAttribute="leading" secondItem="KW9-FY-eRn" secondAttribute="leading" constant="15" id="wDG-95-fwj"/>
                                     <constraint firstItem="P1V-f0-KfU" firstAttribute="centerY" secondItem="5NN-x4-dEe" secondAttribute="centerY" id="yVR-iU-o8h"/>
                                 </constraints>
@@ -722,6 +736,7 @@
                         <outlet property="commentTextfield" destination="K6R-ny-CsZ" id="S2O-nJ-Uqb"/>
                         <outlet property="followButton" destination="exK-Ee-LHi" id="7jd-rF-epV"/>
                         <outlet property="likeButton" destination="qRY-y8-zyv" id="x1a-iE-K3q"/>
+                        <outlet property="moreInfoButton" destination="hFh-m3-KxM" id="nz9-c3-Ftx"/>
                         <outlet property="shareButton" destination="DKF-qt-OZp" id="ExJ-yC-ckP"/>
                         <outlet property="tableView" destination="81S-IA-JcX" id="wzB-nh-vmD"/>
                     </connections>
@@ -754,6 +769,7 @@
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="heart " width="64" height="64"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="more" width="64" height="64"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="plus" width="100" height="100"/>
         <image name="selectedHeart" width="64" height="64"/>
