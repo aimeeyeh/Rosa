@@ -60,7 +60,6 @@
 		7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */; };
 		7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* MainViewController.swift */; };
 		7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB50F264BB62100EE6D9D /* Main.storyboard */; };
-		7A8DB513264BB62100EE6D9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB512264BB62100EE6D9D /* Assets.xcassets */; };
 		7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */; };
 		7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */; };
 		7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE48A264BE24B00A20324 /* Challenge.storyboard */; };
@@ -82,6 +81,7 @@
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
 		7AF6EDD92667C3D800F04200 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6EDD82667C3D800F04200 /* Font.swift */; };
 		7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */; };
+		7AFC52FE2673B03800966298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC52FD2673B03800966298 /* Assets.xcassets */; };
 		7AFE438B2660E86800F94330 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE438A2660E86800F94330 /* Date+Extension.swift */; };
 		7AFE438E26613B8200F94330 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AFE438D26613B8200F94330 /* SignIn.storyboard */; };
 		7AFE439126613BA700F94330 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE439026613BA700F94330 /* SignInViewController.swift */; };
@@ -141,7 +141,6 @@
 		7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7A8DB50D264BB62100EE6D9D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A8DB510264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7A8DB512264BB62100EE6D9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A8DB515264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A8DB517264BB62100EE6D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -164,6 +163,7 @@
 		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		7AF6EDD82667C3D800F04200 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRecordTableViewCell.swift; sourceTree = "<group>"; };
+		7AFC52FD2673B03800966298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AFE438A2660E86800F94330 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		7AFE438C26613A1D00F94330 /* Rosa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rosa.entitlements; sourceTree = "<group>"; };
 		7AFE438D26613B8200F94330 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 		7AAFE488264BCCF000A20324 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				7A8DB512264BB62100EE6D9D /* Assets.xcassets */,
+				7AFC52FD2673B03800966298 /* Assets.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -524,12 +524,12 @@
 				7AAFE499264BE3E800A20324 /* Profile.storyboard in Resources */,
 				7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */,
 				7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */,
-				7A8DB513264BB62100EE6D9D /* Assets.xcassets in Resources */,
 				7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */,
 				7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */,
 				7AFE438E26613B8200F94330 /* SignIn.storyboard in Resources */,
 				7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */,
 				7AAFE48D264BE25E00A20324 /* Record.storyboard in Resources */,
+				7AFC52FE2673B03800966298 /* Assets.xcassets in Resources */,
 				7AAFE491264BE27A00A20324 /* Calender.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

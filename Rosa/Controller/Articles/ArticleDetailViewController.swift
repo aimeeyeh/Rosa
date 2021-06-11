@@ -18,6 +18,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var authorPhoto: UIImageView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var moreInfoButton: UIButton!
     
     var article: Article = Article(id: "fail",
                                    authorID: "fail",
@@ -73,16 +74,18 @@ class ArticleDetailViewController: UIViewController {
     var toBeBlockedUserID: String?
 
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
-        authorName.text = article.authorName
-        authorPhoto.kf.setImage(with: URL(string: article.authorPhoto))
         configureTextfield()
         fetchComments(articleID: article.id)
         tableView.allowsSelection = true
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        tableView.addGestureRecognizer(longPress)
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
         checkFollowButtonStatus()
         configureFollowButton()
-//        shareButton.isHidden = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +93,7 @@ class ArticleDetailViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
         reloadComments()
+        configureUpperView()
 
     }
     
@@ -99,6 +103,32 @@ class ArticleDetailViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
 
     }
+    
+    @objc func longPress(sender: UILongPressGestureRecognizer) {
+
+                if sender.state == UIGestureRecognizer.State.began {
+                    let touchPoint = sender.location(in: tableView)
+                    if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                        if comments.count > 1 {
+                            switch indexPath.row {
+                            case 0:
+                                return
+                            case 1:
+                                return
+                            default:
+                                self.showAlertView(attributes: setupAttributes())
+                                if let comments = filteredBlockComments {
+                                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
+                                }
+                                
+                            }
+                            
+                        }
+                    }
+                }
+
+
+            }
     
     func reloadComments() {
         UserManager.shared.fetchUser { result in
@@ -116,6 +146,21 @@ class ArticleDetailViewController: UIViewController {
             }
         }
 
+    }
+    
+    func configureUpperView() {
+        
+        authorName.text = article.authorName
+        authorPhoto.kf.setImage(with: URL(string: article.authorPhoto))
+        
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        if currentUser.id == article.authorID {
+            shareButton.isHidden = true
+            moreInfoButton.isHidden = false
+        } else {
+            shareButton.isHidden = false
+            moreInfoButton.isHidden = true
+        }
     }
     
     func checkLikeButtonStatus() {
@@ -143,6 +188,36 @@ class ArticleDetailViewController: UIViewController {
             }
         }
     }
+    
+    func showActionSheet() {
+        
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) {_ in print("cancel")}
+        actionSheetController.addAction(cancelActionButton)
+        
+        let deleteActionButton = UIAlertAction(title: "Delete", style: .destructive) {_ in
+            ArticleManager.shared.deleteArticle(artcleID: self.article.id)
+            self.navigationController?.popViewController(animated: true)
+        }
+
+        let saveActionButton = UIAlertAction(title: "Share", style: .default) {_ in
+            let text = "Download Rosa to see more articles!"
+            let image = UIImage(named: "Rosa")
+            let shareAll = [text, image as Any] as [Any]
+            let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+        
+        actionSheetController.addAction(deleteActionButton)
+        actionSheetController.addAction(saveActionButton)
+        
+        actionSheetController.view.tintColor = .darkGray
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    // MARK: - SwiftEntryKit Setups
     
     var displayMode = EKAttributes.DisplayMode.inferred
     
@@ -278,17 +353,21 @@ class ArticleDetailViewController: UIViewController {
         SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
-    @IBAction func backToArticle(_ sender: Any) {
-
-        self.navigationController?.popViewController(animated: true)
-
-    }
-    
     func configureTextfield() {
         
         commentTextfield.layer.cornerRadius = 21
         commentTextfield.clipsToBounds = true
         
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func backToArticle(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func showMoreInfo(_ sender: Any) {
+        showActionSheet()
     }
     
     @IBAction func shareArticle(_ sender: Any) {
@@ -439,23 +518,23 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if comments.count > 1 {
-            switch indexPath.row {
-            case 0:
-                return
-            case 1:
-                return
-            default:
-                self.showAlertView(attributes: setupAttributes())
-                if let comments = filteredBlockComments {
-                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
-                }
-                
-            }
-            
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        if comments.count > 1 {
+//            switch indexPath.row {
+//            case 0:
+//                return
+//            case 1:
+//                return
+//            default:
+//                self.showAlertView(attributes: setupAttributes())
+//                if let comments = filteredBlockComments {
+//                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
+//                }
+//
+//            }
+//
+//        }
+//    }
     
 }

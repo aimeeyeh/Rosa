@@ -17,23 +17,13 @@ class ArticleManager {
     lazy var database = Firestore.firestore()
     
     let user = UserManager.shared.currentUser
-
-    let defaultID = "Aimee"
     
     func postArticle(article: inout Article) {
-
-        let userID = user?.id
-        let userName = user?.name
-        guard let userPhoto = user?.photo else { return }
         
         // update articles
         
         let document = database.collection("articles").document()
         article.id = document.documentID
-        article.createdTime = Date()
-        article.authorName = userName ?? "Anonymous"
-        article.authorID = userID ?? defaultID
-        article.authorPhoto = userPhoto
         
         do {
             try  document.setData(from: article)
@@ -309,6 +299,17 @@ class ArticleManager {
                 }
             }
         
+    }
+    
+    func deleteArticle(artcleID: String) {
+        let challengeRef = database.collection("articles")
+        challengeRef.document(artcleID).delete { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
     }
     
 }

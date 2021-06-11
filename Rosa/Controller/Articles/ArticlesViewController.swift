@@ -57,9 +57,17 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    var searchedArticles: [Article] = [] {
+        didSet {
+            fetchBlocklist()
+        }
+    }
+    
     var selectedIndexPath: IndexPath?
     
     var currentType = "allArticles"
+    
+    var searchText = ""
     
     // waterfall cell size
     lazy var cellSizes: [CGSize] = {
@@ -98,10 +106,45 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
         postArticleButton.layer.masksToBounds = false
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchAllArticles(searchText: String) {
+        searchedArticles = allArticles.filter { $0.content.contains(searchText) }
+    }
+    
+    // MARK: - Search Bar
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText
+        
+        if searchText.isEmpty {
+            DispatchQueue.main.async {
+                self.trendingButton.isSelected = true
+                self.currentType = "allArticles"
+                self.reloadArticles()
+                searchBar.showsCancelButton = false
+                searchBar.resignFirstResponder()
+            }
+            
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
     }
-
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchAllArticles(searchText: self.searchText)
+        self.currentType = "searchedArticles"
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+        
+    }
+    
     func setUpWaterfall() {
         let layout = CollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 10
@@ -110,7 +153,8 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func showPostArticlePage(_ sender: Any) {
-        if let postArticleVC = UIStoryboard(name: "Record", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? PostViewController {
+        if let postArticleVC = UIStoryboard(name: "Record", bundle: nil)
+            .instantiateViewController(withIdentifier: "PostViewController") as? PostViewController {
             self.navigationController?.pushViewController(postArticleVC, animated: true)
         }
     }
@@ -203,7 +247,6 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
 
             }
         }
-//        reloadData()
     }
     
     // MARK: - 文章分類
@@ -279,6 +322,8 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
             return filteredArticles.count
         case "categoryArticles":
             return categoryArticles.count
+        case "searchedArticles":
+            return searchedArticles.count
         default:
             return followedArticles.count
         }
@@ -298,6 +343,10 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
             case "categoryArticles":
                 cell.configureArticleCell(article: categoryArticles[indexPath.row])
                 return cell
+            case "searchedArticles":
+                cell.configureArticleCell(article: searchedArticles[indexPath.row])
+                return cell
+                
             default:
                 cell.configureArticleCell(article: followedArticles[indexPath.row])
                 return cell

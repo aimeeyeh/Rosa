@@ -473,12 +473,14 @@ extension CalenderViewController: LiquidFloatingActionButtonDataSource,
                                     didSelectItemAtIndex index: Int) {
         switch index {
         case 0:
-            if let recordDetailVC = UIStoryboard(name: "Record", bundle: nil).instantiateViewController(withIdentifier: "RecordDetailViewController") as? RecordDetailViewController {
+            if let recordDetailVC = UIStoryboard(name: "Record", bundle: nil)
+                .instantiateViewController(withIdentifier: "RecordDetailViewController") as? RecordDetailViewController {
                 self.navigationController?.pushViewController(recordDetailVC, animated: true)
             }
 
         default:
-            if let challengeVC = UIStoryboard(name: "Challenge", bundle: nil).instantiateViewController(withIdentifier: "ChallengeViewController") as? ChallengeViewController {
+            if let challengeVC = UIStoryboard(name: "Challenge", bundle: nil)
+                .instantiateViewController(withIdentifier: "ChallengeViewController") as? ChallengeViewController {
                 challengeVC.delegate = self
                 present(challengeVC, animated: true, completion: nil)
             }

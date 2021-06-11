@@ -34,6 +34,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var category: String = "酒糟"
     var photos: [String] = []
     
+    let user = UserManager.shared.currentUser
+    
     private let storage = Storage.storage().reference()
     
     var currentPhotoType: ArticlePhotoType?
@@ -70,6 +72,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         lottieView.isHidden = true
         showLoadingView()
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
 
     }
     
@@ -229,12 +232,17 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             photos.append("https://firebasestorage.googleapis.com/v0/b/rosa-5438e.appspot.com/o/images%2FAimee%2F2021-06-08%2011:20:40%20%2B0000.png?alt=media&token=eb673f9d-7e4c-48ae-aad7-2e09583c3ff0")
         }
         
+        guard let userID = user?.id else { return }
+        guard let userName = user?.name else { return }
+        guard let userPhoto = user?.photo else { return }
+        
+        
         // swiftlint:enable all
     
         var article = Article(id: "",
-                              authorID: "",
-                              authorName: "",
-                              authorPhoto: "",
+                              authorID: userID,
+                              authorName: userName,
+                              authorPhoto: userPhoto,
                               category: category,
                               content: contentTextView.text,
                               createdTime: Date(),
