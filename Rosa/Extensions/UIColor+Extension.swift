@@ -246,7 +246,7 @@ struct Color {
     }
     
     struct LightPink {
-        static let first = EKColor(rgb: 0xff9a9e)
+        static let first = EKColor(rgb: 0xff0000)
         static let last = EKColor(rgb: 0xfad0c4)
     }
 }

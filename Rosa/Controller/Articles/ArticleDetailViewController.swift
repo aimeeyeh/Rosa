@@ -94,6 +94,7 @@ class ArticleDetailViewController: UIViewController {
     }
     
     var toBeBlockedUserID: String?
+    var toBeDeleteCommentID: String?
 
     override func viewDidLoad() {
         
@@ -126,29 +127,50 @@ class ArticleDetailViewController: UIViewController {
 
     }
     
+    // MARK: - Long Press Gesture
+    
     @objc func longPress(sender: UILongPressGestureRecognizer) {
 
                 if sender.state == UIGestureRecognizer.State.began {
                     let touchPoint = sender.location(in: tableView)
                     if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                         if comments.count > 1 {
-                            switch indexPath.row {
-                            case 0:
+                            
+//                            switch indexPath.row {
+//                            case 0:
+//                                return
+//                            case 1:
+//                                return
+//                            default:
+//                                if let comments = filteredBlockComments {
+//                                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
+//                                    self.toBeDeleteCommentID = comments[indexPath.row-2].authorID
+//                                }
+//
+//                            }
+                            
+                            if indexPathOfMyComments.contains(indexPath.row-2) {
+                                self.showAlertView(type: "Delete", attributes: setupAttributes())
+                                if let comments = filteredBlockComments {
+                                    self.toBeDeleteCommentID = comments[indexPath.row-2].id
+                                }
+                                
+                            } else if indexPath.row == 0 || indexPath.row == 1 {
                                 return
-                            case 1:
-                                return
-                            default:
-                                self.showAlertView(attributes: setupAttributes())
+                                
+                            } else {
+                                self.showAlertView(type: "Block", attributes: setupAttributes())
                                 if let comments = filteredBlockComments {
                                     self.toBeBlockedUserID = comments[indexPath.row-2].authorID
                                 }
-                                
                             }
-                            
+                                    
                         }
                     }
                 }
             }
+    
+    // MARK: - Model related functions
     
     func reloadComments() {
         UserManager.shared.fetchUser { result in
@@ -283,7 +305,7 @@ class ArticleDetailViewController: UIViewController {
         return attributes
     }
     
-    func showAlertView(attributes: EKAttributes) {
+    func showAlertView(type: String, attributes: EKAttributes) {
         let title = EKProperty.LabelContent(
             text: "Hopa!",
             style: .init(
@@ -294,10 +316,18 @@ class ArticleDetailViewController: UIViewController {
             )
         )
         
-        let text =
-        """
-        Are you sure you want to block this user?
-        """
+        var text = ""
+        
+        if type == "Block" {
+            text =
+                """
+                Are you sure you want to block this user?
+                """
+
+        } else {
+            text = "Are you sure you want to delete this comment?"
+        }
+        
         let description = EKProperty.LabelContent(
             text: text,
             style: .init(
@@ -307,12 +337,23 @@ class ArticleDetailViewController: UIViewController {
                 displayMode: displayMode
             )
         )
-        let image = EKProperty.ImageContent(
-            imageName: "rosa",
+        
+        var image = EKProperty.ImageContent(
+            imageName: "block",
             displayMode: displayMode,
             size: CGSize(width: 60, height: 60),
             contentMode: .scaleAspectFit
         )
+        
+        if type == "Delete" {
+            image = EKProperty.ImageContent(
+                imageName: "delete",
+                displayMode: displayMode,
+                size: CGSize(width: 60, height: 60),
+                contentMode: .scaleAspectFit
+            )
+        }
+        
         let simpleMessage = EKSimpleMessage(
             image: image,
             title: title,
@@ -335,6 +376,8 @@ class ArticleDetailViewController: UIViewController {
             displayMode: displayMode) {
                 SwiftEntryKit.dismiss()
         }
+        
+        // Block Alert
 
         let blockButtonLabelStyle = EKProperty.LabelStyle(
             font: buttonFont,
@@ -358,13 +401,49 @@ class ArticleDetailViewController: UIViewController {
             self.reloadComments()
         }
         
+        // Delete Alert
+        
+        let deleteButtonLabelStyle = EKProperty.LabelStyle(
+            font: buttonFont,
+            color: Color.LightPink.first,
+            displayMode: displayMode
+        )
+        let deleteButtonLabel = EKProperty.LabelContent(
+            text: "DELETE",
+            style: deleteButtonLabelStyle
+        )
+        
+        let deleteButton = EKProperty.ButtonContent(
+            label: deleteButtonLabel,
+            backgroundColor: .clear,
+            highlightedBackgroundColor: Color.Teal.a600.with(alpha: 0.05),
+            displayMode: displayMode) {
+            SwiftEntryKit.dismiss()
+            
+            guard let commentID = self.toBeDeleteCommentID else { return }
+            ArticleManager.shared.deleteComment(articleID: self.article.id, commentID: commentID)
+            
+            self.fetchComments(articleID: self.article.id)
+        }
+        
         // Generate the content
-        let buttonsBarContent = EKProperty.ButtonBarContent(
-            with: blockButton, closeButton,
+        
+        var buttonsBarContent = EKProperty.ButtonBarContent(
+            with: deleteButton, closeButton,
             separatorColor: Color.Gray.light,
             displayMode: displayMode,
             expandAnimatedly: true
         )
+        
+        if type == "Block" {
+            buttonsBarContent = EKProperty.ButtonBarContent(
+                with: blockButton, closeButton,
+                separatorColor: Color.Gray.light,
+                displayMode: displayMode,
+                expandAnimatedly: true
+            )
+        }
+        
         let alertMessage = EKAlertMessage(
             simpleMessage: simpleMessage,
             buttonBarContent: buttonsBarContent
@@ -537,34 +616,34 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return UITableView.automaticDimension
         }
     }
-    
-    func tableView(_ tableView: UITableView,
-                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {_, _, _  in
-            self.deleteData(at: indexPath)
-        }
-        
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
-        
-        return swipeActions
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-
-        if indexPathOfMyComments.contains(indexPath.row-2) {
-            return true
-        } else {
-            return false
-        }
-        
-    }
-    
-    func deleteData(at indexPath: IndexPath) {
-        print(indexPath.row)
-        guard let commentID = filteredBlockComments?[indexPath.row-2].id else { return }
-        ArticleManager.shared.deleteComment(articleID: article.id, commentID: commentID)
-        fetchComments(articleID: article.id)
-    }
+//
+//    func tableView(_ tableView: UITableView,
+//                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//
+//        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {_, _, _  in
+//            self.deleteData(at: indexPath)
+//        }
+//
+//        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+//
+//        return swipeActions
+//    }
+//
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//
+//        if indexPathOfMyComments.contains(indexPath.row-2) {
+//            return true
+//        } else {
+//            return false
+//        }
+//
+//    }
+//
+//    func deleteData(at indexPath: IndexPath) {
+//        print(indexPath.row)
+//        guard let commentID = filteredBlockComments?[indexPath.row-2].id else { return }
+//        ArticleManager.shared.deleteComment(articleID: article.id, commentID: commentID)
+//        fetchComments(articleID: article.id)
+//    }
     
 }
