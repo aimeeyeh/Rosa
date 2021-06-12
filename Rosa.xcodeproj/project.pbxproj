@@ -76,6 +76,8 @@
 		7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */; };
 		7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */; };
 		7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B6264C125300A20324 /* CalenderViewController.swift */; };
+		7ABDDC932674ECE8006A7549 /* DeepLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDC922674ECE8006A7549 /* DeepLinks.swift */; };
+		7ABDDC952674EDD1006A7549 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */; };
 		7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13352655129300B177F2 /* FilterTableViewCell.swift */; };
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
@@ -158,6 +160,8 @@
 		7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B6264C125300A20324 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		7ABDDC922674ECE8006A7549 /* DeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinks.swift; sourceTree = "<group>"; };
+		7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7ACD13352655129300B177F2 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				7A3E7F992657A1F5005F8768 /* RecordManager.swift */,
+				7ABDDC922674ECE8006A7549 /* DeepLinks.swift */,
 				7A559D7D2663E71900F73F06 /* ArticleManager.swift */,
 				7A3E7FA12657A4CD005F8768 /* ChallengeManager.swift */,
 				7A3E7FA32657A4D8005F8768 /* UserManager.swift */,
@@ -359,6 +364,7 @@
 				7A20F635264CF4DA00019D3D /* UIColor+Extension.swift */,
 				7AFE438A2660E86800F94330 /* Date+Extension.swift */,
 				7AF6EDD82667C3D800F04200 /* Font.swift */,
+				7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -639,8 +645,10 @@
 				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
 				7A7F1931266A7B3B0058DA98 /* EditBlocklistViewController.swift in Sources */,
 				7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */,
+				7ABDDC952674EDD1006A7549 /* UIViewController+Extension.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
+				7ABDDC932674ECE8006A7549 /* DeepLinks.swift in Sources */,
 				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
 				7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,

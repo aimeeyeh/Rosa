@@ -45,7 +45,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var rightAfter: UIImageView!
     @IBOutlet weak var rightNoComparisonLabel: UILabel!
     @IBOutlet weak var rightStackView: UIStackView!
-    
+
     func createPastSevenDays() -> [Date] {
         var past7Days = [Date]()
         
@@ -140,12 +140,34 @@ class MainViewController: UIViewController, ChartViewDelegate {
         }
     }
     
+    var deeplinkArticle: Article?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         noWaterRecord.isHidden = true
         noSleepRecord.isHidden = true
         
+        if let query = UserDefaults.standard.string(forKey: "query") {
+            let defaults = UserDefaults.standard
+            defaults.set(nil, forKey: "query")
+            ArticleManager.shared.fetchArticle(articleID: query) { [weak self] result in
+                
+                switch result {
+                
+                case .success(let article):
+                    
+                    self?.deeplinkArticle = article
+                    self?.openArticleDetail()
+                    
+                case .failure(let error):
+                    
+                    print("fetchData.failure: \(error)")
+                }
+            }
+            
+        }
+                
 }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,6 +178,15 @@ class MainViewController: UIViewController, ChartViewDelegate {
         configureProgressView()
         configurePhotoView()
 
+    }
+    
+    func openArticleDetail() {
+            if let articleDetailVC = UIStoryboard(name: "Articles", bundle: nil)
+                .instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
+                guard let deeplinkArticle = deeplinkArticle else { return }
+                articleDetailVC.article = deeplinkArticle
+                self.navigationController?.pushViewController(articleDetailVC, animated: true)
+            }
     }
     
     func resetData() {
@@ -349,15 +380,5 @@ extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page = scrollView.contentOffset.x / scrollView.bounds.width
         pageControl.currentPage = Int(page)
-    }
-}
-
-extension MainViewController {
-    
-    func handleDeepLink() {
-        if let articleVC = UIStoryboard(name: "Articles", bundle: nil)
-            .instantiateViewController(withIdentifier: "ArticlesViewController") as? ArticlesViewController {
-            present(articleVC, animated: true, completion: nil)
-        }
     }
 }

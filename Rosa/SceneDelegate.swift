@@ -38,18 +38,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        var Storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+        var storyboard = UIStoryboard(name: "SignIn", bundle: nil)
         
         let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
         
         if userID == "" {
-            Storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+            storyboard = UIStoryboard(name: "SignIn", bundle: nil)
         } else {
-            Storyboard = UIStoryboard(name: "Main", bundle: nil)
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
         }
+       
+        window?.rootViewController = storyboard.instantiateInitialViewController()
         
-        window?.rootViewController = Storyboard.instantiateInitialViewController()
         window?.makeKeyAndVisible()
+    
+        
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -57,7 +60,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+      
+        guard let context = URLContexts.first else { return }
+        
+        let defaults = UserDefaults.standard
+        defaults.set(context.url.query, forKey: "query")
+    
+    }
 
 }
 
