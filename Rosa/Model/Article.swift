@@ -21,7 +21,7 @@ struct Article: Codable {
     var title: String
 }
 
-struct Comment: Codable {
+struct Comment: Codable, Equatable {
     var id: String
     var authorID: String
     var authorName: String

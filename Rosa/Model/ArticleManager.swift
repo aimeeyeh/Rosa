@@ -312,4 +312,16 @@ class ArticleManager {
         }
     }
     
+    func deleteComment(articleID: String, commentID: String) {
+        let challengeRef = database.collection("articles").document(articleID).collection("comments")
+        challengeRef.document(commentID).delete { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        
+    }
+    
 }
