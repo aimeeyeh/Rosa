@@ -136,19 +136,6 @@ class ArticleDetailViewController: UIViewController {
                     if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                         if comments.count > 1 {
                             
-//                            switch indexPath.row {
-//                            case 0:
-//                                return
-//                            case 1:
-//                                return
-//                            default:
-//                                if let comments = filteredBlockComments {
-//                                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
-//                                    self.toBeDeleteCommentID = comments[indexPath.row-2].authorID
-//                                }
-//
-//                            }
-                            
                             if indexPathOfMyComments.contains(indexPath.row-2) {
                                 self.showAlertView(type: "Delete", attributes: setupAttributes())
                                 if let comments = filteredBlockComments {
@@ -470,11 +457,11 @@ class ArticleDetailViewController: UIViewController {
     }
     
     @IBAction func shareArticle(_ sender: Any) {
-        let text = "Download Rosa to see more articles!"
+        guard let userName = UserManager.shared.currentUser?.name else { return }
+        let text = "你的朋友 \(userName) 剛跟你分享了一篇文章: \(article.title)."
         let image = UIImage(named: "Rosa")
-//        let myWebsite = NSURL(string:"https://stackoverflow.com/users/4600136/mr-javed-multani?tab=profile")
-//        let shareAll = [text, image, myWebsite]
-        let shareAll = [text, image as Any] as [Any]
+        let myWebsite = NSURL(string: "rosa://?\(article.id)")
+        let shareAll = [text, image as Any, myWebsite as Any] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
@@ -616,34 +603,4 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return UITableView.automaticDimension
         }
     }
-//
-//    func tableView(_ tableView: UITableView,
-//                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//
-//        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {_, _, _  in
-//            self.deleteData(at: indexPath)
-//        }
-//
-//        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
-//
-//        return swipeActions
-//    }
-//
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//
-//        if indexPathOfMyComments.contains(indexPath.row-2) {
-//            return true
-//        } else {
-//            return false
-//        }
-//
-//    }
-//
-//    func deleteData(at indexPath: IndexPath) {
-//        print(indexPath.row)
-//        guard let commentID = filteredBlockComments?[indexPath.row-2].id else { return }
-//        ArticleManager.shared.deleteComment(articleID: article.id, commentID: commentID)
-//        fetchComments(articleID: article.id)
-//    }
-    
 }
