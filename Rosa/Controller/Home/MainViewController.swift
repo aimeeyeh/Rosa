@@ -351,3 +351,13 @@ extension MainViewController: UIScrollViewDelegate {
         pageControl.currentPage = Int(page)
     }
 }
+
+extension MainViewController {
+    
+    func handleDeepLink() {
+        if let articleVC = UIStoryboard(name: "Articles", bundle: nil)
+            .instantiateViewController(withIdentifier: "ArticlesViewController") as? ArticlesViewController {
+            present(articleVC, animated: true, completion: nil)
+        }
+    }
+}

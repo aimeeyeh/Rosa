@@ -23,7 +23,21 @@ class ChallengeViewController: UIViewController {
 
     let blackView = UIView(frame: UIScreen.main.bounds)
     
+    let defaultChallenges =  ChallengeManager.shared.defaultChallenges
+    
     var selectedChallenges: [Challenge] = []
+    
+    var currentDoingChallengesTitle: [String] = [] {
+        didSet {
+            availableChallenges = defaultChallenges.filter { !(currentDoingChallengesTitle.contains($0.challengeTitle)) }
+        }
+    }
+    
+    var availableChallenges: [ChallengeManager.DefaultChallenge] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +45,10 @@ class ChallengeViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         collectionView.allowsMultipleSelection = true
         configureView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchCurrentDoingChallenges()
     }
     
     func configureView() {
@@ -79,29 +97,71 @@ class ChallengeViewController: UIViewController {
         }
     }
     
+    func fetchCurrentDoingChallenges() {
+        ChallengeManager.shared.fetchChallenge(date: Date()) { [weak self] result in
+            
+            switch result {
+            
+            case .success(let challenges):
+                
+                for challenge in challenges {
+                    self?.currentDoingChallengesTitle.append(challenge.challengeTitle)
+                }
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+
 }
 
 extension ChallengeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ChallengeManager.shared.defaultChallenges.count
+        if currentDoingChallengesTitle.count == 0 {
+            return defaultChallenges.count
+        } else {
+            return availableChallenges.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChallengeCollectionViewCell",
                                                          for: indexPath) as? ChallengeCollectionViewCell {
-            cell.configureChallenge(indexPath: indexPath)
+            
+            if currentDoingChallengesTitle.count == 0 {
+                cell.configureChallenge(challenges: defaultChallenges, indexPath: indexPath)
+            } else {
+                cell.configureChallenge(challenges: availableChallenges, indexPath: indexPath)
+            }
+
             return cell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let challenges = ChallengeManager.shared.defaultChallenges
-        let category = challenges[indexPath.row].category
-        let challengeImage = challenges[indexPath.row].challengeImage
-        let challengeTitle = challenges[indexPath.row].challengeTitle
+       
+        var category = ""
+        var challengeImage = ""
+        var challengeTitle = ""
+        
+        func configureSelectedChallenge(challenges: [ChallengeManager.DefaultChallenge]) {
+            category = challenges[indexPath.row].category
+            challengeImage = challenges[indexPath.row].challengeImage
+            challengeTitle = challenges[indexPath.row].challengeTitle
+        }
+        
+        if currentDoingChallengesTitle.count == 0 {
+            configureSelectedChallenge(challenges: defaultChallenges)
+            
+        } else {
+            configureSelectedChallenge(challenges: availableChallenges)
+        }
+        
         selectedChallenges.append(Challenge(category: category,
                                             challengeImage: challengeImage,
                                             id: "didselect",
@@ -111,8 +171,16 @@ extension ChallengeViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let challenges = ChallengeManager.shared.defaultChallenges
-        let challengeTitle = challenges[indexPath.row].challengeTitle
+       
+        var challengeTitle = ""
+        
+        if currentDoingChallengesTitle.count == 0 {
+            challengeTitle = defaultChallenges[indexPath.row].challengeTitle
+            
+        } else {
+            challengeTitle = availableChallenges[indexPath.row].challengeTitle
+        }
+        
         let index = selectedChallenges.firstIndex {
             $0.challengeTitle == challengeTitle
         }
