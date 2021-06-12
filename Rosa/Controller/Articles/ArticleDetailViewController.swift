@@ -20,6 +20,8 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var moreInfoButton: UIButton!
     
+    let currentUser = UserManager.shared.currentUser
+    
     var article: Article = Article(id: "fail",
                                    authorID: "fail",
                                    authorName: "fail",
@@ -49,6 +51,26 @@ class ArticleDetailViewController: UIViewController {
     }
     
     var filteredBlockComments: [Comment]? {
+        didSet {
+            guard let filteredBlockComments = filteredBlockComments else { return }
+            myComments = filteredBlockComments.filter {$0.authorID == currentUser?.id}
+            tableView.reloadData()
+        }
+    }
+    
+    var myComments: [Comment] = [] {
+        didSet {
+            
+            for comment in myComments {
+                if let index = filteredBlockComments?.firstIndex(of: comment) {
+                    indexPathOfMyComments.append(index)
+                }
+            }
+    
+        }
+    }
+    
+    var indexPathOfMyComments: [Int] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -126,8 +148,6 @@ class ArticleDetailViewController: UIViewController {
                         }
                     }
                 }
-
-
             }
     
     func reloadComments() {
@@ -518,23 +538,33 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        if comments.count > 1 {
-//            switch indexPath.row {
-//            case 0:
-//                return
-//            case 1:
-//                return
-//            default:
-//                self.showAlertView(attributes: setupAttributes())
-//                if let comments = filteredBlockComments {
-//                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
-//                }
-//
-//            }
-//
-//        }
-//    }
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {_, _, _  in
+            self.deleteData(at: indexPath)
+        }
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return swipeActions
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+        if indexPathOfMyComments.contains(indexPath.row-2) {
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    func deleteData(at indexPath: IndexPath) {
+        print(indexPath.row)
+        guard let commentID = filteredBlockComments?[indexPath.row-2].id else { return }
+        ArticleManager.shared.deleteComment(articleID: article.id, commentID: commentID)
+        fetchComments(articleID: article.id)
+    }
     
 }
