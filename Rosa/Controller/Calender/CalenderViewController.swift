@@ -23,10 +23,15 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     var cells: [LiquidFloatingCell] = []
     var floatingActionButton: LiquidFloatingActionButton!
     
-    var dateArray = [Date]()
+    var dateArray: [Date] = [] {
+        didSet {
+            calnderView.reloadData()
+        }
+    }
     
     var allRecords: [Record] = [] {
         didSet {
+            dateArray = []
             for record in allRecords {
                 dateArray.append(record.date)
             }
@@ -82,13 +87,15 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         
         // For UITest
         calnderView.accessibilityIdentifier = "calendar"
-        fetchAllRecords()
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        tableView.addGestureRecognizer(longPress)
     }
     
     // MARK: - viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        fetchAllRecords()
         calnderView.select(Date())
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
@@ -96,6 +103,49 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         fetchChallenge(date: Date())
         fetchRecord(date: Date())
         
+    }
+    
+    // MARK: - Long Press Gesture
+    
+    @objc func longPress(sender: UILongPressGestureRecognizer) {
+
+                if sender.state == UIGestureRecognizer.State.began {
+                    let touchPoint = sender.location(in: tableView)
+                    if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                        if challenges.count == 0 && record != nil {
+                            if indexPath.row == 1 {
+                                showActoinSheet()
+                            }
+                        } else if challenges.count != 0 && record != nil {
+                            if indexPath.row == challenges.count {
+                                showActoinSheet()
+                            }
+                        }
+                    }
+                }
+            }
+    
+    func showActoinSheet() {
+        
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) {_ in print("cancel")}
+        actionSheetController.addAction(cancelActionButton)
+        
+        let deleteActionButton = UIAlertAction(title: "Delete", style: .destructive) {_ in
+            print("deleted")
+            if let recordID = self.record?.id {
+                RecordManager.shared.deleteRecord(recordID: recordID)
+                self.record = nil
+                self.tableView.reloadData()
+            }
+            self.fetchAllRecords()
+        }
+        
+        actionSheetController.addAction(deleteActionButton)
+        
+        actionSheetController.view.tintColor = .darkGray
+        self.present(actionSheetController, animated: true, completion: nil)
     }
 
     // MARK: - Firebase Related Functions

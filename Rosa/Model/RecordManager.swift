@@ -19,8 +19,6 @@ class RecordManager {
     let userID = UserDefaults.standard.string(forKey: "userID")
     let defaultID = "Aimee"
     
-//    let queryCollection = .database.collection("user").document("Aimee").collection("record")
-    
     func fetchAllRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
         
         let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
@@ -161,4 +159,19 @@ class RecordManager {
             }
     }
     
+    func deleteRecord(recordID: String) {
+        
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let recordRef = database.collection("user").document(userID).collection("record")
+        recordRef.document(recordID).delete { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        
+    }
+
 }

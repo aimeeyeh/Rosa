@@ -307,7 +307,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-zg-6Al" userLabel="backButton">
-                                        <rect key="frame" x="15" y="28" width="35" height="22"/>
+                                        <rect key="frame" x="10" y="28" width="35" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="raz-F1-thW"/>
                                             <constraint firstAttribute="width" constant="35" id="xo0-OI-bHp"/>
@@ -320,7 +320,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pincess_A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1V-f0-KfU">
-                                        <rect key="frame" x="98" y="27" width="67" height="24"/>
+                                        <rect key="frame" x="93" y="27" width="67" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="UAh-bA-Ehs"/>
                                         </constraints>
@@ -367,7 +367,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yoyogi photoshoot" translatesAutoresizingMaskIntoConstraints="NO" id="5NN-x4-dEe">
-                                        <rect key="frame" x="55" y="21.5" width="35" height="35"/>
+                                        <rect key="frame" x="50" y="21.5" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="3TC-fz-z2t"/>
                                             <constraint firstAttribute="width" constant="35" id="Gdy-tp-jTj"/>
@@ -382,10 +382,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFh-m3-KxM" userLabel="MoreInfoButton">
-                                        <rect key="frame" x="371.5" y="27.5" width="25" height="23"/>
+                                        <rect key="frame" x="375" y="30" width="18" height="18"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="fYs-Ed-3uK"/>
-                                            <constraint firstAttribute="height" constant="23" id="h4H-vt-OZl"/>
+                                            <constraint firstAttribute="width" constant="18" id="fYs-Ed-3uK"/>
+                                            <constraint firstAttribute="height" constant="18" id="h4H-vt-OZl"/>
                                         </constraints>
                                         <state key="normal" image="more"/>
                                         <connections>
@@ -406,7 +406,7 @@
                                     <constraint firstItem="exK-Ee-LHi" firstAttribute="centerY" secondItem="P1V-f0-KfU" secondAttribute="centerY" id="j4W-X2-dcz"/>
                                     <constraint firstAttribute="bottom" secondItem="DKF-qt-OZp" secondAttribute="bottom" constant="12" id="oTN-AI-mcR"/>
                                     <constraint firstItem="hFh-m3-KxM" firstAttribute="centerX" secondItem="DKF-qt-OZp" secondAttribute="centerX" id="qgm-3t-KcM"/>
-                                    <constraint firstItem="0cP-zg-6Al" firstAttribute="leading" secondItem="KW9-FY-eRn" secondAttribute="leading" constant="15" id="wDG-95-fwj"/>
+                                    <constraint firstItem="0cP-zg-6Al" firstAttribute="leading" secondItem="KW9-FY-eRn" secondAttribute="leading" constant="10" id="wDG-95-fwj"/>
                                     <constraint firstItem="P1V-f0-KfU" firstAttribute="centerY" secondItem="5NN-x4-dEe" secondAttribute="centerY" id="yVR-iU-o8h"/>
                                 </constraints>
                             </view>
