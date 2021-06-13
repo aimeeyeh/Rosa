@@ -14,8 +14,6 @@ struct User: Codable {
     let name: String
     var photo: String?
 //    var location: Location?
-//    var challenge: [Challenge]
-//    var record: [Record]
     var likedArticles: [String]?
     var followed: [String]?
     var followers: [String]?
