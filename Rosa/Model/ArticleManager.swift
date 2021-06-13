@@ -46,7 +46,9 @@ class ArticleManager {
         }
     }
     
-    func fetchAllArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
+    let dispatchGroup = DispatchGroup()
+    
+    func fetchAllArticles(completion: @escaping (Result< [Article], Error>) -> Void) {
         
         let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
         queryCollection.addSnapshotListener { (querySnapshot, err) in
@@ -58,19 +60,74 @@ class ArticleManager {
                 
                 for document in querySnapshot!.documents {
                     
+                    self.dispatchGroup.enter()
+                    
                     do {
                         if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                            
                             articles.append(article)
+                            
+                            let articleID = article.id
+                            
+                            self.fetchAuthorLatest(authorID: article.authorID) { result in
+                                
+                                switch result {
+                                
+                                case .success(let user):
+                                    
+                                    if let index = articles.firstIndex(where: { $0.id == articleID }) {
+                                    
+                                        articles[index].authorPhoto = user.photo ?? ""
+                                        articles[index].authorName = user.name
+                                        
+                                    }
+                            
+                                    self.dispatchGroup.leave()
+                                    
+                                case .failure(let error):
+                                    
+                                    print("fetchData.failure: \(error)")
+                                }
+                            }
+                            
                         }
                         
                     } catch {
                         print(error)
                     }
                 }
-                completion(.success(articles))
+                
+                self.dispatchGroup.notify(queue: .main) {
+                    completion(.success(articles))
+                }
             }
-            
+                
         }
+    }
+    
+    func fetchAuthorLatest(authorID: String, completion: @escaping (Result<User, Error>) -> Void) {
+        let queryCollection = database.collection("user")
+        queryCollection
+            .whereField("id", isEqualTo: authorID)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                completion(.success(user))
+                                
+                            }
+                            
+                        } catch {
+                            
+                            completion(.failure(error))
+                        }
+                    }
+                }
+            }
     }
     
     func postComment(documentID: String, comment: String) {
