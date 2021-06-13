@@ -27,8 +27,8 @@ class SignInViewController: UIViewController {
         setupAppleButton()
         setUpPrivacyConstraints()
         setupLottie()
-        signinButton.isHidden = true
-        signinButton.isEnabled = false
+//        signinButton.isHidden = true
+//        signinButton.isEnabled = false
     }
     
     // Unhashed nonce.
@@ -198,8 +198,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                     guard let user = authResult?.user else { return }
 
                     let defaults = UserDefaults.standard
-                                        
-//                    print("\(String(describing: user.displayName))")
 
                     guard let uid = Auth.auth().currentUser?.uid else { return }
                     defaults.set(uid, forKey: "userID")
@@ -218,11 +216,7 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                         }
                     }
 
-//                    self.performSegue(withIdentifier: "showHomePage", sender: user)
-
                 }
-                // User is signed in to Firebase with Apple.
-                // ...
             }
         }
     }

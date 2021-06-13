@@ -46,6 +46,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             storyboard = UIStoryboard(name: "SignIn", bundle: nil)
         } else {
             storyboard = UIStoryboard(name: "Main", bundle: nil)
+            UserManager.shared.fetchUser { result in
+                
+                switch result {
+                
+                case .success(let user):
+
+                    print(user)
+                    
+                case .failure(let error):
+                    
+                    print("fetchData.failure: \(error)")
+                }
+            }
+
         }
        
         window?.rootViewController = storyboard.instantiateInitialViewController()
