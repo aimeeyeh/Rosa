@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "No comparison available"; ObjectID = "4uf-UK-PUF"; */
-"4uf-UK-PUF.text" = "No comparison available";
+"4uf-UK-PUF.text" = "尚無比較圖";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "7Yb-G3-GWE"; */
 "7Yb-G3-GWE.title" = "Item";
@@ -12,10 +12,10 @@
 "AP6-it-qrG.text" = "尚無任何紀錄";
 
 /* Class = "UILabel"; text = "Sleep"; ObjectID = "Btp-31-Ap5"; */
-"Btp-31-Ap5.text" = "Sleep";
+"Btp-31-Ap5.text" = "睡眠";
 
 /* Class = "UILabel"; text = "No challenge"; ObjectID = "C62-lo-M8j"; */
-"C62-lo-M8j.text" = "No challenge";
+"C62-lo-M8j.text" = "尚無挑戰";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "I4v-2C-lef"; */
 "I4v-2C-lef.title" = "Item";
@@ -24,7 +24,7 @@
 "RTi-le-TsM.text" = "2021/06/02";
 
 /* Class = "UILabel"; text = "Challenge "; ObjectID = "SRb-FI-ShG"; */
-"SRb-FI-ShG.text" = "Challenge ";
+"SRb-FI-ShG.text" = "挑戰進度 ";
 
 /* Class = "UILabel"; text = "2021/04/19"; ObjectID = "Uos-K7-8Gq"; */
 "Uos-K7-8Gq.text" = "2021/04/19";
@@ -36,22 +36,22 @@
 "Zdq-TM-jKe.text" = "2021/01/19";
 
 /* Class = "UILabel"; text = "Water"; ObjectID = "gKY-96-tsP"; */
-"gKY-96-tsP.text" = "Water";
+"gKY-96-tsP.text" = "喝水";
 
 /* Class = "UILabel"; text = "尚無任何紀錄"; ObjectID = "gyX-qx-pgH"; */
 "gyX-qx-pgH.text" = "尚無任何紀錄";
 
 /* Class = "UILabel"; text = "No comparison available"; ObjectID = "j6e-l3-PD1"; */
-"j6e-l3-PD1.text" = "No comparison available";
+"j6e-l3-PD1.text" = "尚無比較圖";
 
 /* Class = "UILabel"; text = "No comparison available"; ObjectID = "mYt-n7-0OT"; */
-"mYt-n7-0OT.text" = "No comparison available";
+"mYt-n7-0OT.text" = "尚無比較圖";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "mzo-1F-faN"; */
 "mzo-1F-faN.title" = "Item";
 
 /* Class = "UILabel"; text = "Ezskin Clinic"; ObjectID = "sa5-ZX-6qK"; */
-"sa5-ZX-6qK.text" = "Ezskin Clinic";
+"sa5-ZX-6qK.text" = "輕鬆美膚診所";
 
 /* Class = "UILabel"; text = "2021/06/08"; ObjectID = "wUo-vT-dfW"; */
 "wUo-vT-dfW.text" = "2021/06/08";
@@ -60,4 +60,5 @@
 "yx1-ZS-TD7.normalTitle" = "$80";
 
 /* Class = "UILabel"; text = "Accutane"; ObjectID = "zKM-Dt-L8C"; */
-"zKM-Dt-L8C.text" = "Accutane";
+"zKM-Dt-L8C.text" = "A酸";
+

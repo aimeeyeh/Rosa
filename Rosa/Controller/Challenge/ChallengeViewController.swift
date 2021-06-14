@@ -18,6 +18,7 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tutorialButton: UIButton!
     
     weak var delegate: EmployeePickerDelegate?
 
@@ -44,6 +45,9 @@ class ChallengeViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
         collectionView.allowsMultipleSelection = true
+        tutorialButton.setTitle("What is this?".localized(), for: .normal)
+        tutorialButton.setTitleColor(.lightGray, for: .normal)
+        tutorialButton.underlineText()
         configureView()
     }
     
@@ -105,7 +109,7 @@ class ChallengeViewController: UIViewController {
             case .success(let challenges):
                 
                 for challenge in challenges {
-                    self?.currentDoingChallengesTitle.append(challenge.challengeTitle)
+                    self?.currentDoingChallengesTitle.append(challenge.challengeTitle.localized())
                 }
                 
             case .failure(let error):

@@ -18,14 +18,4 @@ struct Challenge: Codable {
     var isFirstDay: Bool
     var isChecked: Bool
     
-//    var toDict: [String: Any] {
-//        return [
-//            "category": category as Any,
-//            "icon": icon as Any,
-//            "id": id as Any,
-//            "progress": progress as Any,
-//            "setUpDate": setUpDate as Any,
-//            "title": title as Any
-//        ]
-//    }
 }

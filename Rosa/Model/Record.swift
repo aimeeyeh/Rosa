@@ -48,24 +48,5 @@ struct Record: Codable {
         case menstrual
         case remark
     }
-    
-//    var toDict: [String: Any] {
-//        return [
-//            "id": id as Any,
-//            "date": date as Any,
-//            "weather": weather as Any,
-//            "photos": photos as Any,
-//            "feeling": feeling as Any,
-//            "water": water as Any,
-//            "sleep": sleep as Any,
-//            "mealDairyFree": mealDairyFree as Any,
-//            "mealGlutenFree": mealGlutenFree as Any,
-//            "mealJunkFree": mealJunkFree as Any,
-//            "mealSugarFree": mealSugarFree as Any,
-//            "outdoor": outdoor as Any,
-//            "makeup": makeup as Any,
-//            "menstrual": menstrual as Any,
-//            "remark": remark as Any
-//        ]
-//    }
+
 }

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		59C400ECA95DA5BE0939EA53 /* Pods_Rosa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C374A870328953E5950C01F1 /* Pods_Rosa.framework */; };
 		7A108A982675F17300BDA4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A108A9A2675F17300BDA4BD /* Localizable.strings */; };
+		7A108A9D2676711F00BDA4BD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A108A9C2676711F00BDA4BD /* String.swift */; };
+		7A108A9E267735A800BDA4BD /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A108AA0267735A800BDA4BD /* Record.storyboard */; };
+		7A108AAF2677445600BDA4BD /* Calender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A108AB12677445600BDA4BD /* Calender.storyboard */; };
+		7A108AB32677464A00BDA4BD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A108AB52677464A00BDA4BD /* Profile.storyboard */; };
+		7A108AB826774A6F00BDA4BD /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A108ABA26774A6F00BDA4BD /* Challenge.storyboard */; };
 		7A14BDFD265EA6A300ED17E2 /* SuccessPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14BDFC265EA6A300ED17E2 /* SuccessPopUpView.swift */; };
 		7A14BDFF265EA8CB00ED17E2 /* UIView+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14BDFE265EA8CB00ED17E2 /* UIView+Message.swift */; };
 		7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C472B26557C0C00057CB4 /* PostViewController.swift */; };
@@ -63,11 +68,7 @@
 		7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB50F264BB62100EE6D9D /* Main.storyboard */; };
 		7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */; };
 		7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */; };
-		7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE48A264BE24B00A20324 /* Challenge.storyboard */; };
-		7AAFE48D264BE25E00A20324 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE48C264BE25E00A20324 /* Record.storyboard */; };
-		7AAFE491264BE27A00A20324 /* Calender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE490264BE27A00A20324 /* Calender.storyboard */; };
 		7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE492264BE29100A20324 /* Articles.storyboard */; };
-		7AAFE499264BE3E800A20324 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE498264BE3E800A20324 /* Profile.storyboard */; };
 		7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE49F264BE64600A20324 /* UIView+Extension.swift */; };
 		7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */; };
 		7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */; };
@@ -77,7 +78,6 @@
 		7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */; };
 		7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */; };
 		7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B6264C125300A20324 /* CalenderViewController.swift */; };
-		7ABDDC932674ECE8006A7549 /* DeepLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDC922674ECE8006A7549 /* DeepLinks.swift */; };
 		7ABDDC952674EDD1006A7549 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */; };
 		7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13352655129300B177F2 /* FilterTableViewCell.swift */; };
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
@@ -95,6 +95,16 @@
 		7A108A902675F00900BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7A108A992675F17300BDA4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A108A9B2675F18A00BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7A108A9C2676711F00BDA4BD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		7A108AA1267737CF00BDA4BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Record.storyboard; sourceTree = "<group>"; };
+		7A108AA22677387000BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Record.strings"; sourceTree = "<group>"; };
+		7A108AA426773A6900BDA4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Record.strings; sourceTree = "<group>"; };
+		7A108AB02677445600BDA4BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Calender.storyboard; sourceTree = "<group>"; };
+		7A108AB22677449200BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Calender.strings"; sourceTree = "<group>"; };
+		7A108AB42677464A00BDA4BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		7A108AB72677465E00BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Profile.strings"; sourceTree = "<group>"; };
+		7A108AB926774A6F00BDA4BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Challenge.storyboard; sourceTree = "<group>"; };
+		7A108ABC26774A8900BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Challenge.strings"; sourceTree = "<group>"; };
 		7A14BDFC265EA6A300ED17E2 /* SuccessPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopUpView.swift; sourceTree = "<group>"; };
 		7A14BDFE265EA8CB00ED17E2 /* UIView+Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Message.swift"; sourceTree = "<group>"; };
 		7A1C472B26557C0C00057CB4 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -151,11 +161,7 @@
 		7A8DB515264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A8DB517264BB62100EE6D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		7AAFE48A264BE24B00A20324 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
-		7AAFE48C264BE25E00A20324 /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
-		7AAFE490264BE27A00A20324 /* Calender.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calender.storyboard; sourceTree = "<group>"; };
 		7AAFE492264BE29100A20324 /* Articles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Articles.storyboard; sourceTree = "<group>"; };
-		7AAFE498264BE3E800A20324 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		7AAFE49F264BE64600A20324 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
@@ -165,7 +171,6 @@
 		7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B6264C125300A20324 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
-		7ABDDC922674ECE8006A7549 /* DeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinks.swift; sourceTree = "<group>"; };
 		7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7ACD13352655129300B177F2 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
@@ -304,7 +309,6 @@
 			children = (
 				7A108A9A2675F17300BDA4BD /* Localizable.strings */,
 				7A3E7F992657A1F5005F8768 /* RecordManager.swift */,
-				7ABDDC922674ECE8006A7549 /* DeepLinks.swift */,
 				7A559D7D2663E71900F73F06 /* ArticleManager.swift */,
 				7A3E7FA12657A4CD005F8768 /* ChallengeManager.swift */,
 				7A3E7FA32657A4D8005F8768 /* UserManager.swift */,
@@ -328,11 +332,11 @@
 				7A20F639264CFD2C00019D3D /* Articles */,
 				7A8DB50F264BB62100EE6D9D /* Main.storyboard */,
 				7AFE438D26613B8200F94330 /* SignIn.storyboard */,
-				7AAFE48C264BE25E00A20324 /* Record.storyboard */,
-				7AAFE490264BE27A00A20324 /* Calender.storyboard */,
+				7A108AB12677445600BDA4BD /* Calender.storyboard */,
+				7A108AA0267735A800BDA4BD /* Record.storyboard */,
 				7AAFE492264BE29100A20324 /* Articles.storyboard */,
-				7AAFE498264BE3E800A20324 /* Profile.storyboard */,
-				7AAFE48A264BE24B00A20324 /* Challenge.storyboard */,
+				7A108AB52677464A00BDA4BD /* Profile.storyboard */,
+				7A108ABA26774A6F00BDA4BD /* Challenge.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,6 +375,7 @@
 				7AFE438A2660E86800F94330 /* Date+Extension.swift */,
 				7AF6EDD82667C3D800F04200 /* Font.swift */,
 				7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */,
+				7A108A9C2676711F00BDA4BD /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -534,17 +539,17 @@
 			files = (
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
 				7A605D1C266F7CB5007BF42B /* bouncingBall.json in Resources */,
-				7AAFE499264BE3E800A20324 /* Profile.storyboard in Resources */,
+				7A108AB32677464A00BDA4BD /* Profile.storyboard in Resources */,
 				7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */,
 				7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */,
-				7AAFE48B264BE24B00A20324 /* Challenge.storyboard in Resources */,
+				7A108AAF2677445600BDA4BD /* Calender.storyboard in Resources */,
+				7A108AB826774A6F00BDA4BD /* Challenge.storyboard in Resources */,
 				7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */,
 				7AFE438E26613B8200F94330 /* SignIn.storyboard in Resources */,
 				7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */,
 				7A108A982675F17300BDA4BD /* Localizable.strings in Resources */,
-				7AAFE48D264BE25E00A20324 /* Record.storyboard in Resources */,
+				7A108A9E267735A800BDA4BD /* Record.storyboard in Resources */,
 				7AFC52FE2673B03800966298 /* Assets.xcassets in Resources */,
-				7AAFE491264BE27A00A20324 /* Calender.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +661,6 @@
 				7ABDDC952674EDD1006A7549 /* UIViewController+Extension.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
-				7ABDDC932674ECE8006A7549 /* DeepLinks.swift in Sources */,
 				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
 				7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
@@ -688,6 +692,7 @@
 				7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */,
 				7A3E7F9C2657A279005F8768 /* Record.swift in Sources */,
 				7A7F192F266A7B2D0058DA98 /* EditNameViewController.swift in Sources */,
+				7A108A9D2676711F00BDA4BD /* String.swift in Sources */,
 				7A3E7FA62657A5F2005F8768 /* Article.swift in Sources */,
 				7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */,
 				7A20F636264CF4DA00019D3D /* UIColor+Extension.swift in Sources */,
@@ -714,6 +719,43 @@
 				7A108A9B2675F18A00BDA4BD /* zh-Hant */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		7A108AA0267735A800BDA4BD /* Record.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A108AA1267737CF00BDA4BD /* Base */,
+				7A108AA22677387000BDA4BD /* zh-Hant */,
+				7A108AA426773A6900BDA4BD /* en */,
+			);
+			name = Record.storyboard;
+			sourceTree = "<group>";
+		};
+		7A108AB12677445600BDA4BD /* Calender.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A108AB02677445600BDA4BD /* Base */,
+				7A108AB22677449200BDA4BD /* zh-Hant */,
+			);
+			name = Calender.storyboard;
+			sourceTree = "<group>";
+		};
+		7A108AB52677464A00BDA4BD /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A108AB42677464A00BDA4BD /* Base */,
+				7A108AB72677465E00BDA4BD /* zh-Hant */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		7A108ABA26774A6F00BDA4BD /* Challenge.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A108AB926774A6F00BDA4BD /* Base */,
+				7A108ABC26774A8900BDA4BD /* zh-Hant */,
+			);
+			name = Challenge.storyboard;
 			sourceTree = "<group>";
 		};
 		7A8DB50F264BB62100EE6D9D /* Main.storyboard */ = {

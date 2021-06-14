@@ -16,20 +16,12 @@ class FilterTableViewCell: UITableViewCell {
 
     }
     
-//    let itemArray = [
-//        "酒糟",
-//        "保養",
-//        "戒斷",
-//        "防曬",
-//        "醫美"
-//    ]
-    
     let itemArray = [
-        "Rosacea",
-        "Skincare",
-        "Diet",
-        "Sun Protection",
-        "Cosmetics"
+        "Rosacea".localized(),
+        "Skincare".localized(),
+        "Diet".localized(),
+        "Sun Protection".localized(),
+        "Cosmetics".localized()
     ]
     
     func setTitle(index: Int) {

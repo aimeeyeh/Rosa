@@ -1,0 +1,69 @@
+
+/* Class = "UILabel"; text = "7 hours"; ObjectID = "7Cu-ko-4eG"; */
+"7Cu-ko-4eG.text" = "7 hours";
+
+/* Class = "UILabel"; text = "Activities"; ObjectID = "9Tm-kM-SEy"; */
+"9Tm-kM-SEy.text" = "其他";
+
+/* Class = "UILabel"; text = "Photos"; ObjectID = "9g8-AS-fxi"; */
+"9g8-AS-fxi.text" = "照片";
+
+/* Class = "UILabel"; text = "Junk Free"; ObjectID = "ES0-ln-TlU"; */
+"ES0-ln-TlU.text" = "無垃圾食物";
+
+/* Class = "UILabel"; text = "Mood"; ObjectID = "HZV-8J-lNK"; */
+"HZV-8J-lNK.text" = "心情";
+
+/* Class = "UILabel"; text = "今天試用了新的粉餅，也開始停止用妝前乳了，希望皮膚能越來越好，加油！"; ObjectID = "Itz-LH-pjc"; */
+"Itz-LH-pjc.text" = "今天試用了新的粉餅，也開始停止用妝前乳了，希望皮膚能越來越好，加油！";
+
+/* Class = "UILabel"; text = "Dairy Free "; ObjectID = "KLm-sV-UmH"; */
+"KLm-sV-UmH.text" = "無乳製品";
+
+/* Class = "UILabel"; text = "Weather"; ObjectID = "MFy-3S-att"; */
+"MFy-3S-att.text" = "天氣";
+
+/* Class = "UILabel"; text = "1250 ml"; ObjectID = "Ps2-fq-NAY"; */
+"Ps2-fq-NAY.text" = "1250 ml";
+
+/* Class = "UILabel"; text = "Remark"; ObjectID = "TxR-ue-e75"; */
+"TxR-ue-e75.text" = "備註";
+
+/* Class = "UILabel"; text = "Happy"; ObjectID = "UbN-R0-Vtu"; */
+"UbN-R0-Vtu.text" = "Happy";
+
+/* Class = "UILabel"; text = "Meal"; ObjectID = "VxK-Og-leG"; */
+"VxK-Og-leG.text" = "飲食";
+
+/* Class = "UILabel"; text = "No Challenges For Now"; ObjectID = "Xmw-WL-gFE"; */
+"Xmw-WL-gFE.text" = "No Challenges For Now";
+
+/* Class = "UILabel"; text = "Outdoor"; ObjectID = "YbS-St-Hdj"; */
+"YbS-St-Hdj.text" = "外出";
+
+/* Class = "UILabel"; text = "Makeup"; ObjectID = "cGF-LE-s9q"; */
+"cGF-LE-s9q.text" = "化妝";
+
+/* Class = "UILabel"; text = "Gluten Free "; ObjectID = "cfl-zS-std"; */
+"cfl-zS-std.text" = "無麩質";
+
+/* Class = "UILabel"; text = "Sleep"; ObjectID = "esv-VC-hBG"; */
+"esv-VC-hBG.text" = "睡眠";
+
+/* Class = "UILabel"; text = "Sunny"; ObjectID = "gBX-MV-SRv"; */
+"gBX-MV-SRv.text" = "Sunny";
+
+/* Class = "UILabel"; text = "Sugar Free "; ObjectID = "hbJ-wk-YUC"; */
+"hbJ-wk-YUC.text" = "無糖";
+
+/* Class = "UILabel"; text = "Let's go add some challenges!"; ObjectID = "j5f-Yr-YTt"; */
+"j5f-Yr-YTt.text" = "Let's go add some challenges!";
+
+/* Class = "UINavigationItem"; title = "個人計畫"; ObjectID = "rSg-S3-OaP"; */
+"rSg-S3-OaP.title" = "個人計畫";
+
+/* Class = "UILabel"; text = "Water"; ObjectID = "wQC-fl-XX6"; */
+"wQC-fl-XX6.text" = "喝水";
+
+/* Class = "UILabel"; text = "Menstrual"; ObjectID = "xZu-YA-ryT"; */
+"xZu-YA-ryT.text" = "生理期";

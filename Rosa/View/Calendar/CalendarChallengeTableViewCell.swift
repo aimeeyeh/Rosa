@@ -47,11 +47,11 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     func challengeConfigure(challenges: [Challenge], indexPath: IndexPath) {
         challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
         let title = challenges[indexPath.row].challengeTitle
-        challengeTitle.text = title
+        challengeTitle.text = title.localized()
         challengeTitle.textColor = .white
-        challengeDesciption.text = "Skincare is Healthcare"
+        challengeDesciption.text = "Skincare is Healthcare".localized()
         challengeDesciption.textColor = .systemGray6
-        challengeBackground.backgroundColor = UIColor.challengeColor(challenge: title)
+        challengeBackground.backgroundColor = UIColor.challengeColor(challenge: challenges[indexPath.row].challengeImage)
         checkboxButton.isUserInteractionEnabled = !challenges[indexPath.row].isChecked
         checkboxButton.isSelected = challenges[indexPath.row].isChecked
        
@@ -60,10 +60,10 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     func noRecordConfigure() {
         checkboxButton.isHidden = true
         challengeImage.image = UIImage(named: "information")
-        challengeTitle.text = "No Record..."
+        challengeTitle.text = "No Record...".localized()
         challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)
         challengeTitle.textColor = .white
-        challengeDesciption.text = "Let's go add some records!"
+        challengeDesciption.text = "Let's go add some records!".localized()
         challengeDesciption.textColor = .white
         challengeBackground.backgroundColor = .systemGray2
     }
@@ -71,10 +71,10 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     func noChallengeConfigure() {
         checkboxButton.isHidden = true
         challengeImage.image = UIImage(named: "information")
-        challengeTitle.text = "No Challenges..."
+        challengeTitle.text = "No Challenges...".localized()
         challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)
         challengeTitle.textColor = .label
-        challengeDesciption.text = "Let's go add some challenges!"
+        challengeDesciption.text = "Let's go add some challenges!".localized()
         challengeDesciption.textColor = .label
         challengeBackground.backgroundColor = .systemGray6
     }

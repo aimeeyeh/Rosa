@@ -222,18 +222,20 @@ class ArticleDetailViewController: UIViewController {
         
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) {_ in print("cancel")}
+        let cancelActionButton = UIAlertAction(title: "Cancel".localized(), style: .cancel) {_ in print("cancel")}
         actionSheetController.addAction(cancelActionButton)
         
-        let deleteActionButton = UIAlertAction(title: "Delete", style: .destructive) {_ in
+        let deleteActionButton = UIAlertAction(title: "Delete".localized(), style: .destructive) {_ in
             ArticleManager.shared.deleteArticle(artcleID: self.article.id)
             self.navigationController?.popViewController(animated: true)
         }
 
         let saveActionButton = UIAlertAction(title: "Share", style: .default) {_ in
-            let text = "Download Rosa to see more articles!"
+            guard let userName = UserManager.shared.currentUser?.name else { return }
+            let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized() + String(self.article.title) + "."
             let image = UIImage(named: "Rosa")
-            let shareAll = [text, image as Any] as [Any]
+            let myWebsite = NSURL(string: "rosa://?\(self.article.id)")
+            let shareAll = [text, image as Any, myWebsite as Any] as [Any]
             let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
@@ -307,12 +309,10 @@ class ArticleDetailViewController: UIViewController {
         
         if type == "Block" {
             text =
-                """
-                Are you sure you want to block this user?
-                """
+                "Are you sure you want to block this user?".localized()
 
         } else {
-            text = "Are you sure you want to delete this comment?"
+            text = "Are you sure you want to delete this comment?".localized()
         }
         
         let description = EKProperty.LabelContent(
@@ -353,7 +353,7 @@ class ArticleDetailViewController: UIViewController {
             displayMode: displayMode
         )
         let closeButtonLabel = EKProperty.LabelContent(
-            text: "NOT NOW",
+            text: "NOT NOW".localized(),
             style: closeButtonLabelStyle
         )
         let closeButton = EKProperty.ButtonContent(
@@ -372,7 +372,7 @@ class ArticleDetailViewController: UIViewController {
             displayMode: displayMode
         )
         let blockButtonLabel = EKProperty.LabelContent(
-            text: "BLOCK",
+            text: "BLOCK".localized(),
             style: blockButtonLabelStyle
         )
         let blockButton = EKProperty.ButtonContent(
@@ -396,7 +396,7 @@ class ArticleDetailViewController: UIViewController {
             displayMode: displayMode
         )
         let deleteButtonLabel = EKProperty.LabelContent(
-            text: "DELETE",
+            text: "DELETE".localized(),
             style: deleteButtonLabelStyle
         )
         
@@ -440,7 +440,7 @@ class ArticleDetailViewController: UIViewController {
     }
     
     func configureTextfield() {
-        
+        commentTextfield.placeholder = "   Leave a comment...".localized()
         commentTextfield.layer.cornerRadius = 21
         commentTextfield.clipsToBounds = true
         
@@ -458,7 +458,7 @@ class ArticleDetailViewController: UIViewController {
     
     @IBAction func shareArticle(_ sender: Any) {
         guard let userName = UserManager.shared.currentUser?.name else { return }
-        let text = "你的朋友 \(userName) 剛跟你分享了一篇文章: \(article.title)."
+        let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized() + String(article.title) + "."
         let image = UIImage(named: "Rosa")
         let myWebsite = NSURL(string: "rosa://?\(article.id)")
         let shareAll = [text, image as Any, myWebsite as Any] as [Any]
@@ -483,10 +483,10 @@ class ArticleDetailViewController: UIViewController {
     
     func configureFollowButton() {
         
-        followButton.setTitle("Follow", for: .normal)
+        followButton.setTitle("FollowButton".localized(), for: .normal)
         followButton.setTitleColor(UIColor.rgb(red: 229, green: 131, blue: 85, alpha: 1), for: .selected)
         
-        followButton.setTitle("Following", for: .selected)
+        followButton.setTitle("FollowingButton".localized(), for: .selected)
         followButton.setTitleColor(.systemGray2, for: .selected)
         
         if followButton.isSelected {

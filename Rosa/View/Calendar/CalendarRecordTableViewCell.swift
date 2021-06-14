@@ -36,11 +36,11 @@ class CalendarRecordTableViewCell: UITableViewCell {
     
     func configure(record: Record) {
         self.weatherImage.image = UIImage(named: record.weather)
-        self.weatherLabel.text = record.weather
-        self.waterLabel.text = "\(record.water*250) ml"
-        self.sleepLabel.text = "\(record.sleep.rounded()) hours"
+        self.weatherLabel.text = record.weather.localized()
+        self.waterLabel.text = String(record.water*250) + " ml".localized()
+        self.sleepLabel.text = String(record.sleep.rounded()) + " hours".localized()
         self.feelingImage.image = UIImage(named: record.feeling)
-        self.feelingLabel.text = record.feeling
+        self.feelingLabel.text = record.feeling.localized()
         self.fullPhoto.kf.setImage(with: URL(string: record.fullPhoto))
         self.leftPhoto.kf.setImage(with: URL(string: record.leftPhoto))
         self.rightPhoto.kf.setImage(with: URL(string: record.rightPhoto))

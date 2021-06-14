@@ -25,11 +25,6 @@ public class CustomCell: LiquidFloatingCell {
         let label = UILabel()
         label.text = name
         label.textColor = UIColor.white
-//        label.layer.shadowColor = UIColor.black.cgColor
-//        label.layer.shadowRadius = 1.0
-//        label.layer.shadowOpacity = 1.0
-//        label.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
-//        label.layer.masksToBounds = false
         label.font = UIFont(name: "HelveticaNeue-Medium", size: 14)
         label.textAlignment = .right
         addSubview(label)

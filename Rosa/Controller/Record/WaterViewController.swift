@@ -13,7 +13,7 @@ class WaterViewController: UIViewController {
     var glassAmount = 0 {
         didSet {
             let waterAmount = glassAmount * 250
-            waterLabel.text = "\(waterAmount) ml / 2000 ml"
+            waterLabel.text = String(waterAmount) + " ml / 2000 ml".localized()
         }
     }
     
@@ -36,7 +36,7 @@ class WaterViewController: UIViewController {
         super.viewDidLoad()
         configureView()
         let waterAmount = glassAmount * 250
-        waterLabel.text = "\(waterAmount) ml / 2000 ml"
+        waterLabel.text = String(waterAmount) + " ml / 2000 ml".localized()
 
     }
     

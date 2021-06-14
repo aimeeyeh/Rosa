@@ -704,6 +704,9 @@
                                                 <constraint firstItem="1MF-sb-6b0" firstAttribute="centerX" secondItem="rnM-Kj-olB" secondAttribute="centerX" id="gcf-Ht-bbB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="noCommentsLabel" destination="1MF-sb-6b0" id="hgP-b5-Vyy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
