@@ -256,67 +256,67 @@ class ChallengeManager {
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 255, green: 163, blue: 135, alpha: 0.5),
                 challengeImage: "glutenFree",
-                challengeTitle: "Gluten Free",
+                challengeTitle: "Gluten Free".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 226, green: 158, blue: 74, alpha: 0.5),
                 challengeImage: "dairyFree",
-                challengeTitle: "Dairy Free",
+                challengeTitle: "Dairy Free".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 255, green: 204, blue: 0, alpha: 0.5),
                 challengeImage: "junkFoodFree",
-                challengeTitle: "Junk Free",
+                challengeTitle: "Junk Free".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 255, green: 163, blue: 135, alpha: 0.5),
                 challengeImage: "sugarFree",
-                challengeTitle: "Sugar Free",
+                challengeTitle: "Sugar Free".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 137, green: 196, blue: 255, alpha: 0.5),
                 challengeImage: "water",
-                challengeTitle: "Water",
+                challengeTitle: "Water".localized(),
                 category: "routineCare"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 0, green: 0, blue: 0, alpha: 0.5),
                 challengeImage: "sleep",
-                challengeTitle: "Sleep",
+                challengeTitle: "Sleep".localized(),
                 category: "routineCare"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 78, green: 206, blue: 165, alpha: 0.5),
                 challengeImage: "hairOil",
-                challengeTitle: "Hair Oil",
+                challengeTitle: "Hair Oil".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 255, green: 104, blue: 132, alpha: 0.5),
                 challengeImage: "spicy",
-                challengeTitle: "No Spicy",
+                challengeTitle: "No Spicy".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 197, green: 153, blue: 255, alpha: 0.5),
                 challengeImage: "toothpaste",
-                challengeTitle: "Toothpaste",
+                challengeTitle: "Toothpaste".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 255, green: 193, blue: 218, alpha: 0.5),
                 challengeImage: "cushion",
-                challengeTitle: "No cushion",
+                challengeTitle: "No cushion".localized(),
                 category: "withdrawal"
             ),
             DefaultChallenge(
                 backgroundColor: UIColor.rgb(red: 255, green: 231, blue: 127, alpha: 0.5),
                 challengeImage: "facialMask",
-                challengeTitle: "Facial Mask",
+                challengeTitle: "Facial Mask".localized(),
                 category: "withdrawal"
             )
             

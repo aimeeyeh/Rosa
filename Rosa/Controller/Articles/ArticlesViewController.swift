@@ -86,8 +86,6 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
         self.navigationController?.isNavigationBarHidden = true
         underlineView.backgroundColor = UIColor.gray
         setUpWaterfall()
-        trendingButton.isSelected = true
-        trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
         self.searchBar.delegate = self
 
     }
@@ -96,6 +94,16 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
         reloadArticles()
         tableViewHeight.constant = 0
         self.currentType = "allArticles"
+        configureButtons()
+    }
+    
+    func configureButtons() {
+        trendingButton.isSelected = true
+        trendingButton.setTitle("Trending".localized(), for: .normal)
+        trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
+        followButton.setTitle("Following".localized(), for: .normal)
+        followButton.setTitleColor(UIColor.lightGray, for: .normal)
+        followButton.isSelected = false
     }
     
     func appendShadow() {

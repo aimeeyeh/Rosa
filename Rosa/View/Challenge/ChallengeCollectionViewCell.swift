@@ -13,7 +13,7 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var challengeLabel: UILabel!
     @IBOutlet weak var challengeImage: UIImageView!
     
-    func configureChallenge(challenges: [ChallengeManager.DefaultChallenge] , indexPath: IndexPath) {
+    func configureChallenge(challenges: [ChallengeManager.DefaultChallenge], indexPath: IndexPath) {
         
         backgroundCircle.backgroundColor = challenges[indexPath.row].backgroundColor
         challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)

@@ -40,7 +40,8 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         reloadArticles()
-//        configureProfile()
+        currentType = "postedArticles"
+        collectionView.reloadData()
     }
     
     func configureProfile() {

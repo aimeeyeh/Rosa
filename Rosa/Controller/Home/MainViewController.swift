@@ -298,7 +298,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     func configureWaterBarChart() {
-        let dataSet = BarChartDataSet(entries: waterBarChartYValues, label: "Water (ml)")
+        let dataSet = BarChartDataSet(entries: waterBarChartYValues, label: "Water (ml)".localized())
         let data = BarChartData(dataSets: [dataSet])
         waterChartView.data = data
         waterChartView.xAxis.drawGridLinesEnabled = false
@@ -320,7 +320,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     
     func configureSleepLineChart() {
         let sleepColor = UIColor.rgb(red: 178, green: 228, blue: 157, alpha: 1.0)
-        let set = LineChartDataSet(entries: sleepLineChartYValues, label: "Sleeping Hours")
+        let set = LineChartDataSet(entries: sleepLineChartYValues, label: "Sleeping Hours".localized())
         let data = LineChartData(dataSet: set)
         set.drawCirclesEnabled = false
         set.mode = .cubicBezier

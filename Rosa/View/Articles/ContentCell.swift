@@ -23,7 +23,7 @@ class ContentCell: UITableViewCell {
         titleLabel.text = article.title
         contentLabel.text = article.content
         if let formattedDate = article.createdTime.formatToDateOnly() {
-            createdTimeLabel.text = "Posted on \(formattedDate)"
+            createdTimeLabel.text = "Posted on ".localized() + String(formattedDate)
         }
     }
 }

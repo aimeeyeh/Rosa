@@ -129,10 +129,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) {_ in print("cancel")}
+        let cancelActionButton = UIAlertAction(title: "Cancel".localized(), style: .cancel) {_ in print("cancel")}
         actionSheetController.addAction(cancelActionButton)
         
-        let deleteActionButton = UIAlertAction(title: "Delete", style: .destructive) {_ in
+        let deleteActionButton = UIAlertAction(title: "Delete".localized(), style: .destructive) {_ in
             print("deleted")
             if let recordID = self.record?.id {
                 RecordManager.shared.deleteRecord(recordID: recordID)
@@ -259,15 +259,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     
     func displaySuccessMessage() {
         let image = "success"
-        let title = "Awesome!"
+        let title = "Awesome!".localized()
         let description =
-        """
-        You've completed the challenge.      \
-        Keep on your good work, \
-        and let your Skin be the first priority.
-
-        """
-        let button = "Got it!"
+        "You've completed the challenge. Keep on your good work, and let your Skin be the first priority.".localized()
+        let button = "Got it!".localized()
         SwiftEntryKit.display(entry: MyPopUpView(with: setupMessage(image: image,
                                                                     title: title,
                                                                     description: description,
@@ -277,15 +272,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
 
     func displayFailureMessage() {
         let image = "fail"
-        let title = "Oh No!"
+        let title = "Oh No!".localized()
         let description =
-        """
-        You've missed yesterday's challenge. \
-        Add the challenge again \
-        and Restart your 30 day challenge!
-
-        """
-        let button = "Try again"
+        "You've missed yesterday's challenge. Add the challenge again and Restart your 30 day challenge!".localized()
+        let button = "Try again".localized()
         SwiftEntryKit.display(entry: MyPopUpView(with: setupMessage(image: image,
                                                                     title: title,
                                                                     description: description, button: button)),
@@ -295,7 +285,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     func checkYesterdayProgress() {
         for challenge in challenges {
             if challenge.progress == 0 && challenge.isFirstDay == false {
-                print("\(challenge.challengeTitle) has failed")
                 displayFailureMessage()
                 ChallengeManager.shared.delete30dayChallenges(challengeTitle: challenge.challengeTitle)
             } else {
@@ -491,7 +480,7 @@ extension CalenderViewController: LiquidFloatingActionButtonDataSource,
         }
         
         let customCellFactory: (String) -> LiquidFloatingCell = { (iconName) in
-            let cell = CustomCell(icon: UIImage(named: iconName)!, name: iconName)
+            let cell = CustomCell(icon: UIImage(named: iconName)!, name: iconName.localized())
             return cell
         }
         

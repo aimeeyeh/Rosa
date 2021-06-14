@@ -1,0 +1,150 @@
+
+/* Class = "UIButton"; normalTitle = "Sunny"; ObjectID = "0PB-rM-Kzy"; */
+"0PB-rM-Kzy.normalTitle" = "Sunny";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "22d-V3-T2W"; */
+"22d-V3-T2W.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Diet"; ObjectID = "6mw-ch-hmx"; */
+"6mw-ch-hmx.text" = "飲食";
+
+/* Class = "UILabel"; text = "Dairyfree"; ObjectID = "8Ey-3o-itg"; */
+"8Ey-3o-itg.text" = "無乳製品";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "9dy-23-KFC"; */
+"9dy-23-KFC.text" = "250毫升";
+
+/* Class = "UILabel"; text = "Left"; ObjectID = "Bt4-jG-wyL"; */
+"Bt4-jG-wyL.text" = "左臉";
+
+/* Class = "UIButton"; normalTitle = "Sunny"; ObjectID = "CIq-Cy-uMe"; */
+"CIq-Cy-uMe.normalTitle" = "Sunny";
+
+/* Class = "UILabel"; text = "Others"; ObjectID = "D7F-1L-7WZ"; */
+"D7F-1L-7WZ.text" = "其他";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "Etf-rY-xVh"; */
+"Etf-rY-xVh.normalTitle" = "確定";
+
+/* Class = "UINavigationItem"; title = "膚況紀錄"; ObjectID = "Fd7-yu-2ub"; */
+"Fd7-yu-2ub.title" = "膚況紀錄";
+
+/* Class = "UILabel"; text = "Outdoor"; ObjectID = "HbN-tm-3Hc"; */
+"HbN-tm-3Hc.text" = "外出";
+
+/* Class = "UIButton"; normalTitle = "Post"; ObjectID = "Ii7-xn-fxt"; */
+"Ii7-xn-fxt.normalTitle" = "發表";
+
+/* Class = "UITextField"; placeholder = "Enter Title"; ObjectID = "Ldx-wp-EQv"; */
+"Ldx-wp-EQv.placeholder" = "輸入標題";
+
+/* Class = "UILabel"; text = "0:41"; ObjectID = "MgZ-0v-2s3"; */
+"MgZ-0v-2s3.text" = "0:41";
+
+/* Class = "UILabel"; text = "Glutenfree"; ObjectID = "NnP-B5-dVN"; */
+"NnP-B5-dVN.text" = "無麩質";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "QB2-so-n3n"; */
+"QB2-so-n3n.text" = "250毫升";
+
+/* Class = "UILabel"; text = "Junkfree"; ObjectID = "QvU-Ne-jyr"; */
+"QvU-Ne-jyr.text" = "無垃圾食物";
+
+/* Class = "UILabel"; text = "12:00 PM"; ObjectID = "SHD-em-Y0K"; */
+"SHD-em-Y0K.text" = "12:00 PM";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "WRA-kD-Naw"; */
+"WRA-kD-Naw.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "YPl-bY-hdE"; */
+"YPl-bY-hdE.text" = "250毫升";
+
+/* Class = "UILabel"; text = "12:00 AM"; ObjectID = "YQZ-VG-ofM"; */
+"YQZ-VG-ofM.text" = "12:00 AM";
+
+/* Class = "UILabel"; text = "Wake"; ObjectID = "YW6-0U-DHT"; */
+"YW6-0U-DHT.text" = "起床時間";
+
+/* Class = "UILabel"; text = "Right"; ObjectID = "Z8f-QH-Mpq"; */
+"Z8f-QH-Mpq.text" = "右臉";
+
+/* Class = "UILabel"; text = "Makeup"; ObjectID = "ZI3-pW-gq9"; */
+"ZI3-pW-gq9.text" = "化妝";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "ZxI-fA-6pX"; */
+"ZxI-fA-6pX.text" = "250毫升";
+
+/* Class = "UISegmentedControl"; aAU-4o-rEg.segmentTitles[0] = "酒糟"; ObjectID = "aAU-4o-rEg"; */
+"aAU-4o-rEg.segmentTitles[0]" = "酒糟";
+
+/* Class = "UISegmentedControl"; aAU-4o-rEg.segmentTitles[1] = "戒斷"; ObjectID = "aAU-4o-rEg"; */
+"aAU-4o-rEg.segmentTitles[1]" = "戒斷";
+
+/* Class = "UISegmentedControl"; aAU-4o-rEg.segmentTitles[2] = "保養"; ObjectID = "aAU-4o-rEg"; */
+"aAU-4o-rEg.segmentTitles[2]" = "保養";
+
+/* Class = "UISegmentedControl"; aAU-4o-rEg.segmentTitles[3] = "防曬"; ObjectID = "aAU-4o-rEg"; */
+"aAU-4o-rEg.segmentTitles[3]" = "防曬";
+
+/* Class = "UISegmentedControl"; aAU-4o-rEg.segmentTitles[4] = "醫美"; ObjectID = "aAU-4o-rEg"; */
+"aAU-4o-rEg.segmentTitles[4]" = "醫美";
+
+/* Class = "UILabel"; text = "Mood"; ObjectID = "cJf-B5-Z2d"; */
+"cJf-B5-Z2d.text" = "心情";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "gPC-eg-799"; */
+"gPC-eg-799.text" = "250毫升";
+
+/* Class = "UILabel"; text = "Weather"; ObjectID = "gUw-TF-ySO"; */
+"gUw-TF-ySO.text" = "天氣";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "hP7-vD-d9Q"; */
+"hP7-vD-d9Q.text" = "250毫升";
+
+/* Class = "UILabel"; text = "Frontal"; ObjectID = "jVY-hZ-G58"; */
+"jVY-hZ-G58.text" = "正臉";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "kId-Do-pUd"; */
+"kId-Do-pUd.normalTitle" = "確定";
+
+/* Class = "UILabel"; text = "Menstrual"; ObjectID = "lRq-9S-drK"; */
+"lRq-9S-drK.text" = "生理期";
+
+/* Class = "UILabel"; text = "Note"; ObjectID = "mVn-2a-7IA"; */
+"mVn-2a-7IA.text" = "備註";
+
+/* Class = "UILabel"; text = "Water"; ObjectID = "og9-cj-bh6"; */
+"og9-cj-bh6.text" = "喝水";
+
+/* Class = "UILabel"; text = "Routine"; ObjectID = "qh3-0O-dPB"; */
+"qh3-0O-dPB.text" = "作息";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "scj-2r-Q0P"; */
+"scj-2r-Q0P.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Sugarfree"; ObjectID = "tC3-Na-oi7"; */
+"tC3-Na-oi7.text" = "無糖";
+
+/* Class = "UIButton"; normalTitle = "Sunny"; ObjectID = "tIW-a4-3v8"; */
+"tIW-a4-3v8.normalTitle" = "晴天";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "tXm-Ye-EJ6"; */
+"tXm-Ye-EJ6.text" = "250毫升";
+
+/* Class = "UILabel"; text = "250 ml / 2000 ml"; ObjectID = "tfJ-Cr-dTD"; */
+"tfJ-Cr-dTD.text" = "250 毫升 / 2000 毫升";
+
+/* Class = "UILabel"; text = "Photos"; ObjectID = "uuF-eH-ELj"; */
+"uuF-eH-ELj.text" = "照片";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "v4B-mX-zGS"; */
+"v4B-mX-zGS.normalTitle" = "確定";
+
+/* Class = "UILabel"; text = "250ml"; ObjectID = "vZe-wx-D0c"; */
+"vZe-wx-D0c.text" = "250毫升";
+
+/* Class = "UILabel"; text = "Bedtime"; ObjectID = "xMH-az-QqG"; */
+"xMH-az-QqG.text" = "睡覺時間";
+
+/* Class = "UITextField"; placeholder = "Remark"; ObjectID = "yPr-kw-ptt"; */
+"yPr-kw-ptt.placeholder" = "備註";

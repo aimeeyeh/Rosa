@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "30 DAY CHALLENGE"; ObjectID = "35G-0a-eMI"; */
+"35G-0a-eMI.text" = "30天挑戰";
+
+/* Class = "UILabel"; text = "Challenge"; ObjectID = "B9w-pH-TqW"; */
+"B9w-pH-TqW.text" = "挑戰";
+
+/* Class = "UINavigationItem"; title = "個人計畫"; ObjectID = "Eh5-yw-y59"; */
+"Eh5-yw-y59.title" = "個人計畫";
+
+/* Class = "UILabel"; text = "Update your progress by ticking the checkbox in the Calendar Page everyday"; ObjectID = "HZk-YJ-ylk"; */
+"HZk-YJ-ylk.text" = "每天去日曆頁面打勾你今天的挑戰進度";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Hvc-Lq-N5K"; */
+"Hvc-Lq-N5K.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "WHAT?"; ObjectID = "Lvh-5R-Spt"; */
+"Lvh-5R-Spt.text" = "這些挑戰是什麼?";
+
+/* Class = "UILabel"; text = "Gluten"; ObjectID = "M4d-06-nPA"; */
+"M4d-06-nPA.text" = "Gluten";
+
+/* Class = "UILabel"; text = "These challenges are actions you need to follow everyday. Even one day missing would fail the 30 day challenge"; ObjectID = "QSY-eN-WSb"; */
+"QSY-eN-WSb.text" = "這些挑戰都是皮膚科診所醫師認證最容易造成皮復狀況不穩定的主要成因，若有一天未達成當日挑戰，30天挑戰就會被判定為失敗";
+
+/* Class = "UILabel"; text = "Continue for 30 days to experience the difference!"; ObjectID = "XPU-Oj-P7E"; */
+"XPU-Oj-P7E.text" = "堅持挑戰30天來感受皮膚的變化！";
+
+/* Class = "UILabel"; text = "HOW?"; ObjectID = "YIi-Sl-k0u"; */
+"YIi-Sl-k0u.text" = "如何達成？";
+
+/* Class = "UILabel"; text = "For 30 days, try these easy skincare challenges as well as addressing your skin issues from the inside out—and you’ll notice fresher-looking, more glowing skin! "; ObjectID = "aZn-3X-ZYf"; */
+"aZn-3X-ZYf.text" = "持續堅持30天來找到你皮膚狀況不穩定的最大成因，並一步步成為閃閃發亮的水煮蛋肌！";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "nWg-uL-laq"; */
+"nWg-uL-laq.normalTitle" = "確定";

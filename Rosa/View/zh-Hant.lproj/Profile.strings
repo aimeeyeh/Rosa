@@ -1,0 +1,69 @@
+
+/* Class = "UILabel"; text = "Following"; ObjectID = "6AQ-oC-NmG"; */
+"6AQ-oC-NmG.text" = "追蹤";
+
+/* Class = "UIButton"; normalTitle = "Posts"; ObjectID = "8dK-Hg-7Br"; */
+"8dK-Hg-7Br.normalTitle" = "文章";
+
+/* Class = "UINavigationItem"; title = "Blocked Accounts"; ObjectID = "B5P-e1-9W8"; */
+"B5P-e1-9W8.title" = "封鎖名單";
+
+/* Class = "UILabel"; text = "Aimee"; ObjectID = "BAi-JS-z6H"; */
+"BAi-JS-z6H.text" = "Aimee";
+
+/* Class = "UILabel"; text = "不加糖的小仙女"; ObjectID = "JW9-4T-OJi"; */
+"JW9-4T-OJi.text" = "不加糖的小仙女";
+
+/* Class = "UILabel"; text = "Posts"; ObjectID = "V92-OA-Ljx"; */
+"V92-OA-Ljx.text" = "文章";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Vua-x6-r9s"; */
+"Vua-x6-r9s.text" = "0";
+
+/* Class = "UILabel"; text = "Please enter your name (Name should not contain any special characters, symbols or spaces)"; ObjectID = "awH-KO-FlW"; */
+"awH-KO-FlW.text" = "請輸入你的名字 (名字不能包含特殊符號及空格)";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "bXf-uj-VcR"; */
+"bXf-uj-VcR.text" = "0";
+
+/* Class = "UINavigationItem"; title = "Edit Profile"; ObjectID = "c0d-LW-nXp"; */
+"c0d-LW-nXp.title" = "編輯個人主頁";
+
+/* Class = "UIBarButtonItem"; title = "  "; ObjectID = "dxN-ar-EwK"; */
+"dxN-ar-EwK.title" = "  ";
+
+/* Class = "UILabel"; text = "No account is currently blocked"; ObjectID = "evl-LF-9XL"; */
+"evl-LF-9XL.text" = "你還沒有封鎖任何人";
+
+/* Class = "UINavigationItem"; title = "Name"; ObjectID = "gK8-7l-yza"; */
+"gK8-7l-yza.title" = "名字";
+
+/* Class = "UILabel"; text = "Blocked Accounts"; ObjectID = "gZ1-qM-R9k"; */
+"gZ1-qM-R9k.text" = "封鎖名單";
+
+/* Class = "UIButton"; normalTitle = "Unblock"; ObjectID = "gut-Oo-bzb"; */
+"gut-Oo-bzb.normalTitle" = "解除封鎖";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kDK-R1-9pp"; */
+"kDK-R1-9pp.text" = "0";
+
+/* Class = "UILabel"; text = "Followers"; ObjectID = "kQO-I3-kif"; */
+"kQO-I3-kif.text" = "粉絲";
+
+/* Class = "UIButton"; normalTitle = "Edit Profile"; ObjectID = "o9N-nA-reu"; */
+"o9N-nA-reu.normalTitle" = "編輯個人主頁";
+
+/* Class = "UIButton"; normalTitle = "Liked"; ObjectID = "oYU-cy-dij"; */
+"oYU-cy-dij.normalTitle" = "按讚";
+
+/* Class = "UITextField"; placeholder = "Aimee"; ObjectID = "p5S-mT-Lp2"; */
+"p5S-mT-Lp2.placeholder" = "Aimee";
+
+/* Class = "UINavigationItem"; title = "Personal"; ObjectID = "pHW-Jb-eEU"; */
+"pHW-Jb-eEU.title" = "個人主頁";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "psD-QF-STk"; */
+"psD-QF-STk.text" = "Label";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "sPf-Wt-wP6"; */
+"sPf-Wt-wP6.text" = "名字";
