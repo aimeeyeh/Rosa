@@ -113,7 +113,8 @@ class ChallengeManager {
     func updateChallengeProgress(challenge: inout Challenge,
                                  currentProgress: Int,
                                  currentChallengeTitle: String,
-                                 onProgressCompleted: @escaping () -> Void) {
+                                 onChallengeCompleted: @escaping () -> Void) {
+        
         // 更新24小時內特定challenge的document
         func updateProgressOfTheDay(date: Date, isToday: Bool = false) {
             let calendar = Calendar.current
@@ -133,13 +134,16 @@ class ChallengeManager {
                     } else {
                         for document in querySnapshot!.documents {
                             
-                            //  用query條件得到的documentID 來呼叫下方的更新進度+3.33的function
-                            self.updateDocumentProgress(documentID: document.documentID,
-                                                        onProgressCompleted: onProgressCompleted)
+                            //  用query條件得到的documentID 來呼叫下方的更新進度+1的function
+                            self.updateDocumentProgress(documentID: document.documentID) {
+                                if isToday {
+                                    onChallengeCompleted()
+                                }
+                            }
+                            
                             if isToday {
                                 self.updateIsChecked(documentID: document.documentID)
                             }
-                            
                         }
                     }
                 }
@@ -161,13 +165,13 @@ class ChallengeManager {
         
     }
     
-    func updateDocumentProgress(documentID: String, onProgressCompleted: () -> Void) {
+    func updateDocumentProgress(documentID: String, onChallengeCompleted: () -> Void) {
         let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
         let challengeRef = queryCollection.document("\(documentID)")
         let numberAfterAdding = self.currentProgress + 1
         
         if checkChallengeHasCompleted(progress: numberAfterAdding) {
-            onProgressCompleted()
+            onChallengeCompleted()
         }
         
         challengeRef.updateData([
