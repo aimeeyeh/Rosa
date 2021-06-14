@@ -189,11 +189,11 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
             
             case .success(let challenges):
                 
-                self?.challenges = challenges
-                
                 if date.formatToDateOnly() == Date().formatToDateOnly() {
-                    self?.checkYesterdayProgress()
+                    self?.checkYesterdayProgress(challenges: challenges)
                 }
+                
+                self?.challenges = challenges
                 
             case .failure(let error):
                 
@@ -282,13 +282,11 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
                               using: PopUpMessage.shared.setupAttributes())
     }
     
-    func checkYesterdayProgress() {
+    func checkYesterdayProgress(challenges: [Challenge]) {
         for challenge in challenges {
             if challenge.progress == 0 && challenge.isFirstDay == false {
                 displayFailureMessage()
                 ChallengeManager.shared.delete30dayChallenges(challengeTitle: challenge.challengeTitle)
-            } else {
-                return
             }
         }
     }
@@ -402,7 +400,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
                                 self?.challenges[indexPath.row].isChecked = true
                                 
                             }
-                            self.challenges[indexPath.row].isChecked = true
+//                            self.challenges[indexPath.row].isChecked = true
                             
                         }
                         return cell
