@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SaP-cl-Q0t">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3QN-gB-hdO">
-                                <rect key="frame" x="25" y="69" width="169.5" height="165.5"/>
+                                <rect key="frame" x="25" y="69" width="169.5" height="189.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Io-f5-HBI" customClass="MKRingProgressView">
-                                        <rect key="frame" x="15" y="44.5" width="139.5" height="111"/>
+                                        <rect key="frame" x="15" y="44.5" width="139.5" height="135"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C62-lo-M8j">
-                                                <rect key="frame" x="4" y="10" width="131.5" height="91"/>
+                                                <rect key="frame" x="4" y="10" width="131.5" height="115"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -66,7 +67,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlW-ft-ql1">
-                                <rect key="frame" x="25" y="259.5" width="169.5" height="236.5"/>
+                                <rect key="frame" x="25" y="283.5" width="169.5" height="271"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btp-31-Ap5">
                                         <rect key="frame" x="15" y="15" width="134.5" height="14.5"/>
@@ -75,13 +76,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AP6-it-qrG">
-                                        <rect key="frame" x="51" y="126" width="67.5" height="13.5"/>
+                                        <rect key="frame" x="51" y="143.5" width="67.5" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu2-s6-T8t" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="5" y="34.5" width="159.5" height="197"/>
+                                        <rect key="frame" x="5" y="34.5" width="159.5" height="231.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -104,7 +105,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mmc-Fi-LGp">
-                                <rect key="frame" x="219.5" y="69" width="169.5" height="272"/>
+                                <rect key="frame" x="219.5" y="69" width="169.5" height="330.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-96-tsP">
                                         <rect key="frame" x="15" y="15" width="35" height="14.5"/>
@@ -113,13 +114,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚無任何紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyX-qx-pgH">
-                                        <rect key="frame" x="51" y="144" width="67.5" height="13.5"/>
+                                        <rect key="frame" x="51" y="173" width="67.5" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7W-qo-bxv" customClass="HorizontalBarChartView" customModule="Charts">
-                                        <rect key="frame" x="5" y="34.5" width="159.5" height="232.5"/>
+                                        <rect key="frame" x="5" y="34.5" width="159.5" height="291"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -142,10 +143,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8M-1o-gbI">
-                                <rect key="frame" x="25" y="521" width="364" height="182"/>
+                                <rect key="frame" x="25" y="579.5" width="364" height="208.5"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-5Z-68A">
-                                        <rect key="frame" x="0.0" y="0.0" width="364" height="182"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="208.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dHK-zF-lOT">
                                                 <rect key="frame" x="0.0" y="0.0" width="1092" height="182"/>
@@ -369,7 +370,7 @@
                                         </connections>
                                     </scrollView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EEL-Lg-8us">
-                                        <rect key="frame" x="121.5" y="154.5" width="121.5" height="27.5"/>
+                                        <rect key="frame" x="121.5" y="181" width="121.5" height="27.5"/>
                                         <color key="pageIndicatorTintColor" systemColor="systemGray6Color"/>
                                         <color key="currentPageIndicatorTintColor" systemColor="systemGray4Color"/>
                                     </pageControl>
@@ -389,7 +390,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiM-rY-3dY">
-                                <rect key="frame" x="219.5" y="366" width="169.5" height="130"/>
+                                <rect key="frame" x="219.5" y="424.5" width="169.5" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ezskin Clinic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sa5-ZX-6qK">
                                         <rect key="frame" x="53" y="90.5" width="61" height="12"/>
@@ -462,27 +463,27 @@
                         <outlet property="challengeProgressView" destination="3QN-gB-hdO" id="fXt-lm-BXe"/>
                         <outlet property="frontalAfterImage" destination="doY-aB-06V" id="mWG-Qk-IL5"/>
                         <outlet property="frontalBeforeImage" destination="YIz-7F-1bf" id="Vjq-bU-azT"/>
-                        <outlet property="frontalFirstDay" destination="RTi-le-TsM" id="Ja9-s5-cKJ"/>
+                        <outlet property="frontalFirstDateLabel" destination="RTi-le-TsM" id="Ja9-s5-cKJ"/>
                         <outlet property="frontalNoComparisonLabel" destination="j6e-l3-PD1" id="gET-j1-BNN"/>
                         <outlet property="frontalStackView" destination="Q0a-f3-wyC" id="zrB-1n-l0U"/>
-                        <outlet property="frontalToday" destination="wUo-vT-dfW" id="Ah1-IO-pVo"/>
-                        <outlet property="leftAfter" destination="DEw-g6-iJp" id="rH0-bp-sUB"/>
-                        <outlet property="leftBefore" destination="GwA-hP-la7" id="joM-Tu-KoM"/>
-                        <outlet property="leftFirstDay" destination="Zdq-TM-jKe" id="vte-3D-lSi"/>
+                        <outlet property="frontalTodaysDateLabel" destination="wUo-vT-dfW" id="Ah1-IO-pVo"/>
+                        <outlet property="leftAfterImage" destination="DEw-g6-iJp" id="rH0-bp-sUB"/>
+                        <outlet property="leftBeforeImage" destination="GwA-hP-la7" id="joM-Tu-KoM"/>
+                        <outlet property="leftFirstDateLabel" destination="Zdq-TM-jKe" id="vte-3D-lSi"/>
                         <outlet property="leftNoComparisonLabel" destination="mYt-n7-0OT" id="4rZ-pM-ZBj"/>
                         <outlet property="leftStackView" destination="Dmj-L9-Bmr" id="GUF-hr-ypZ"/>
-                        <outlet property="leftToday" destination="VhU-RA-PIk" id="DmI-3u-c7h"/>
-                        <outlet property="noSleepRecord" destination="AP6-it-qrG" id="BSM-fa-Nfv"/>
-                        <outlet property="noWaterRecord" destination="gyX-qx-pgH" id="Dal-n3-IEh"/>
+                        <outlet property="leftTodaysDateLabel" destination="VhU-RA-PIk" id="DmI-3u-c7h"/>
+                        <outlet property="noSleepRecordLabel" destination="AP6-it-qrG" id="BSM-fa-Nfv"/>
+                        <outlet property="noWaterRecordLabel" destination="gyX-qx-pgH" id="Dal-n3-IEh"/>
                         <outlet property="pageControl" destination="EEL-Lg-8us" id="XMH-HF-MxA"/>
                         <outlet property="photoComparisonView" destination="C8M-1o-gbI" id="ncm-2g-x91"/>
                         <outlet property="priceView" destination="PiM-rY-3dY" id="7Wo-bQ-ihL"/>
-                        <outlet property="rightAfter" destination="stf-Zo-MUX" id="sa4-L6-w6B"/>
-                        <outlet property="rightBefore" destination="PNO-wq-wPd" id="1eg-Tg-9SG"/>
-                        <outlet property="rightFirstDay" destination="A8i-pe-9wN" id="Zui-Yv-JLV"/>
-                        <outlet property="rightLastDay" destination="Uos-K7-8Gq" id="0WH-qF-JyL"/>
+                        <outlet property="rightAfterImage" destination="stf-Zo-MUX" id="sa4-L6-w6B"/>
+                        <outlet property="rightBeforeImage" destination="PNO-wq-wPd" id="1eg-Tg-9SG"/>
+                        <outlet property="rightFirstDateLabel" destination="A8i-pe-9wN" id="Zui-Yv-JLV"/>
                         <outlet property="rightNoComparisonLabel" destination="4uf-UK-PUF" id="4Ad-SH-gIE"/>
                         <outlet property="rightStackView" destination="F3e-Lf-giZ" id="bMC-5Y-Dvh"/>
+                        <outlet property="rightTodaysDateLabel" destination="Uos-K7-8Gq" id="0WH-qF-JyL"/>
                         <outlet property="ringProgressView" destination="8Io-f5-HBI" id="6CU-Rh-Bws"/>
                         <outlet property="sleepLineChartView" destination="hu2-s6-T8t" id="BfB-ZB-TNu"/>
                         <outlet property="sleepProgressView" destination="dlW-ft-ql1" id="j73-mz-HSE"/>

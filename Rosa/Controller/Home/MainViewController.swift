@@ -21,28 +21,28 @@ class MainViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var ringProgressView: RingProgressView!
     @IBOutlet weak var waterChartView: HorizontalBarChartView!
     @IBOutlet weak var sleepLineChartView: LineChartView!
-    @IBOutlet weak var noSleepRecord: UILabel!
-    @IBOutlet weak var noWaterRecord: UILabel!
+    @IBOutlet weak var noSleepRecordLabel: UILabel!
+    @IBOutlet weak var noWaterRecordLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    @IBOutlet weak var frontalFirstDay: UILabel!
-    @IBOutlet weak var frontalToday: UILabel!
+    @IBOutlet weak var frontalFirstDateLabel: UILabel!
+    @IBOutlet weak var frontalTodaysDateLabel: UILabel!
     @IBOutlet weak var frontalBeforeImage: UIImageView!
     @IBOutlet weak var frontalAfterImage: UIImageView!
     @IBOutlet weak var frontalNoComparisonLabel: UILabel!
     @IBOutlet weak var frontalStackView: UIStackView!
     
-    @IBOutlet weak var leftFirstDay: UILabel!
-    @IBOutlet weak var leftToday: UILabel!
-    @IBOutlet weak var leftBefore: UIImageView!
-    @IBOutlet weak var leftAfter: UIImageView!
+    @IBOutlet weak var leftFirstDateLabel: UILabel!
+    @IBOutlet weak var leftTodaysDateLabel: UILabel!
+    @IBOutlet weak var leftBeforeImage: UIImageView!
+    @IBOutlet weak var leftAfterImage: UIImageView!
     @IBOutlet weak var leftNoComparisonLabel: UILabel!
     @IBOutlet weak var leftStackView: UIStackView!
     
-    @IBOutlet weak var rightFirstDay: UILabel!
-    @IBOutlet weak var rightLastDay: UILabel!
-    @IBOutlet weak var rightBefore: UIImageView!
-    @IBOutlet weak var rightAfter: UIImageView!
+    @IBOutlet weak var rightFirstDateLabel: UILabel!
+    @IBOutlet weak var rightTodaysDateLabel: UILabel!
+    @IBOutlet weak var rightBeforeImage: UIImageView!
+    @IBOutlet weak var rightAfterImage: UIImageView!
     @IBOutlet weak var rightNoComparisonLabel: UILabel!
     @IBOutlet weak var rightStackView: UIStackView!
     
@@ -57,6 +57,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     var last7DayRecords: [Record] = [] {
         
         didSet {
+            
             if last7DayRecords.count == 0 {
                 waterChartView.isHidden = true
                 sleepLineChartView.isHidden = true
@@ -110,7 +111,32 @@ class MainViewController: UIViewController, ChartViewDelegate {
     
     var deeplinkArticle: Article?
     
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        hideNoChartLabels()
+        if let query = UserDefaults.standard.string(forKey: "query") {
+            fetchDeeplinkArticle(query)
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.resetData()
+        fetchChallenge(date: Date())
+        fetchPreviousRecords()
+        configureViews()
+        configureProgressView()
+        configurePhotoView()
+        
+    }
+    
+    // MARK: - Deeplink
+    
     fileprivate func fetchDeeplinkArticle(_ query: String) {
+        
         let defaults = UserDefaults.standard
         defaults.set(nil, forKey: "query")
         ArticleManager.shared.fetchArticle(articleID: query) { [weak self] result in
@@ -127,29 +153,26 @@ class MainViewController: UIViewController, ChartViewDelegate {
                 print("fetchData.failure: \(error)")
             }
         }
+        
     }
     
-    override func viewDidLoad() {
+    func showArticleFromDeeplink() {
         
-        super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-        noWaterRecord.isHidden = true
-        noSleepRecord.isHidden = true
-        if let query = UserDefaults.standard.string(forKey: "query") {
-            fetchDeeplinkArticle(query)
+        if let articleDetailVC = UIStoryboard(name: "Articles", bundle: nil)
+            .instantiateViewController(
+                withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
+            guard let deeplinkArticle = deeplinkArticle else { return }
+            articleDetailVC.article = deeplinkArticle
+            self.navigationController?.pushViewController(articleDetailVC, animated: true)
         }
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    // MARK: - challengeProgessView / waterBarChart / sleepLineChart
         
-        self.resetData()
-        fetchChallenge(date: Date())
-        fetchPreviousRecords()
-        configureViews()
-        configureProgressView()
-        configurePhotoView()
-        
+    fileprivate func hideNoChartLabels() {
+        noWaterRecordLabel.isHidden = true
+        noSleepRecordLabel.isHidden = true
     }
     
     func createPastSevenDays() -> [Date] {
@@ -184,18 +207,6 @@ class MainViewController: UIViewController, ChartViewDelegate {
         configureWaterBarChart()
     }
     
-    func showArticleFromDeeplink() {
-        
-            if let articleDetailVC = UIStoryboard(name: "Articles", bundle: nil)
-                .instantiateViewController(
-                    withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
-                guard let deeplinkArticle = deeplinkArticle else { return }
-                articleDetailVC.article = deeplinkArticle
-                self.navigationController?.pushViewController(articleDetailVC, animated: true)
-            }
-        
-    }
-        
     func configureViews() {
         challengeProgressView.shadowDecorate()
         waterProgressView.shadowDecorate()
@@ -282,7 +293,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         
     }
     
-    // MARK: - firebase functions
+    // MARK: - Model related functions
     
     func fetchChallenge(date: Date) {
         
@@ -331,33 +342,54 @@ extension MainViewController: UIScrollViewDelegate {
         
     }
     
+    fileprivate func hideFrontalCard() {
+        frontalFirstDateLabel.isHidden = true
+        frontalTodaysDateLabel.isHidden = true
+        frontalStackView.isHidden = true
+        frontalNoComparisonLabel.isHidden = false
+    }
+    
+    fileprivate func hideLeftCard() {
+        leftFirstDateLabel.isHidden = true
+        leftTodaysDateLabel.isHidden = true
+        leftStackView.isHidden = true
+        leftNoComparisonLabel.isHidden = false
+    }
+    
+    fileprivate func hideRightCard() {
+        rightFirstDateLabel.isHidden = true
+        rightTodaysDateLabel.isHidden = true
+        rightStackView.isHidden = true
+        rightNoComparisonLabel.isHidden = false
+    }
+    
+    fileprivate func showFrontalCard() {
+        frontalNoComparisonLabel.isHidden = true
+        frontalFirstDateLabel.isHidden = false
+        frontalTodaysDateLabel.isHidden = false
+        frontalStackView.isHidden = false
+    }
+    
+    fileprivate func showLeftCard() {
+        leftNoComparisonLabel.isHidden = true
+        leftFirstDateLabel.isHidden = false
+        leftTodaysDateLabel.isHidden = false
+        leftStackView.isHidden = false
+    }
+    
+    fileprivate func showRightCard() {
+        rightNoComparisonLabel.isHidden = true
+        rightFirstDateLabel.isHidden = false
+        rightTodaysDateLabel.isHidden = false
+        rightStackView.isHidden = false
+    }
+    
     func configurePhotoView() {
         
-        let sevenDays = createPastSevenDays()
-        let firstDay = sevenDays[0].formatForMainPage()
-        let today = sevenDays[6].formatForMainPage()
-        
-        func hideFrontalCard() {
-            frontalFirstDay.isHidden = true
-            frontalToday.isHidden = true
-            frontalStackView.isHidden = true
-            frontalNoComparisonLabel.isHidden = false
-        }
-        
-        func hideLeftCard() {
-            leftFirstDay.isHidden = true
-            leftToday.isHidden = true
-            leftStackView.isHidden = true
-            leftNoComparisonLabel.isHidden = false
-        }
-        
-        func hideRightCard() {
-            rightFirstDay.isHidden = true
-            rightLastDay.isHidden = true
-            rightStackView.isHidden = true
-            rightNoComparisonLabel.isHidden = false
-        }
-        
+        let pastSevenDays = createPastSevenDays()
+        let sevenDaysAgo = pastSevenDays[0].formatForMainPage()
+        let today = pastSevenDays[6].formatForMainPage()
+                
         if last7DayRecords.count < 7 {
             hideFrontalCard()
             hideLeftCard()
@@ -367,50 +399,47 @@ extension MainViewController: UIScrollViewDelegate {
             
             let firstDayFrontalPhoto = last7DayRecords[0].fullPhoto
             let todayFrontalPhoto = last7DayRecords[6].fullPhoto
+            let firstDayLeftPhoto = last7DayRecords[0].leftPhoto
+            let todayLeftPhoto = last7DayRecords[6].leftPhoto
+            let firstDayRightPhoto = last7DayRecords[0].rightPhoto
+            let todayRightPhoto = last7DayRecords[6].rightPhoto
+            
             if firstDayFrontalPhoto.isEmpty || todayFrontalPhoto.isEmpty {
                 hideFrontalCard()
+                
             } else {
-                frontalNoComparisonLabel.isHidden = true
-                frontalFirstDay.isHidden = false
-                frontalToday.isHidden = false
-                frontalStackView.isHidden = false
-                frontalFirstDay.text = firstDay
-                frontalToday.text = today
+                
+                showFrontalCard()
+                frontalFirstDateLabel.text = sevenDaysAgo
+                frontalTodaysDateLabel.text = today
                 frontalBeforeImage.kf.setImage(with: URL(string: firstDayFrontalPhoto))
                 frontalAfterImage.kf.setImage(with: URL(string: todayFrontalPhoto))
             }
             
-            let firstDayLeftPhoto = last7DayRecords[0].leftPhoto
-            let todayLeftPhoto = last7DayRecords[6].leftPhoto
             if firstDayLeftPhoto.isEmpty || todayLeftPhoto.isEmpty {
                 hideLeftCard()
+                
             } else {
-                leftNoComparisonLabel.isHidden = true
-                leftFirstDay.isHidden = false
-                leftToday.isHidden = false
-                leftStackView.isHidden = false
-                leftFirstDay.text = firstDay
-                leftToday.text = today
-                leftBefore.kf.setImage(with: URL(string: firstDayLeftPhoto))
-                leftAfter.kf.setImage(with: URL(string: todayLeftPhoto))
+                
+                showLeftCard()
+                leftFirstDateLabel.text = sevenDaysAgo
+                leftTodaysDateLabel.text = today
+                leftBeforeImage.kf.setImage(with: URL(string: firstDayLeftPhoto))
+                leftAfterImage.kf.setImage(with: URL(string: todayLeftPhoto))
             }
             
-            let firstDayRightPhoto = last7DayRecords[0].rightPhoto
-            let todayRightPhoto = last7DayRecords[6].rightPhoto
             if firstDayRightPhoto.isEmpty || todayRightPhoto.isEmpty {
                 hideRightCard()
+                
             } else {
-                rightNoComparisonLabel.isHidden = true
-                rightFirstDay.isHidden = false
-                rightLastDay.isHidden = false
-                rightStackView.isHidden = false
-                rightFirstDay.text = firstDay
-                rightLastDay.text = today
-                rightBefore.kf.setImage(with: URL(string: firstDayRightPhoto))
-                rightAfter.kf.setImage(with: URL(string: todayRightPhoto))
+                
+                showRightCard()
+                rightFirstDateLabel.text = sevenDaysAgo
+                rightTodaysDateLabel.text = today
+                rightBeforeImage.kf.setImage(with: URL(string: firstDayRightPhoto))
+                rightAfterImage.kf.setImage(with: URL(string: todayRightPhoto))
             }
         }
-        
     }
     
 }
