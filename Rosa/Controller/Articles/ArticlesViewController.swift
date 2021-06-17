@@ -10,8 +10,15 @@ import CollectionViewWaterfallLayout
 import Lottie
 import IQKeyboardManagerSwift
 
-class ArticlesViewController: UIViewController, UISearchBarDelegate {
+enum CurrentArticles {
+    case allArticles
+    case searchedArticles
+    case followedArticles
+    case categorizedArticles
+}
 
+class ArticlesViewController: UIViewController, UISearchBarDelegate {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var followButton: UIButton!
@@ -65,7 +72,7 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
     
     var selectedIndexPath: IndexPath?
     
-    var currentType = "allArticles"
+    var currentType: CurrentArticles = CurrentArticles.allArticles
     
     var searchText = ""
     
@@ -78,22 +85,20 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
         }
         return cellSizes
     }()
-
+    
     override func viewDidLoad() {
-
         super.viewDidLoad()
-        appendShadow()
         self.navigationController?.isNavigationBarHidden = true
+        appendShadow()
         underlineView.backgroundColor = UIColor.gray
         setUpWaterfall()
         self.searchBar.delegate = self
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         reloadArticles()
         tableViewHeight.constant = 0
-        self.currentType = "allArticles"
+        self.currentType = .allArticles
         configureButtons()
     }
     
@@ -130,12 +135,11 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
         if searchText.isEmpty {
             DispatchQueue.main.async {
                 self.trendingButton.isSelected = true
-                self.currentType = "allArticles"
+                self.currentType = .allArticles
                 self.reloadArticles()
                 searchBar.showsCancelButton = false
                 searchBar.resignFirstResponder()
             }
-            
         }
     }
     
@@ -145,12 +149,10 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         searchAllArticles(searchText: self.searchText)
-        self.currentType = "searchedArticles"
+        self.currentType = .searchedArticles
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
-        
     }
     
     func setUpWaterfall() {
@@ -170,7 +172,6 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
     // MARK: - fetch following authors' articles and filter out blocked user's articles
     
     func fetchAllArticles() {
-        
         ArticleManager.shared.fetchAllArticles { [weak self] result in
             
             switch result {
@@ -191,7 +192,6 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
             if let followed = currentUser.followed {
                 self.followedList = followed
             }
-            
         }
     }
     
@@ -224,35 +224,28 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
     }
     
     // MARK: - 熱門/追蹤/推薦
-
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
-        
         followButton.isSelected = false
-        
         trendingButton.isSelected = false
-        
         sender.isSelected = !sender.isSelected
-
-//        followButton.setTitleColor(UIColor.darkGray, for: .selected)
-//        trendingButton.setTitleColor(UIColor.darkGray, for: .selected)
-//        view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.3) {
             self.underlineView.center.x = sender.center.x + 16
         }
-
+        
         if sender.isSelected {
             switch sender {
+            
             case followButton:
-                currentType = "followed"
+                currentType = .followedArticles
                 reloadArticles()
                 collectionView.reloadData()
-
+                
             default:
-                currentType = "allArticles"
+                currentType = .allArticles
                 reloadArticles()
                 collectionView.reloadData()
-
             }
         }
     }
@@ -260,11 +253,10 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
     // MARK: - 文章分類
     
     @IBAction func showCategory(_ sender: Any) {
-    
         tableViewHeight.constant = tableViewHeight.constant == 0 ? 217.5 : 0
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0) {
-          self.tableView.alpha = 1
-          self.view.layoutIfNeeded()
+            self.tableView.alpha = 1
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -272,33 +264,29 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
 extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-      return 43.5
+        return 43.5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 5
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      if let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell",
-                                                  for: indexPath) as? FilterTableViewCell {
-        cell.setTitle(index: indexPath.row)
-        cell.selectionStyle = .none
-        return cell
-      }
-      return UITableViewCell()
+        
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell {
+            cell.setTitle(index: indexPath.row)
+            cell.selectionStyle = .none
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let queryArray = [
-            "酒糟",
-            "保養",
-            "戒斷",
-            "防曬",
-            "醫美"
-        ]
         
-        currentType = "categoryArticles"
+        let queryArray = ["酒糟", "保養", "戒斷", "防曬", "醫美"]
+        
+        currentType = .categorizedArticles
         
         ArticleManager.shared.queryCategory(category: queryArray[indexPath.row]) { [weak self] result in
             
@@ -307,9 +295,8 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
             case .success(let articles):
                 
                 self?.categoryArticles = articles
-                
                 self?.tableViewHeight.constant = 0
-            
+                
             case .failure(let error):
                 
                 print("fetchData.failure: \(error)")
@@ -322,22 +309,26 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - 基本文章陳列
 
 extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch currentType {
-        case "allArticles":
+        
+        case .allArticles:
             return filteredArticles.count
-        case "categoryArticles":
+            
+        case .categorizedArticles:
             return categoryArticles.count
-        case "searchedArticles":
+            
+        case .searchedArticles:
             return searchedArticles.count
+            
         default:
             return followedArticles.count
         }
-
+        
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -345,13 +336,16 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
                                                          for: indexPath) as? CollectionViewCell {
             
             switch currentType {
-            case "allArticles":
+            
+            case .allArticles:
                 cell.configureArticleCell(article: filteredArticles[indexPath.row])
                 return cell
-            case "categoryArticles":
+                
+            case .categorizedArticles:
                 cell.configureArticleCell(article: categoryArticles[indexPath.row])
                 return cell
-            case "searchedArticles":
+                
+            case .searchedArticles:
                 cell.configureArticleCell(article: searchedArticles[indexPath.row])
                 return cell
                 
@@ -367,21 +361,22 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
         performSegue(withIdentifier: "showArticleDetails", sender: self)
-
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let controller = segue.destination as? ArticleDetailViewController {
-            if let indexPath = selectedIndexPath {
-                if segue.identifier == "showArticleDetails" {
-                    if currentType == "allArticles" {
-                        controller.article = self.filteredArticles[indexPath.row]
-                        
-                    } else {
-                        controller.article = self.followedArticles[indexPath.row]
-                    }
-                }
+        guard let controller = segue.destination as? ArticleDetailViewController,
+              let indexPath = selectedIndexPath else { return }
+        
+        if segue.identifier == "showArticleDetails" {
+            if currentType == .allArticles {
+                
+                controller.article = self.filteredArticles[indexPath.row]
+                
+            } else {
+                
+                controller.article = self.followedArticles[indexPath.row]
             }
         }
     }
@@ -391,9 +386,10 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
 // MARK: - CollectionViewWaterfallLayoutDelegate (文章陳列 - waterfall layout 設定）
 
 extension ArticlesViewController: CollectionViewWaterfallLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout: UICollectionViewLayout,
+    
+    func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return cellSizes[indexPath.item]
     }
+    
 }

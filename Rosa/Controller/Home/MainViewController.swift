@@ -11,7 +11,7 @@ import Charts
 import Kingfisher
 
 class MainViewController: UIViewController, ChartViewDelegate {
-
+    
     @IBOutlet weak var challengeProgressView: UIView!
     @IBOutlet weak var challengeProgressLabel: UILabel!
     @IBOutlet weak var waterProgressView: UIView!
@@ -51,7 +51,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     var waterBarChartYValues: [ChartDataEntry] = []
     
     var sleepArray: [Double] = []
-
+    
     var waterArray: [Int] = []
     
     var last7DayRecords: [Record] = [] {
@@ -112,7 +112,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     var deeplinkArticle: Article?
     
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         hideNoChartLabels()
@@ -159,7 +159,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     func showArticleFromDeeplink() {
         
         if let articleDetailVC = UIStoryboard.articles.instantiateViewController(
-                withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
+            withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
             guard let deeplinkArticle = deeplinkArticle else { return }
             articleDetailVC.article = deeplinkArticle
             self.navigationController?.pushViewController(articleDetailVC, animated: true)
@@ -168,7 +168,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     // MARK: - challengeProgessView / waterBarChart / sleepLineChart
-        
+    
     fileprivate func hideNoChartLabels() {
         noWaterRecordLabel.isHidden = true
         noSleepRecordLabel.isHidden = true
@@ -275,7 +275,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         dataSet.fill = Fill(color: sleepColor)
         dataSet.fillAlpha = 0.8
         dataSet.drawFilledEnabled = true
-
+        
         sleepLineChartView.data = LineChartData(dataSet: dataSet)
         
         let xAxis = sleepLineChartView.xAxis
@@ -297,15 +297,15 @@ class MainViewController: UIViewController, ChartViewDelegate {
     func fetchChallenge(date: Date) {
         
         ChallengeManager.shared.fetchChallenge(date: date) { [weak self] result in
-
+            
             switch result {
-
+            
             case .success(let challenges):
-
+                
                 self?.challenges = challenges
-
+                
             case .failure(let error):
-
+                
                 print("fetchData.failure: \(error)")
             }
         }
@@ -327,7 +327,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
             }
         }
     }
-
+    
 }
 
 // MARK: - Photo comparisons & ScrollViewDelegate
@@ -388,7 +388,7 @@ extension MainViewController: UIScrollViewDelegate {
         let pastSevenDays = createPastSevenDays()
         let sevenDaysAgo = pastSevenDays[0].formatForMainPage()
         let today = pastSevenDays[6].formatForMainPage()
-                
+        
         if last7DayRecords.count < 7 {
             hideFrontalCard()
             hideLeftCard()

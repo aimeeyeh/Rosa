@@ -14,7 +14,7 @@ class EditBlocklistViewController: UIViewController {
     
     var blocklist: [String] = [] {
         didSet {
-            if blocklist.count != 0 {
+            if !blocklist.isEmpty {
                 tableView.isHidden = false
                 noBlockedUserLabel.isHidden = true
                 fetchBlocklistUserData()
@@ -31,7 +31,7 @@ class EditBlocklistViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -48,10 +48,10 @@ class EditBlocklistViewController: UIViewController {
             switch result {
             
             case .success(let user):
-               
+                
                 guard let blocklist = user.blocklist else { return }
                 self.blocklist = blocklist
-
+                
             case .failure(let error):
                 
                 print("fetchData.failure: \(error)")
@@ -78,13 +78,14 @@ class EditBlocklistViewController: UIViewController {
 }
 
 extension EditBlocklistViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return blocklistUserData.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "BlocklistTableViewCell",
-                                                    for: indexPath) as? BlocklistTableViewCell {
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: "BlocklistTableViewCell", for: indexPath) as? BlocklistTableViewCell {
             cell.configureBlocklist(blocklistUserData: blocklistUserData[indexPath.row])
             cell.onButtonPressed = {
                 UserManager.shared.removeFromBlocklist(blocklistUserID: self.blocklistUserData[indexPath.row].id)
@@ -94,5 +95,5 @@ extension EditBlocklistViewController: UITableViewDelegate, UITableViewDataSourc
         }
         return UITableViewCell()
     }
-        
+    
 }

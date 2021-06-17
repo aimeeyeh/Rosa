@@ -9,8 +9,13 @@ import UIKit
 import SwiftEntryKit
 import IQKeyboardManagerSwift
 
-class ArticleDetailViewController: UIViewController {
+enum AlertType {
+    case block
+    case delete
+}
 
+class ArticleDetailViewController: UIViewController {
+    
     @IBOutlet weak var commentTextfield: UITextField!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var followButton: UIButton!
@@ -22,23 +27,12 @@ class ArticleDetailViewController: UIViewController {
     
     let currentUser = UserManager.shared.currentUser
     
-    var article: Article = Article(id: "fail",
-                                   authorID: "fail",
-                                   authorName: "fail",
-                                   authorPhoto: "fail",
-                                   category: "fail",
-                                   content: "fail",
-                                   createdTime: Date(),
-                                   likes: 0,
-                                   photos: ["fail"],
-                                   title: "fail") 
+    var article: Article = Article(id: "fail", authorID: "fail", authorName: "fail", authorPhoto: "fail",
+                                   category: "fail", content: "fail", createdTime: Date(), likes: 0,
+                                   photos: ["fail"], title: "fail")
     
-    var comments: [Comment] = [Comment(id: "fail",
-                                       authorID: "fail",
-                                       authorName: "fail",
-                                       authorPhoto: "fail",
-                                       content: "fail",
-                                       date: Date())] {
+    var comments: [Comment] = [Comment(id: "fail", authorID: "fail", authorName: "fail", authorPhoto: "fail",
+                                       content: "fail", date: Date())] {
         didSet {
             filterdDefaultComments = comments.filter { $0.authorID != "default"}
         }
@@ -60,13 +54,10 @@ class ArticleDetailViewController: UIViewController {
     
     var myComments: [Comment] = [] {
         didSet {
-            
             for comment in myComments {
-                if let index = filteredBlockComments?.firstIndex(of: comment) {
-                    indexPathOfMyComments.append(index)
-                }
+                guard let index = filteredBlockComments?.firstIndex(of: comment) else { return }
+                indexPathOfMyComments.append(index)
             }
-    
         }
     }
     
@@ -94,68 +85,55 @@ class ArticleDetailViewController: UIViewController {
     }
     
     var toBeBlockedUserID: String?
+    
     var toBeDeleteCommentID: String?
-
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         configureTextfield()
         fetchComments(articleID: article.id)
+        checkFollowButtonStatus()
+        configureFollowButton()
         tableView.allowsSelection = true
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
         tableView.addGestureRecognizer(longPress)
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
-        checkFollowButtonStatus()
-        configureFollowButton()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
         reloadComments()
         configureUpperView()
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
-
     }
     
     // MARK: - Long Press Gesture
     
     @objc func longPress(sender: UILongPressGestureRecognizer) {
-
-                if sender.state == UIGestureRecognizer.State.began {
-                    let touchPoint = sender.location(in: tableView)
-                    if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                        if comments.count > 1 {
-                            
-                            if indexPathOfMyComments.contains(indexPath.row-2) {
-                                self.showAlertView(type: "Delete", attributes: setupAttributes())
-                                if let comments = filteredBlockComments {
-                                    self.toBeDeleteCommentID = comments[indexPath.row-2].id
-                                }
-                                
-                            } else if indexPath.row == 0 || indexPath.row == 1 {
-                                return
-                                
-                            } else {
-                                self.showAlertView(type: "Block", attributes: setupAttributes())
-                                if let comments = filteredBlockComments {
-                                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
-                                }
-                            }
-                                    
-                        }
-                    }
+        if sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: tableView)
+            guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
+            if comments.count > 1 {
+                if indexPathOfMyComments.contains(indexPath.row-2) {
+                    self.showAlertView(type: .delete, attributes: setupAttributes())
+                    guard let comments = filteredBlockComments else { return }
+                    self.toBeDeleteCommentID = comments[indexPath.row-2].id
+                } else if indexPath.row == 0 || indexPath.row == 1 {
+                    return
+                } else {
+                    self.showAlertView(type: .block, attributes: setupAttributes())
+                    guard let comments = filteredBlockComments else { return }
+                    self.toBeBlockedUserID = comments[indexPath.row-2].authorID
                 }
             }
+        }
+    }
     
     // MARK: - Model related functions
     
@@ -174,14 +152,12 @@ class ArticleDetailViewController: UIViewController {
                 print("fetchData.failure: \(error)")
             }
         }
-
+        
     }
     
     func configureUpperView() {
-        
         authorName.text = article.authorName
         authorPhoto.kf.setImage(with: URL(string: article.authorPhoto))
-        
         guard let currentUser = UserManager.shared.currentUser else { return }
         if currentUser.id == article.authorID {
             shareButton.isHidden = true
@@ -193,46 +169,40 @@ class ArticleDetailViewController: UIViewController {
     }
     
     func checkLikeButtonStatus() {
-        
         let articleID = article.id
-        guard let currentUser = UserManager.shared.currentUser else { return }
-        if let likedArticles = currentUser.likedArticles {
-            if likedArticles.contains(articleID) {
-                likeButton.isSelected = true
-            } else {
-                likeButton.isSelected = false
-            }
+        guard let currentUser = UserManager.shared.currentUser,
+              let likedArticles = currentUser.likedArticles else { return }
+        if likedArticles.contains(articleID) {
+            likeButton.isSelected = true
+        } else {
+            likeButton.isSelected = false
         }
     }
     
     func checkFollowButtonStatus() {
-        
         let articleAuthorID = article.authorID
-        guard let currentUser = UserManager.shared.currentUser else { return }
-        if let followed = currentUser.followed {
-            if followed.contains(articleAuthorID) {
-                followButton.isSelected = true
-            } else {
-                followButton.isSelected = false
-            }
+        guard let currentUser = UserManager.shared.currentUser,
+              let followed = currentUser.followed else { return }
+        
+        if followed.contains(articleAuthorID) {
+            followButton.isSelected = true
+        } else {
+            followButton.isSelected = false
         }
     }
     
     func showActionSheet() {
-        
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
         let cancelActionButton = UIAlertAction(title: "Cancel".localized(), style: .cancel) {_ in print("cancel")}
         actionSheetController.addAction(cancelActionButton)
-        
         let deleteActionButton = UIAlertAction(title: "Delete".localized(), style: .destructive) {_ in
             ArticleManager.shared.deleteArticle(artcleID: self.article.id)
             self.navigationController?.popViewController(animated: true)
         }
-
         let saveActionButton = UIAlertAction(title: "Share", style: .default) {_ in
             guard let userName = UserManager.shared.currentUser?.name else { return }
-            let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized() + String(self.article.title) + "."
+            let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized()
+                + String(self.article.title) + "."
             let image = UIImage(named: "Rosa")
             let myWebsite = NSURL(string: "rosa://?\(self.article.id)")
             let shareAll = [text, image as Any, myWebsite as Any] as [Any]
@@ -240,10 +210,8 @@ class ArticleDetailViewController: UIViewController {
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
         }
-        
         actionSheetController.addAction(deleteActionButton)
         actionSheetController.addAction(saveActionButton)
-        
         actionSheetController.view.tintColor = .darkGray
         self.present(actionSheetController, animated: true, completion: nil)
     }
@@ -261,56 +229,28 @@ class ArticleDetailViewController: UIViewController {
         attributes.screenInteraction = .absorbTouches
         attributes.entryInteraction = .absorbTouches
         attributes.scroll = .disabled
-        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0/255.0, alpha: 0.3),
-                                                          dark: UIColor(white: 50.0/255.0, alpha: 0.3)))
+        attributes.screenBackground = .color(
+            color: .init(light: UIColor(white: 100.0/255.0, alpha: 0.3), dark: UIColor(white: 50.0/255.0, alpha: 0.3)))
         attributes.entryBackground = .color(color: .white)
         attributes.entranceAnimation = .init(
-            scale: .init(
-                from: 0.9,
-                to: 1,
-                duration: 0.4,
-                spring: .init(damping: 1, initialVelocity: 0)
-            ),
-            fade: .init(
-                from: 0,
-                to: 1,
-                duration: 0.3
-            )
-        )
-        attributes.exitAnimation = .init(
-            fade: .init(
-                from: 1,
-                to: 0,
-                duration: 0.2
-            )
-        )
-        attributes.shadow = .active(
-            with: .init(
-                color: .black,
-                opacity: 0.3,
-                radius: 5
-            )
-        )
+            scale: .init(from: 0.9, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)),
+            fade: .init(from: 0, to: 1, duration: 0.3))
+        attributes.exitAnimation = .init(fade: .init(from: 1, to: 0, duration: 0.2))
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 5))
         return attributes
     }
     
-    func showAlertView(type: String, attributes: EKAttributes) {
+    func setUpAlertTitleSection(type: AlertType) -> EKSimpleMessage {
         let title = EKProperty.LabelContent(
             text: "Hopa!",
             style: .init(
-                font: MainFont.medium.with(size: 15),
-                color: .black,
-                alignment: .center,
-                displayMode: displayMode
+                font: MainFont.medium.with(size: 15), color: .black, alignment: .center, displayMode: displayMode
             )
         )
         
         var text = ""
-        
-        if type == "Block" {
-            text =
-                "Are you sure you want to block this user?".localized()
-
+        if type == .block {
+            text = "Are you sure you want to block this user?".localized()
         } else {
             text = "Are you sure you want to delete this comment?".localized()
         }
@@ -318,123 +258,100 @@ class ArticleDetailViewController: UIViewController {
         let description = EKProperty.LabelContent(
             text: text,
             style: .init(
-                font: MainFont.light.with(size: 13),
-                color: .black,
-                alignment: .center,
-                displayMode: displayMode
+                font: MainFont.light.with(size: 13), color: .black, alignment: .center, displayMode: displayMode
             )
         )
         
         var image = EKProperty.ImageContent(
-            imageName: "block",
-            displayMode: displayMode,
-            size: CGSize(width: 60, height: 60),
-            contentMode: .scaleAspectFit
+            imageName: "block", displayMode: displayMode,
+            size: CGSize(width: 60, height: 60), contentMode: .scaleAspectFit
         )
         
-        if type == "Delete" {
+        if type == .delete {
             image = EKProperty.ImageContent(
-                imageName: "delete",
-                displayMode: displayMode,
-                size: CGSize(width: 60, height: 60),
-                contentMode: .scaleAspectFit
+                imageName: "delete", displayMode: displayMode,
+                size: CGSize(width: 60, height: 60), contentMode: .scaleAspectFit
             )
         }
         
-        let simpleMessage = EKSimpleMessage(
-            image: image,
-            title: title,
-            description: description
-        )
+        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+        
+        return simpleMessage
+    }
+    
+    func setUpAlertButtons(type: AlertType) -> EKProperty.ButtonBarContent {
+        
+        // Cancel Button
         let buttonFont = MainFont.medium.with(size: 16)
+        
         let closeButtonLabelStyle = EKProperty.LabelStyle(
-            font: buttonFont,
-            color: Color.Gray.a800,
-            displayMode: displayMode
+            font: buttonFont, color: Color.Gray.a800, displayMode: displayMode
         )
-        let closeButtonLabel = EKProperty.LabelContent(
-            text: "NOT NOW".localized(),
-            style: closeButtonLabelStyle
-        )
+        
+        let closeButtonLabel = EKProperty.LabelContent(text: "NOT NOW".localized(), style: closeButtonLabelStyle)
+        
         let closeButton = EKProperty.ButtonContent(
-            label: closeButtonLabel,
-            backgroundColor: .clear,
-            highlightedBackgroundColor: Color.Gray.a800.with(alpha: 0.05),
-            displayMode: displayMode) {
-                SwiftEntryKit.dismiss()
+            label: closeButtonLabel, backgroundColor: .clear,
+            highlightedBackgroundColor: Color.Gray.a800.with(alpha: 0.05), displayMode: displayMode) {
+            SwiftEntryKit.dismiss()
         }
         
-        // Block Alert
-
+        // Block Button
         let blockButtonLabelStyle = EKProperty.LabelStyle(
-            font: buttonFont,
-            color: Color.Teal.a600,
-            displayMode: displayMode
+            font: buttonFont, color: Color.Teal.a600, displayMode: displayMode
         )
+        
         let blockButtonLabel = EKProperty.LabelContent(
-            text: "BLOCK".localized(),
-            style: blockButtonLabelStyle
+            text: "BLOCK".localized(), style: blockButtonLabelStyle
         )
+        
         let blockButton = EKProperty.ButtonContent(
-            label: blockButtonLabel,
-            backgroundColor: .clear,
-            highlightedBackgroundColor: Color.Teal.a600.with(alpha: 0.05),
-            displayMode: displayMode) {
+            label: blockButtonLabel, backgroundColor: .clear,
+            highlightedBackgroundColor: Color.Teal.a600.with(alpha: 0.05), displayMode: displayMode) {
             SwiftEntryKit.dismiss()
-            
             guard let toBeBlockedUserID = self.toBeBlockedUserID else { return }
             UserManager.shared.blockUser(toBeBlockUserID: toBeBlockedUserID)
-            
             self.reloadComments()
         }
         
-        // Delete Alert
-        
+        // Delete Button
         let deleteButtonLabelStyle = EKProperty.LabelStyle(
-            font: buttonFont,
-            color: Color.LightPink.first,
-            displayMode: displayMode
+            font: buttonFont, color: Color.LightPink.first, displayMode: displayMode
         )
+        
         let deleteButtonLabel = EKProperty.LabelContent(
-            text: "DELETE".localized(),
-            style: deleteButtonLabelStyle
+            text: "DELETE".localized(), style: deleteButtonLabelStyle
         )
         
         let deleteButton = EKProperty.ButtonContent(
-            label: deleteButtonLabel,
-            backgroundColor: .clear,
-            highlightedBackgroundColor: Color.Teal.a600.with(alpha: 0.05),
-            displayMode: displayMode) {
+            label: deleteButtonLabel, backgroundColor: .clear,
+            highlightedBackgroundColor: Color.Teal.a600.with(alpha: 0.05), displayMode: displayMode) {
             SwiftEntryKit.dismiss()
-            
             guard let commentID = self.toBeDeleteCommentID else { return }
             ArticleManager.shared.deleteComment(articleID: self.article.id, commentID: commentID)
-            
             self.fetchComments(articleID: self.article.id)
         }
         
         // Generate the content
-        
         var buttonsBarContent = EKProperty.ButtonBarContent(
-            with: deleteButton, closeButton,
-            separatorColor: Color.Gray.light,
-            displayMode: displayMode,
-            expandAnimatedly: true
+            with: deleteButton, closeButton, separatorColor: Color.Gray.light,
+            displayMode: displayMode, expandAnimatedly: true
         )
         
-        if type == "Block" {
+        if type == .block {
             buttonsBarContent = EKProperty.ButtonBarContent(
-                with: blockButton, closeButton,
-                separatorColor: Color.Gray.light,
-                displayMode: displayMode,
-                expandAnimatedly: true
+                with: blockButton, closeButton, separatorColor: Color.Gray.light,
+                displayMode: displayMode, expandAnimatedly: true
             )
         }
         
-        let alertMessage = EKAlertMessage(
-            simpleMessage: simpleMessage,
-            buttonBarContent: buttonsBarContent
-        )
+        return buttonsBarContent
+    }
+    
+    func showAlertView(type: AlertType, attributes: EKAttributes) {
+        let simpleMessage = setUpAlertTitleSection(type: type)
+        let buttonsBarContent = setUpAlertButtons(type: type)
+        let alertMessage = EKAlertMessage(simpleMessage: simpleMessage, buttonBarContent: buttonsBarContent)
         let contentView = EKAlertMessageView(with: alertMessage)
         SwiftEntryKit.display(entry: contentView, using: attributes)
     }
@@ -443,7 +360,6 @@ class ArticleDetailViewController: UIViewController {
         commentTextfield.placeholder = "   Leave a comment...".localized()
         commentTextfield.layer.cornerRadius = 21
         commentTextfield.clipsToBounds = true
-        
     }
     
     // MARK: - IBActions
@@ -468,27 +384,21 @@ class ArticleDetailViewController: UIViewController {
     }
     
     @IBAction func editingDidEnd(_ sender: UITextField) {
-        
         if let text = sender.text {
-            if text != "" {
+            if !text.isEmpty {
                 ArticleManager.shared.postComment(documentID: article.id, comment: text)
-                
             } else {
                 return
             }
         }
-        
         commentTextfield.text = ""
     }
     
     func configureFollowButton() {
-        
         followButton.setTitle("FollowButton".localized(), for: .normal)
         followButton.setTitleColor(UIColor.rgb(red: 229, green: 131, blue: 85, alpha: 1), for: .selected)
-        
         followButton.setTitle("FollowingButton".localized(), for: .selected)
         followButton.setTitleColor(.systemGray2, for: .selected)
-        
         if followButton.isSelected {
             followButton.buttonBorderColor = UIColor.systemGray3
         } else {
@@ -497,16 +407,13 @@ class ArticleDetailViewController: UIViewController {
     }
     
     @IBAction func followAuthor(_ sender: UIButton) {
-        
         if sender.isSelected {
             ArticleManager.shared.removeFromFollowed(authorID: article.authorID)
         } else {
             ArticleManager.shared.addToFollowed(authorID: article.authorID)
         }
-        
         followButton.isSelected = !followButton.isSelected
         configureFollowButton()
-
     }
     
     @IBAction func likedArticle(_ sender: UIButton) {
@@ -517,9 +424,7 @@ class ArticleDetailViewController: UIViewController {
         } else {
             ArticleManager.shared.likeArticles(articleID: articleID, currentLikes: currentLikes)
         }
-        
         likeButton.isSelected = !likeButton.isSelected
-        
     }
     
     func fetchComments(articleID: String) {
@@ -541,21 +446,17 @@ class ArticleDetailViewController: UIViewController {
 }
 
 extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let filteredBlockComments = self.filteredBlockComments else { return 3 }
-        
-        if filteredBlockComments.count == 0 {
+        if filteredBlockComments.isEmpty {
             return 3
         } else {
             return filteredBlockComments.count+2
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.row {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell",
@@ -567,40 +468,32 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ContentCell",
                                                         for: indexPath) as? ContentCell {
-                
                 cell.configureContent(article: article)
                 return cell
             }
-            
         default:
             if comments.count <= 1 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "NoCommentCell",
                                                             for: indexPath) as? NoCommentCell {
-                    
                     return cell
                 }
             } else {
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell",
-                                                            for: indexPath) as? CommentCell {
-                    if let comments = filteredBlockComments {
-                        cell.configureCommentCell(comment: comments[indexPath.row-2])
-                    }
-                    return cell
-                }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell",
+                                                               for: indexPath) as? CommentCell,
+                      let comments = filteredBlockComments else { return UITableViewCell() }
+                cell.configureCommentCell(comment: comments[indexPath.row-2])
+                return cell
             }
-
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
+        if indexPath.row == 0 {
             return 500
-        case 1:
-            return UITableView.automaticDimension
-        default:
+        } else {
             return UITableView.automaticDimension
         }
     }
+    
 }
