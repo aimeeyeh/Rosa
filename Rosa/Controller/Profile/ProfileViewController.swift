@@ -8,7 +8,13 @@
 import UIKit
 import Kingfisher
 
+enum CurrentType {
+    case postedArticles
+    case likedArticles
+}
+
 class ProfileViewController: UIViewController {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var postedButton: UIButton!
     @IBOutlet weak var underlineView: UIView!
@@ -19,8 +25,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var postedArticlesNumber: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-
-    var currentType = "postedArticles"
+    
+    var currentType: CurrentType?
     
     var postedArticles: [Article] = [] {
         didSet {
@@ -35,12 +41,12 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.setRightBarButton(nil, animated: true)
         profileImage.layoutIfNeeded()
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         reloadArticles()
-        currentType = "postedArticles"
+        currentType = .postedArticles
         collectionView.reloadData()
     }
     
@@ -52,7 +58,7 @@ class ProfileViewController: UIViewController {
             guard let photo = user.photo else { return }
             profileImage.kf.setImage(with: URL(string: photo))
         }
-
+        
     }
     
     func fetchPostedArticles() {
@@ -105,6 +111,7 @@ class ProfileViewController: UIViewController {
             switch result {
             
             case .success(let user):
+                
                 self.configureProfile()
                 self.fetchLikedArticles()
                 self.fetchPostedArticles()
@@ -117,7 +124,7 @@ class ProfileViewController: UIViewController {
         }
         
     }
-
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
         
         view.layoutIfNeeded()
@@ -133,21 +140,22 @@ class ProfileViewController: UIViewController {
         if sender.isSelected {
             switch sender {
             case postedButton:
-                currentType = "postedArticles"
+                currentType = .postedArticles
                 collectionView.reloadData()
             default:
-                currentType = "likedArticles"
+                currentType = .likedArticles
                 collectionView.reloadData()
             }
         }
         
     }
+    
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if currentType == "postedArticles" {
+        if currentType == .postedArticles {
             return postedArticles.count
         } else {
             return likedArticles.count
@@ -157,8 +165,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell",
-                                                        for: indexPath) as? ArticleCollectionViewCell {
-            if currentType == "postedArticles" {
+                                                         for: indexPath) as? ArticleCollectionViewCell {
+            if currentType == .postedArticles {
                 cell.configure(article: postedArticles[indexPath.row])
             } else {
                 cell.configure(article: likedArticles[indexPath.row])
@@ -173,7 +181,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if let articleDetailVC = UIStoryboard.articles.instantiateViewController(
             withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
-            if currentType == "postedArticles" {
+            if currentType == .postedArticles {
                 articleDetailVC.article = postedArticles[indexPath.row]
             } else {
                 articleDetailVC.article = likedArticles[indexPath.row]
@@ -181,21 +189,21 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             self.navigationController?.pushViewController(articleDetailVC, animated: true)
         }
     }
-
+    
 }
 
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (self.view.frame.width - 30) / 2
         let height = width * 1.5
         return CGSize(width: width, height: height)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-           return UIEdgeInsets(top: 5, left: 10, bottom: 0, right: 10)
-        }
+        return UIEdgeInsets(top: 5, left: 10, bottom: 0, right: 10)
+    }
+    
 }

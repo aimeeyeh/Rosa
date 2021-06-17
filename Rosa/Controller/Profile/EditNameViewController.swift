@@ -9,16 +9,14 @@ import UIKit
 import IQKeyboardManagerSwift
 
 class EditNameViewController: UIViewController {
-
+    
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         textField.borderStyle = .roundedRect
         textField.tintColor = .lightGray
         configurePlaceholder()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,7 +29,6 @@ class EditNameViewController: UIViewController {
     }
     
     @IBAction func editName(_ sender: Any) {
-        
         if let name = textField.text {
             UserManager.shared.updateUserName(name: name)
         }

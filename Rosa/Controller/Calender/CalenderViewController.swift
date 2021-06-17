@@ -251,7 +251,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         SwiftEntryKit.display(
             entry: MyPopUpView(
                 with: setupMessage(image: image, title: title, description: description, button: button)),
-                using: PopUpMessage.shared.setupAttributes()
+            using: PopUpMessage.shared.setupAttributes()
         )
     }
     
@@ -264,7 +264,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         SwiftEntryKit.display(
             entry: MyPopUpView(
                 with: setupMessage(image: image, title: title, description: description, button: button)),
-                using: PopUpMessage.shared.setupAttributes()
+            using: PopUpMessage.shared.setupAttributes()
         )
     }
     
@@ -283,11 +283,11 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         let description = description
         let themeImage = EKPopUpMessage.ThemeImage(
             image: EKProperty.ImageContent(
-            image: image, size: CGSize(width: 60, height: 60), tint: .black, contentMode: .scaleAspectFit)
+                image: image, size: CGSize(width: 60, height: 60), tint: .black, contentMode: .scaleAspectFit)
         )
         let titleLabel = EKProperty.LabelContent(
             text: title, style: .init(
-            font: UIFont.systemFont(ofSize: 24), color: .black, alignment: .center)
+                font: UIFont.systemFont(ofSize: 24), color: .black, alignment: .center)
         )
         let descriptionLabel = EKProperty.LabelContent(
             text: description, style: .init(font: UIFont.systemFont(ofSize: 16), color: .black, alignment: .center)
@@ -429,12 +429,12 @@ extension CalenderViewController: LiquidFloatingActionButtonDataSource,
     func floatingButtonSetup() {
         let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton
             = { (frame, style) in
-            let floatingActionButton = CustomDrawingActionButton(frame: frame)
-            floatingActionButton.animateStyle = style
-            floatingActionButton.dataSource = self
-            floatingActionButton.delegate = self
-            return floatingActionButton
-        }
+                let floatingActionButton = CustomDrawingActionButton(frame: frame)
+                floatingActionButton.animateStyle = style
+                floatingActionButton.dataSource = self
+                floatingActionButton.delegate = self
+                return floatingActionButton
+            }
         
         let customCellFactory: (String) -> LiquidFloatingCell = { (iconName) in
             let cell = CustomCell(icon: UIImage(named: iconName)!, name: iconName.localized())
@@ -464,7 +464,7 @@ extension CalenderViewController: LiquidFloatingActionButtonDataSource,
                                     didSelectItemAtIndex index: Int) {
         if index == 0 {
             if let recordDetailVC = UIStoryboard.record.instantiateViewController(
-                    withIdentifier: "RecordDetailViewController") as? RecordDetailViewController {
+                withIdentifier: "RecordDetailViewController") as? RecordDetailViewController {
                 self.navigationController?.pushViewController(recordDetailVC, animated: true)
             }
         } else {
