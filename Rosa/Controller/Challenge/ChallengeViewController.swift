@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol EmployeePickerDelegate: AnyObject {
-    func employeeAssigned()
+protocol RecordConfirmedDelegate: AnyObject {
+    func onConfirmBtnPressed()
 }
 
 class ChallengeViewController: UIViewController {
@@ -20,7 +20,7 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tutorialButton: UIButton!
     
-    weak var delegate: EmployeePickerDelegate?
+    weak var delegate: RecordConfirmedDelegate?
 
     let blackView = UIView(frame: UIScreen.main.bounds)
     
@@ -30,7 +30,9 @@ class ChallengeViewController: UIViewController {
     
     var currentDoingChallengesTitle: [String] = [] {
         didSet {
-            availableChallenges = defaultChallenges.filter { !(currentDoingChallengesTitle.contains($0.challengeTitle)) }
+            availableChallenges = defaultChallenges.filter {
+                !(currentDoingChallengesTitle.contains($0.challengeTitle))
+            }
         }
     }
     
@@ -79,8 +81,7 @@ class ChallengeViewController: UIViewController {
     }
     
     @IBAction func confirmChallenge(_ sender: Any) {
-        delegate?.employeeAssigned()
-//        dismiss(animated: true, completion: nil)
+        delegate?.onConfirmBtnPressed()
         blackView.removeFromSuperview()
         self.tabBarController?.tabBar.isHidden = false
         for index in 0..<selectedChallenges.count {

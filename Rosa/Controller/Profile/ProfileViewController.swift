@@ -171,8 +171,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let articleDetailVC = UIStoryboard(name: "Articles", bundle: nil)
-            .instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
+        if let articleDetailVC = UIStoryboard.articles.instantiateViewController(
+            withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
             if currentType == "postedArticles" {
                 articleDetailVC.article = postedArticles[indexPath.row]
             } else {

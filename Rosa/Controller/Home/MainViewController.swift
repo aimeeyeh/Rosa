@@ -158,8 +158,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     
     func showArticleFromDeeplink() {
         
-        if let articleDetailVC = UIStoryboard(name: "Articles", bundle: nil)
-            .instantiateViewController(
+        if let articleDetailVC = UIStoryboard.articles.instantiateViewController(
                 withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController {
             guard let deeplinkArticle = deeplinkArticle else { return }
             articleDetailVC.article = deeplinkArticle

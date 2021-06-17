@@ -16,13 +16,17 @@
 
 "Awesome!" = "太棒了！";
 
-"You've completed the challenge. Keep on your good work, and let your Skin be the first priority." = "你已經完成了挑戰，繼續保持動力，往更好的肌膚邁進。";
+"You've completed the challenge." = "你已經完成了挑戰，";
+
+" Keep on your good work, and let your Skin be the first priority." = "繼續保持動力，往更好的肌膚邁進。";
 
 "Got it!" = "沒問題！";
 
 "Oh No!" = "糟糕";
 
-"You've missed yesterday's challenge. Add the challenge again and Restart your 30 day challenge!" = "你昨天忘記完成你的挑戰了，再挑戰一次吧！加油！";
+"You've missed yesterday's challenge." = "你昨天忘記完成你的挑戰了，";
+
+"Add the challenge again and Restart your 30 day challenge!" = "再挑戰一次吧！加油！";
 
 "Try again" = "好的";
 

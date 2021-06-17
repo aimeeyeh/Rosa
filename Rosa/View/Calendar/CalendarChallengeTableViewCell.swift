@@ -45,13 +45,14 @@ class CalendarChallengeTableViewCell: UITableViewCell {
     }
     
     func challengeConfigure(challenges: [Challenge], indexPath: IndexPath) {
-        challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
+        let imageNmae = challenges[indexPath.row].challengeImage
+        challengeImage.image = UIImage(named: imageNmae)
         let title = challenges[indexPath.row].challengeTitle
         challengeTitle.text = title.localized()
         challengeTitle.textColor = .white
         challengeDesciption.text = "Skincare is Healthcare".localized()
         challengeDesciption.textColor = .systemGray6
-        challengeBackground.backgroundColor = UIColor.challengeColor(challenge: challenges[indexPath.row].challengeImage)
+        challengeBackground.backgroundColor = UIColor.challengeColor(challenge: imageNmae)
         checkboxButton.isUserInteractionEnabled = !challenges[indexPath.row].isChecked
         checkboxButton.isSelected = challenges[indexPath.row].isChecked
        
@@ -62,9 +63,9 @@ class CalendarChallengeTableViewCell: UITableViewCell {
         challengeImage.image = UIImage(named: "information")
         challengeTitle.text = "No Record...".localized()
         challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)
-        challengeTitle.textColor = .white
         challengeDesciption.text = "Let's go add some records!".localized()
         challengeDesciption.textColor = .white
+        challengeTitle.textColor = .white
         challengeBackground.backgroundColor = .systemGray2
     }
 
@@ -73,9 +74,9 @@ class CalendarChallengeTableViewCell: UITableViewCell {
         challengeImage.image = UIImage(named: "information")
         challengeTitle.text = "No Challenges...".localized()
         challengeTitle.font = UIFont.boldSystemFont(ofSize: 16)
-        challengeTitle.textColor = .label
         challengeDesciption.text = "Let's go add some challenges!".localized()
         challengeDesciption.textColor = .label
+        challengeTitle.textColor = .label
         challengeBackground.backgroundColor = .systemGray6
     }
     
