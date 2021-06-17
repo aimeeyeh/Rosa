@@ -161,8 +161,8 @@ class ArticlesViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func showPostArticlePage(_ sender: Any) {
-        if let postArticleVC = UIStoryboard(name: "Record", bundle: nil)
-            .instantiateViewController(withIdentifier: "PostViewController") as? PostViewController {
+        if let postArticleVC = UIStoryboard.record.instantiateViewController(
+            withIdentifier: "PostViewController") as? PostViewController {
             self.navigationController?.pushViewController(postArticleVC, animated: true)
         }
     }

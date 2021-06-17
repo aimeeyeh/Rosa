@@ -44,6 +44,7 @@
 		7A489FC92666865300B692A9 /* NoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A489FC82666865300B692A9 /* NoCommentCell.swift */; };
 		7A559D7E2663E71900F73F06 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A559D7D2663E71900F73F06 /* ArticleManager.swift */; };
 		7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */; };
+		7A5B7E97267B55480026EE0A /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */; };
 		7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F832655571F007597A1 /* PhotoCell.swift */; };
 		7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F852655572D007597A1 /* ContentCell.swift */; };
 		7A5D9F8826555739007597A1 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F8726555739007597A1 /* CommentCell.swift */; };
@@ -135,6 +136,7 @@
 		7A489FC82666865300B692A9 /* NoCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCommentCell.swift; sourceTree = "<group>"; };
 		7A559D7D2663E71900F73F06 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Lottie_girlWithFlowers.json; path = Animations/Lottie_girlWithFlowers.json; sourceTree = SOURCE_ROOT; };
+		7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		7A5D9F832655571F007597A1 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		7A5D9F852655572D007597A1 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		7A5D9F8726555739007597A1 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				7AFE438A2660E86800F94330 /* Date+Extension.swift */,
 				7AF6EDD82667C3D800F04200 /* Font.swift */,
 				7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */,
+				7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */,
 				7A108A9C2676711F00BDA4BD /* String.swift */,
 			);
 			path = Extensions;
@@ -665,6 +668,7 @@
 				7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
 				7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */,
+				7A5B7E97267B55480026EE0A /* UIStoryboard+Extension.swift in Sources */,
 				7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */,
 				7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */,
 				7AF6EDD92667C3D800F04200 /* Font.swift in Sources */,

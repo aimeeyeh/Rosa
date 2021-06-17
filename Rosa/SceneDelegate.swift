@@ -38,14 +38,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        var storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+        var storyboard = UIStoryboard.signIn
         
         let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
         
         if userID == "" {
-            storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+            storyboard = UIStoryboard.signIn
         } else {
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
+            storyboard = UIStoryboard.main
             UserManager.shared.fetchUser { result in
                 
                 switch result {
