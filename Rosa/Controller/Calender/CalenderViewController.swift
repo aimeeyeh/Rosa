@@ -269,10 +269,18 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     }
     
     func checkYesterdayProgress(challenges: [Challenge]) {
-        for challenge in challenges {
-            if challenge.progress == 0 && challenge.isFirstDay == false {
-                displayFailureMessage()
-                ChallengeManager.shared.delete30dayChallenges(challengeTitle: challenge.challengeTitle)
+        let filteredChallenges = challenges.filter { $0.progress == 0 && $0.isFirstDay == false }
+        if !filteredChallenges.isEmpty {
+            let dispatchGroup = DispatchGroup()
+            for challenge in filteredChallenges {
+                dispatchGroup.enter()
+                ChallengeManager.shared.delete30dayChallenges(
+                    challengeTitle: challenge.challengeTitle) { _ in
+                    dispatchGroup.leave()
+                }
+            }
+            dispatchGroup.notify(queue: .main) {
+                self.displayFailureMessage()
             }
         }
     }

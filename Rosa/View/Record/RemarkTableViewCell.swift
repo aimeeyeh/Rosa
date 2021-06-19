@@ -8,13 +8,8 @@
 import UIKit
 
 class RemarkTableViewCell: UITableViewCell, UITextFieldDelegate {
-
+    
     @IBOutlet weak var remarkTextField: UITextField!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        remarkTextField.delegate = self
-    }
     
     var touchHandler: ((String) -> Void)?
     
@@ -24,19 +19,22 @@ class RemarkTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        remarkTextField.delegate = self
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == remarkTextField {
-            if let text = remarkTextField.text {
-                self.remark = text
-                remarkTextField.resignFirstResponder()
-            }
+            guard let text = remarkTextField.text else { return }
+            self.remark = text
+            remarkTextField.resignFirstResponder()
         }
     }
-
+    
     @IBAction func editingChanged(_ sender: UITextField) {
-        if let text = sender.text {
-            self.remark = text
-        }
+        guard let text = sender.text else { return }
+        self.remark = text
     }
     
 }

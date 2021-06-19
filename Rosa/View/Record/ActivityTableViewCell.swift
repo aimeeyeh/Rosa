@@ -8,15 +8,10 @@
 import UIKit
 
 class ActivityTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var outdoorButton: UIButton!
     @IBOutlet weak var makeupButton: UIButton!
     @IBOutlet weak var menstrualButton: UIButton!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        checkAllButtonStatus() 
-    }
     
     var touchHandler: (([Bool]) -> Void)?
     
@@ -25,7 +20,18 @@ class ActivityTableViewCell: UITableViewCell {
             touchHandler?(activityStatus)
         }
     }
-
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        checkAllButtonStatus() 
+    }
+    
+    func checkAllButtonStatus() {
+        outdoorButton.checkButtonState()
+        makeupButton.checkButtonState()
+        menstrualButton.checkButtonState()
+    }
+    
     @IBAction func selectedOutdoor(_ sender: Any) {
         outdoorButton.isSelected = !outdoorButton.isSelected
         outdoorButton.checkButtonState()
@@ -35,7 +41,7 @@ class ActivityTableViewCell: UITableViewCell {
             activityStatus[0] = false
         }
     }
-
+    
     @IBAction func selectedMakeup(_ sender: Any) {
         makeupButton.isSelected = !makeupButton.isSelected
         makeupButton.checkButtonState()
@@ -45,7 +51,7 @@ class ActivityTableViewCell: UITableViewCell {
             activityStatus[1] = false
         }
     }
-
+    
     @IBAction func selectedMenstrual(_ sender: Any) {
         menstrualButton.isSelected = !menstrualButton.isSelected
         menstrualButton.checkButtonState()
@@ -54,12 +60,6 @@ class ActivityTableViewCell: UITableViewCell {
         } else {
             activityStatus[2] = false
         }
-    }
-    
-    func checkAllButtonStatus() {
-        outdoorButton.checkButtonState()
-        makeupButton.checkButtonState()
-        menstrualButton.checkButtonState()
     }
     
 }

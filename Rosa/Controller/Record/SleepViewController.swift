@@ -9,13 +9,19 @@ import UIKit
 import HGCircularSlider
 
 class SleepViewController: UIViewController {
-
+    
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var bedtimeLabel: UILabel!
     @IBOutlet weak var wakeLabel: UILabel!
     @IBOutlet weak var rangeCircularSlider: RangeCircularSlider!
     
     var sleepAmount = 0.0
+    
+    var touchHandler: ((Double) -> Void)?
+    
+    var onSleepCancelButtonPressed: (() -> Void)?
+    
+    var onSleepConfirmButtonPressed: (() -> Void)?
     
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -36,23 +42,29 @@ class SleepViewController: UIViewController {
         
         rangeCircularSlider.startPointValue = 1 * 60 * 60
         rangeCircularSlider.endPointValue = 8 * 60 * 60
-
+        
         updateTexts(rangeCircularSlider!)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func adjustValue(value: inout CGFloat) {
+        let minutes = value / 60
+        let adjustedMinutes =  ceil(minutes / 5.0) * 5
+        value = adjustedMinutes * 60
+    }
+    
     @IBAction func updateTexts(_ sender: Any) {
         adjustValue(value: &rangeCircularSlider.startPointValue)
         adjustValue(value: &rangeCircularSlider.endPointValue)
-
+        
         let bedtime = TimeInterval(rangeCircularSlider.startPointValue)
         let bedtimeDate = Date(timeIntervalSinceReferenceDate: bedtime)
         bedtimeLabel.text = dateFormatter.string(from: bedtimeDate)
@@ -69,10 +81,6 @@ class SleepViewController: UIViewController {
         dateFormatter.dateFormat = "hh:mm a"
     }
     
-    var touchHandler: ((Double) -> Void)?
-    var onSleepCancelButtonPressed: (() -> Void)?
-    var onSleepConfirmButtonPressed: (() -> Void)?
-    
     @IBAction func confirmSleep(_ sender: Any) {
         touchHandler?(sleepAmount)
         onSleepConfirmButtonPressed?()
@@ -84,9 +92,4 @@ class SleepViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func adjustValue(value: inout CGFloat) {
-        let minutes = value / 60
-        let adjustedMinutes =  ceil(minutes / 5.0) * 5
-        value = adjustedMinutes * 60
-    }
 }

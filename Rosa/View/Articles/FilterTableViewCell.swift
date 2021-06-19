@@ -8,12 +8,11 @@
 import UIKit
 
 class FilterTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var filterLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
     
     let itemArray = [
@@ -25,7 +24,7 @@ class FilterTableViewCell: UITableViewCell {
     ]
     
     func setTitle(index: Int) {
-      filterLabel.text = itemArray[index]
+        filterLabel.text = itemArray[index]
     }
-
+    
 }

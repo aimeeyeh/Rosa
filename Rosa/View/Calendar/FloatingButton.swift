@@ -15,11 +15,11 @@ public class CustomCell: LiquidFloatingCell {
         self.name = name
         super.init(icon: icon)
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     public override func setupView(_ view: UIView) {
         super.setupView(view)
         let label = UILabel()

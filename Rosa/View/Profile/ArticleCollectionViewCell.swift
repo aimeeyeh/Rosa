@@ -10,16 +10,16 @@ import Kingfisher
 
 class ArticleCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var articlePhoto: UIImageView!
-    @IBOutlet weak var articleTitle: UILabel!
+    @IBOutlet weak var articleImage: UIImageView!
+    @IBOutlet weak var articleTitleLabel: UILabel!
     
     override func awakeFromNib() {
-      super.awakeFromNib()
-        articlePhoto.layer.cornerRadius = articlePhoto.frame.height / 20
-     }
+        super.awakeFromNib()
+        articleImage.layer.cornerRadius = articleImage.frame.height / 20
+    }
     
-    func configure(article: Article) {
-        articlePhoto.kf.setImage(with: URL(string: article.photos[0]))
-        articleTitle.text = article.title
+    func configureArticles(article: Article) {
+        articleImage.kf.setImage(with: URL(string: article.photos[0]))
+        articleTitleLabel.text = article.title
     }
 }

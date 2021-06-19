@@ -16,15 +16,18 @@ class RecordManager {
     
     lazy var database = Firestore.firestore()
     
-    let userID = UserDefaults.standard.string(forKey: "userID")
-    let defaultID = "Aimee"
-    
     func fetchAllRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
         
-        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let queryCollection = database.collection("user").document("\(userID)").collection("record")
+        
         queryCollection.addSnapshotListener { (querySnapshot, err) in
+            
             if let err = err {
+                
                 print("Error getting documents: \(err)")
+                
             } else {
                 
                 var records = [Record]()
@@ -45,26 +48,24 @@ class RecordManager {
                 completion(.success(records))
             }
         }
-
+        
     }
     
     func fetchRecord(date: Date, completion: @escaping (Result<Record?, Error>) -> Void) {
         
-        var calendar = Calendar.current
-        if let timeZone = TimeZone(identifier: "Asia/Taipei") {
-            calendar.timeZone = timeZone
-        }
-
+        let calendar = Calendar.current
+        
         let startDateComponents: DateComponents = calendar.dateComponents([.year, .month, .day], from: date)
         
         var endDateComponents = DateComponents()
         endDateComponents.day = 1
         endDateComponents.second = -1
         
-        guard let startDate = calendar.date(from: startDateComponents),
+        guard let userID = UserManager.shared.currentUser?.id,
+              let startDate = calendar.date(from: startDateComponents),
               let endDate = calendar.date(byAdding: endDateComponents, to: startDate) else { return }
         
-        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
+        let queryCollection = database.collection("user").document("\(userID)").collection("record")
         
         queryCollection
             .whereField("date", isGreaterThanOrEqualTo: startDate)
@@ -72,12 +73,15 @@ class RecordManager {
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    
                 } else {
                     
                     guard let documents = querySnapshot?.documents else { return }
-                    if documents.count == 0 {
+                    
+                    if documents.isEmpty {
                         completion(.success(nil))
                     }
+                    
                     for document in documents {
                         
                         do {
@@ -93,39 +97,47 @@ class RecordManager {
                 }
             }
     }
-
+    
     func postDailyRecord(record: inout Record, selectedDate: Date,
                          completion: @escaping (Result<String, Error>) -> Void) {
         
-        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
-        let document = queryCollection.document()
-        // 需要先有Aimee這個user
-//        let today = Date()
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let recordRef = database.collection("user").document("\(userID)").collection("record")
+        
+        let document = recordRef.document()
+        
         let calendar = Calendar.current
+        
         let todayStartTime = calendar.startOfDay(for: selectedDate)
         
         record.id = document.documentID
         record.date = todayStartTime
-
+        
         do {
             try document.setData(from: record)
             print("Record Update Success")
-        } catch let error {
+            
+        } catch {
+            
             print("Error writing record to Firestore: \(error)")
         }
         
     }
     
     func fetchPast7daysRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
+        
         let today = Date()
         let calendar = Calendar.current
         let todayStartTime = calendar.startOfDay(for: today)
         
         var endDateComponents = DateComponents()
         endDateComponents.day = -6
-        guard let sevenDaysAgo = calendar.date(byAdding: endDateComponents, to: todayStartTime) else { return }
         
-        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("record")
+        guard let userID = UserManager.shared.currentUser?.id,
+              let sevenDaysAgo = calendar.date(byAdding: endDateComponents, to: todayStartTime) else { return }
+        
+        let queryCollection = database.collection("user").document("\(userID)").collection("record")
         
         queryCollection
             .whereField("date", isGreaterThanOrEqualTo: sevenDaysAgo )
@@ -133,12 +145,14 @@ class RecordManager {
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    
                 } else {
                     
                     var records = [Record]()
                     
                     guard let documents = querySnapshot?.documents else { return }
-                    if documents.count == 0 {
+                    
+                    if documents.isEmpty {
                         completion(.success([])) 
                     }
                     
@@ -164,6 +178,7 @@ class RecordManager {
         guard let userID = UserManager.shared.currentUser?.id else { return }
         
         let recordRef = database.collection("user").document(userID).collection("record")
+        
         recordRef.document(recordID).delete { err in
             if let err = err {
                 print("Error removing document: \(err)")
@@ -171,7 +186,6 @@ class RecordManager {
                 print("Document successfully removed!")
             }
         }
-        
     }
-
+    
 }

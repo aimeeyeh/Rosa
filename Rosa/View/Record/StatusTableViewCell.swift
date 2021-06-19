@@ -8,25 +8,34 @@
 import UIKit
 
 class StatusTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var happyButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var mehButton: UIButton!
     @IBOutlet weak var sadButton: UIButton!
     @IBOutlet weak var angryButton: UIButton!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        checkAllButtonStatus()
-    }
-
+    
     var touchHandler: ((String) -> Void)?
+    
     var selectedFeeling: String = "" {
         didSet {
             touchHandler?(selectedFeeling)
         }
     }
-
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        checkAllButtonStatus()
+    }
+    
+    func checkAllButtonStatus() {
+        happyButton.checkButtonState()
+        okButton.checkButtonState()
+        mehButton.checkButtonState()
+        sadButton.checkButtonState()
+        angryButton.checkButtonState()
+    }
+    
     @IBAction func selectedHappy(_ sender: Any) {
         happyButton.isSelected = !happyButton.isSelected
         happyButton.checkButtonState()
@@ -39,7 +48,7 @@ class StatusTableViewCell: UITableViewCell {
             checkAllButtonStatus()
         }
     }
-
+    
     @IBAction func selectedOk(_ sender: Any) {
         okButton.isSelected = !okButton.isSelected
         okButton.checkButtonState()
@@ -52,7 +61,7 @@ class StatusTableViewCell: UITableViewCell {
             checkAllButtonStatus()
         }
     }
-
+    
     @IBAction func selectedMeh(_ sender: Any) {
         mehButton.isSelected = !mehButton.isSelected
         mehButton.checkButtonState()
@@ -65,7 +74,7 @@ class StatusTableViewCell: UITableViewCell {
             checkAllButtonStatus()
         }
     }
-
+    
     @IBAction func selectedSad(_ sender: Any) {
         sadButton.isSelected = !sadButton.isSelected
         sadButton.checkButtonState()
@@ -78,7 +87,7 @@ class StatusTableViewCell: UITableViewCell {
             checkAllButtonStatus()
         }
     }
-
+    
     @IBAction func selectedAngry(_ sender: Any) {
         angryButton.isSelected = !angryButton.isSelected
         angryButton.checkButtonState()
@@ -90,14 +99,6 @@ class StatusTableViewCell: UITableViewCell {
             happyButton.isSelected = false
             checkAllButtonStatus()
         }
-    }
-    
-    func checkAllButtonStatus() {
-        happyButton.checkButtonState()
-        okButton.checkButtonState()
-        mehButton.checkButtonState()
-        sadButton.checkButtonState()
-        angryButton.checkButtonState()
     }
     
 }

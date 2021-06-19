@@ -21,9 +21,6 @@ class ChallengeManager {
     
     var currentProgress: Int = 0
     
-    let userID = UserDefaults.standard.string(forKey: "userID")
-    let defaultID = "Aimee"
-    
     // MARK: - 讀取各日期的挑戰
     
     func fetchChallenge(date: Date, completion: @escaping (Result<[Challenge], Error>) -> Void) {
@@ -32,7 +29,9 @@ class ChallengeManager {
         let start = calendar.startOfDay(for: date)
         let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: date)
         
-        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let queryCollection = database.collection("user").document("\(userID)").collection("challenge")
         
         queryCollection
             .whereField("setUpDate", isGreaterThanOrEqualTo: start )
@@ -40,6 +39,7 @@ class ChallengeManager {
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    
                 } else {
                     
                     var challenges = [Challenge]()
@@ -85,13 +85,16 @@ class ChallengeManager {
             setUp30Days(date: thirtyDays[endIndex])
         }
         
-        let collection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let collection = database.collection("user").document("\(userID)").collection("challenge")
         
         for day in thirtyDays {
             
             let document = collection.document()
             challenge.id = document.documentID
             challenge.setUpDate = day
+            
             if day == todayStartTime {
                 challenge.isFirstDay = true
             } else {
@@ -101,27 +104,33 @@ class ChallengeManager {
             do {
                 try document.setData(from: challenge)
                 print("Challenge Updated Success")
-            } catch let error {
+                
+            } catch {
+                
                 print("Error writing challenge to Firestore: \(error)")
             }
         }
         
     }
     
-    // MARK: - 更新今天跟明天的challenge progress
+    // MARK: - update today and tomorrow's challenge progress
     
     func updateChallengeProgress(challenge: inout Challenge,
                                  currentProgress: Int,
                                  currentChallengeTitle: String,
                                  onChallengeCompleted: @escaping () -> Void) {
         
-        // 更新24小時內特定challenge的document
         func updateProgressOfTheDay(date: Date, isToday: Bool = false) {
+            
             let calendar = Calendar.current
+            
             let start = calendar.startOfDay(for: date)
+            
             let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: start)
             
-            let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+            guard let userID = UserManager.shared.currentUser?.id else { return }
+            
+            let challengeRef = database.collection("user").document("\(userID)").collection("challenge")
             
             challengeRef
                 .whereField("challengeTitle", isEqualTo: currentChallengeTitle)
@@ -131,10 +140,11 @@ class ChallengeManager {
                 .getDocuments { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
+                        
                     } else {
+                        
                         for document in querySnapshot!.documents {
                             
-                            //  用query條件得到的documentID 來呼叫下方的更新進度+1的function
                             self.updateDocumentProgress(documentID: document.documentID) {
                                 if isToday {
                                     onChallengeCompleted()
@@ -148,26 +158,28 @@ class ChallengeManager {
                     }
                 }
         }
+        
         self.currentProgress = currentProgress
         
-        let today = Date() // today
-        
-        // 用今天代入上方function
-        updateProgressOfTheDay(date: today, isToday: true)
-        
+        let today = Date()
         var dayComponent = DateComponents()
         dayComponent.day = 1
         let theCalendar = Calendar.current
-        let tomorrow = theCalendar.date(byAdding: dayComponent, to: today) // tomorrow
+        let tomorrow = theCalendar.date(byAdding: dayComponent, to: today)
         
-        // 用明天代入上方function
+        updateProgressOfTheDay(date: today, isToday: true)
         updateProgressOfTheDay(date: tomorrow!)
         
     }
     
     func updateDocumentProgress(documentID: String, onChallengeCompleted: () -> Void) {
-        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+        
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let queryCollection = database.collection("user").document("\(userID)").collection("challenge")
+        
         let challengeRef = queryCollection.document("\(documentID)")
+        
         let numberAfterAdding = self.currentProgress + 1
         
         if checkChallengeHasCompleted(progress: numberAfterAdding) {
@@ -193,13 +205,16 @@ class ChallengeManager {
             }
             return false
         }
-        
     }
     
     func updateIsChecked(documentID: String) {
-        let queryCollection = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+        
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let queryCollection = database.collection("user").document("\(userID)").collection("challenge")
+        
         let challengeRef = queryCollection.document("\(documentID)")
-
+        
         challengeRef.updateData([
             "isChecked": true
         ]) { err in
@@ -207,53 +222,65 @@ class ChallengeManager {
                 print("Error updating document: \(err)")
             } else {
                 print("Document property isChecked has successfully updated")
-
             }
         }
     }
     
-    // MARK: - 刪除連續30天的挑戰
+    // MARK: - challenge fails and delete 30 day challenges
     
-    func delete30dayChallenges(challengeTitle: String) {
-        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
+    func delete30dayChallenges(challengeTitle: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        // 先拿到需刪除的challenge title來得到他們的document ID
-        func getDocumentIDs() {
-            challengeRef
-                .whereField("challengeTitle", isEqualTo: challengeTitle)
-                .getDocuments { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting documents: \(err)")
-                    } else {
-                        for document in querySnapshot!.documents {
-                            print("\(document.documentID) => \(document.data())")
-                            self.executeDeleteDocuments(documentID: document.documentID)
+        guard let userID = UserManager.shared.currentUser?.id else { return }
+        
+        let challengeRef = database.collection("user").document("\(userID)").collection("challenge")
+        
+        challengeRef
+            .whereField("challengeTitle", isEqualTo: challengeTitle)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    completion(.failure(err))
+                } else {
+                    let dispatchGroup = DispatchGroup()
+                    for document in querySnapshot!.documents {
+                        dispatchGroup.enter()
+                        executeDeleteDocuments(documentID: document.documentID) { _ in
+                            dispatchGroup.leave()
                         }
+                        
+                    }
+                    dispatchGroup.notify(queue: .main) {
+                        completion(.success("deleted success!"))
                     }
                 }
-        }
+            }
         
-        getDocumentIDs()
-    }
-    
-    func executeDeleteDocuments(documentID: String) {
-        let challengeRef = database.collection("user").document("\(userID ?? defaultID)").collection("challenge")
-        challengeRef.document(documentID).delete { err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed!")
+        func executeDeleteDocuments(documentID: String, completion: @escaping (Result<String, Error>) -> Void ) {
+            
+            let challengeRef = database.collection("user").document("\(userID)").collection("challenge")
+            
+            challengeRef.document(documentID).delete { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                    completion(.failure(err))
+                } else {
+                    print("Document successfully removed!")
+                    completion(.success("Document successfully removed!"))
+                }
             }
         }
     }
     
-    // MARK: - 預設挑戰
+    // MARK: - default challenges
     
     struct DefaultChallenge {
         
         var backgroundColor: UIColor
+        
         var challengeImage: String
+        
         var challengeTitle: String
+        
         var category: String
         
         static let challenges: [DefaultChallenge] = [
@@ -323,8 +350,7 @@ class ChallengeManager {
                 challengeTitle: "Facial Mask".localized(),
                 category: "withdrawal"
             )
-            
         ]
-        
     }
+    
 }

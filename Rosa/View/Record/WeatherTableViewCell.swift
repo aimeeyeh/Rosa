@@ -8,24 +8,32 @@
 import UIKit
 
 class WeatherTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var sunnyButton: UIButton!
     @IBOutlet weak var mostlyClearButton: UIButton!
     @IBOutlet weak var cloudyButton: UIButton!
     @IBOutlet weak var rainyButton: UIButton!
+    
+    var touchHandler: ((String) -> Void)?
+    
+    var selectedWeather: String = "" {
+        didSet {
+            touchHandler?(selectedWeather)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         checkAllButtonStatus()
     }
     
-    var touchHandler: ((String) -> Void)?
-    var selectedWeather: String = "" {
-        didSet {
-            touchHandler?(selectedWeather)
-        }
+    func checkAllButtonStatus() {
+        sunnyButton.checkButtonState()
+        mostlyClearButton.checkButtonState()
+        cloudyButton.checkButtonState()
+        rainyButton.checkButtonState()
     }
-
+    
     @IBAction func selectedSunny(_ sender: Any) {
         sunnyButton.isSelected = !sunnyButton.isSelected
         sunnyButton.checkButtonState()
@@ -74,11 +82,4 @@ class WeatherTableViewCell: UITableViewCell {
         }
     }
     
-    func checkAllButtonStatus() {
-        sunnyButton.checkButtonState()
-        mostlyClearButton.checkButtonState()
-        cloudyButton.checkButtonState()
-        rainyButton.checkButtonState()
-    }
-
 }
