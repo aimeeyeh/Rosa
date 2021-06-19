@@ -13,77 +13,81 @@ import FirebaseFirestoreSwift
 class UserManager {
     
     static let shared = UserManager()
+    
     lazy var database = Firestore.firestore()
+    
     var currentUser: User?
     
     let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
     
     func checkIsExistingUser(userName: String, completion: @escaping (Result<User, Error>) -> Void) {
-
+        
         let queryCollection = database.collection("user")
+        
         let currentUserDocument = queryCollection.whereField("id", isEqualTo: userID)
+        
         currentUserDocument.getDocuments { (querySnapshot, err) in
-                   if let err = err {
-                       print("Error getting documents: \(err)")
-                   } else {
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                // new user
+                if querySnapshot!.documents.count == 0 {
                     
-                    // 新用戶
-                    if querySnapshot!.documents.count == 0 {
-                        
-                        self.currentUser = User(id: self.userID, name: userName )
-                        
-                        let queryCollection = self.database.collection("user")
-                        
-                        // swiftlint:disable all
-                        
-                        let defaultPhoto = "https://firebasestorage.googleapis.com/v0/b/rosa-5438e.appspot.com/o/images%2FAimee%2F2021-06-08%2011:20:40%20%2B0000.png?alt=media&token=eb673f9d-7e4c-48ae-aad7-2e09583c3ff0"
-                        
-                        // swiftlint:enable all
-                        
-                        queryCollection.document(self.userID).setData(["id": self.userID,
-                                                                       "name": userName,
-                                                                       "photo": defaultPhoto]) { err in
-                            if let err = err {
-                                print("Error writing document: \(err)")
-                                completion(.failure(err))
-                            } else {
-                                print("Document successfully written!")
-                                if let currentUser = self.currentUser {
-                                    completion(.success(currentUser))
-                                }
-                            }
-                        }
-
-                    } else {
+                    self.currentUser = User(id: self.userID, name: userName )
                     
-                        // 既有用戶
-                        for document in querySnapshot!.documents {
-                            
-                            do {
-                                if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                                    self.currentUser = user
-                                }
-                                
-                            } catch {
-                                
-                                completion(.failure(error))
+                    let queryCollection = self.database.collection("user")
+                    
+                    
+                    let defaultPhoto = "https://firebasestorage.googleapis.com/v0/b/rosa-5438e.appspot.com" +
+                        "/o/images%2FAimee%2F2021-06-08%2011:20:40%20%2B0000.png?" +
+                        "alt=media&token=eb673f9d-7e4c-48ae-aad7-2e09583c3ff0"
+                    
+                    queryCollection.document(self.userID).setData(["id": self.userID,
+                                                                   "name": userName,
+                                                                   "photo": defaultPhoto]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                            completion(.failure(err))
+                        } else {
+                            print("Document successfully written!")
+                            if let currentUser = self.currentUser {
+                                completion(.success(currentUser))
                             }
-                        }
-                        
-                        if let currentUser = self.currentUser {
-                            completion(.success(currentUser))
                         }
                     }
                     
-                   }
+                } else {
+                    
+                    // existed user
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                self.currentUser = user
+                            }
+                            
+                        } catch {
+                            
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                    if let currentUser = self.currentUser {
+                        completion(.success(currentUser))
+                    }
+                }
+            }
         }
-
+        
     }
     
     func fetchUser(completion: @escaping (Result<User, Error>) -> Void) {
         
         let queryCollection = database.collection("user")
+        
         let currentUserDocument = queryCollection.whereField("id", isEqualTo: userID)
+        
         currentUserDocument.getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -106,19 +110,18 @@ class UserManager {
                     completion(.success(currentUser))
                 }
             }
-            
         }
     }
     
     func blockUser(toBeBlockUserID: String) {
         
         let document = database.collection("user").document(userID)
-
+        
         document.updateData([
-                "blocklist": FieldValue.arrayUnion([toBeBlockUserID])
-            ])
+            "blocklist": FieldValue.arrayUnion([toBeBlockUserID])
+        ])
     }
-
+    
     func updateUserProfilePhoto(photoURL: String) {
         
         let currentUserDocument = database.collection("user").document(userID)
@@ -152,6 +155,7 @@ class UserManager {
     func fetchBlocklistUserData(blocklist: [String], completion: @escaping (Result<[User], Error>) -> Void) {
         
         let queryCollection = database.collection("user")
+        
         queryCollection.whereField("id", in: blocklist)
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
@@ -194,6 +198,7 @@ class UserManager {
     func fetchAuthorPhoto(authorID: String, completion: @escaping (Result<User, Error>) -> Void) {
         
         let queryCollection = database.collection("user")
+        
         queryCollection.whereField("id", isEqualTo: authorID)
             .getDocuments { (querySnapshot, err) in
                 if let err = err {

@@ -46,8 +46,6 @@ class ArticleManager {
         }
     }
     
-    let dispatchGroup = DispatchGroup()
-    
     func fetchAllArticles(completion: @escaping (Result< [Article], Error>) -> Void) {
         
         let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
@@ -56,12 +54,13 @@ class ArticleManager {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                let dispatchGroup = DispatchGroup()
                 
                 var articles = [Article]()
                 
                 for document in querySnapshot!.documents {
                     
-                    self.dispatchGroup.enter()
+                    dispatchGroup.enter()
                     
                     do {
                         if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
@@ -83,7 +82,7 @@ class ArticleManager {
                                         
                                     }
                                     
-                                    self.dispatchGroup.leave()
+                                    dispatchGroup.leave()
                                     
                                 case .failure(let error):
                                     
@@ -98,7 +97,7 @@ class ArticleManager {
                     }
                 }
                 
-                self.dispatchGroup.notify(queue: .main) {
+                dispatchGroup.notify(queue: .main) {
                     completion(.success(articles))
                 }
             }

@@ -21,7 +21,7 @@ class ChallengeManager {
     
     var currentProgress: Int = 0
     
-    // MARK: - 讀取各日期的挑戰
+    // MARK: - fetch challenge for each date
     
     func fetchChallenge(date: Date, completion: @escaping (Result<[Challenge], Error>) -> Void) {
         
@@ -62,7 +62,7 @@ class ChallengeManager {
             }
     }
     
-    // MARK: - 加入連續30天的挑戰
+    // MARK: - add selected challenge to the following 30 days
     
     func postChallenge(challenge: inout Challenge, completion: @escaping (Result<String, Error>) -> Void) {
         
@@ -226,7 +226,7 @@ class ChallengeManager {
         }
     }
     
-    // MARK: - challenge fails and delete 30 day challenges
+    // MARK: - delete 30 day challenges
     
     func delete30dayChallenges(challengeTitle: String, completion: @escaping (Result<String, Error>) -> Void) {
         
@@ -247,7 +247,6 @@ class ChallengeManager {
                         executeDeleteDocuments(documentID: document.documentID) { _ in
                             dispatchGroup.leave()
                         }
-                        
                     }
                     dispatchGroup.notify(queue: .main) {
                         completion(.success("deleted success!"))
@@ -269,6 +268,7 @@ class ChallengeManager {
                 }
             }
         }
+        
     }
     
     // MARK: - default challenges

@@ -17,5 +17,4 @@ struct Challenge: Codable {
     var challengeTitle: String
     var isFirstDay: Bool
     var isChecked: Bool
-    
 }
