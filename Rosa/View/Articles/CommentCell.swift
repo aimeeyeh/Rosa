@@ -10,22 +10,21 @@ import Kingfisher
 
 class CommentCell: UITableViewCell {
     @IBOutlet weak var authorPhoto: UIImageView!
-    @IBOutlet weak var authorName: UILabel!
-    @IBOutlet weak var postedDate: UILabel!
-    @IBOutlet weak var postedContent: UILabel!
+    @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var postedDateLabel: UILabel!
+    @IBOutlet weak var postedContentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     func configureCommentCell(comment: Comment) {
         authorPhoto.kf.setImage(with: URL(string: comment.authorPhoto))
-        authorName.text = comment.authorName
-        postedContent.text = comment.content
+        authorNameLabel.text = comment.authorName
+        postedContentLabel.text = comment.content
         if let formattedDate = comment.date.formatToDateWithoutYearOnly() {
-            postedDate.text = formattedDate
+            postedDateLabel.text = formattedDate
         }
     }
-
+    
 }

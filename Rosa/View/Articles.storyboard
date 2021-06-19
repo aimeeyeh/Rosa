@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nzu-66-Za6">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="ArticlesViewController" id="Y6W-OH-hqX" customClass="ArticlesViewController" customModule="Rosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="01a-Q0-kuY">
-                                <rect key="frame" x="16" y="52" width="354.5" height="51"/>
+                                <rect key="frame" x="16" y="8" width="540.5" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -28,7 +26,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAl-6N-aTx">
-                                <rect key="frame" x="372.5" y="71" width="25.5" height="22"/>
+                                <rect key="frame" x="558.5" y="27" width="25.5" height="22"/>
                                 <color key="tintColor" red="0.25080692770000002" green="0.22851506939999999" blue="0.24501344589999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal">
                                     <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
@@ -38,10 +36,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iKS-3L-D5F">
-                                <rect key="frame" x="16" y="103" width="382" height="30"/>
+                                <rect key="frame" x="16" y="59" width="568" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TY9-hU-yae">
-                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="284" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Trending ">
@@ -55,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrh-2l-Mi6">
-                                        <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                        <rect key="frame" x="284" y="0.0" width="284" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Following">
@@ -71,14 +69,14 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RrA-sp-6U2">
-                                <rect key="frame" x="64" y="133" width="95.5" height="1"/>
+                                <rect key="frame" x="87" y="89" width="142" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="8tb-36-ism"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-Bt-j0i">
-                                <rect key="frame" x="8" y="134" width="398" height="679"/>
+                                <rect key="frame" x="8" y="90" width="584" height="461"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wTR-rR-Oq0">
                                     <size key="itemSize" width="200" height="300"/>
@@ -88,7 +86,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleCell" id="rgu-te-iOk" customClass="CollectionViewCell" customModule="Rosa" customModuleProvider="target">
-                                        <rect key="frame" x="99" y="0.0" width="200" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZKM-gT-bfh">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
@@ -179,12 +177,12 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="arthorName" destination="vgZ-W8-Mf0" id="uvO-sd-0Bf"/>
+                                            <outlet property="arthorNameLabel" destination="vgZ-W8-Mf0" id="uvO-sd-0Bf"/>
                                             <outlet property="arthorPhoto" destination="tMS-Mh-lhy" id="9fr-4q-7eM"/>
                                             <outlet property="articlePhoto" destination="BWw-8z-YzU" id="f3h-ay-KBC"/>
-                                            <outlet property="articleTitle" destination="EwL-IA-jwC" id="9aD-19-oJC"/>
+                                            <outlet property="articleTitleLabel" destination="EwL-IA-jwC" id="9aD-19-oJC"/>
                                             <outlet property="likeButton" destination="YEI-r2-c1h" id="hPK-9O-tlz"/>
-                                            <outlet property="likedAmount" destination="kht-Hx-t51" id="zUm-qC-bdv"/>
+                                            <outlet property="likedAmountLabel" destination="kht-Hx-t51" id="zUm-qC-bdv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -194,21 +192,21 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Qp-uK-oLx">
-                                <rect key="frame" x="0.0" y="103" width="414" height="217.5"/>
+                                <rect key="frame" x="0.0" y="59" width="600" height="217.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="217.5" id="y4p-IE-b6Y"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterTableViewCell" rowHeight="43.5" id="MbY-O2-b3n" customClass="FilterTableViewCell" customModule="Rosa" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="600" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MbY-O2-b3n" id="5Up-aS-bfz">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hb-7W-zRf">
-                                                    <rect key="frame" x="189.5" y="13.5" width="35.5" height="17"/>
+                                                    <rect key="frame" x="282.5" y="13.5" width="35.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -230,7 +228,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFJ-kd-poI">
-                                <rect key="frame" x="342" y="741" width="56" height="56"/>
+                                <rect key="frame" x="528" y="479" width="56" height="56"/>
                                 <color key="backgroundColor" red="0.95763319730758667" green="0.6259654945359181" blue="0.45305596546964438" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="a10-xW-Sgn"/>
@@ -304,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KW9-FY-eRn" userLabel="UpperView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-zg-6Al" userLabel="backButton">
                                         <rect key="frame" x="10" y="28" width="35" height="22"/>
@@ -468,7 +466,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="81S-IA-JcX">
-                                <rect key="frame" x="0.0" y="109" width="414" height="1811"/>
+                                <rect key="frame" x="0.0" y="65" width="414" height="1855"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
@@ -503,7 +501,7 @@
                                                     <viewLayoutGuide key="frameLayoutGuide" id="AZL-ek-EJN"/>
                                                 </scrollView>
                                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="yrD-iK-Jdc">
-                                                    <rect key="frame" x="-10" y="456.5" width="139" height="27.5"/>
+                                                    <rect key="frame" x="-14" y="456.5" width="139" height="27.5"/>
                                                 </pageControl>
                                             </subviews>
                                             <constraints>
@@ -678,10 +676,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="authorName" destination="AlO-ii-xnX" id="k1P-Hk-snV"/>
+                                            <outlet property="authorNameLabel" destination="AlO-ii-xnX" id="k1P-Hk-snV"/>
                                             <outlet property="authorPhoto" destination="elP-5x-3OT" id="FXZ-i5-7aN"/>
-                                            <outlet property="postedContent" destination="dG3-M1-DzB" id="u2U-AT-uPe"/>
-                                            <outlet property="postedDate" destination="CJr-xx-7ib" id="Aph-xU-skC"/>
+                                            <outlet property="postedContentLabel" destination="dG3-M1-DzB" id="u2U-AT-uPe"/>
+                                            <outlet property="postedDateLabel" destination="CJr-xx-7ib" id="Aph-xU-skC"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoCommentCell" rowHeight="88" id="VlN-TF-S4I" customClass="NoCommentCell" customModule="Rosa" customModuleProvider="target">

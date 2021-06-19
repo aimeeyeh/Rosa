@@ -8,24 +8,32 @@
 import UIKit
 
 class MealTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var dairyFreeButton: UIButton!
     @IBOutlet weak var glutenFreeButton: UIButton!
     @IBOutlet weak var junkFreeButton: UIButton!
     @IBOutlet weak var sugarFreeButton: UIButton!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        checkAllButtonStatus()
-    }
     
     var touchHandler: (([Bool]) -> Void)?
+    
     var mealStatus: [Bool] = [false, false, false, false] {
         didSet {
             touchHandler?(mealStatus)
         }
     }
-
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        checkAllButtonStatus()
+    }
+    
+    func checkAllButtonStatus() {
+        dairyFreeButton.checkButtonState()
+        glutenFreeButton.checkButtonState()
+        junkFreeButton.checkButtonState()
+        sugarFreeButton.checkButtonState()
+    }
+    
     @IBAction func selectedDairy(_ sender: Any) {
         dairyFreeButton.isSelected = !dairyFreeButton.isSelected
         dairyFreeButton.checkButtonState()
@@ -64,13 +72,6 @@ class MealTableViewCell: UITableViewCell {
         } else {
             mealStatus[3] = false
         }
-    }
-    
-    func checkAllButtonStatus() {
-        dairyFreeButton.checkButtonState()
-        glutenFreeButton.checkButtonState()
-        junkFreeButton.checkButtonState()
-        sugarFreeButton.checkButtonState()
     }
     
 }

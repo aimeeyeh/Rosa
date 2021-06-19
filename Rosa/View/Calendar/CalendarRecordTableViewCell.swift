@@ -9,8 +9,8 @@ import UIKit
 import Kingfisher
 
 class CalendarRecordTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var recordBackground: UIView!
+    
+    @IBOutlet weak var recordBackgroundView: UIView!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var waterLabel: UILabel!
@@ -31,10 +31,11 @@ class CalendarRecordTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        recordBackground.layer.masksToBounds = true
+        recordBackgroundView.layer.masksToBounds = true
     }
     
     func configure(record: Record) {
+        
         self.weatherImage.image = UIImage(named: record.weather)
         self.weatherLabel.text = record.weather.localized()
         self.waterLabel.text = String(record.water*250) + " ml".localized()

@@ -14,12 +14,11 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var challengeImage: UIImageView!
     
     func configureChallenge(challenges: [ChallengeManager.DefaultChallenge], indexPath: IndexPath) {
-        
-        backgroundCircle.backgroundColor = challenges[indexPath.row].backgroundColor
-        challengeImage.image = UIImage(named: challenges[indexPath.row].challengeImage)
+        let challenge = challenges[indexPath.row]
+        backgroundCircle.backgroundColor = challenge.backgroundColor
+        challengeImage.image = UIImage(named: challenge.challengeImage)
         challengeImage.alpha = 0.3
-        challengeLabel.text = challenges[indexPath.row].challengeTitle
-
+        challengeLabel.text = challenge.challengeTitle
     }
     
     override var isSelected: Bool {
@@ -29,7 +28,7 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
                 backgroundCircle.alpha = 1
                 challengeLabel.font = UIFont.boldSystemFont(ofSize: 12.0)
                 challengeLabel.backgroundColor = .systemGray5
-
+                
             } else {
                 challengeImage.alpha = 0.5
                 backgroundCircle.alpha = 0.5
@@ -38,5 +37,5 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
 }

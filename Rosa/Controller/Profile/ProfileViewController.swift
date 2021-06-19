@@ -167,9 +167,9 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell",
                                                          for: indexPath) as? ArticleCollectionViewCell {
             if currentType == .postedArticles {
-                cell.configure(article: postedArticles[indexPath.row])
+                cell.configureArticles(article: postedArticles[indexPath.row])
             } else {
-                cell.configure(article: likedArticles[indexPath.row])
+                cell.configureArticles(article: likedArticles[indexPath.row])
             }
             
             return cell

@@ -26,8 +26,6 @@
 		7A247B0E2651216500E436D6 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B0D2651216500E436D6 /* MealTableViewCell.swift */; };
 		7A247B102651218D00E436D6 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B0F2651218D00E436D6 /* ActivityTableViewCell.swift */; };
 		7A247B122651219C00E436D6 /* RemarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */; };
-		7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */; };
-		7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */; };
 		7A329BCD2662B1A800DE4630 /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A329BCC2662B1A800DE4630 /* ChartXAxisFormatter.swift */; };
 		7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */; };
 		7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */; };
@@ -73,7 +71,6 @@
 		7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE49F264BE64600A20324 /* UIView+Extension.swift */; };
 		7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */; };
 		7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */; };
-		7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A8264C02D400A20324 /* RecordViewController.swift */; };
 		7AAFE4AC264C031A00A20324 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */; };
 		7AAFE4AF264C035E00A20324 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */; };
 		7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */; };
@@ -118,8 +115,6 @@
 		7A247B0D2651216500E436D6 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		7A247B0F2651218D00E436D6 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkTableViewCell.swift; sourceTree = "<group>"; };
-		7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		7A329BCC2662B1A800DE4630 /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -167,7 +162,6 @@
 		7AAFE49F264BE64600A20324 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
-		7AAFE4A8264C02D400A20324 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
@@ -244,9 +238,7 @@
 		7A2C2E77264D59D90078EBA2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				7A2C2E78264D59EA0078EBA2 /* HomeCollectionViewCell.swift */,
 				7A329BCC2662B1A800DE4630 /* ChartXAxisFormatter.swift */,
-				7A2C2E7C264E28340078EBA2 /* HeaderCollectionReusableView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -394,7 +386,6 @@
 		7AAFE4A7264C00F200A20324 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				7AAFE4A8264C02D400A20324 /* RecordViewController.swift */,
 				7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */,
 				7A44AE05265434830051781C /* WaterViewController.swift */,
 				7A44AE07265434900051781C /* SleepViewController.swift */,
@@ -646,7 +637,6 @@
 				7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */,
 				7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */,
 				7A3E7F9E2657A4AF005F8768 /* Challenge.swift in Sources */,
-				7A2C2E7D264E28340078EBA2 /* HeaderCollectionReusableView.swift in Sources */,
 				7A14BDFF265EA8CB00ED17E2 /* UIView+Message.swift in Sources */,
 				7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */,
 				7A247B0E2651216500E436D6 /* MealTableViewCell.swift in Sources */,
@@ -667,9 +657,7 @@
 				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
 				7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
-				7AAFE4A9264C02D400A20324 /* RecordViewController.swift in Sources */,
 				7A5B7E97267B55480026EE0A /* UIStoryboard+Extension.swift in Sources */,
-				7A2C2E79264D59EA0078EBA2 /* HomeCollectionViewCell.swift in Sources */,
 				7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */,
 				7AF6EDD92667C3D800F04200 /* Font.swift in Sources */,
 				7A247B0A2651210200E436D6 /* PhotoTableViewCell.swift in Sources */,

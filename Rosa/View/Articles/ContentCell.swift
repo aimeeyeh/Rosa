@@ -15,11 +15,9 @@ class ContentCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
     }
     
     func configureContent(article: Article) {
-        
         titleLabel.text = article.title
         contentLabel.text = article.content
         if let formattedDate = article.createdTime.formatToDateOnly() {

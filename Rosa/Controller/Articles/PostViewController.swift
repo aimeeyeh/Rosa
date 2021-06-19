@@ -125,8 +125,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         lottieView.isHidden = false
         picker.dismiss(animated: true, completion: nil)
-        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
-        guard let imageData = image.pngData() else { return }
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage,
+              let imageData = image.pngData() else { return }
         let userID = UserDefaults.standard.string(forKey: "userID")
         let defaultID = "Aimee"
         let imageName = "images/\(userID ?? defaultID)/\(Date()).png"

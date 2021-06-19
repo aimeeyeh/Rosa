@@ -8,11 +8,12 @@
 import UIKit
 
 class NoCommentCell: UITableViewCell {
-
+    
     @IBOutlet weak var noCommentsLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         noCommentsLabel.text = "No comments yet".localized()
     }
-
+    
 }

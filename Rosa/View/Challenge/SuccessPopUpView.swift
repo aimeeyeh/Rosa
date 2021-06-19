@@ -14,7 +14,6 @@ class MyPopUpView: UIView {
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let actionButton = UIButton()
-    
     private let message: EKPopUpMessage
     
     init(with message: EKPopUpMessage) {

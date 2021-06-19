@@ -51,6 +51,7 @@ class ArticleManager {
     func fetchAllArticles(completion: @escaping (Result< [Article], Error>) -> Void) {
         
         let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
+        
         queryCollection.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -76,12 +77,12 @@ class ArticleManager {
                                 case .success(let user):
                                     
                                     if let index = articles.firstIndex(where: { $0.id == articleID }) {
-                                    
+                                        
                                         articles[index].authorPhoto = user.photo ?? ""
                                         articles[index].authorName = user.name
                                         
                                     }
-                            
+                                    
                                     self.dispatchGroup.leave()
                                     
                                 case .failure(let error):
@@ -89,10 +90,10 @@ class ArticleManager {
                                     print("fetchData.failure: \(error)")
                                 }
                             }
-                            
                         }
                         
                     } catch {
+                        
                         print(error)
                     }
                 }
@@ -101,11 +102,11 @@ class ArticleManager {
                     completion(.success(articles))
                 }
             }
-                
         }
     }
     
     func fetchAuthorLatest(authorID: String, completion: @escaping (Result<User, Error>) -> Void) {
+        
         let queryCollection = database.collection("user")
         queryCollection
             .whereField("id", isEqualTo: authorID)
@@ -133,23 +134,23 @@ class ArticleManager {
     func postComment(documentID: String, comment: String) {
         
         let userID = user?.id
+        
         let userName = user?.name
+        
         guard let userPhoto = user?.photo else { return }
         
         let document = database.collection("articles").document(documentID).collection("comments").document()
-        let comment = Comment(id: document.documentID,
-                              authorID: userID ?? "Fail",
-                              authorName: userName ?? "Anonymous",
-                              authorPhoto: userPhoto ,
-                              content: comment,
-                              date: Date())
-
+        
+        let comment = Comment(id: document.documentID, authorID: userID ?? "Fail", authorName: userName ?? "Anonymous",
+                              authorPhoto: userPhoto, content: comment, date: Date())
+        
         do {
             try  document.setData(from: comment)
             
             print("Comment Posted Success")
             
-        } catch let error {
+        } catch {
+            
             print("Error posting comment to Firestore: \(error)")
         }
     }
@@ -158,6 +159,7 @@ class ArticleManager {
         
         let queryCollection = database.collection("articles").document(articleID).collection("comments")
             .order(by: "date", descending: false)
+        
         queryCollection.addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -173,6 +175,7 @@ class ArticleManager {
                         }
                         
                     } catch {
+                        
                         print(error)
                     }
                 }
@@ -184,7 +187,9 @@ class ArticleManager {
     }
     
     func queryCategory(category: String, completion: @escaping (Result<[Article], Error>) -> Void) {
+        
         let queryCollection = database.collection("articles")
+        
         queryCollection.whereField("category", isEqualTo: category)
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
@@ -201,11 +206,11 @@ class ArticleManager {
                             }
                             
                         } catch {
+                            
                             completion(.failure(error))
                         }
                     }
                     completion(.success(articles))
-                    
                 }
             }
     }
@@ -216,15 +221,15 @@ class ArticleManager {
         guard let userID = user?.id else { return }
         
         let document = database.collection("user").document(userID)
-
+        
         document.updateData([
-                "likedArticles": FieldValue.arrayUnion([articleID])
-            ])
+            "likedArticles": FieldValue.arrayUnion([articleID])
+        ])
         
         // update article
-        
         let subtractedNumber = currentLikes + 1
         let articleDocument = database.collection("articles").document(articleID)
+        
         articleDocument.updateData([
             "likes": subtractedNumber
         ]) { err in
@@ -234,7 +239,7 @@ class ArticleManager {
                 print("Document successfully updated")
             }
         }
-
+        
     }
     
     func unLikeArticles(articleID: String, currentLikes: Int) {
@@ -243,14 +248,15 @@ class ArticleManager {
         guard let userID = user?.id else { return }
         
         let document = database.collection("user").document(userID)
-
+        
         document.updateData([
-                "likedArticles": FieldValue.arrayRemove([articleID])
-            ])
+            "likedArticles": FieldValue.arrayRemove([articleID])
+        ])
         
         // update article
         let subtractedNumber = currentLikes - 1
         let articleDocument = database.collection("articles").document(articleID)
+        
         articleDocument.updateData([
             "likes": subtractedNumber
         ]) { err in
@@ -268,16 +274,16 @@ class ArticleManager {
         guard let userID = user?.id else { return }
         
         let currentUserDocument = database.collection("user").document(userID)
-
+        
         currentUserDocument.updateData([
-                "followed": FieldValue.arrayUnion([authorID])
-            ])
+            "followed": FieldValue.arrayUnion([authorID])
+        ])
         
         let followeduserDocument = database.collection("user").document(authorID)
         
         followeduserDocument.updateData([
-                "followers": FieldValue.arrayUnion([userID])
-            ])
+            "followers": FieldValue.arrayUnion([userID])
+        ])
         
     }
     
@@ -286,23 +292,25 @@ class ArticleManager {
         guard let userID = user?.id else { return }
         
         let currentUserDocument = database.collection("user").document(userID)
-
+        
         currentUserDocument.updateData([
-                "followed": FieldValue.arrayRemove([authorID])
-            ])
+            "followed": FieldValue.arrayRemove([authorID])
+        ])
         
         let followeduserDocument = database.collection("user").document(authorID)
         
         followeduserDocument.updateData([
-                "followers": FieldValue.arrayRemove([userID])
-            ])
+            "followers": FieldValue.arrayRemove([userID])
+        ])
         
     }
     
     func fetchPostedArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         
         guard let userID = user?.id else { return }
+        
         let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
+        
         queryCollection.whereField("authorID", isEqualTo: userID)
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
@@ -319,6 +327,7 @@ class ArticleManager {
                             }
                             
                         } catch {
+                            
                             completion(.failure(error))
                         }
                     }
@@ -333,10 +342,12 @@ class ArticleManager {
         guard let userLikedArticles = user?.likedArticles else { return }
         
         let queryCollection = database.collection("articles").order(by: "createdTime", descending: true)
+        
         queryCollection.whereField("id", in: userLikedArticles)
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    
                 } else {
                     
                     var articles = [Article]()
@@ -349,18 +360,18 @@ class ArticleManager {
                             }
                             
                         } catch {
+                            
                             completion(.failure(error))
                         }
                     }
                     completion(.success(articles))
                 }
             }
-        
     }
     
     func deleteArticle(artcleID: String) {
-        let challengeRef = database.collection("articles")
-        challengeRef.document(artcleID).delete { err in
+        let articlesRef = database.collection("articles")
+        articlesRef.document(artcleID).delete { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
@@ -370,8 +381,8 @@ class ArticleManager {
     }
     
     func deleteComment(articleID: String, commentID: String) {
-        let challengeRef = database.collection("articles").document(articleID).collection("comments")
-        challengeRef.document(commentID).delete { err in
+        let commentsRef = database.collection("articles").document(articleID).collection("comments")
+        commentsRef.document(commentID).delete { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
@@ -386,30 +397,31 @@ class ArticleManager {
         let queryCollection = database.collection("articles")
         queryCollection.whereField("id", isEqualTo: articleID)
             .getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                
-                var deeplinkArticle: Article?
-                
-                for document in querySnapshot!.documents {
+                if let err = err {
+                    print("Error getting documents: \(err)")
                     
-                    do {
-                        if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
-                            deeplinkArticle = article
-                        }
+                } else {
+                    
+                    var deeplinkArticle: Article?
+                    
+                    for document in querySnapshot!.documents {
                         
-                    } catch {
-                        print(error)
+                        do {
+                            if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                                deeplinkArticle = article
+                            }
+                            
+                        } catch {
+                            
+                            print(error)
+                        }
+                    }
+                    
+                    if let deeplinkArticle = deeplinkArticle {
+                        completion(.success(deeplinkArticle))
                     }
                 }
-                if let deeplinkArticle = deeplinkArticle {
-                    completion(.success(deeplinkArticle))
-                }
             }
-            
-        }
-        
     }
     
 }

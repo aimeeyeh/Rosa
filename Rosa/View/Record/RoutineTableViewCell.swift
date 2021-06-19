@@ -8,7 +8,7 @@
 import UIKit
 
 class RoutineTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var waterButton: UIButton!
     @IBOutlet weak var sleepButton: UIButton!
     
@@ -16,7 +16,6 @@ class RoutineTableViewCell: UITableViewCell {
         super.awakeFromNib()
         waterButton.checkButtonState()
         sleepButton.checkButtonState()
-
     }
     
 }

@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 
 class BlocklistTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var unblockButton: UIButton!

@@ -72,9 +72,9 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource,
         self.navigationController?.isNavigationBarHidden = true
         picker.dismiss(animated: true, completion: nil)
         
-        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
-        guard let imageData = image.pngData() else { return }
-        guard let userID = UserManager.shared.currentUser?.id else { return }
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage,
+              let imageData = image.pngData(),
+              let userID = UserManager.shared.currentUser?.id else { return }
         
         let imageName = "images/\(userID)/\(Date()).png"
         let ref = storage.child(imageName)
