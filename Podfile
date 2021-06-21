@@ -4,15 +4,14 @@
 target 'Rosa' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
   # Pods for Rosa
 
   pod 'SwiftLint'
-  pod 'Firebase/Firestore'
-  pod 'FirebaseFirestoreSwift'
-  pod 'Firebase/Storage'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Firestore', '~> 7.2-M1'
+  pod 'FirebaseFirestoreSwift', '~> 7.2-M1'
+  pod 'Firebase/Storage', '7.2.0-M1'
+  pod 'Firebase/Auth', '7.2.0-M1'
+  pod 'Firebase/Crashlytics', '7.2.0-M1'
   pod "CollectionViewWaterfallLayout"
   pod 'MKRingProgressView'
   pod 'FSCalendar'
@@ -24,5 +23,12 @@ target 'Rosa' do
   pod 'IQKeyboardManagerSwift'
   pod "LiquidFloatingActionButton"
   pod 'SnapKit', '~> 5.0.0'
+  
+  target 'RosaTests' do
+      inherit! :search_paths
+#      pod 'Firebase', '~> 7.2-M1'
+#      pod 'FirebaseFirestoreSwift', '~> 7.2-M1'
+      pod 'GoogleUtilities'
+  end
   
 end

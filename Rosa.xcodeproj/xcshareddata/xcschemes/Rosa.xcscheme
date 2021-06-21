@@ -28,6 +28,31 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7ADC5ACC2680765400043C35"
+               BuildableName = "RosaTests.xctest"
+               BlueprintName = "RosaTests"
+               ReferencedContainer = "container:Rosa.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "RosaFailureTests">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A9B49F7267F969B002A4EA2"
+               BuildableName = "RosaFailureTest.xctest"
+               BlueprintName = "RosaFailureTest"
+               ReferencedContainer = "container:Rosa.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

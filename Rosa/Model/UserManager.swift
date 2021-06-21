@@ -38,7 +38,6 @@ class UserManager {
                     
                     let queryCollection = self.database.collection("user")
                     
-                    
                     let defaultPhoto = "https://firebasestorage.googleapis.com/v0/b/rosa-5438e.appspot.com" +
                         "/o/images%2FAimee%2F2021-06-08%2011:20:40%20%2B0000.png?" +
                         "alt=media&token=eb673f9d-7e4c-48ae-aad7-2e09583c3ff0"
