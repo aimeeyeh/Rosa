@@ -28,7 +28,6 @@
 		7A247B122651219C00E436D6 /* RemarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A247B112651219C00E436D6 /* RemarkTableViewCell.swift */; };
 		7A329BCD2662B1A800DE4630 /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A329BCC2662B1A800DE4630 /* ChartXAxisFormatter.swift */; };
 		7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */; };
-		7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */; };
 		7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7F992657A1F5005F8768 /* RecordManager.swift */; };
 		7A3E7F9C2657A279005F8768 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9B2657A279005F8768 /* Record.swift */; };
 		7A3E7F9E2657A4AF005F8768 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9D2657A4AF005F8768 /* Challenge.swift */; };
@@ -69,26 +68,38 @@
 		7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */; };
 		7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE492264BE29100A20324 /* Articles.storyboard */; };
 		7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE49F264BE64600A20324 /* UIView+Extension.swift */; };
-		7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */; };
-		7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */; };
 		7AAFE4AC264C031A00A20324 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */; };
 		7AAFE4AF264C035E00A20324 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */; };
 		7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */; };
 		7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */; };
 		7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B6264C125300A20324 /* CalenderViewController.swift */; };
-		7ABDDC952674EDD1006A7549 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */; };
 		7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13352655129300B177F2 /* FilterTableViewCell.swift */; };
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
-		7AF6EDD92667C3D800F04200 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6EDD82667C3D800F04200 /* Font.swift */; };
+		7ADC5ABA268073F600043C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */; };
+		7ADC5AD92680768300043C35 /* RosaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC5AD72680768300043C35 /* RosaTests.swift */; };
+		7AF6EDD92667C3D800F04200 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6EDD82667C3D800F04200 /* UIFont.swift */; };
 		7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */; };
 		7AFC52FE2673B03800966298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC52FD2673B03800966298 /* Assets.xcassets */; };
 		7AFE438B2660E86800F94330 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE438A2660E86800F94330 /* Date+Extension.swift */; };
 		7AFE438E26613B8200F94330 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AFE438D26613B8200F94330 /* SignIn.storyboard */; };
 		7AFE439126613BA700F94330 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE439026613BA700F94330 /* SignInViewController.swift */; };
+		C3CF86F67192696549B59A9A /* Pods_RosaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6202FE6F9552C8AA9B8C0846 /* Pods_RosaTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7ADC5AD22680765400043C35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A8DB4FE264BB62100EE6D9D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A8DB505264BB62100EE6D9D;
+			remoteInfo = Rosa;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4246E6FD81E489519C9388B7 /* Pods-RosaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RosaTests.debug.xcconfig"; path = "Target Support Files/Pods-RosaTests/Pods-RosaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6202FE6F9552C8AA9B8C0846 /* Pods_RosaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RosaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A108A8F2675F00900BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		7A108A902675F00900BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7A108A992675F17300BDA4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -160,18 +171,18 @@
 		7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7AAFE492264BE29100A20324 /* Articles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Articles.storyboard; sourceTree = "<group>"; };
 		7AAFE49F264BE64600A20324 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		7AAFE4AB264C031A00A20324 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		7AAFE4AE264C035E00A20324 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B6264C125300A20324 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
-		7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7ACD13352655129300B177F2 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
-		7AF6EDD82667C3D800F04200 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		7ADC5ACD2680765400043C35 /* RosaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RosaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ADC5AD72680768300043C35 /* RosaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosaTests.swift; sourceTree = "<group>"; };
+		7ADC5AD82680768300043C35 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AF6EDD82667C3D800F04200 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRecordTableViewCell.swift; sourceTree = "<group>"; };
 		7AFC52FD2673B03800966298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AFE438A2660E86800F94330 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -179,6 +190,7 @@
 		7AFE438D26613B8200F94330 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		7AFE439026613BA700F94330 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C374A870328953E5950C01F1 /* Pods_Rosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9712F86941760C5AE6D86C1 /* Pods-RosaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RosaTests.release.xcconfig"; path = "Target Support Files/Pods-RosaTests/Pods-RosaTests.release.xcconfig"; sourceTree = "<group>"; };
 		CBCA81D98234E9CED393A9B2 /* Pods-Rosa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.debug.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DF160F36CA96BCB712C384 /* Pods-Rosa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rosa.release.xcconfig"; path = "Target Support Files/Pods-Rosa/Pods-Rosa.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +201,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				59C400ECA95DA5BE0939EA53 /* Pods_Rosa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ADC5ACA2680765400043C35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3CF86F67192696549B59A9A /* Pods_RosaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				7A8DB508264BB62100EE6D9D /* Rosa */,
+				7ADC5ACE2680765400043C35 /* RosaTests */,
 				7A8DB507264BB62100EE6D9D /* Products */,
 				C218572EBDBE494507410825 /* Pods */,
 				C09C60E96DB46533420E5524 /* Frameworks */,
@@ -274,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				7A8DB506264BB62100EE6D9D /* Rosa.app */,
+				7ADC5ACD2680765400043C35 /* RosaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,16 +382,13 @@
 		7AAFE489264BCCFF00A20324 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */,
 				7AAFE49F264BE64600A20324 /* UIView+Extension.swift */,
 				7A14BDFE265EA8CB00ED17E2 /* UIView+Message.swift */,
 				7A6B01CC265168DD0018547E /* UIButton+Extension.swift */,
-				7AAFE4A1264BE66E00A20324 /* UITableView+Extension.swift */,
-				7AAFE4A3264BE6A900A20324 /* UICollectionView+Extension.swift */,
 				7A20F635264CF4DA00019D3D /* UIColor+Extension.swift */,
 				7AFE438A2660E86800F94330 /* Date+Extension.swift */,
-				7AF6EDD82667C3D800F04200 /* Font.swift */,
-				7ABDDC942674EDD1006A7549 /* UIViewController+Extension.swift */,
-				7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */,
+				7AF6EDD82667C3D800F04200 /* UIFont.swift */,
 				7A108A9C2676711F00BDA4BD /* String.swift */,
 			);
 			path = Extensions;
@@ -443,6 +462,15 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		7ADC5ACE2680765400043C35 /* RosaTests */ = {
+			isa = PBXGroup;
+			children = (
+				7ADC5AD82680768300043C35 /* Info.plist */,
+				7ADC5AD72680768300043C35 /* RosaTests.swift */,
+			);
+			path = RosaTests;
+			sourceTree = "<group>";
+		};
 		7AFE438F26613B8C00F94330 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				C374A870328953E5950C01F1 /* Pods_Rosa.framework */,
+				6202FE6F9552C8AA9B8C0846 /* Pods_RosaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -465,6 +494,8 @@
 			children = (
 				CBCA81D98234E9CED393A9B2 /* Pods-Rosa.debug.xcconfig */,
 				F1DF160F36CA96BCB712C384 /* Pods-Rosa.release.xcconfig */,
+				4246E6FD81E489519C9388B7 /* Pods-RosaTests.debug.xcconfig */,
+				C9712F86941760C5AE6D86C1 /* Pods-RosaTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -493,6 +524,26 @@
 			productReference = 7A8DB506264BB62100EE6D9D /* Rosa.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7ADC5ACC2680765400043C35 /* RosaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ADC5AD42680765400043C35 /* Build configuration list for PBXNativeTarget "RosaTests" */;
+			buildPhases = (
+				306E08853DB1549B9E5FA759 /* [CP] Check Pods Manifest.lock */,
+				7ADC5AC92680765400043C35 /* Sources */,
+				7ADC5ACA2680765400043C35 /* Frameworks */,
+				7ADC5ACB2680765400043C35 /* Resources */,
+				8CE902A779D609C566024455 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ADC5AD32680765400043C35 /* PBXTargetDependency */,
+			);
+			name = RosaTests;
+			productName = RosaTests;
+			productReference = 7ADC5ACD2680765400043C35 /* RosaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -504,6 +555,10 @@
 				TargetAttributes = {
 					7A8DB505264BB62100EE6D9D = {
 						CreatedOnToolsVersion = 12.5;
+					};
+					7ADC5ACC2680765400043C35 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 7A8DB505264BB62100EE6D9D;
 					};
 				};
 			};
@@ -522,6 +577,7 @@
 			projectRoot = "";
 			targets = (
 				7A8DB505264BB62100EE6D9D /* Rosa */,
+				7ADC5ACC2680765400043C35 /* RosaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -531,10 +587,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADC5ABA268073F600043C35 /* GoogleService-Info.plist in Resources */,
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
 				7A605D1C266F7CB5007BF42B /* bouncingBall.json in Resources */,
 				7A108AB32677464A00BDA4BD /* Profile.storyboard in Resources */,
-				7A3E7F9826564CE6005F8768 /* GoogleService-Info.plist in Resources */,
 				7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */,
 				7A108AAF2677445600BDA4BD /* Calender.storyboard in Resources */,
 				7A108AB826774A6F00BDA4BD /* Challenge.storyboard in Resources */,
@@ -547,9 +603,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7ADC5ACB2680765400043C35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		306E08853DB1549B9E5FA759 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RosaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7A24297A264BBB4F0069CB73 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,6 +671,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		8CE902A779D609C566024455 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RosaTests/Pods-RosaTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RosaTests/Pods-RosaTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RosaTests/Pods-RosaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		BA83060693B8F66A447486ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -643,7 +745,6 @@
 				7A7F192D266A77710058DA98 /* EditNameTableViewCell.swift in Sources */,
 				7A7F1935266A8A070058DA98 /* BlocklistTableViewCell.swift in Sources */,
 				7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */,
-				7AAFE4A4264BE6A900A20324 /* UICollectionView+Extension.swift in Sources */,
 				7A7F1921266A22250058DA98 /* PrivacyViewController.swift in Sources */,
 				7A247B102651218D00E436D6 /* ActivityTableViewCell.swift in Sources */,
 				7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */,
@@ -651,7 +752,6 @@
 				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
 				7A7F1931266A7B3B0058DA98 /* EditBlocklistViewController.swift in Sources */,
 				7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */,
-				7ABDDC952674EDD1006A7549 /* UIViewController+Extension.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
 				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
@@ -659,9 +759,8 @@
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
 				7A5B7E97267B55480026EE0A /* UIStoryboard+Extension.swift in Sources */,
 				7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */,
-				7AF6EDD92667C3D800F04200 /* Font.swift in Sources */,
+				7AF6EDD92667C3D800F04200 /* UIFont.swift in Sources */,
 				7A247B0A2651210200E436D6 /* PhotoTableViewCell.swift in Sources */,
-				7AAFE4A2264BE66E00A20324 /* UITableView+Extension.swift in Sources */,
 				7A7F192B266A775B0058DA98 /* EditPhotoTableViewCell.swift in Sources */,
 				7A6B0512266E2FC80047014C /* FloatingButton.swift in Sources */,
 				7A6B0516266E772E0047014C /* TutorialViewController.swift in Sources */,
@@ -701,7 +800,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7ADC5AC92680765400043C35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ADC5AD92680768300043C35 /* RosaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7ADC5AD32680765400043C35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A8DB505264BB62100EE6D9D /* Rosa */;
+			targetProxy = 7ADC5AD22680765400043C35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7A108A9A2675F17300BDA4BD /* Localizable.strings */ = {
@@ -898,7 +1013,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rosa/Rosa.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZD95UZDB52;
 				INFOPLIST_FILE = Rosa/Info.plist;
@@ -906,7 +1021,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aimeeyeh.Rosa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -924,7 +1039,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rosa/Rosa.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZD95UZDB52;
 				INFOPLIST_FILE = Rosa/Info.plist;
@@ -932,12 +1047,56 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aimeeyeh.Rosa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		7ADC5AD52680765400043C35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4246E6FD81E489519C9388B7 /* Pods-RosaTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZD95UZDB52;
+				INFOPLIST_FILE = RosaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RosaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rosa.app/Rosa";
+			};
+			name = Debug;
+		};
+		7ADC5AD62680765400043C35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9712F86941760C5AE6D86C1 /* Pods-RosaTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZD95UZDB52;
+				INFOPLIST_FILE = RosaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RosaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rosa.app/Rosa";
 			};
 			name = Release;
 		};
@@ -958,6 +1117,15 @@
 			buildConfigurations = (
 				7A8DB51B264BB62100EE6D9D /* Debug */,
 				7A8DB51C264BB62100EE6D9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ADC5AD42680765400043C35 /* Build configuration list for PBXNativeTarget "RosaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ADC5AD52680765400043C35 /* Debug */,
+				7ADC5AD62680765400043C35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

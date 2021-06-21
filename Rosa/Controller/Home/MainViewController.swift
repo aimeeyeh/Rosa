@@ -58,7 +58,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         
         didSet {
             
-            if last7DayRecords.count == 0 {
+            if last7DayRecords.isEmpty {
                 waterChartView.isHidden = true
                 sleepLineChartView.isHidden = true
                 
@@ -89,8 +89,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     var challenges: [Challenge] = [] {
         didSet {
             ringProgressView.reloadInputViews()
-            waterChartView.reloadInputViews()
-            if challenges.count == 0 {
+            if challenges.isEmpty {
                 return
             } else {
                 self.overallProgress = Double(challenges[0].progress)/30 * 100
@@ -116,6 +115,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         hideNoChartLabels()
+        configureViews()
         if let query = UserDefaults.standard.string(forKey: "query") {
             fetchDeeplinkArticle(query)
         }
@@ -125,11 +125,7 @@ class MainViewController: UIViewController, ChartViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         self.resetData()
-        fetchChallenge(date: Date())
-        fetchPreviousRecords()
-        configureViews()
-        configureProgressView()
-        configurePhotoView()
+        fetchCurrentUserAndReloadViews()
         
     }
     
@@ -293,6 +289,26 @@ class MainViewController: UIViewController, ChartViewDelegate {
     }
     
     // MARK: - Model related functions
+    
+    func fetchCurrentUserAndReloadViews() {
+        UserManager.shared.fetchUser { result in
+            
+            switch result {
+            
+            case .success(let user):
+                
+                self.fetchChallenge(date: Date())
+                self.fetchPreviousRecords()
+                self.configureProgressView()
+                self.configurePhotoView()
+                print(user)
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
     
     func fetchChallenge(date: Date) {
         

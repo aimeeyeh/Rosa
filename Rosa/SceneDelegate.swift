@@ -42,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
         
-        if userID == "" {
+        if userID.isEmpty {
             storyboard = UIStoryboard.signIn
         } else {
             storyboard = UIStoryboard.main

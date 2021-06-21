@@ -9,6 +9,7 @@ import UIKit
 import SwiftEntryKit
 
 // MARK: - UILabel
+
 extension UILabel {
     
     var style: EKProperty.LabelStyle {
@@ -39,7 +40,9 @@ extension UILabel {
 }
 
 // MARK: - UIButton
+
 extension UIButton {
+    
     var buttonContent: EKProperty.ButtonContent {
         set {
             setTitle(newValue.label.text, for: .normal)
@@ -57,7 +60,9 @@ extension UIButton {
 }
 
 // MARK: - UIImageView
+
 extension UIImageView {
+    
     var imageContent: EKProperty.ImageContent {
         set {
             stopAnimating()
@@ -115,4 +120,3 @@ extension UIImageView {
         }
     }
 }
-

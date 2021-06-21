@@ -15,7 +15,7 @@ import LiquidFloatingActionButton
 class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSCalendarDataSource, FSCalendarDelegate {
     
     @IBOutlet weak var calenderHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var calnderView: FSCalendar!
+    @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     
     let blackView = UIView(frame: UIScreen.main.bounds)
@@ -26,7 +26,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     
     var dateArray: [Date] = [] {
         didSet {
-            calnderView.reloadData()
+            calendarView.reloadData()
         }
     }
     
@@ -36,7 +36,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
             for record in allRecords {
                 dateArray.append(record.date)
             }
-            calnderView.reloadData()
+            calendarView.reloadData()
         }
     }
     
@@ -64,8 +64,8 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     
     fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
         [unowned self] in
-        let panGesture = UIPanGestureRecognizer(target: calnderView,
-                                                action: #selector(calnderView.handleScopeGesture(_:)))
+        let panGesture = UIPanGestureRecognizer(target: calendarView,
+                                                action: #selector(calendarView.handleScopeGesture(_:)))
         panGesture.delegate = self
         panGesture.minimumNumberOfTouches = 1
         panGesture.maximumNumberOfTouches = 2
@@ -82,8 +82,6 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         if UIDevice.current.model.hasPrefix("iPad") {
             calenderHeightConstraint.constant = 400
         }
-        // For UITest
-        calnderView.accessibilityIdentifier = "calendar"
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
         tableView.addGestureRecognizer(longPress)
@@ -93,7 +91,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     
     override func viewWillAppear(_ animated: Bool) {
         fetchAllRecords()
-        calnderView.select(Date())
+        calendarView.select(Date())
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         fetchChallenge(date: Date())
@@ -178,7 +176,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
             case .success(let challenges):
                 
                 if date.formatToDateOnly() == Date().formatToDateOnly() {
-                    self?.checkYesterdayProgress(challenges: challenges)
+                    self?.checkIfChallengeFailed(challenges: challenges)
                 }
                 
                 self?.challenges = challenges
@@ -190,17 +188,13 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         }
     }
     
-    deinit {
-        print("\(#function)")
-    }
-    
     // MARK: - UIGestureRecognizerDelegate
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
         if shouldBegin {
             let velocity = self.scopeGesture.velocity(in: self.view)
-            switch calnderView.scope {
+            switch calendarView.scope {
             case .month:
                 return velocity.y < 0
             case .week:
@@ -267,8 +261,8 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
             using: PopUpMessage.shared.setupAttributes()
         )
     }
-    
-    func checkYesterdayProgress(challenges: [Challenge]) {
+
+    func checkIfChallengeFailed(challenges: [Challenge]) {
         let filteredChallenges = challenges.filter { $0.progress == 0 && $0.isFirstDay == false }
         if !filteredChallenges.isEmpty {
             let dispatchGroup = DispatchGroup()
@@ -374,12 +368,11 @@ extension CalenderViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - dequeue different TableViewCells
     
     func dequeueNoRecordCell(indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(
-            withIdentifier: "CalendarChallengeTableViewCell", for: indexPath) as? CalendarChallengeTableViewCell {
-            cell.noRecordConfigure()
-            return cell
-        }
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "CalendarChallengeTableViewCell",
+                for: indexPath) as? CalendarChallengeTableViewCell else { return UITableViewCell() }
+        cell.noRecordConfigure()
+        return cell
     }
     
     func dequeueNoChallengeCell(indexPath: IndexPath) -> UITableViewCell {

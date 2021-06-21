@@ -21,7 +21,8 @@ enum PhotoType {
     case rightPhoto
 }
 
-class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate {
+class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate,
+                                  FSCalendarDataSource, FSCalendarDelegate {
     
     @IBOutlet weak var lottieView: AnimationView!
     @IBOutlet weak var calenderView: FSCalendar!
@@ -104,9 +105,7 @@ class RecordDetailViewController: UIViewController, UIGestureRecognizerDelegate 
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         self.view.layoutIfNeeded()
         self.calenderView.scope = .week
-        
-        // For UITest
-        calenderView.accessibilityIdentifier = "calendar"
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

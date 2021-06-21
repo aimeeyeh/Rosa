@@ -195,16 +195,15 @@ class ChallengeManager {
                 print("Document progress has successfully updated")
                 
             }
-            
         }
-        
-        func checkChallengeHasCompleted(progress: Int) -> Bool {
-            if progress == 30 {
-                print("Challenge Completed!")
-                return true
-            }
-            return false
+    }
+    
+    func checkChallengeHasCompleted(progress: Int) -> Bool {
+        if progress == 30 {
+            print("Challenge Completed!")
+            return true
         }
+        return false
     }
     
     func updateIsChecked(documentID: String) {
