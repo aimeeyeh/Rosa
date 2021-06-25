@@ -95,7 +95,7 @@ class ArticleDetailViewController: UIViewController {
         checkFollowButtonStatus()
         configureFollowButton()
         tableView.allowsSelection = true
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressSelector))
         tableView.addGestureRecognizer(longPress)
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
@@ -115,7 +115,7 @@ class ArticleDetailViewController: UIViewController {
     
     // MARK: - Long Press Gesture
     
-    @objc func longPress(sender: UILongPressGestureRecognizer) {
+    @objc func longPressSelector(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: tableView)
             guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }

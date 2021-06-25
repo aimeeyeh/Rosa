@@ -82,7 +82,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
             calenderHeightConstraint.constant = 400
         }
         
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressSelector))
         tableView.addGestureRecognizer(longPress)
     }
     
@@ -99,7 +99,7 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     
     // MARK: - Long Press Gesture
     
-    @objc func longPress(sender: UILongPressGestureRecognizer) {
+    @objc func longPressSelector(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: tableView)
             guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
