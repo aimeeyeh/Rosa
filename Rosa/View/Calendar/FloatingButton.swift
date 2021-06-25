@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import LiquidFloatingActionButton
+import UIKit
 
 public class CustomCell: LiquidFloatingCell {
     var name: String = "sample"

@@ -10,7 +10,6 @@ import FSCalendar
 import SwiftEntryKit
 import Kingfisher
 import SnapKit
-import LiquidFloatingActionButton
 
 class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSCalendarDataSource, FSCalendarDelegate {
     
