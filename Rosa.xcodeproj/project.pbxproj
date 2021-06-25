@@ -73,6 +73,14 @@
 		7AAFE4B2264C060200A20324 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */; };
 		7AAFE4B4264C09E500A20324 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */; };
 		7AAFE4B7264C125300A20324 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE4B6264C125300A20324 /* CalenderViewController.swift */; };
+		7ABE03322685ED8F00924091 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE032A2685ED8F00924091 /* UIColorEx.swift */; };
+		7ABE03332685ED8F00924091 /* SimpleCircleLiquidEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE032B2685ED8F00924091 /* SimpleCircleLiquidEngine.swift */; };
+		7ABE03342685ED8F00924091 /* CGPointEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE032C2685ED8F00924091 /* CGPointEx.swift */; };
+		7ABE03352685ED8F00924091 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE032D2685ED8F00924091 /* CGRectEx.swift */; };
+		7ABE03362685ED8F00924091 /* LiquittableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE032E2685ED8F00924091 /* LiquittableCircle.swift */; };
+		7ABE03372685ED8F00924091 /* ArrayEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE032F2685ED8F00924091 /* ArrayEx.swift */; };
+		7ABE03382685ED8F00924091 /* LiquidFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE03302685ED8F00924091 /* LiquidFloatingActionButton.swift */; };
+		7ABE03392685ED8F00924091 /* LiquidUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE03312685ED8F00924091 /* LiquidUtil.swift */; };
 		7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13352655129300B177F2 /* FilterTableViewCell.swift */; };
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
@@ -176,6 +184,14 @@
 		7AAFE4B1264C060200A20324 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B3264C09E500A20324 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		7AAFE4B6264C125300A20324 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		7ABE032A2685ED8F00924091 /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorEx.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/UIColorEx.swift; sourceTree = SOURCE_ROOT; };
+		7ABE032B2685ED8F00924091 /* SimpleCircleLiquidEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleCircleLiquidEngine.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/SimpleCircleLiquidEngine.swift; sourceTree = SOURCE_ROOT; };
+		7ABE032C2685ED8F00924091 /* CGPointEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointEx.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/CGPointEx.swift; sourceTree = SOURCE_ROOT; };
+		7ABE032D2685ED8F00924091 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRectEx.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/CGRectEx.swift; sourceTree = SOURCE_ROOT; };
+		7ABE032E2685ED8F00924091 /* LiquittableCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiquittableCircle.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/LiquittableCircle.swift; sourceTree = SOURCE_ROOT; };
+		7ABE032F2685ED8F00924091 /* ArrayEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayEx.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/ArrayEx.swift; sourceTree = SOURCE_ROOT; };
+		7ABE03302685ED8F00924091 /* LiquidFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiquidFloatingActionButton.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/LiquidFloatingActionButton.swift; sourceTree = SOURCE_ROOT; };
+		7ABE03312685ED8F00924091 /* LiquidUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiquidUtil.swift; path = Pods/LiquidFloatingActionButton/Pod/Classes/LiquidUtil.swift; sourceTree = SOURCE_ROOT; };
 		7ACD13352655129300B177F2 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChallengeTableViewCell.swift; sourceTree = "<group>"; };
@@ -303,6 +319,7 @@
 		7A8DB508264BB62100EE6D9D /* Rosa */ = {
 			isa = PBXGroup;
 			children = (
+				7ABE03292685EC5000924091 /* LiquidFloatingButtonsAdjustedFiles */,
 				7AFE438C26613A1D00F94330 /* Rosa.entitlements */,
 				7AAFE489264BCCFF00A20324 /* Extensions */,
 				7AAFE488264BCCF000A20324 /* Resource */,
@@ -449,6 +466,21 @@
 				7AAFE4B6264C125300A20324 /* CalenderViewController.swift */,
 			);
 			path = Calender;
+			sourceTree = "<group>";
+		};
+		7ABE03292685EC5000924091 /* LiquidFloatingButtonsAdjustedFiles */ = {
+			isa = PBXGroup;
+			children = (
+				7ABE032F2685ED8F00924091 /* ArrayEx.swift */,
+				7ABE032C2685ED8F00924091 /* CGPointEx.swift */,
+				7ABE032D2685ED8F00924091 /* CGRectEx.swift */,
+				7ABE03302685ED8F00924091 /* LiquidFloatingActionButton.swift */,
+				7ABE03312685ED8F00924091 /* LiquidUtil.swift */,
+				7ABE032E2685ED8F00924091 /* LiquittableCircle.swift */,
+				7ABE032B2685ED8F00924091 /* SimpleCircleLiquidEngine.swift */,
+				7ABE032A2685ED8F00924091 /* UIColorEx.swift */,
+			);
+			path = LiquidFloatingButtonsAdjustedFiles;
 			sourceTree = "<group>";
 		};
 		7ACFDF7C2652E14F007B6B62 /* Calendar */ = {
@@ -745,17 +777,21 @@
 				7A7F192D266A77710058DA98 /* EditNameTableViewCell.swift in Sources */,
 				7A7F1935266A8A070058DA98 /* BlocklistTableViewCell.swift in Sources */,
 				7A37D6052652C4E9002DAAE4 /* ButtonsTableViewCell.swift in Sources */,
+				7ABE03382685ED8F00924091 /* LiquidFloatingActionButton.swift in Sources */,
 				7A7F1921266A22250058DA98 /* PrivacyViewController.swift in Sources */,
 				7A247B102651218D00E436D6 /* ActivityTableViewCell.swift in Sources */,
 				7A6B01CD265168DD0018547E /* UIButton+Extension.swift in Sources */,
 				7A7F1927266A6DAE0058DA98 /* SettingsViewController.swift in Sources */,
 				7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */,
 				7A7F1931266A7B3B0058DA98 /* EditBlocklistViewController.swift in Sources */,
+				7ABE03392685ED8F00924091 /* LiquidUtil.swift in Sources */,
 				7A1C472C26557C0C00057CB4 /* PostViewController.swift in Sources */,
+				7ABE03342685ED8F00924091 /* CGPointEx.swift in Sources */,
 				7A8DB50A264BB62100EE6D9D /* AppDelegate.swift in Sources */,
 				7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */,
 				7A3E7F9A2657A1F5005F8768 /* RecordManager.swift in Sources */,
 				7A6B0510266E2E0A0047014C /* PopUpMessage.swift in Sources */,
+				7ABE03322685ED8F00924091 /* UIColorEx.swift in Sources */,
 				7A44AE08265434900051781C /* SleepViewController.swift in Sources */,
 				7A5B7E97267B55480026EE0A /* UIStoryboard+Extension.swift in Sources */,
 				7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */,
@@ -785,6 +821,9 @@
 				7A7F192F266A7B2D0058DA98 /* EditNameViewController.swift in Sources */,
 				7A108A9D2676711F00BDA4BD /* String.swift in Sources */,
 				7A3E7FA62657A5F2005F8768 /* Article.swift in Sources */,
+				7ABE03352685ED8F00924091 /* CGRectEx.swift in Sources */,
+				7ABE03332685ED8F00924091 /* SimpleCircleLiquidEngine.swift in Sources */,
+				7ABE03362685ED8F00924091 /* LiquittableCircle.swift in Sources */,
 				7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */,
 				7A20F636264CF4DA00019D3D /* UIColor+Extension.swift in Sources */,
 				7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */,
@@ -794,6 +833,7 @@
 				7A489FC92666865300B692A9 /* NoCommentCell.swift in Sources */,
 				7A247B08265120F200E436D6 /* RoutineTableViewCell.swift in Sources */,
 				7AFE439126613BA700F94330 /* SignInViewController.swift in Sources */,
+				7ABE03372685ED8F00924091 /* ArrayEx.swift in Sources */,
 				7A44AE06265434830051781C /* WaterViewController.swift in Sources */,
 				7AFE438B2660E86800F94330 /* Date+Extension.swift in Sources */,
 				7A8DB50C264BB62100EE6D9D /* SceneDelegate.swift in Sources */,
