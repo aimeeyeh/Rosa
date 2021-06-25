@@ -26,8 +26,6 @@ target 'Rosa' do
   
   target 'RosaTests' do
       inherit! :search_paths
-#      pod 'Firebase', '~> 7.2-M1'
-#      pod 'FirebaseFirestoreSwift', '~> 7.2-M1'
       pod 'GoogleUtilities'
   end
   
