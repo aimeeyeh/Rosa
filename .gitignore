@@ -8854,4 +8854,7 @@ DerivedData/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+###google plist###
+GoogleService-Info.plist
+
 # End of https://www.gitignore.io/api/xcode,macos,cocoapods

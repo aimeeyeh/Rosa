@@ -84,7 +84,6 @@
 		7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13352655129300B177F2 /* FilterTableViewCell.swift */; };
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
-		7ADC5ABA268073F600043C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */; };
 		7ADC5AD92680768300043C35 /* RosaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC5AD72680768300043C35 /* RosaTests.swift */; };
 		7AF6EDD92667C3D800F04200 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6EDD82667C3D800F04200 /* UIFont.swift */; };
 		7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */; };
@@ -144,7 +143,6 @@
 		7A35217426863A57008FA523 /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		7A35217526863A57008FA523 /* CGPointEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointEx.swift; sourceTree = "<group>"; };
 		7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
-		7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A3E7F992657A1F5005F8768 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		7A3E7F9B2657A279005F8768 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		7A3E7F9D2657A4AF005F8768 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -347,7 +345,6 @@
 				7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */,
 				7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */,
 				7A8DB517264BB62100EE6D9D /* Info.plist */,
-				7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */,
 			);
 			path = Rosa;
 			sourceTree = "<group>";
@@ -619,7 +616,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ADC5ABA268073F600043C35 /* GoogleService-Info.plist in Resources */,
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
 				7A605D1C266F7CB5007BF42B /* bouncingBall.json in Resources */,
 				7A108AB32677464A00BDA4BD /* Profile.storyboard in Resources */,
