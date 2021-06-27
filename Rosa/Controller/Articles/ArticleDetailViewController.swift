@@ -201,7 +201,7 @@ class ArticleDetailViewController: UIViewController {
         }
         let saveActionButton = UIAlertAction(title: "Share", style: .default) {_ in
             guard let userName = UserManager.shared.currentUser?.name else { return }
-            let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized()
+            let text = "Your friend".localized() + String(userName) + " just shared an article with you: ".localized()
                 + String(self.article.title) + "."
             let image = UIImage(named: "Rosa")
             let myWebsite = NSURL(string: "rosa://?\(self.article.id)")
@@ -374,7 +374,8 @@ class ArticleDetailViewController: UIViewController {
     
     @IBAction func shareArticle(_ sender: Any) {
         guard let userName = UserManager.shared.currentUser?.name else { return }
-        let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized() + String(article.title) + "."
+        let text = "Your friend".localized() + String(userName) +
+            " just shared an article with you: " .localized() + String(article.title) + "."
         let image = UIImage(named: "Rosa")
         let myWebsite = NSURL(string: "rosa://?\(article.id)")
         let shareAll = [text, image as Any, myWebsite as Any] as [Any]
