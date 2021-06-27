@@ -20,7 +20,7 @@
   </a>
 </p>
 
-Features
+:seedling: Features
 =======
 **Core features:**
 - Daily Record: document your skin progress by uploading daily photos
@@ -101,6 +101,9 @@ while uploading images to <b>Firebase Storage</b>
 - [CollectionViewWaterfallLayout](https://github.com/ecerney/CollectionViewWaterfallLayout)
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
+## Languages
+- English
+- Mandarin
 
 ## Version
 
@@ -125,14 +128,16 @@ while uploading images to <b>Firebase Storage</b>
 
 ## Contact
 
+Aimee Yeh
 [yehchihchen@gmail.com](yehchihchen@gmail.com)
 
->Please feel free to contact me if you have any questions.
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 
 
 ## License
 
 This project is licensed under the terms of the **MIT** license.
+
 See the LICENSE file for more info.
 
 
