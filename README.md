@@ -74,7 +74,7 @@ Features
 - Built user interfaces and infrastructure with <b>UIKit</b>
 - Passed values between View Controllers using <b>delegate</b> and <b>closure</b>
 - Applied weak / strong on references for <b>ARC</b> to avoid memory leak
-- Used <b>GCD/<b> for asynchronous background fetches to build more
+- Used <b>GCD</b> for asynchronous background fetches to build more
 responsive user interface
 - Created views using <b>Auto Layout</b> to make the application compatible
 for all iPhones both programmatically and using the Interface Builder
@@ -110,7 +110,7 @@ while uploading images to <b>Firebase Storage</b>
 ## Requirement
 
 - Xcode 12.4 or any higher version.
-- Swift 4.0 or any higher version.
+- Swift 5.0 or any higher version.
 - iOS 13.4 or any higher version.
 
 
