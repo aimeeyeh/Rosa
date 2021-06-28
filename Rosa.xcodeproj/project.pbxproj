@@ -49,7 +49,6 @@
 		7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */; };
 		7A489FC92666865300B692A9 /* NoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A489FC82666865300B692A9 /* NoCommentCell.swift */; };
 		7A559D7E2663E71900F73F06 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A559D7D2663E71900F73F06 /* ArticleManager.swift */; };
-		7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */; };
 		7A5B7E97267B55480026EE0A /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */; };
 		7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F832655571F007597A1 /* PhotoCell.swift */; };
 		7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F852655572D007597A1 /* ContentCell.swift */; };
@@ -74,6 +73,7 @@
 		7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* MainViewController.swift */; };
 		7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB50F264BB62100EE6D9D /* Main.storyboard */; };
 		7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */; };
+		7A992700268980B5006B0020 /* Lottie_girlWithFlowers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A9926FF268980B4006B0020 /* Lottie_girlWithFlowers.json */; };
 		7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */; };
 		7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE492264BE29100A20324 /* Articles.storyboard */; };
 		7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE49F264BE64600A20324 /* UIView+Extension.swift */; };
@@ -157,7 +157,6 @@
 		7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A489FC82666865300B692A9 /* NoCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCommentCell.swift; sourceTree = "<group>"; };
 		7A559D7D2663E71900F73F06 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
-		7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Lottie_girlWithFlowers.json; path = Animations/Lottie_girlWithFlowers.json; sourceTree = SOURCE_ROOT; };
 		7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		7A5D9F832655571F007597A1 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		7A5D9F852655572D007597A1 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
@@ -184,6 +183,7 @@
 		7A8DB510264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A8DB515264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A8DB517264BB62100EE6D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9926FF268980B4006B0020 /* Lottie_girlWithFlowers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lottie_girlWithFlowers.json; sourceTree = "<group>"; };
 		7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7AAFE492264BE29100A20324 /* Articles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Articles.storyboard; sourceTree = "<group>"; };
 		7AAFE49F264BE64600A20324 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 				7AAFE486264BCC7800A20324 /* View */,
 				7A8DB509264BB62100EE6D9D /* AppDelegate.swift */,
 				7A605D1B266F7CB5007BF42B /* bouncingBall.json */,
-				7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */,
+				7A9926FF268980B4006B0020 /* Lottie_girlWithFlowers.json */,
 				7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */,
 				7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */,
 				7A8DB517264BB62100EE6D9D /* Info.plist */,
@@ -623,7 +623,6 @@
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
 				7A605D1C266F7CB5007BF42B /* bouncingBall.json in Resources */,
 				7A108AB32677464A00BDA4BD /* Profile.storyboard in Resources */,
-				7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */,
 				7A108AAF2677445600BDA4BD /* Calender.storyboard in Resources */,
 				7A108AB826774A6F00BDA4BD /* Challenge.storyboard in Resources */,
 				7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */,
@@ -632,6 +631,7 @@
 				7A108A982675F17300BDA4BD /* Localizable.strings in Resources */,
 				7A108A9E267735A800BDA4BD /* Record.storyboard in Resources */,
 				7AFC52FE2673B03800966298 /* Assets.xcassets in Resources */,
+				7A992700268980B5006B0020 /* Lottie_girlWithFlowers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

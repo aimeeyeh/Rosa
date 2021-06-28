@@ -136,28 +136,6 @@ class SignInViewController: UIViewController {
         return hashString
     }
     
-//    @IBAction func skipSignIn(_ sender: Any) {
-//
-//        signinButton.isEnabled = false
-//        let defaults = UserDefaults.standard
-//        defaults.set("Aimee", forKey: "userID")
-//
-//        UserManager.shared.checkIsExistingUser(userName: "secretAimee") { result in
-//
-//            switch result {
-//
-//            case .success(let user):
-//
-//                self.performSegue(withIdentifier: "showHomePage", sender: user)
-//
-//            case .failure(let error):
-//
-//                print("fetchData.failure: \(error)")
-//            }
-//        }
-//
-//    }
-    
 }
 
 @available(iOS 13.0, *)
