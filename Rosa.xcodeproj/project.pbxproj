@@ -335,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				7A35217E26863A67008FA523 /* LiquidFloatingButtons */,
-				7AFE438C26613A1D00F94330 /* Rosa.entitlements */,
 				7AAFE489264BCCFF00A20324 /* Extensions */,
 				7AAFE488264BCCF000A20324 /* Resource */,
 				7AAFE485264BCC7100A20324 /* Model */,
@@ -348,6 +347,7 @@
 				7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */,
 				7A8DB517264BB62100EE6D9D /* Info.plist */,
 				7A02024926876B6200A87D64 /* GoogleService-Info.plist */,
+				7AFE438C26613A1D00F94330 /* Rosa.entitlements */,
 			);
 			path = Rosa;
 			sourceTree = "<group>";
