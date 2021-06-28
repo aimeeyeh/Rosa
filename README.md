@@ -1,7 +1,7 @@
 # Rosa
 
 <p align="center">
-  <img width="150" height="150" src="https://github.com/aimeeyeh/Rosa/blob/main/images/Rosa_Icon.png">
+  <img width="150" height="150" src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/Rosa_Icon.png">
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="https://bit.ly/RosaSkincareDiary">
-    <img src="https://github.com/aimeeyeh/Rosa/blob/main/images/App_Store_Badge_US.png"> 
+    <img src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/App_Store_Badge_US.png"> 
   </a>
 </p>
 
@@ -34,39 +34,39 @@
 
  - **Home Page**
  >Summary of your skin's progress for the past seven days
- <img src="https://github.com/aimeeyeh/Rosa/blob/main/images/HomePage.png" width="179">
+ <img src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/HomePage.png" width="179">
  
  
  - **Calendar Page**
  >You daily challenges and records
  
- <img src="https://github.com/aimeeyeh/Rosa/blob/main/images/CalendarPage.png" width="179"><img 
- src="https://github.com/aimeeyeh/Rosa/blob/main/images/FloatingButtonPage.png" width="179">
+ <img src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/CalendarPage.png" width="179"><img 
+ src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/FloatingButtonPage.png" width="179">
  
  - **Challenges**
  >Pick your challenge and continue for 30 days to experience the difference
  
- <img src="https://github.com/aimeeyeh/Rosa/blob/main/images/ChallengesPage.png" width="179"><img 
- src="https://github.com/aimeeyeh/Rosa/blob/main/images/ChallengeSuccess.png" width="179">
+ <img src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/ChallengesPage.png" width="179"><img 
+ src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/ChallengeSuccess.png" width="179">
 
  - **Daily Record**
  >Document your skin progress by uploading daily photos and noting your diet, water intake, sleep, mood, activities and more 
  
- <img src="https://github.com/aimeeyeh/Rosa/blob/main/images/DetailRecord.png" width="179"><img 
- src="https://github.com/aimeeyeh/Rosa/blob/main/images/DetailRecord_Water.png" width="179">
+ <img src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/DetailRecord.png" width="179"><img 
+ src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/DetailRecord_Water.png" width="179">
  
  - **Community**
  >Share your thoughts and experiences with our supportive community and make new skincare BFFs  
  
- <img src="https://github.com/aimeeyeh/Rosa/blob/main/images/ArticlesPage.png" width="179"><img 
- src="https://github.com/aimeeyeh/Rosa/blob/main/images/ArticleDetail.png" width="179"><img 
- src="https://github.com/aimeeyeh/Rosa/blob/main/images/BlockUser.png" width="179">
+ <img src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/ArticlesPage.png" width="179"><img 
+ src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/ArticleDetail.png" width="179"><img 
+ src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/BlockUser.png" width="179">
  
  
  - **Profile Page**
  >Check out all the articles you have posted and liked and customize your profile
  
- <img src="https://github.com/aimeeyeh/Rosa/blob/main/images/ProfilePage.png" width="179">
+ <img src="https://github.com/aimeeyeh/Rosa/blob/main/Screenshots/ProfilePage.png" width="179">
 
 
 ## :bulb: Technical Highlights
