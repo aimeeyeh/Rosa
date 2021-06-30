@@ -359,6 +359,7 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         self.selectedIndexPath = indexPath
         performSegue(withIdentifier: "showArticleDetails", sender: self)
         
@@ -370,14 +371,21 @@ extension ArticlesViewController: UICollectionViewDataSource, UICollectionViewDe
               let indexPath = selectedIndexPath else { return }
         
         if segue.identifier == "showArticleDetails" {
-            if currentType == .allArticles {
-                
+            switch currentType {
+            
+            case .allArticles:
                 controller.article = self.filteredArticles[indexPath.row]
                 
-            } else {
+            case .categorizedArticles:
+                controller.article = self.categoryArticles[indexPath.row]
                 
+            case .searchedArticles:
+                controller.article = self.searchedArticles[indexPath.row]
+                
+            default:
                 controller.article = self.followedArticles[indexPath.row]
             }
+            
         }
     }
     
