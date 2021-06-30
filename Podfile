@@ -13,9 +13,9 @@ target 'Rosa' do
   pod 'Firebase/Auth', '7.2.0-M1'
   pod 'Firebase/Crashlytics', '7.2.0-M1'
   pod "CollectionViewWaterfallLayout"
+  pod 'Charts'
   pod 'MKRingProgressView'
   pod 'FSCalendar'
-  pod 'Charts'
   pod 'HGCircularSlider', '~> 2.2.0'
   pod 'SwiftEntryKit', '1.2.7'
   pod 'Kingfisher', '~> 6.0'

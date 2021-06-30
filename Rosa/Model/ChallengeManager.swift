@@ -225,7 +225,7 @@ class ChallengeManager {
         }
     }
     
-    // MARK: - delete 30 day challenges
+    // MARK: - delete 30 day challenges using GCD
     
     func delete30dayChallenges(challengeTitle: String, completion: @escaping (Result<String, Error>) -> Void) {
         

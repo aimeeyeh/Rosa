@@ -74,8 +74,8 @@ class ArticleManager {
                                 switch result {
                                 
                                 case .success(let user):
-                                    
-                                    if let index = articles.firstIndex(where: { $0.id == articleID }) {
+                                    if let user = user,
+                                       let index = articles.firstIndex(where: { $0.id == articleID }) {
                                         
                                         articles[index].authorPhoto = user.photo ?? ""
                                         articles[index].authorName = user.name
@@ -104,7 +104,7 @@ class ArticleManager {
         }
     }
     
-    func fetchAuthorLatest(authorID: String, completion: @escaping (Result<User, Error>) -> Void) {
+    func fetchAuthorLatest(authorID: String, completion: @escaping (Result<User?, Error>) -> Void) {
         
         let queryCollection = database.collection("user")
         queryCollection
@@ -113,6 +113,11 @@ class ArticleManager {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
+                    
+                    if querySnapshot!.documents.isEmpty {
+                        completion(.success(nil))
+                    }
+                    
                     for document in querySnapshot!.documents {
                         
                         do {
@@ -134,14 +139,10 @@ class ArticleManager {
         
         let userID = user?.id
         
-        let userName = user?.name
-        
-        guard let userPhoto = user?.photo else { return }
-        
         let document = database.collection("articles").document(documentID).collection("comments").document()
         
-        let comment = Comment(id: document.documentID, authorID: userID ?? "Fail", authorName: userName ?? "Anonymous",
-                              authorPhoto: userPhoto, content: comment, date: Date())
+        let comment = Comment(id: document.documentID, authorID: userID ?? "Fail", authorName: "Anonymous",
+                              authorPhoto: "", content: comment, date: Date())
         
         do {
             try  document.setData(from: comment)
@@ -164,13 +165,42 @@ class ArticleManager {
                 print("Error getting documents: \(err)")
             } else {
                 
+                let dispatchGroup = DispatchGroup()
+                
                 var comments = [Comment]()
                 
                 for document in querySnapshot!.documents {
                     
                     do {
                         if let comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
+                            
                             comments.append(comment)
+                            
+                            let commentID = comment.id
+                            
+                            dispatchGroup.enter()
+
+                            self.fetchAuthorLatest(authorID: comment.authorID) { result in
+
+                                switch result {
+                                
+                                case .success(let user):
+                                    
+                                    if let user = user,
+                                       let index = comments.firstIndex(where: { $0.id == commentID }) {
+                                        
+                                        comments[index].authorPhoto = user.photo ?? ""
+                                        comments[index].authorName = user.name
+                                        
+                                    }
+
+                                    dispatchGroup.leave()
+
+                                case .failure(let error):
+
+                                    print("fetchData.failure: \(error)")
+                                }
+                            }
                         }
                         
                     } catch {
@@ -178,9 +208,11 @@ class ArticleManager {
                         print(error)
                     }
                 }
-                completion(.success(comments))
+                
+                dispatchGroup.notify(queue: .main) {
+                    completion(.success(comments))
+                }
             }
-            
         }
         
     }

@@ -40,7 +40,7 @@ class ArticleDetailViewController: UIViewController {
     
     var filterdDefaultComments: [Comment]? {
         didSet {
-            filterComments() // 跟blocked user didset裡的filterComments()是否留一個就夠？
+            filterComments()
         }
     }
     
@@ -145,6 +145,7 @@ class ArticleDetailViewController: UIViewController {
             case .success(let user):
                 
                 self.fetchBlocklist()
+                
                 print(user)
                 
             case .failure(let error):
@@ -201,7 +202,7 @@ class ArticleDetailViewController: UIViewController {
         }
         let saveActionButton = UIAlertAction(title: "Share", style: .default) {_ in
             guard let userName = UserManager.shared.currentUser?.name else { return }
-            let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized()
+            let text = "Your friend".localized() + String(userName) + " just shared an article with you: ".localized()
                 + String(self.article.title) + "."
             let image = UIImage(named: "Rosa")
             let myWebsite = NSURL(string: "rosa://?\(self.article.id)")
@@ -374,7 +375,8 @@ class ArticleDetailViewController: UIViewController {
     
     @IBAction func shareArticle(_ sender: Any) {
         guard let userName = UserManager.shared.currentUser?.name else { return }
-        let text = "你的朋友 ".localized() + String(userName) + " 剛跟你分享了一篇文章: ".localized() + String(article.title) + "."
+        let text = "Your friend".localized() + String(userName) +
+            " just shared an article with you: " .localized() + String(article.title) + "."
         let image = UIImage(named: "Rosa")
         let myWebsite = NSURL(string: "rosa://?\(article.id)")
         let shareAll = [text, image as Any, myWebsite as Any] as [Any]
@@ -472,7 +474,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 return cell
             }
         default:
-            if comments.count <= 1 {
+            if comments.count <= 1 || filteredBlockComments?.count == 0 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "NoCommentCell",
                                                             for: indexPath) as? NoCommentCell {
                     return cell

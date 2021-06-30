@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		59C400ECA95DA5BE0939EA53 /* Pods_Rosa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C374A870328953E5950C01F1 /* Pods_Rosa.framework */; };
+		7A02024A26876B6200A87D64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A02024926876B6200A87D64 /* GoogleService-Info.plist */; };
 		7A108A982675F17300BDA4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A108A9A2675F17300BDA4BD /* Localizable.strings */; };
 		7A108A9D2676711F00BDA4BD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A108A9C2676711F00BDA4BD /* String.swift */; };
 		7A108A9E267735A800BDA4BD /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A108AA0267735A800BDA4BD /* Record.storyboard */; };
@@ -48,7 +49,6 @@
 		7A475C732652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */; };
 		7A489FC92666865300B692A9 /* NoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A489FC82666865300B692A9 /* NoCommentCell.swift */; };
 		7A559D7E2663E71900F73F06 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A559D7D2663E71900F73F06 /* ArticleManager.swift */; };
-		7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */; };
 		7A5B7E97267B55480026EE0A /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */; };
 		7A5D9F842655571F007597A1 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F832655571F007597A1 /* PhotoCell.swift */; };
 		7A5D9F862655572D007597A1 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5D9F852655572D007597A1 /* ContentCell.swift */; };
@@ -73,6 +73,7 @@
 		7A8DB50E264BB62100EE6D9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DB50D264BB62100EE6D9D /* MainViewController.swift */; };
 		7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB50F264BB62100EE6D9D /* Main.storyboard */; };
 		7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */; };
+		7A992700268980B5006B0020 /* Lottie_girlWithFlowers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A9926FF268980B4006B0020 /* Lottie_girlWithFlowers.json */; };
 		7A9B1ACF264D18BD00B47009 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */; };
 		7AAFE493264BE29100A20324 /* Articles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AAFE492264BE29100A20324 /* Articles.storyboard */; };
 		7AAFE4A0264BE64600A20324 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE49F264BE64600A20324 /* UIView+Extension.swift */; };
@@ -84,7 +85,6 @@
 		7ACD13362655129300B177F2 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13352655129300B177F2 /* FilterTableViewCell.swift */; };
 		7ACD13382655320100B177F2 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD13372655320100B177F2 /* ArticleDetailViewController.swift */; };
 		7ACFDF7E2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFDF7D2652E18B007B6B62 /* CalendarChallengeTableViewCell.swift */; };
-		7ADC5ABA268073F600043C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */; };
 		7ADC5AD92680768300043C35 /* RosaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC5AD72680768300043C35 /* RosaTests.swift */; };
 		7AF6EDD92667C3D800F04200 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6EDD82667C3D800F04200 /* UIFont.swift */; };
 		7AFA8E52265952D600EFAE15 /* CalendarRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA8E51265952D600EFAE15 /* CalendarRecordTableViewCell.swift */; };
@@ -108,6 +108,7 @@
 /* Begin PBXFileReference section */
 		4246E6FD81E489519C9388B7 /* Pods-RosaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RosaTests.debug.xcconfig"; path = "Target Support Files/Pods-RosaTests/Pods-RosaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6202FE6F9552C8AA9B8C0846 /* Pods_RosaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RosaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A02024926876B6200A87D64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A108A8F2675F00900BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		7A108A902675F00900BDA4BD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7A108A992675F17300BDA4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 		7A35217426863A57008FA523 /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		7A35217526863A57008FA523 /* CGPointEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointEx.swift; sourceTree = "<group>"; };
 		7A37D6042652C4E9002DAAE4 /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
-		7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A3E7F992657A1F5005F8768 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		7A3E7F9B2657A279005F8768 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		7A3E7F9D2657A4AF005F8768 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -157,7 +157,6 @@
 		7A475C722652BA1B00A26CF8 /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A489FC82666865300B692A9 /* NoCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCommentCell.swift; sourceTree = "<group>"; };
 		7A559D7D2663E71900F73F06 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
-		7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Lottie_girlWithFlowers.json; path = Animations/Lottie_girlWithFlowers.json; sourceTree = SOURCE_ROOT; };
 		7A5B7E96267B55480026EE0A /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		7A5D9F832655571F007597A1 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		7A5D9F852655572D007597A1 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
@@ -184,6 +183,7 @@
 		7A8DB510264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A8DB515264BB62100EE6D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A8DB517264BB62100EE6D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9926FF268980B4006B0020 /* Lottie_girlWithFlowers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lottie_girlWithFlowers.json; sourceTree = "<group>"; };
 		7A9B1ACE264D18BD00B47009 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7AAFE492264BE29100A20324 /* Articles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Articles.storyboard; sourceTree = "<group>"; };
 		7AAFE49F264BE64600A20324 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -335,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				7A35217E26863A67008FA523 /* LiquidFloatingButtons */,
-				7AFE438C26613A1D00F94330 /* Rosa.entitlements */,
 				7AAFE489264BCCFF00A20324 /* Extensions */,
 				7AAFE488264BCCF000A20324 /* Resource */,
 				7AAFE485264BCC7100A20324 /* Model */,
@@ -343,11 +342,12 @@
 				7AAFE486264BCC7800A20324 /* View */,
 				7A8DB509264BB62100EE6D9D /* AppDelegate.swift */,
 				7A605D1B266F7CB5007BF42B /* bouncingBall.json */,
-				7A559D812664BED500F73F06 /* Lottie_girlWithFlowers.json */,
+				7A9926FF268980B4006B0020 /* Lottie_girlWithFlowers.json */,
 				7A8DB50B264BB62100EE6D9D /* SceneDelegate.swift */,
 				7A8DB514264BB62100EE6D9D /* LaunchScreen.storyboard */,
 				7A8DB517264BB62100EE6D9D /* Info.plist */,
-				7A3E7F9726564CE6005F8768 /* GoogleService-Info.plist */,
+				7A02024926876B6200A87D64 /* GoogleService-Info.plist */,
+				7AFE438C26613A1D00F94330 /* Rosa.entitlements */,
 			);
 			path = Rosa;
 			sourceTree = "<group>";
@@ -619,11 +619,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ADC5ABA268073F600043C35 /* GoogleService-Info.plist in Resources */,
+				7A02024A26876B6200A87D64 /* GoogleService-Info.plist in Resources */,
 				7A8DB516264BB62100EE6D9D /* LaunchScreen.storyboard in Resources */,
 				7A605D1C266F7CB5007BF42B /* bouncingBall.json in Resources */,
 				7A108AB32677464A00BDA4BD /* Profile.storyboard in Resources */,
-				7A559D822664BED500F73F06 /* Lottie_girlWithFlowers.json in Resources */,
 				7A108AAF2677445600BDA4BD /* Calender.storyboard in Resources */,
 				7A108AB826774A6F00BDA4BD /* Challenge.storyboard in Resources */,
 				7A8DB511264BB62100EE6D9D /* Main.storyboard in Resources */,
@@ -632,6 +631,7 @@
 				7A108A982675F17300BDA4BD /* Localizable.strings in Resources */,
 				7A108A9E267735A800BDA4BD /* Record.storyboard in Resources */,
 				7AFC52FE2673B03800966298 /* Assets.xcassets in Resources */,
+				7A992700268980B5006B0020 /* Lottie_girlWithFlowers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
