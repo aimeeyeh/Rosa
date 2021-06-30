@@ -40,7 +40,7 @@ class ArticleDetailViewController: UIViewController {
     
     var filterdDefaultComments: [Comment]? {
         didSet {
-            filterComments() // 跟blocked user didset裡的filterComments()是否留一個就夠？
+            filterComments()
         }
     }
     
@@ -145,6 +145,7 @@ class ArticleDetailViewController: UIViewController {
             case .success(let user):
                 
                 self.fetchBlocklist()
+                
                 print(user)
                 
             case .failure(let error):
@@ -473,7 +474,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 return cell
             }
         default:
-            if comments.count <= 1 {
+            if comments.count <= 1 || filteredBlockComments?.count == 0 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "NoCommentCell",
                                                             for: indexPath) as? NoCommentCell {
                     return cell
