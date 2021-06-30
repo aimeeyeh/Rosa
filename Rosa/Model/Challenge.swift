@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Challenge: Codable {
+struct Challenge: Codable, Equatable {
     var category: String
     var challengeImage: String
     var id: String

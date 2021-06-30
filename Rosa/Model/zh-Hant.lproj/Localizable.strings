@@ -24,9 +24,13 @@
 
 "Oh No!" = "糟糕";
 
-"You've missed yesterday's challenge." = "你昨天忘記完成你的挑戰了，";
+"You've missed yesterday's " = "你昨天忘記完成你的";
 
-"Add the challenge again and Restart your 30 day challenge!" = "再挑戰一次吧！加油！";
+" Add the challenge again and Restart your 30 day challenge!" = "再挑戰一次吧！加油！";
+
+" challenge." = "挑戰了，";
+
+"challenges." = "挑戰了，";
 
 "Try again" = "好的";
 

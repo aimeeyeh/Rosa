@@ -248,10 +248,10 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
         )
     }
     
-    func displayFailureMessage() {
+    func displayFailureMessage(challengeTitle: String) {
         let image = "fail"
         let title = "Oh No!".localized()
-        let description = "You've missed yesterday's challenge.".localized() +
+        let description = "You've missed yesterday's ".localized() + challengeTitle +
             " Add the challenge again and Restart your 30 day challenge!".localized()
         let button = "Try again".localized()
         SwiftEntryKit.display(
@@ -264,16 +264,20 @@ class CalenderViewController: UIViewController, UIGestureRecognizerDelegate, FSC
     func checkIfChallengeFailed(challenges: [Challenge]) {
         let filteredChallenges = challenges.filter { $0.progress == 0 && $0.isFirstDay == false }
         if !filteredChallenges.isEmpty {
-            let dispatchGroup = DispatchGroup()
+            
             for challenge in filteredChallenges {
-                dispatchGroup.enter()
+                if let index = self.challenges.firstIndex(of: challenge) {
+                    self.challenges.remove(at: index)
+                }
+                if filteredChallenges.count == 1 {
+                    self.displayFailureMessage(challengeTitle: challenge.challengeTitle + " challenge.".localized())
+                } else {
+                    self.displayFailureMessage(challengeTitle: "challenges.".localized())
+                }
+                
                 ChallengeManager.shared.delete30dayChallenges(
                     challengeTitle: challenge.challengeTitle) { _ in
-                    dispatchGroup.leave()
                 }
-            }
-            dispatchGroup.notify(queue: .main) {
-                self.displayFailureMessage()
             }
         }
     }
