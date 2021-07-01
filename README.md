@@ -121,6 +121,7 @@ while uploading images to <b>Firebase Storage</b>
 
 | Version | Date | Description                                                                                     |
 | :-------| :----|:------------------------------------------------------------------------------------------------|
+| 1.1.2   | 2021.07.01 | Add support for Chinese, Traditional and Minor bug fixes |
 | 1.1.1   | 2021.06.22 | Minor bug fixes|
 | 1.1.0   | 2021.06.12 | Features added: Delete articles and comments, Share articles with friends and Keyword search |
 | 1.0.0   | 2021.06.10 | Launched in App Store|
