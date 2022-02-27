@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <b>Rosa</b> is a <b>skincare diary</b> for you to track your skin's progress and discover what daily routines are best for your skin by taking photos every day and noting your diet, water intake, sleep, mood, activities and more! You can also take on our <b>30 day challenges</b> for you to addess your skin issue from the inside out and share your thoughts and experiences with our <b>supportive community</b> and make new skincare BFFs!
+  <b>Rosa</b> is a <b>skincare diary</b> for you to track your skin progress and discover what daily routines are best for your skin by taking photos every day and noting your diet, water intake, sleep, mood, activities and more! You can also take on our <b>30 day challenges</b> for you to addess your skin issue from the inside out and share your thoughts and experiences with our <b>supportive community</b> and make new skincare BFFs!
 </p>
 
 <p align="center">
